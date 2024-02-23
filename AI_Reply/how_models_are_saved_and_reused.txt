@@ -1,0 +1,16 @@
+so, to train a model and save it to use later.
+
+
+in the base .js file of AI, there are 2 parts -
+
+1. The training model part:
+    to use this part, you have to call the function which is createJSFileInFolder() and pass true in it.
+    this will train the model and save it in a txt file located in the Trained_Models flder in the root.
+
+2. Using the model in the txt file
+    this is the part of the script that we will make the buncle of,
+    this part of the script, gets the data from the txt file and stores it in the AI object and then
+    uses it to give the output lightning fast.
+
+
+Both of these parts are devided by a devider so as to reduce confusion.

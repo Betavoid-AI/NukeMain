@@ -1,0 +1,1060 @@
+<!-- to print the message from AI -->
+<script>
+
+
+
+
+    // HOW IT WORKS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //when user gave /des, detect what user want to design and then make diff messages to display for diff parts
+    //then print the initial questions messages
+
+    //once the user does the said thing and provices the data of the shaft, we will satrt back and forth fo rthe
+    //design questions to ask user bunch of questions
+
+    //we will also need bunch of functions to check if the input from  the user is correct and usable
+
+    //once the inputs are in, make functions that will print all the data provided by the user and then ask if user wants to make any changes
+    //if no, tell user that bot is calculating and then show the popup with the progress bar and once calculations are done
+    //display the button to open the calculations in the chat
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+    //console.log(currentkeys);     // when user uses /des and gives input, you can access the variables from currentkeys
+    //console.log(currentnums);     // values of the variables provided by the user
+    //console.log(currentname);     // name of the part being designed
+
+
+
+    //call when you wanna print message from the bot - NORMAL TEXT
+    function protreply(MessageToPrint) {
+
+
+
+        // bot's chatstripe
+        const uniqueId = generateUniqueId() //this is where the reply from OpenAI will go
+        chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+
+        // to focus scroll to the bottom 
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        // specific message div 
+        const messageDiv = document.getElementById(uniqueId)
+
+        // messageDiv.innerHTML = "..."
+        loader(messageDiv)
+
+
+
+
+
+        let strname;
+        if (document.getElementById('nameoftheparts')) {
+            strname = document.getElementById('nameoftheparts').innerHTML;
+        } else {
+            strname = document.getElementById('nameoftheparts2').innerHTML;
+        }
+
+
+
+
+        clearInterval(loadInterval);
+        const rep = MessageToPrint;
+        typeText(messageDiv, rep);
+
+
+
+
+        const Container = document.getElementById('chat_container');
+        function scrollll() {
+            Container.scrollTop = Container.scrollHeight;
+        }
+        scrollll()
+
+
+
+    }
+    //call when you wanna print message from the bot - NORMAL TEXT
+
+
+    //call when you wanna print message from the bot - Custom REPLY
+    function CustomProtReply(MessageToPrint, DivArray, MessageToPrint2) {
+
+
+
+        // bot's chatstripe
+        const uniqueId1 = generateUniqueId() //this is where the reply from OpenAI will go
+        chatContainer.innerHTML += chatStripe(true, " ", uniqueId1)
+
+        // to focus scroll to the bottom 
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        // specific message div 
+        const messageDiv1 = document.getElementById(uniqueId1)
+
+        // messageDiv.innerHTML = "..."
+        loader(messageDiv1)
+
+
+
+
+
+        let strname;
+        if (document.getElementById('nameoftheparts')) {
+            strname = document.getElementById('nameoftheparts').innerHTML;
+        } else {
+            strname = document.getElementById('nameoftheparts2').innerHTML;
+        }
+
+
+
+
+        clearInterval(loadInterval);
+        CustomMsgFromAI(messageDiv1, MessageToPrint, MessageToPrint2, DivArray)
+
+
+
+
+        const Container1 = document.getElementById('chat_container');
+        function scrollll() {
+            Container1.scrollTop = Container1.scrollHeight;
+        }
+        scrollll()
+
+
+
+    }
+    //call when you wanna print message from the bot - Custom REPLY
+
+
+    const tryial = `I will need some input for the shaft for which you want the design of the spline.
+          I need at least diameter of the shaft and the material. Would you like to connect the project in which you designed the shaft or would you like to provide the your input right here.
+          use /openeditor to open the node editor to connect the shaft
+          or
+          use /add to provide the input of the shaft right here. here is a editable template for you to use /add -
+          "/add 250mm diameter of the shaft and material is steel"`;
+
+</script>
+<!-- to print the message from AI -->
+
+
+<!-- console.log(currentkeys);     // when user uses /des and gives input, you can access the variables from currentkeys  -->
+<!-- console.log(currentnums);     // values of the variables provided by the user -->
+<!-- console.log(currentname);     // name of the part being designed  -->
+<!-- console.log(keystodelete);     // name of the variables user wants to delete using /d  -->
+
+
+
+
+<!-- Replies -->
+<script>
+
+
+    //For Spline ++++++++++++++++++++
+    //1st reply after /des for spline
+    //________________________________ There is a AI model trained to reply to user if user replies 
+    //________________________________ to these messeages without using any prompt (/add or /d)
+
+    const firstspline = [
+        "I understand that you're looking to create a spline for a shaft. Your initial inputs are noted.",
+        "So, you're interested in designing a spline to fit a shaft? I've got your inputs saved.",
+        "Ah, a spline design for a shaft it is! I've captured the inputs you've given.",
+        "I see you're working on a spline design for a shaft. Your provided inputs have been received.",
+        "Spline design for a shaft, right? Noted down the inputs you've shared.",
+        "Got it, you're aiming to design a spline to go onto a shaft. Inputs received.",
+        "Designing a spline for a shaft, I see. Your inputs are safely stored.",
+        "You're in the process of creating a spline for a shaft, correct? Inputs logged.",
+        "So, a spline designed for a shaft is what you're after? Your inputs are important.",
+        "Spline for a shaft design, noted with the inputs you've just given.",
+        "I understand your goal is a spline design for a shaft. Inputs? Saved.",
+        "Gotcha! Spline for a shaft is the task. I've captured the inputs you supplied.",
+        "Designing a spline to fit a shaft, right? Inputs are in the system.",
+        "Spline for a shaft in the works, I see. Your inputs are safely recorded.",
+        "Your aim is clear: a spline design for a shaft. Noted down your inputs.",
+        "I've registered your intent to design a spline for a shaft. Inputs received.",
+        "So, you're into creating a spline that'll go on a shaft? I've got those inputs.",
+        "Understood, you're working on a spline design for a shaft. Inputs are noted.",
+        "Designing a spline for a shaft, I see. Inputs duly collected.",
+        "Spline for a shaft, right? Just collected the inputs you've given.",
+        "Your goal: a spline designed for a shaft. I've logged the inputs you provided.",
+        "I've caught onto your plan—a spline design for a shaft. Inputs are in.",
+        "Noted, you're looking to craft a spline for a shaft. Inputs received.",
+        "Ah, a spline intended for a shaft. I've jotted down your inputs.",
+        "Designing a spline to match a shaft, got it. Inputs are safe and sound.",
+        "So, you're aiming for a spline design related to a shaft? Inputs secured.",
+        "You've got a spline on your mind, one for a shaft. Inputs are noted.",
+        "Spline for a shaft in the making, I understand. Inputs? Collected.",
+        "I'm with you – a spline designed for a shaft. Your inputs have been saved.",
+        "You're in the process of designing a spline for a shaft, correct? Inputs received.",
+        "Got it, a spline tailored for a shaft. I've documented your inputs.",
+        "Designing a spline for a shaft, I see. Your inputs are now in the system.",
+        "I understand your goal: a spline designed for a shaft. Inputs logged.",
+        "Spline for a shaft it is! Just grabbed the inputs you've shared.",
+        "Your intent is clear – designing a spline for a shaft. Inputs captured.",
+        "Noted, you're interested in a spline for a shaft. I've got the inputs.",
+        "Ah, a spline meant for a shaft. Inputs securely saved.",
+        "Designing a spline for a shaft, right? Inputs have been duly noted.",
+        "I've got your plan – a spline designed to fit a shaft. Inputs received.",
+        "So, you're diving into a spline design for a shaft? Inputs recorded.",
+        "Spline for a shaft, understood. Just collected the inputs you provided.",
+        "Your goal is set: designing a spline for a shaft. Inputs are in the system.",
+        "I see, you're keen on a spline for a shaft. Inputs are logged.",
+        "Spline for a shaft in progress, I get it. Inputs have been captured.",
+        "Your aim: a spline designed for a shaft. Inputs? Noted down.",
+        "You're on the path to a spline design for a shaft, right? Inputs secured.",
+        "I understand, you're after a spline to match a shaft. Inputs saved.",
+        "Spline for a shaft it is! I've got those inputs you just shared.",
+        "Your mission: designing a spline for a shaft. Inputs have been documented.",
+        "So, a spline tailored for a shaft is what you're working on? Inputs received."
+    ]
+
+    const MinimumInputNeeded = [ "The inputs you've given hold great significance as I utilize them for crucial calculations. However, based on the recent inputs you provided, they appear insufficient for me to perform the calculations you seek. You have the choice to furnish me with more inputs or allow me to make predictions. What is your preference?",
+    "Your provided inputs play a pivotal role; I rely on them for essential calculations. Yet, judging by the latest data you've given, it seems inadequate for the computations you require. You can either disclose more inputs or grant me the authority to predict. How would you prefer to proceed?",
+    "The inputs you provide serve as a cornerstone for important calculations I undertake. Yet, the current inputs seem insufficient for the intended calculations. You have the option to either share additional inputs or permit me to predict the missing information. What is your chosen course of action?",
+    "I place a high value on the inputs you provide, as they are integral to the critical calculations I perform. However, based on the recent inputs you've shared, they do not seem to suffice for the calculations at hand. You can either provide me with more inputs or authorize me to make predictions. What is your decision?",
+    "The inputs you've submitted are of utmost importance, as I employ them for significant calculations. Nonetheless, considering the most recent inputs, they do not appear to be enough for the calculations you require. You can either disclose additional inputs or empower me to make predictions. How do you wish to proceed?",
+    "Your inputs are of great consequence, as I utilize them for important calculations. From the inputs you've just provided, it's evident that they may not be adequate for me to carry out the calculations. You can either allow me to predict the missing information or supply me with the necessary inputs. What is your preferred choice?",
+    "I emphasize the significance of the inputs you provide, as they are the foundation for vital calculations. However, based on the inputs you've just shared, they seem insufficient for the calculations you're seeking. You can either furnish me with more inputs or grant me the ability to predict. What do you intend to do?",
+    "The inputs you provide are crucial for the calculations I perform. Yet, based on the latest inputs you provided, they do not appear to be sufficient for me to proceed with the calculations. You have the option to either provide additional inputs or authorize me to make predictions. How would you like to proceed?",
+    "The inputs you supply hold immense importance, as I use them in significant calculations. From the inputs just provided, it's clear they might not be enough for me to calculate on your behalf. You can either choose to provide me with more inputs or permit me to predict the missing data. What is your decision?",
+    "Your inputs are of prime importance, as they drive crucial calculations. However, based on the inputs you've just given, they don't seem adequate for the calculations you need. You can either share more inputs with me or enable me to make predictions. What's your choice?",
+    "The inputs you provide are vital for important calculations, and I rely on them. Nevertheless, considering the inputs you've recently given, they don't seem sufficient for me to perform the necessary calculations. You have the option to either provide more inputs or let me make predictions. What is your preference?",
+    "Your provided inputs are a key component of the important calculations I undertake. But, based on the inputs you've given just now, they don't seem to be enough for me to carry out the calculations. You can either allow me to predict the missing data or provide me with additional inputs. How would you like to proceed?",
+    "The inputs you've given carry significant weight, as they are integral to the important calculations I engage in. However, based on the inputs you've shared recently, they don't seem sufficient for me to perform the calculations you're asking for. You can either provide more inputs or authorize me to make predictions. What's your decision?",
+    "I stress the importance of the inputs you provide, as they are essential for the calculations I conduct. Yet, based on the recent inputs you've provided, they don't appear to be adequate for the calculations at hand. You have the choice to either provide additional inputs or permit me to predict. What course of action would you like to take?",
+    "The inputs you've provided hold a crucial role in the calculations I carry out. However, based on the inputs you've just provided, they don't seem sufficient for me to proceed with the required calculations. You can either share more inputs or allow me to make predictions. What is your chosen way forward?",
+    "Your inputs are pivotal for important calculations, and I rely on their accuracy. Nevertheless, based on the inputs just shared, they don't appear to be enough for me to calculate as needed. You have the option to either provide supplementary inputs or grant me the authority to predict. How do you wish to proceed?",
+    "The inputs you've shared are vital for the calculations I perform. However, based on the most recent inputs, they don't seem to provide the necessary information for accurate calculations. You can either provide additional inputs or allow me to make predictions. What is your intended course of action?",
+    "Your inputs are of the utmost importance in the calculations I undertake. Nonetheless, judging by the recent inputs you've provided, they don't seem sufficient for me to proceed with the required calculations. You can either supply more inputs or authorize me to make predictions. What is your decision?",
+    "The inputs you provide are of paramount importance for the calculations I execute. Nevertheless, based on the inputs you've just shared, they don't appear to be enough for me to perform the calculations you require. You can either provide more inputs or allow me to predict the missing data. What would you like to do?",
+    "I place great importance on the inputs you provide, as they are fundamental to the calculations I perform. However, based on the recent inputs you provided, they do not seem to be sufficient for me to carry out the necessary calculations. You can either share more inputs or permit me to make predictions. How do you wish to proceed?",
+    "Your inputs are essential for the calculations I undertake. But, considering the most recent inputs you've provided, they do not seem to be enough for me to accurately proceed. You have the option to either provide more inputs or authorize me to predict. What is your preferred course of action?",
+    "The inputs you provide are crucial for the calculations I perform. Based on the inputs you've just provided, it appears they may not be sufficient for the calculations you're requesting. You can either provide additional inputs or allow me to make predictions. What is your chosen way forward?",
+    "Your inputs are instrumental in the calculations I conduct. However, based on the inputs you've shared just now, they don't seem to provide enough information for accurate calculations. You can either provide more inputs or permit me to predict the missing data. What do you intend to do?",
+    "The inputs you've given are integral to the calculations I execute. Yet, based on the inputs you've recently provided, they don't seem sufficient for me to perform the calculations you require. You can either provide more inputs or empower me to make predictions. How do you wish to proceed?",
+    "I attach significant importance to the inputs you provide, as they are the building blocks of the",
+    "calculations I rely on. However, from the inputs you've just provided, it's evident they may not be comprehensive enough for me to perform the calculations you need. You can either enhance the inputs you provide or grant me the ability to predict. What is your preferred choice?",
+    "Your inputs hold immense value as I utilize them for pivotal calculations. Nevertheless, based on the most recent inputs you've provided, they seem insufficient for me to accurately proceed. You can either furnish me with more detailed inputs or allow me to make predictions. How would you like to proceed?",
+    "I want to stress the importance of the inputs you provide; they are the bedrock of the calculations I perform. However, considering the inputs you've shared just now, they don't appear to contain all the necessary information for accurate calculations. You can either provide more comprehensive inputs or authorize me to predict. What course of action would you like to take?",
+    "Your inputs play a crucial role in the calculations I conduct. Still, based on the recent inputs you've provided, they don't seem sufficient for me to perform the calculations you're requesting. You can either supplement the inputs or allow me to predict the missing data. What would be your preferred approach?",
+    "The inputs you've provided are pivotal for the calculations I carry out. But, from the inputs you've shared just now, it's clear that they might not encompass everything required for accurate calculations. You can either provide more detailed inputs or permit me to predict the missing information. How do you intend to proceed?",
+    "Your inputs are integral to the calculations I undertake. However, based on the recent inputs you've given, they do not appear to contain all the information necessary for accurate calculations. You have the choice to either provide additional inputs or authorize me to predict. What is your decision?",
+    "The inputs you've given are critical for the calculations I perform. Yet, based on the inputs you've shared just now, they don't seem to provide the complete information required for accurate calculations. You can either supply more comprehensive inputs or allow me to predict the missing data. What is your chosen way forward?",
+    "I want to emphasize the significance of the inputs you provide, as they are central to the calculations I carry out. Nevertheless, based on the recent inputs you've provided, they do not seem sufficient for me to carry out accurate calculations. You can either provide more inputs or grant me the authority to predict. What's your choice?",
+    "Your inputs are of paramount importance for the calculations I execute. However, based on the inputs you've just shared, they may not encompass everything necessary for the calculations you require. You can either share more inputs or allow me to predict the missing information. What is your preferred course of action?",
+    "The inputs you provide are pivotal for the calculations I perform. From the inputs you've shared, it's clear they may not cover all the aspects required for accurate calculations. You have the option to either provide additional inputs or permit me to predict the missing data. What do you intend to do?",
+    "Your inputs are essential for the calculations I undertake. Yet, considering the inputs you've provided just now, it's apparent they may not be comprehensive enough for accurate calculations. You can either provide more inputs or empower me to make predictions. What would you like to do?",
+    "The inputs you've given are central to the calculations I engage in. Based on the recent inputs you provided, it's evident that they may not encompass all the required information for accurate calculations. You can either provide more inputs or allow me to predict the missing data. How do you wish to proceed?",
+    "I place great importance on the inputs you provide, as they are fundamental to the calculations I perform. However, from the inputs you've just provided, it's evident they may not be comprehensive enough for me to carry out accurate calculations. You can either share more inputs or permit me to make predictions. What is your preferred choice?",
+    "Your inputs are of great importance, as they are vital for the calculations I undertake. Yet, based on the inputs you've shared just now, they do not appear to be comprehensive enough for accurate calculations. You can either furnish me with more inputs or grant me the authority to predict. What's your decision?",
+    "The inputs you've provided are essential for the calculations I conduct. However, based on the recent inputs you've provided, it seems they may not be comprehensive enough for me to perform the calculations you need. You can either provide more inputs or allow me to predict the missing information. What is your chosen course of action?",
+    "Your inputs are significant for the calculations I perform. Nonetheless, considering the inputs you've shared just now, it appears they may not be comprehensive enough for accurate calculations. You can either disclose more inputs or enable me to make predictions. How would you prefer to proceed?",
+    "I want to stress the importance of the inputs you provide, as they are crucial for the calculations I execute. Yet, based on the recent inputs you've provided, they don't seem to encompass everything necessary for accurate calculations. You can either provide additional inputs or allow me to predict the missing data. What is your intended way forward?",
+    "Your inputs are of prime importance, as they are integral to the calculations I perform. Nevertheless, from the inputs you've shared just now, it's clear they may not be comprehensive enough for me to accurately proceed. You can either provide more detailed inputs or authorize me to make predictions. What's your decision?",
+    "The inputs you've shared hold immense significance, as they are the foundation for the calculations I undertake. However, based on the recent inputs you've provided, they don't appear to be comprehensive enough for the calculations you're requesting. You can either provide more inputs or permit me to predict. What course of action would you like to take?",
+    "I stress the importance of the inputs you provide, as they are fundamental for the calculations I rely on. However, from the inputs you've just provided, it's clear they may not be comprehensive enough for me to proceed with accurate calculations. You can either enhance the inputs you provide or grant me the ability to predict. What's your chosen way forward?",
+    "Your inputs hold immense value, as they are crucial for the calculations I carry out. Nevertheless, based on the recent inputs you've provided, they don't seem comprehensive enough for me to perform the calculations you need. You can either share more detailed inputs or allow me to make predictions. What do you intend to do?",
+    "The inputs you provide are essential for the calculations I perform. However, based on the inputs you've shared just now, it's clear they may not be comprehensive enough for the calculations at hand. You can either provide additional inputs or enable me to predict the missing data. What's your choice?"];
+    
+    const when_add_is_used_but_no_enough_in = [
+            "Do you want to include additional variables or should I go ahead and predict the remaining ones?",
+            "Do you want to incorporate more variables, or do you want me to handle predicting the rest?",
+            "Would you prefer to introduce more variables, or shall I take care of predicting the rest?",
+            "Are there more variables you'd like to add, or should I proceed with predicting the remaining ones?",
+            "Do you wish to provide additional variables, or should I proceed to predict the remaining variables?",
+            "Should I wait for more variables from you, or would you like me to predict the rest?",
+            "Is there more you want to add to the variables, or should I take the lead in predicting the rest?",
+            "Would you like to contribute more variables, or do you want me to predict the rest instead?",
+            "Do you want to extend the list of variables, or shall I proceed with predicting the remaining ones?",
+            "Do you have more variables to share, or should I step in and predict the remaining ones?",
+            "Would you prefer to add more variables yourself, or should I go ahead and predict the rest?",
+            "Is there more to the list of variables you have, or should I predict the remaining ones for you?",
+            "Do you want to provide additional variables, or shall I predict the rest based on the current ones?",
+            "Should I wait for you to add more variables, or do you want me to predict the remaining ones?",
+            "Do you wish to contribute more variables, or should I take over and predict the rest?",
+            "Would you like to expand the variables, or should I predict the remaining ones with the current data?",
+            "Do you have more variables you'd like to share, or should I proceed with predicting the rest?",
+            "Should I incorporate the additional variables you have, or would you like me to predict the rest?",
+            "Do you want to update the variables or let me predict the remaining ones?","Do you have additional variables in mind, or should I proceed with predicting the rest?",
+            "Are there more variables you'd like to bring into the mix, or should I take over predicting the remaining ones?",
+            "Would you prefer to introduce more variables at this point, or should I go ahead and predict the rest?",
+            "Do you think we need more variables, or should I rely on the existing ones to predict the rest?",
+            "Do you want to provide more variables for consideration, or should I proceed with predicting the remaining set?",
+            "Would you like to contribute additional variables, or is it okay for me to predict the rest?",
+            "Should I wait for you to add more variables, or do you want me to proceed with predicting the rest?",
+            "Is there more to the list of variables that you want to add, or should I predict the rest based on the current data?",
+            "Do you want to extend the list of variables, or should I take the lead in predicting the remaining ones?",
+            "Do you have any more variables to suggest, or should I continue by predicting the rest?",
+            "Would you like to update the variables or should I go ahead and predict the remaining ones?",
+            "Do you want to share more variables, or should I move forward with predicting the remaining ones?",
+            "Are there more variables on your mind, or should I proceed with predicting the remaining ones?",
+            "Would you like to expand the variables, or should I predict the rest based on the existing information?",
+            "Do you think adding more variables is necessary, or should I predict the remaining ones with the current data?",
+            "Should I wait for any potential new variables, or should I predict the rest using the current set?",
+            "Is there anything else you want to include as variables, or should I go ahead and predict the rest?",
+            "Do you have more variables to contribute, or should I take over predicting the remaining variables?"
+        ]
+
+    const used_add_all_provided = [
+        "I appreciate all the inputs you've given. I'm ready to proceed, but before we start calculations, do you want to include additional inputs, modify the inputs, or exclude any of the inputs you've already given?",
+        "Your provided inputs are valued. I'm prepared to continue, though prior to commencing calculations, would you prefer to introduce more inputs, modify the existing inputs, or eliminate any of the inputs you've furnished?",
+        "Many thanks for sharing the inputs. I'm set to take over from here. Prior to diving into calculations, would you wish to incorporate more inputs, alter the current inputs, or eliminate any of the inputs you've provided?",
+        "I'm grateful for the inputs you've supplied. I'm ready to proceed independently. However, before we engage in calculations, would you consider adding more inputs, changing existing ones, or removing any inputs you've shared?",
+        "Thank you for providing the inputs you have. I'm prepared to move forward. Before we begin calculations, would you like to insert more inputs, revise the inputs, or possibly remove any of the inputs you've given?",
+        "Your input has been received and is appreciated. I'm ready to take the next steps. Prior to starting calculations, would you like to include additional inputs, adjust the existing inputs, or eliminate any of the inputs you provided?",
+        "Thanks for giving all the inputs. I can continue from here. But before diving into calculations, do you want to add more inputs, change the inputs, or remove any of the inputs you provided?",
+        "I extend my gratitude for your inputs. I'm ready to proceed further. Prior to calculations, would you be interested in adding more inputs, modifying the inputs, or removing any of the inputs you've submitted?",
+        "Appreciate your inputs. I'm prepared to take over. But before we start calculations, would you like to introduce more inputs, modify the inputs, or remove any of the inputs you have provided?",
+        "Your input is acknowledged and appreciated. I'm set to take it from here. Prior to moving to calculations, would you like to supplement more inputs, make changes to the inputs, or possibly remove any of the inputs you have shared?",
+        "Thank you for your input so far. I'm ready to proceed autonomously. Before we jump into calculations, would you like to add more inputs, tweak the inputs, or eliminate any of the inputs you've provided?",
+        "I want to express my gratitude for the inputs you've provided. I can handle things from this point onward. However, before we proceed to calculations, would you like to include more inputs, make changes to the inputs, or remove any of the inputs you've provided?",
+        "I'm thankful for the inputs you've shared. I'm ready to continue on my own. Prior to delving into calculations, would you like to incorporate more inputs, adjust the inputs, or remove any of the inputs you've given?",
+        "Thanks for supplying the inputs. I'm ready to move forward. But before we start calculations, would you prefer to add more inputs, alter the inputs, or remove any of the inputs you've provided?",
+        "Your inputs are well-received. I'm all set to proceed. Before we proceed with calculations, would you like to provide more inputs, make changes to the inputs, or possibly remove any of the inputs you've already given?",
+        "I appreciate the inputs you've provided. I'm ready to take the lead from here. Before we start calculations, would you like to add more inputs, modify the inputs, or eliminate any of the inputs you've shared?",
+        "Thank you for sharing the inputs you have. I can take it from here. But before we move on to calculations, would you like to add more inputs, change inputs, or remove any of the inputs you provided?",
+        "I'm grateful for the inputs you've given. I'm capable of proceeding. Before we move to calculations, would you want to add more inputs, adjust inputs, or possibly remove any of the inputs you've provided?",
+        "Your provided inputs are acknowledged. I'm ready to proceed, but before we move to calculations, would you like to introduce more inputs, modify inputs, or remove any of the inputs you've provided?",
+        "I appreciate your contributions so far. I'm set to take over. But before we proceed to calculations, would you like to introduce more inputs, modify the inputs, or perhaps remove any of the inputs you've provided?",
+        "Thank you for sharing the inputs you have. I'm prepared to proceed. However, before we delve into calculations, would you like to add more inputs, modify inputs, or remove any of the inputs you've provided?",
+        "Your inputs are greatly appreciated. I'm ready to take the reins. Prior to diving into calculations, would you like to include more inputs, modify the inputs, or remove any of the inputs you've provided?",
+        "I'm thankful for the inputs you've shared. I'm prepared to move forward. But before we proceed with calculations, would you like to provide additional inputs, adjust the inputs, or possibly remove any of the inputs you've given?",
+        "Thank you for your input so far. I'm ready to take the lead. However, before we proceed to calculations, would you like to add more inputs, adjust inputs, or remove any of the inputs you've provided?",
+        "Your provided inputs are noted with thanks. I'm set to proceed, but prior to calculations, would you like to add more inputs, modify inputs, or remove any of the inputs you've provided?",
+        "I'm appreciative of your inputs. I'm set to move ahead. However, before we transition to calculations, would you like to provide additional inputs, tweak the inputs, or potentially remove any of the inputs you've shared?",
+        "Thanks for the inputs provided. I'm ready to take charge from here. Prior to initiating calculations, would you like to introduce more inputs, make changes to the inputs, or eliminate any of the inputs you've supplied?",
+        "Your inputs are acknowledged and valued. I'm ready to proceed independently. But before we move to calculations, would you like to add more inputs, adjust the inputs, or remove any of the inputs you've provided?",
+        "I'm thankful for the inputs you've given. I'm capable of proceeding. But before we proceed to calculations, would you like to introduce more inputs, modify the inputs, or possibly remove any of the inputs you've provided?",
+        "Your provided inputs are received with gratitude. I'm set to continue. But prior to calculations, would you like to provide additional inputs, adjust the inputs, or remove any of the inputs you've shared?",
+        "I'm grateful for the inputs you've shared. I'm ready to proceed independently. However, before we delve into calculations, would you like to incorporate more inputs, modify the inputs, or remove any of the inputs you've given?",
+        "Thanks for providing the inputs you have. I'm prepared to move forward. But before we initiate calculations, would you like to add more inputs, modify the inputs, or eliminate any of the inputs you've shared?",
+        "Your input is valued and appreciated. I'm ready to take over. But before we move on to calculations, would you like to introduce more inputs, make changes to the inputs, or possibly remove any of the inputs you've provided?",
+        "I appreciate your input so far. I'm ready to proceed on my own. However, before we proceed to calculations, would you like to include more inputs, adjust the inputs, or remove any of the inputs you've shared?",
+        "Your inputs have been received with thanks. I'm ready to take it from here. Prior to moving to calculations, would you like to add more inputs, modify the inputs, or remove any of the inputs you've provided?",
+        "I'm thankful for your inputs. I'm ready to proceed independently. Before we begin calculations, would you like to add more inputs, tweak the inputs, or eliminate any of the inputs you've provided?",
+        "Your input is noted and appreciated. I'm set to move ahead. But before we dive into calculations, would you like to provide additional inputs, modify the inputs, or remove any of the inputs you've furnished?",
+        "I'm grateful for the inputs you've given. I'm prepared to proceed solo. Prior to calculations, would you like to introduce more inputs, modify the inputs, or remove any of the inputs you've provided?",
+        "Thanks for the provided inputs. I'm ready to take over. However, before we delve into calculations, would you like to include more inputs, adjust the inputs, or remove any of the inputs you've shared?",
+        "Your inputs are much appreciated. I'm set to take it from here. Before we proceed with calculations, would you like to provide additional inputs, tweak the inputs, or remove any of the inputs you've provided?",
+        "I'm thankful for sharing your inputs. I'm ready to proceed on my own. But before we move on to calculations, would you like to add more inputs, modify the inputs, or possibly remove any of the inputs you've provided?",
+        "Your inputs are valued and acknowledged. I'm prepared to proceed further. Prior to calculations, would you like to introduce more inputs, modify the inputs, or remove any of the inputs you've provided?"
+    ]
+
+    const d_used_but_no_enough = [
+    "I require a few more inputs, which can be included using /add, or I can forecast the remaining inputs for you.",
+    "A few more inputs are necessary. Feel free to incorporate them using /add, or I can anticipate the remaining inputs.",
+    "Additional inputs are still needed. You can provide them through /add, or I can predict the rest for you.",
+    "I'm in need of a few more inputs. You have the option to insert them using /add, or I can take care of predicting the rest.",
+    "I still lack some inputs. You're welcome to add them using /add, or I can predict the remaining inputs on your behalf.",
+    "There's a need for a few more inputs. Incorporate them via /add, or I can handle predicting the remaining inputs.",
+    "Few more inputs are essential. You can use /add to include them, or I can predict the remaining inputs for you.",
+    "I need a bit more input. You can utilize /add to add it, or I can predict the remaining inputs for you.",
+    "I'm short of a few inputs. You can add them using /add, or I can predict the remaining inputs for you.",
+    "Additional inputs are required. You can provide them using /add, or I can predict the remaining inputs for you.",
+    "I could use a few more inputs. Incorporate them with /add, or I can predict the remaining inputs.",
+    "There's still a need for more inputs. You can add them using /add, or I can predict the remaining inputs for you.",
+    "I still require a few more inputs. You can add them using /add, or I can predict the remaining inputs for you.",
+    "A few more inputs would be helpful. You can include them using /add, or I can predict the remaining inputs.",
+    "I'm waiting for a few more inputs. You can add them using /add, or I can predict the remaining inputs for you.",
+    "I still need a few more inputs to proceed. You can add them using /add, or I can predict the remaining inputs.",
+    "Additional inputs will be useful. Use /add to include them, or I can predict the remaining inputs for you.",
+    "I'm not done gathering inputs. You can add more using /add, or I can predict the remaining inputs for you.",
+    "A bit more input is necessary. You can include it using /add, or I can predict the remaining inputs.",
+    "I'm still missing a few inputs. You can add them using /add, or I can predict the remaining inputs.",
+    "I'm yet to receive a few more inputs. You can add them using /add, or I can predict the remaining inputs.",
+    "I haven't got all the inputs I need. You can include them with /add, or I can predict the remaining inputs.",
+    "I still require a few more inputs before proceeding. You can add them using /add, or I can predict the remaining inputs.",
+    "There's a need for additional inputs. You can provide them via /add, or I can predict the remaining inputs for you.",
+    "I'm still awaiting a few more inputs. You can add them using /add, or I can predict the remaining inputs.",
+    "A few more inputs are missing. You can include them using /add, or I can predict the remaining inputs for you.",
+    "I still have a need for more inputs. You can add them using /add, or I can predict the remaining inputs.",
+    "A few more inputs are still outstanding. You can add them using /add, or I can predict the remaining inputs for you.",
+    "I'm lacking a few more inputs. You can add them using /add, or I can predict the remaining inputs for you.",
+    "I still need some more inputs to proceed. You can add them using /add, or I can predict the remaining inputs.",
+    "Additional inputs are still required. You can provide them using /add, or I can predict the remaining inputs for you.",
+    "I'm waiting on a few more inputs. You can add them using /add, or I can predict the remaining inputs.",
+    "I'm not done gathering inputs. You can add more using /add, or I can predict the remaining inputs.",
+    "I'm still missing a few inputs. You can add them using /add, or I can predict the remaining inputs for you.",
+    "There's a need for a few more inputs before I can proceed. You can add them using /add, or I can predict the remaining inputs.",
+    "A few more inputs would be beneficial. You can include them using /add, or I can predict the remaining inputs for you.",
+    "I'm in need of additional inputs. You can add them using /add, or I can predict the remaining inputs for you.",
+    "I'm awaiting a few more inputs to continue. You can add them using /add, or I can predict the remaining inputs.",
+    "I still require a few more inputs to move forward. You can add them using /add, or I can predict the remaining inputs.",
+    "A few more inputs are necessary to proceed. You can add them using /add, or I can predict the remaining inputs for you.",
+    "I'm still short of a few inputs. You can add them using /add, or I can predict the remaining inputs for you."
+    ]
+
+    const enough_after_d_still = [
+    "I've got sufficient inputs to continue calculations. Do you want to include more inputs or should I proceed?",
+    "Enough inputs are available for calculations. Would you prefer to add more inputs or continue with calculations?",
+    "There are adequate inputs for further calculations. Do you wish to introduce additional inputs or proceed directly?",
+    "Sufficient inputs are at hand for computations. Should I carry on with the current inputs or do you want to input more?",
+    "Ample inputs are present for performing calculations. Should I continue with the current inputs or would you like to provide more?",
+    "I've got all the inputs I need for calculations. Do you want to provide more inputs or should I start calculations?",
+    "There's a satisfactory number of inputs for the calculations. Should I go ahead with these or add more?",
+    "I have enough inputs for proceeding with calculations. Do you intend to add more inputs or shall I proceed?",
+    "The inputs available are sufficient to proceed with calculations. Do you want to add more inputs or continue?",
+    "There are plenty of inputs for calculations. Do you want to include more inputs or should I begin calculating?",
+    "I possess enough inputs to perform calculations. Do you want to increase the input count or proceed with calculations?",
+    "I still have a good number of inputs for calculations. Would you like to input more or should I move forward?",
+    "I have the required inputs to proceed with calculations. Should I use these or wait for additional inputs?",
+    "There are adequate inputs to continue calculations. Do you want to provide more inputs or proceed with the current set?",
+    "I'm well-equipped with inputs for calculations. Do you want to add more or should I start the calculations?",
+    "There's no shortage of inputs for calculations. Would you like to add more inputs or should I proceed?",
+    "I've got enough inputs for calculations. Do you want to add more or shall I proceed with the current inputs?",
+    "There are ample inputs available for calculations. Should I proceed with these or wait for more?",
+    "I have sufficient inputs to carry out calculations. Do you wish to add more or should I proceed as is?",
+    "There are plenty of inputs for calculations. Would you like to input more or should I start processing?",
+    "I have all the inputs needed for calculations. Do you want to include more or proceed with the existing set?",
+    "I've got sufficient inputs for calculations. Do you want to continue with the current inputs or add more?",
+    "There are enough inputs available for calculations. Should I proceed with these or would you like to provide more?",
+    "I have the necessary inputs to continue calculations. Do you wish to proceed or consider adding more inputs?",
+    "Adequate inputs are at hand for calculations. Do you want to proceed as is or add more inputs?",
+    "I still possess ample inputs for calculations. Should I proceed with these or would you prefer to add more?",
+    "I've gathered enough inputs to proceed with calculations. Would you like to include more or shall I proceed?",
+    "The inputs I have are sufficient for calculations. Should I continue with these or wait for additional inputs?",
+    "There's a satisfactory number of inputs for the calculations. Do you want to use these or add more before proceeding?",
+    "I have the necessary inputs to proceed with calculations. Should I start or would you like to input more data?",
+    "There are plenty of inputs available for calculations. Would you like to proceed or introduce more inputs?",
+    "I still have enough inputs to proceed with calculations. Should I move forward with these or add more?",
+    "There are sufficient inputs at my disposal for calculations. Should I proceed with the current inputs or add more?",
+    "I possess enough inputs for calculations. Would you like to proceed or add more inputs?",
+    "There are enough inputs for calculations. Should I proceed with these or wait for additional inputs?",
+    "I have the required inputs for calculations. Should I proceed with the current set or wait for more?",
+    "The inputs I have are suitable for calculations. Should I proceed or consider adding more?",
+    "I'm well-equipped with inputs for calculations. Do you want to proceed or provide more inputs?",
+    "There's no shortage of inputs for calculations. Would you like to proceed or add more?",
+    "I have the necessary inputs to carry out calculations. Should I proceed with these or wait for more?",
+    "There are ample inputs available for calculations. Do you want to proceed with these or add more?",
+    "I've got all the inputs I need for calculations. Would you like to proceed or consider adding more?"
+    ]
+
+    const wrong_prompt_given = [
+    "Seems like there might be a typo in the prompt. Please ensure you're using the available prompts. You can refer to the cheatsheet on your right.",
+    "It appears that there's a prompt typo. Make sure to utilize the provided prompts. You can find a list of prompts in the cheatsheet on your right.",
+    "Looks like you've made a prompt error. Double-check that you're using the prompts provided. You can consult the cheatsheet on your right for the list of prompts.",
+    "Oh, there seems to be a prompt mistake. Ensure that you're making use of the available prompts. You can refer to the cheatsheet on your right for a list of prompts.",
+    "It seems you've mistyped the prompt. Please make sure to utilize the prompts provided. You can check the cheatsheet on your right for a list of prompts.",
+    "Hmm, it looks like there's a prompt typo. Make sure you're using the prompts that are available. You can find a list of prompts in the cheatsheet on your right.",
+    "Oops, there might be a prompt error. Double-check that you're using the provided prompts. You can refer to the cheatsheet on your right for the list of prompts.",
+    "Ah, there appears to be a prompt mistake. Ensure that you're making use of the available prompts. You can consult the cheatsheet on your right for a list of prompts.",
+    "Looks like the prompt might be mistyped. Please verify that you're using the prompts available. You can check the cheatsheet on your right for a list of prompts.",
+    "Oh, it seems there's a prompt error. Make sure to use the prompts provided. You can find a list of prompts in the cheatsheet on your right.",
+    "Seems like you've misentered the prompt. Please ensure you're using the available prompts. You can refer to the cheatsheet on your right for a list of prompts.",
+    "It appears that there's a prompt typo. Make sure to utilize the provided prompts. You can find a list of prompts in the cheatsheet on your right.",
+    "Looks like there's a prompt mistake. Double-check that you're using the prompts provided. You can consult the cheatsheet on your right for the list of prompts.",
+    "Oops, it seems there might be a prompt error. Ensure that you're making use of the available prompts. You can check the cheatsheet on your right for a list of prompts.",
+    "Hmm, it looks like you've mistyped the prompt. Please make sure to utilize the prompts provided. You can refer to the cheatsheet on your right for the list of prompts.",
+    "Ah, there's a prompt mistake here. Make sure you're using the prompts that are available. You can find a list of prompts in the cheatsheet on your right.",
+    "It seems there's a prompt error. Double-check that you're using the provided prompts. You can consult the cheatsheet on your right for the list of prompts.",
+    "Oops, it appears you've misentered the prompt. Ensure that you're making use of the available prompts. You can check the cheatsheet on your right for a list of prompts.",
+    "Seems like there's a prompt typo. Please verify that you're using the available prompts. You can refer to the cheatsheet on your right for a list of prompts.",
+    "Oh, there might be a prompt error. Make sure to use the prompts provided. You can find a list of prompts in the cheatsheet on your right.",
+    "It looks like there's a mistake in the prompt. Ensure you're using the prompts provided. You can consult the cheatsheet on your right for a list of prompts.",
+    "Looks like a typo slipped into the prompt. Make sure to use the prompts available. You can refer to the cheatsheet on your right for a list of prompts.",
+    "Oh, there appears to be a prompt error. Please ensure you're using the provided prompts. You can check the cheatsheet on your right for a list of prompts.",
+    "Seems like there's a typo in the prompt. Double-check that you're using the available prompts. You can consult the cheatsheet on your right for the list of prompts.",
+    "Oops, it seems you've made a prompt mistake. Make sure you're using the prompts provided. You can find a list of prompts in the cheatsheet on your right.",
+    "It appears there might be a prompt typo. Please verify that you're using the available prompts. You can refer to the cheatsheet on your right for a list of prompts.",
+    "Hmm, it looks like you've misentered the prompt. Ensure you're using the provided prompts. You can check the cheatsheet on your right for the list of prompts.",
+    "Ah, there seems to be a prompt typo. Double-check that you're using the prompts available. You can consult the cheatsheet on your right for a list of prompts.",
+    "Oops, there's a prompt mistake here. Ensure you're using the prompts provided. You can refer to the cheatsheet on your right for a list of prompts.",
+    "It seems a prompt error has crept in. Make sure to use the prompts available. You can find a list of prompts in the cheatsheet on your right.",
+    "Looks like you've got a prompt typo. Please ensure you're using the provided prompts. You can check the cheatsheet on your right for a list of prompts.",
+    "Oh, there's a prompt mistake here. Double-check that you're using the available prompts. You can consult the cheatsheet on your right for the list of prompts.",
+    "Seems there might be a prompt error. Ensure you're using the prompts provided. You can check the cheatsheet on your right for a list of prompts.",
+    "It seems like there's a prompt typo. Please verify that you're using the available prompts. You can refer to the cheatsheet on your right for a list of prompts.",
+    "Oops, it looks like a prompt mistake. Make sure you're using the prompts provided. You can find a list of prompts in the cheatsheet on your right.",
+    "Hmm, it appears there's a prompt error. Double-check that you're using the prompts available. You can consult the cheatsheet on your right for a list of prompts.",
+    "Ah, it looks like a prompt typo. Ensure that you're using the provided prompts. You can check the cheatsheet on your right for the list of prompts.",
+    "Oh, there might be a prompt mistake. Make sure to use the prompts available. You can refer to the cheatsheet on your right for a list of prompts.",
+    "It seems there's a prompt error. Please ensure you're using the available prompts. You can consult the cheatsheet on your right for the list of prompts.",
+    "Oops, looks like you've misentered the prompt. Ensure you're using the prompts provided. You can check the cheatsheet on your right for a list of prompts.",
+    "Seems like a prompt typo. Double-check that you're using the available prompts. You can find a list of prompts in the cheatsheet on your right.",
+    "Ah, there's a prompt mistake here. Make sure you're using the prompts provided. You can refer to the cheatsheet on your right for the list of prompts."
+    ]
+
+    //user want ai to predict 
+    const ai_replied_predict = [
+        "Anticipated, I'll predict the rest of the variables for you.",
+        "Acknowledged, I'll proceed to predict the remaining variables for you.",
+        "Noted, my next step is to predict the rest of the variables for you.",
+        "Received, I'm going to predict the remaining variables for you.",
+        "Confirmed, I'll predict the rest of the variables as requested.",
+        "Affirmative, predicting the rest of the variables for you.",
+        "Roger that, I'll predict the remaining variables for you.",
+        "Copy that, my task is to predict the rest of the variables for you.",
+        "Gotcha, I'll take care of predicting the rest of the variables for you.",
+        "Acknowledged, I'll provide predictions for the remaining variables."
+    ];
+
+    const user_wanna_give_rest_vars = [
+        "You're absolutely welcome to introduce any number of variables. If you need assistance obtaining specific variables, or if you'd like me to offer predictions, don't hesitate to let me know.",
+        "Feel free to incorporate as many variables as you'd like. If you require help gathering any particular variable or would like me to make a prediction, feel free to ask for guidance.",
+        "You have the flexibility to add as many variables as you see fit. If there's any variable you're uncertain about collecting or if you'd like me to predict something, feel free to reach out.",
+        "Feel at ease to include any number of variables according to your requirements. If you find any difficulty in acquiring specific variables or if you'd like predictions, I'm here to help you.",
+        "Feel comfortable adding any variables you need. If you need assistance in obtaining certain variables, or if you'd like me to predict something for you, don't hesitate to ask.",
+        "Feel free to insert any variables you want. If you run into challenges in collecting certain variables or if you'd like me to provide predictions, just let me know.",
+        "You have the freedom to introduce as many variables as you need. If you face any obstacles while obtaining specific variables or if you'd like me to predict outcomes, feel free to ask.",
+        "Feel at liberty to include any variables that are important to you. If you encounter any issues acquiring certain variables or if you'd like predictions, I'm here to assist you.",
+        "You're more than welcome to add any variables that you think are relevant. If there's any variable you're finding hard to get or if you'd like me to predict something, feel free to ask.",
+        "Feel free to add as many variables as you see fit. If there's a specific variable causing you trouble, or if you'd like me to help with predictions, don't hesitate to reach out.",
+        "You're welcome to incorporate as many variables as you need. If you need help obtaining any particular variable or would like me to make predictions, please feel free to ask.",
+        "Feel free to include any variables you want for your needs. If you're facing any challenges gathering specific variables or if you'd like me to predict something, just ask for assistance.",
+        "Feel free to add as many variables as you'd like. If you're unsure about gathering certain variables or if you'd like me to provide predictions, feel free to ask for support.",
+        "Feel free to introduce any variables you feel are necessary. If there's any variable that's proving difficult to obtain, or if you'd like me to predict something, I'm here to help.",
+        "Feel free to include any variables you deem important. If there's any trouble in acquiring specific variables or if you'd like predictions, please let me know so I can assist.",
+        "Feel free to incorporate any variables that would be helpful. If you need assistance in obtaining specific variables or if you'd like me to predict something, feel free to ask.",
+        "You're welcome to add any variables that make sense to you. If you're encountering any issues obtaining certain variables, or if you'd like me to predict something, reach out anytime.",
+        "Feel free to include any variables that are relevant to you. If there's any difficulty in obtaining particular variables or if you'd like me to predict outcomes, I'm here to assist.",
+        "Feel free to add any variables that you think are suitable. If you're having any trouble getting specific variables or if you'd like me to provide predictions, just ask for help.",
+        "Feel free to incorporate any variables that you find appropriate. If you're facing any challenges with specific variables or if you'd like me to predict something, I'm here to support you.",
+        "Feel free to introduce any variables you think are necessary. If you need assistance in obtaining certain variables or if you'd like me to predict something, don't hesitate to ask.",
+        "Feel free to include any variables you believe are important. If there's any problem in acquiring specific variables or if you'd like me to predict something, feel free to reach out.",
+        "Feel free to add any variables that you consider relevant. If there's any difficulty in obtaining certain variables or if you'd like me to provide predictions, I'm here to assist.",
+        "Feel free to incorporate any variables that you feel would be useful. If you're encountering any issues gathering specific variables or if you'd like me to predict something, ask away.",
+        "Feel free to introduce any variables that are important for your analysis. If you need help with certain variables or if you'd like me to predict something, please don't hesitate to ask.",
+        "Feel free to include any variables that are on your mind. If there's any challenge in obtaining particular variables or if you'd like me to predict outcomes, I'm here to help.",
+        "Feel free to add any variables that you find relevant. If you're having any difficulty obtaining specific variables or if you'd like me to provide predictions, I'm here to assist.",
+        "Feel free to incorporate any variables that you believe are necessary. If you need assistance in obtaining certain variables or if you'd like me to predict something, ask for help.",
+        "Feel free to include any variables that you think would be helpful. If you're facing any challenges with specific variables or if you'd like me to predict something, reach out anytime.",
+        "Feel free to introduce any variables that you consider important. If there's any trouble in obtaining certain variables or if you'd like me to predict something, I'm here to support you.",
+        "Feel free to add any variables that you think make sense. If you're having any trouble gathering specific variables or if you'd like me to provide predictions, just ask for assistance.",
+        "Feel free to incorporate any variables that you find fitting. If you're encountering any difficulties with specific variables or if you'd like me to predict something, I'm here to help.",
+        "Feel free to include any variables that you deem necessary. If there's any difficulty in obtaining certain variables or if you'd like me to predict outcomes, feel free to reach out.",
+        "Feel free to add any variables that you believe are relevant. If you're having any issues obtaining specific variables or if you'd like me to provide predictions, ask away.",
+        "Feel free to incorporate any variables that you think would be of use. If you need assistance in acquiring specific variables or if you'd like me to predict something, I'm here to assist.",
+        "Feel free to introduce any variables that you find important. If you're encountering any challenges in obtaining certain variables or if you'd like me to predict something, just ask.",
+        "Feel free to include any variables that you think are necessary. If there's any trouble in obtaining specific variables or if you'd like me to predict something, feel free to ask.",
+        "Feel free to add any variables that you consider valuable. If you're facing any difficulties with specific variables or if you'd like me to provide predictions, I'm here to help.",
+        "Feel free to incorporate any variables that you feel are suitable. If you need assistance in obtaining specific variables or if you'd like me to predict something, don't hesitate to ask."
+    ];
+
+    //For Spline ++++++++++++++++++++
+
+
+
+</script>
+<!-- Replies -->
+
+
+
+<!-- Design JSON -->
+<script>
+
+    //Spline Design JSON
+    const DesignJson = {
+            base_radius: '',
+            Kf: '',
+            Kw: '',
+            Km: '',
+            shaft_diameter: '',
+            major_diameter: '',
+            minor_diameter: '',
+            length_of_spline: '',
+            shaft_material: '',
+            number_of_teeths: '',
+            spline_segments: '',
+            pressure_angle: '',
+            addendum: '',
+            dedendum: '',
+            teeth_thickness: '',
+            fit_type: '',
+            operating_condition: '',
+            manufacturing_method: '',
+            machine_tolerance: '',
+            safety_factor: '',
+            lubrication_method: '',
+            allowable_stress: '',
+            shear_stress: '',
+            lewis_form_factor: '',
+            Ka: '',
+            stress: '',
+            modulus: '',
+            pitch_diameter: '',
+            thickness: '',
+            teeths: '',
+            torque: '',
+            force: '',
+            budget: '',
+        };
+
+</script>
+<!-- Design JSON -->
+
+
+
+<!-- User Input Count -->
+<script>
+    var what_promt_used = ''; //when /des is used, we will set this to /des and same for /add or /d and all
+</script>
+<!-- User Input Count -->
+
+
+
+<!-- The Design Loop -->
+<script>
+
+    const InputsNotProvided = []; //stores the inputs that are still needed from the user
+    var MinimunInput = true; // if this is set to false, the minimum input needed is not matched
+    var nameofremaining = '';
+
+    //Functions For Design Loop _____________________________
+    //calculates the empty variables in the JSON
+    function countEmptyValues(jsonData) {
+        let emptyCount = 0;
+
+        for (const key in jsonData) {
+            if (jsonData.hasOwnProperty(key)) {
+                const value = jsonData[key];
+                if (typeof value === 'string' && value.trim() === '') {
+                    emptyCount++;
+                }
+            }
+        }
+
+        return emptyCount;
+    }
+
+    //checks minimum needed keys keys
+    function CheckKeys(CurrentKeys) {
+
+        const keys = ['base radius', 'Kf', 'Kw', 'Km', 'shaft diameter', 'major diameter', 'minor diameter', 'length of spline', 'shaft material', 'number of teeths', 'spline segments', 'presure angle', 'addendum', 'dedendum', 'teeth thickness', 'fit type', 'operating condition', 'manufacturing method', 'machine tolerance', 'safty factor', 'lubrication method', 'allowable stress', 'sheer stress', 'lewis form factor', 'Ka', 'stress', 'modulus', 'pitch diameter', 'thickness', 'teeths', 'torque', 'force', 'budget'];
+        const MinimumInput = ['shaft diameter', 'shaft material', 'operating condition', 'manufacturing method',  'machine tolerance', 'safty factor'];
+
+        MinimunInput = true;
+
+        InputsNotProvided.length = 0;
+
+        for (let w = 0; w < MinimumInput.length; w++) {
+            if (CurrentKeys.includes(MinimumInput[w])) {
+                
+            } else {
+                InputsNotProvided.push(MinimumInput[w]);
+                MinimunInput = false;
+            }
+        }
+
+        nameofremaining = '';
+        
+        //making a string with names of inputs needed, for AI to put tell users
+        for (let t = 0; t < InputsNotProvided.length; t++) {
+            console.log('1');
+            if ((t + 1) !== InputsNotProvided.length) {
+                nameofremaining = nameofremaining + (InputsNotProvided[t] + ', ');
+            } else {
+                nameofremaining = nameofremaining + (InputsNotProvided[t]);
+            }
+        }
+        console.log(nameofremaining);
+
+    }
+
+    //update the deisgn json after user input
+    function updateJsonKeyWithValue(key, jsonObject, value) {
+        if (jsonObject.hasOwnProperty(key)) {
+            jsonObject[key] = value;
+        }
+    }
+
+    //select and return random message
+    function selectrandommessage(array) {
+        //selecting a random message from the reply array
+        const randomIndex2 = Math.floor(Math.random() * array.length);
+        const randreply = array[randomIndex2];
+
+        return randreply;
+    }
+
+
+    
+
+
+
+    //Design Loop
+    function TheDesignLoopTrigger(inputwordarray) { //called everytime the user talks with the AI untill the Design Json is has no empty variables left
+
+        //inputwordarray is the raw array or words in given sentance by user - example:  ['/des', 'spline', 'stress', 'force']
+
+        //Spline - check if user wants to design a spline
+        if (currentname == 'Spline') {
+
+
+
+
+
+
+
+            //testing code zome ______________________________________________________________________
+                //detele anytime this snippet does not matter at all and is not linkeded with anything
+
+
+            //testing code zome ______________________________________________________________________
+
+
+
+
+
+
+
+
+
+            //_____________________________
+            //num of keys in json
+            const lengthofjson = Object.keys(DesignJson).length;
+            //num of empty keys in json
+            const numofemptyvariables = countEmptyValues(DesignJson);
+            
+
+            //_____________________________
+            //Check if the minimum inputs are provided or not
+            CheckKeys(currentkeys);
+
+            //making a string with names of inputs needed, for AI to put tell users
+            for (let t = 0; t < InputsNotProvided.length; t++) {
+                if ((t + 1) !== InputsNotProvided.length) {
+                    nameofremaining = nameofremaining + (InputsNotProvided[t] + ', ');
+                } else {
+                    nameofremaining = nameofremaining + (InputsNotProvided[t]);
+                }
+            }
+
+
+            //_____________________________
+            //sending the user input into the design json - /des and /add
+            for (let s = 0; s < currentkeys.length; s++) {
+                updateJsonKeyWithValue(currentkeys[s], DesignJson, currentnums[s]);
+            }
+
+
+            //_____________________________
+            //removing the variable user wants to delete - /d
+            if (what_promt_used == 'd') { //-- for when d used
+                for (let s = 0; s < keystodelete.length; s++) {
+                    updateJsonKeyWithValue(keystodelete[s], DesignJson, '');
+                }
+            }
+
+
+            //PRINTS THE MESSAGES FROM AI_______________________________________________________________
+            //selecting a random message from the reply array
+            const desreply = selectrandommessage(firstspline);
+
+            //selecting a random message from the reply array
+            const NotEnoughIn = selectrandommessage(MinimumInputNeeded);
+
+            //message for when add is used but not enough input is given still
+            const messageforadd = selectrandommessage(when_add_is_used_but_no_enough_in);
+
+            //when /add used and all remanining inputs are now provided
+            const thereplyforaddwithall = selectrandommessage(used_add_all_provided);
+
+            //when /d used and AI still have not enough inputs
+            const dusednoenoughins = selectrandommessage(d_used_but_no_enough);
+
+            //when /d used and still have enough inputs
+            const dbutenough = selectrandommessage(enough_after_d_still);
+
+            //when used '/' but prompt does not exists
+            const wrongpromptbro = selectrandommessage(wrong_prompt_given);
+            
+            //when user wants ai to predict the variables
+            const userwants_aitopredict = selectrandommessage(ai_replied_predict);
+
+            //when user wants to provide more input
+            const userwants_givemoreinput= selectrandommessage(user_wanna_give_rest_vars);
+
+
+
+
+
+            //_________________________________________when the user mistyped the prompt
+            if ((inputwordarray[0])[0] == '/') { //if first latter of the first word is '/'
+                if (inputwordarray[0] !== '/des' && inputwordarray[0] !== '/d' && inputwordarray[0] !== '/add' && inputwordarray[0] !== '/design' && inputwordarray[0] !== '/end') {
+
+                    startAnimation(); //turn on gradient animation
+                    const dbutnom = (wrongpromptbro.length) * 8;
+
+                    protreply(wrongpromptbro); //asks user if they wanna add another input or wants AI to predict
+
+                    //to stop the gradient animation on input
+                    setTimeout(function () {
+                        stopAnimation();
+                    }, dbutnom);
+
+                }
+
+            }
+            //_________________________________________when the user mistyped the prompt
+
+
+
+            
+
+
+            //_____________________________
+            //prints when the user uses /des for the first time - 1st Message - PRINTING THE MESSAGES HERE
+
+            if (what_promt_used == 'des') { //first time the user uses the /des and gives the statement
+
+                startAnimation();
+
+                const l1 = (desreply.length)*10; //calculating the time it will take to print the msg
+                setTimeout(function () {
+                    protreply(desreply); //checks if enough inputs are provided or not
+
+                    //aother message
+                    const l2 = (NotEnoughIn.length)*10;
+                    setTimeout(function () {
+
+                        //if inputs given are not enough
+                        if (!MinimunInput) {
+                            protreply(NotEnoughIn);
+
+                            //aother message
+                            const l3message = 'You can add new inputs using /add, like this - "/add 67 stress. I will need following inputs to proceed with the calculations - ' + nameofremaining;
+                            const l3 = (l3message.length)*10;
+                            setTimeout(function () {
+                                protreply(l3message)
+                                
+                                //to stop the gradient animation on input
+                                setTimeout(function () {
+                                    stopAnimation();
+                                }, l3);
+
+                            }, l2);
+
+                        } else {
+                            
+                            
+                            
+                            //MAKE LOGIC FOR WHEN USER PROVIDED ALL THE VARIABLES UPFRONT
+
+
+
+                        }
+
+                    }, l1);
+
+                }, 2000);
+
+            }
+            
+            if (what_promt_used == 'add') { //------- for when add used
+
+                CheckKeys(currentkeys); //checking if AI has enough inputs or not and returns MinimunInput (false = not enough, true = enough)
+
+                if (!MinimunInput) { //when minimum inputs are not yet provided by the user
+
+                    startAnimation();
+                    const addm1 = (messageforadd.length) * 8;
+                    setTimeout(function () {
+                        protreply(messageforadd); //asking user if they wanna add more or wants AI to predict the rest of the inputs
+
+                        //to stop the gradient animation on input
+                        setTimeout(function () {
+                            stopAnimation();
+                        }, addm1);
+
+                    }, 2000);
+
+                }
+                
+                if (MinimunInput) {
+
+                    startAnimation();
+                    const addallin = (thereplyforaddwithall.length) * 8;
+                    setTimeout(function () {
+                        protreply(thereplyforaddwithall); //fires when user provided all the inputs and tells user that it has enough inputs, and if user wanna add anything extra before AI calculates
+
+                        //to stop the gradient animation on input
+                        setTimeout(function () {
+                            stopAnimation();
+                        }, addallin);
+
+                    }, 2000);
+
+                }
+
+            }
+                
+            if (what_promt_used == 'd') { //-- for when d used
+
+
+                if (!MinimunInput) { //when the user removes a input and the we still dont have enough inputs
+
+                    startAnimation();
+                    const dbutnom = (dusednoenoughins.length) * 8;
+                    setTimeout(function () {
+                        protreply(dusednoenoughins); //asks user if they wanna add another input or wants AI to predict
+
+                        //to stop the gradient animation on input
+                        setTimeout(function () {
+                            stopAnimation();
+                        }, dbutnom);
+
+                    }, 2000);
+
+                }
+
+                if (MinimunInput) { //when user removes a input but AI still has all inputs needed
+
+                    startAnimation();
+                    const dbuteno = (dbutenough.length) * 8;
+                    setTimeout(function () {
+                        protreply(dbutenough); //fires when user provided all the inputs and tells user that it has enough inputs, and if user wanna add anything extra before AI calculates
+
+                        //to stop the gradient animation on input
+                        setTimeout(function () {
+                            stopAnimation();
+                        }, dbuteno);
+
+                    }, 2000);
+
+                }
+
+
+            }
+
+            if (what_promt_used == '') { //for when AI is to predict what user is saying or when both /add or /d is not used
+
+
+                if (!MinimunInput) { //AI for when minimum inputs are not attentained yet
+                    //chek is user said they want AI to predict, user will give remaining inputs, or if they asked for names of the variables
+                    
+                    heighvalue_fromAI = ''; //resetting the var
+
+                    CheckKeys(currentkeys);//checking what inputs are still needed
+                    startAnimation(); //typing gradient animation //reply from AI will be strores in 'heighvalue_fromAI'
+                    
+                    AI_3_response(); //getting response from ai on what user;s intent is
+
+                    setTimeout(function () {
+                        console.log(heighvalue_fromAI);
+                    }, 2000);
+
+
+                    setTimeout(function () {
+
+                        if (heighvalue_fromAI == 'Predict') {
+
+                            //FIRST MESSAGE ___________________________________________________
+                            const qwe = (userwants_aitopredict.length) * 10;
+                            protreply(userwants_aitopredict)
+
+                            //to stop the gradient animation on input
+                            setTimeout(function () {
+
+                                //SECOND MESSAGE _______________________________________________
+                                const temppp = 'Here are the variables that i will predict:';
+
+                                const Initial_Div = `<div style="font-weight: bolder;">` + nameofremaining + `</div>`;
+                                const divarray = [Initial_Div];
+
+                                const temppp2 = 'Should i proceed?';
+
+                                CustomProtReply(temppp, divarray, temppp2) //custom message to display names of remaining variables
+
+                                const dbutnom3 = ((temppp.length) + (temppp2.length)) * 12;
+                                setTimeout(function () {
+                                    stopAnimation();
+                                }, dbutnom3);
+
+
+                            }, qwe);
+
+                        }
+
+                        if (heighvalue_fromAI == 'UserWillGive') {
+
+                            //FIRST MESSAGE _______________________________________________
+                            protreply(userwants_givemoreinput); //when user wanna give the variales themselves
+                           
+                            //delays
+                            const scasd = userwants_givemoreinput.length * 12;
+
+                            setTimeout(function () {
+
+                                const msgforadd =  'you can just add using /add. Feel free to add as many as you want and i can predict rest of the variables';
+                                protreply(msgforadd);
+
+                                const evfrv = msgforadd * 12;
+                                setTimeout(function () {
+                                    stopAnimation();
+                                }, evfrv);
+
+                            }, scasd);
+
+                        }
+
+                        if (heighvalue_fromAI == 'NeedNamesOfVariables') {
+
+                            //FIRST MESSAGE _______________________________________________
+                            const temppp = 'Sure thing, here are the variables i need to proceed with the calculations:';
+
+                            const Initial_Div = `<div style="font-weight: bolder;">` + nameofremaining + `</div>`;
+                            const divarray = [Initial_Div];
+
+                            const temppp2 = 'Do you need assistance to aquire these variables? or you can just add using /add. Feel free to add as many as you want and i can predict rest of the variables';
+
+                            CustomProtReply(temppp, divarray, temppp2) //custom message to display names of remaining variables
+
+                            const dbutnom3 = ((temppp.length) + (temppp2.length)) * 12;
+                            setTimeout(function () {
+                                stopAnimation();
+                            }, dbutnom3);
+
+                        }
+
+                        //costreduction, partreduction, weightreduction, howmuchwillitcost, whatwillbeweight
+                        //howmanyparts, strengthinc
+
+                    }, 1000);
+
+                }
+
+            }   
+                
+            what_promt_used = '';
+
+            //____________________________________________________________________________________________
+
+
+
+            //THE LOOP -----
+            //_____________________________
+            //fires if there is a empty variable that needs to be calculated
+            if (numofemptyvariables > 0) {
+
+                //3
+
+                //gather formulas and make funcs for each with conditions in it, which is like 1st layer that
+                //checks if the formula can be used or not
+
+                //once the formula funcs are made, make a array with names of the funs so we can loop through 
+                //all of them and see which one can be used with the variables have, then if a formula can be used, it will fire and return variable and its value
+                //with that returned varibale name and value, we can push the value into the cooresponding key in the design json
+
+
+            }
+
+
+        }
+    
+    
+    }
+
+
+
+</script>
+<!-- The Design Loop -->
+
+
+
+<!-- AI 1 -->
+<!-- figures out what the user is saying -->
+<!--    if after 1st reply, user asked somthing or said somthing, it will figureout what they said or did -->
+
+
+

@@ -1,0 +1,191 @@
+This is how to make public bundle and trained model.. How to get response from the public bundle using model
+
+
+Important snippets -
+
+1 Snippets - 
+
+    if browserify wont work, run this first, right from the terminal here in VS Code - Set-ExecutionPolicy RemoteSigned -Scope Process
+    CMD to make bundle - browserify Variable_Extraction_AI.js -o Public/VariableName_AI.js
+    EJS to inject the AI file - <%- include('./view-notes-AI.ejs') %>
+
+
+
+
+
+A. How to setup files -
+
+step 1 -
+    Make Training data and store in a seperate file (example - AI_Reply/Traningdata.js)
+
+Step 2 - Copy the Base_AI_For_New_AI.js and rename it to whatever, this is where we will -
+    1. genrate the trained model
+    2. genrate Public bundle
+
+
+
+A.1 Before genrating files, IMPORTANT STEPS -
+
+step 1 - putting module.export in js
+
+    for the model to train and save as txt, you need to put this - 
+
+    module.exports = {
+        solveshit: brainshit
+    };
+
+    at the end of the .js file, and instead of 'brainshit', put any name of the func, does not matter which.
+    solveshit is just a nickname, does not matter what you put here.
+
+step 2 - putting in the controller
+    1. open the controller, and at the top require the .js file like so - 'const brainshidestry = require('../../../AI_Reply/1_user_said_predict');'
+    2. go to 'dashViewNote', search for it
+    3. put the const name here, like so - 'desrplytry: brainshidestry,'
+
+
+
+A.2 Need to make custom changes in the .JS
+
+step 1 - open js file
+    in the function convertString(), need to make changes in the part that genrates the 2nd part/ output part of the traninig data,
+    the output part can have several keys which we will set to either 1 or 0.
+
+    if there are less then or more then 3, we need to make changes in JS file.
+
+step 2 - Open convertString() funciton and search for "HENDLING 2ND PART OF THE TRAINING DATA"
+    lablefor2ndpart() gets the array that contains the list of output lables we will set to 1 and 0
+    
+    example - [ "'a', 'b', 'c'", "'b', 'a', 'c'" ]
+
+    here, we have sub array 1 - "'a', 'b', 'c'"
+    and 2 - "'b', 'a', 'c'"
+
+    the key at index 0 will get set to 100 and in the data, we will have different parts too.
+    example, part 1 data - "this is a", for this we will use sub array 1, and for "this is b" we will use subarray 2
+
+    we will set this lablefor2ndpart() in the traiing data in next step,
+
+    SO, if you are going to have 3 keys in your output, you will need to make three consts same as - lableset1
+
+step 3 = make lengthofdata()
+    now make const that stores the  length of each part 1 sub data set, say there are 3 each linked to one of the lablefor2ndpart(),
+    then you have to if statements using this lengthofdata() and index of the sentance we are processing, the convertString() has the argument index
+    use index and lengthofdata() to make if statement that pushes part 2 data linked to the sentance.
+
+
+
+
+
+B. Genrating trained model and exporting as txt -
+
+step 1 -
+    in the .js file, the top part is used for making a trained model and export as txt file.
+    when doing this step the 2nd part of the script should have some parts commented out, there are comments that tells which one to comment out
+
+    inside function createJSFileInFolder() in part 1 of the script,
+    search for 'const filePath = path.join' and change the name of the txt file it will save
+    this will be the name of the trained model of the AI saved in the piblic folder and we will use this txt file to
+    genrate the respose.
+
+step 2 -
+    Load training data, at the line 2, change the file path to where you put the tarining data js file.
+
+step 3 - in the function getkeywordsfromthisfoker() it will check which keywords are in the sentence that 
+    matches the const keys and returns those as we will put those matched keys = 1 so the AI knows what keys to
+    make 100% when that sentance is given
+
+    example - 
+    input: i am jay and i love cars.
+    keys: [cars, love]
+
+    in the training data formate - convertedInput = { input: result, output: finaloutputst };, 
+    it will put - convertedInput = { input: 'i am jay and i love cars.', output: 'cars:1', 'love:1' };
+
+    so make sure you change the const keys and put whatever keywords you want AI to detect in the sentance and 
+    return 100%. if you want it to detect cars, put cars in there and also make sure that the training data has 
+    cars used in it or it wont work. 
+
+step 4 - once all the changes are done, set createJSFileInFolder(false); to true and just save the file. 
+    and open the cmd or the inspect on browser to track progress of the training.
+    one the model is trained you should see the txt file in the public folder.
+
+
+
+
+
+B.1 Changes in ejs - 
+step 1 - change const PutResponseHere and then change the id of the div too
+    J
+
+step 2 - change nameoftheai to whatever you gonna name the public bundle
+    name of public bundle, txt model should be same
+
+step 3 - change "Load the model" id to something else  and then go to js and change it there too (search for const condi in js)
+    imp
+
+step 4 - change "S3 AI Model for the var check gets loaded from the txt file HERE" id too somthing else
+    then seach for ""Process the file data here" in the js file and put new name there too
+
+step 5 - change "S2 Bundle gets injected here for response" id
+    seach with in ejs file " var target2 = document.getElementById" and put new id there too
+
+
+
+
+C. making a public bundle -
+
+step 1 - one the trained model txt is genrated, we need a public bundle that will take that txt file and
+    use it genrate a response.
+
+    first, set the createJSFileInFolder(false); to false again.
+
+step 2 - search for '// Specify the file path here so it can use' and change the name of the txt file here to 
+    whatever name you gave to your trained model txt.
+
+step 3 - search for 'const respo =' and replace all these keywords with the once you put in the const keys in section B above
+    this is important step, copy and paste each keywords carefully and make sure that the number of result[] are equal to the number
+    of the const keys.
+
+step 4 - search for 'const varnam =' and copy paste the const keys here too
+    this is imp for displaying the output of the AI
+
+step 5 - search for 'document.getElementById('tryshi')' change tryshi to the id of the div where you want to display the  
+    the AI response
+
+step 6 - search for 'const input = document.getElementById('userinputforai')' this is where it will pick the
+    userinput from, so make sure to put the id of the div that will have the userput
+
+step 7 - there are comments - //comment and //uncomment. for making a bundle, you need to uncomment whereever it says uncomment
+    and comment out lines where it says comment,
+
+    one the lines are commented or uncommented, strat the terminal, and run this cmd -
+
+    browserify Variable_Extraction_AI.js -o Public/NAME.js
+
+    change the NAME in the cmd and then run. this will create the public bundle that will use the txt model
+    and genrate a response and display in the div you specified.
+
+
+    if the bunle is located inside another folder, you can make bundle like this - browserify 1_user_responding_to_AI/1_user_said_predict.js -o Public/UserResponseHendle.js
+    ""1_user_responding_to_AI"" is the name of the folder located in the root
+
+
+
+
+
+D. using the AI bundle for response -
+
+step 1 - copy the file "view-notes-AI" and use <%- include('./view-notes-AI.ejs') %> to 
+    inject in ejs file you wanna use AI in.
+
+    also go to view note chat partial and search for "running AI to load the txt model so it can be used", and call the AI function that we made in ejs, here, as we need to call AI once to load AI
+
+step 2 - inside the file is a function injectScript() which when runned, will take input from the div that we
+    we specified and will inject the public bundle into the TWO section of the file and will load the
+    trained txt model in the THREE section of the file.
+
+    the public bundle when will be loaded in the TWO section of the file, will get the txt trained model from the
+    section THREE and will use it for genrating a rsponse.
+
+    call the injectScript() from the button that user usses to submit his/her response.
+

@@ -1,0 +1,107 @@
+
+
+<!--This is how AI reply works-->
+<script>
+
+    //as the main chat body is now in a seperate file,
+    //it does not matter, the scripts here can access anythiing
+    //in that chat bodt file ('./view-notes-chat-partial.ejs') anyway
+  
+
+    // created the thesusu.js and then created bundle.js and then ran this command in the therminal - "browserify bundle.js -o public/bundle.js"
+    // then in the layout - dash_note.ejs, made a script tag ="<script src="/bundle.js"></ script>" and it found the file genrated by terminal in public folder which bundle.js
+    // powershell - as admin - Get-ExecutionPolicy to get status of if scripts can run
+    // powershell - as admin - Set-ExecutionPolicy Unrestricted to allow terminal to runscripts and Set-ExecutionPolicy restricted to make it normal
+
+
+    //this is how i am using the function in the js file using ejs - 
+    //the bundle.js has the function and code
+    //i run this cmd in terminal - "browserify bundle.js -o public/bundle.js" to make a public bundle.js file
+    //then i wrote the script below that executes a function when button is pressed
+    //the function makes a script element and executes it using onload which means when it is injected it is executed
+    //in the js code in buddle.js, i use document.getelementbyid() to get the content of any div here in ejs
+    //in the input logic, when the user sends the /des statement i inject that statement in a div element
+    //js script uses the getelemtbyid to get that statement and then it injects that statement in the ai for response.
+
+</script>
+
+
+<!--Load the model -->
+<div class="getdataorna1" id="getdataorna1" style="display: none;">1</div>
+<script src="/VariableName_AI.js"></script>
+<!--Load the model -->
+
+
+<!-- This is where we display the AI Response -->
+<button class="btn btn-primary" style="margin-top: -560px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style="height: 500px;">
+  
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">AI Log</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <hr style="margin-top: 0px;">
+
+  <div class="offcanvas-body small" style="overflow-wrap: anywhere;">
+    <div id="tryshi" style="    display: flex; text-align: center; font-size: large; white-space: pre-line;"></div>
+  </div>
+
+</div>
+<!-- This is where we display the AI Response -->
+
+
+
+
+
+
+
+
+
+<!-- THREE -->
+<!-- S3 AI Model for the var check gets loaded from the txt file HERE -->
+<div id="AI_Model_VarCheck" style="display: none;"></div>
+<!-- S3 AI Model for the var check gets loaded from the txt file HERE -->
+
+
+<!-- TWO -->
+<!-- S2 Bundle gets injected here for response -->
+<div id="targetElement2">
+    <!-- AI Scripts Call variable check-->
+</div>
+<!-- S2 Bundle gets injected here for response -->
+
+
+<!-- ONE -->
+<!-- S1 Inject the script and execute to get reply from AI -->
+<script>
+
+  function injectScript() {
+
+    console.log('Inside AI');
+
+    var target2 = document.getElementById('targetElement2');
+
+
+    // ------------------------------- VARIABLE NAME -----------------------------------------
+
+    var scriptTag = document.createElement('script');
+    scriptTag.src = '/VariableName_AI.js'; // pass the genrated public bundle AI script here =======
+
+    // Append the new script tag to the target element
+    target2.appendChild(scriptTag);
+
+    // Execute the injected script
+    scriptTag.onload = function () {
+      console.log('AI Variable Name Executed Successfully');
+    };
+
+    // ------------------------------- VARIABLE NAME -----------------------------------------
+
+  }
+
+</script>
+<!-- S1 Inject the script and execute to get reply from AI -->
+
+
+<!-- injectScript() is called from the hundlesubmit when user gives the /des and statement. -->

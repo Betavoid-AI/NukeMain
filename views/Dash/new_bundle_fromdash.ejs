@@ -1,0 +1,94 @@
+<div class="container text-center">
+    <div class="row" style="height: 600px; margin: auto; margin-top: -4px; scale: 80%;">
+
+        <div class="col" style="margin: auto;">
+        </div>
+
+        <div class="col-8" style="margin: auto; width: 700px; margin-left: 150px; margin-right: 150px; color: white;">
+
+            <a href="/dash" style="justify-content: center; margin: auto; margin-left: 20px;">
+                <div class="closeee"></div>
+            </a>
+
+            <a class="row" style="
+            padding-bottom: 5px;
+            text-align: center;
+            justify-content: center; 
+            margin-top: -15px; 
+            font-size: x-large; 
+            font-weight: normal;
+            text-decoration: none;
+            color: rgb(255, 255, 255);">
+                Make New Bundle
+            </a>
+
+            <hr style="padding-bottom: 20px;">
+
+            <form action="/dash/newbundle" method="POST">
+
+                <div class="row mb-3">
+                    <label for="inputEmail3" style="text-align: left;" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" required placeholder="Title of your project" id="titleob" class="titleob"
+                            name="titleob" style="background-color: #1d1d1d; border: var(--bs-border-width) solid #717171; color: #dfdfdf;">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+                    <div class="edscripin col-sm-10" style="overflow: hidden;">
+                        <textarea style="height: 100%; width: 100%; text-align: start; background-color: #1d1d1d; border: var(--bs-border-width) solid #717171; color: #dfdfdf;" class="form-control descriptionob"
+                            placeholder="Description of your project" required id="descriptionob" name="descriptionob"></textarea>
+                    </div>
+                </div>
+
+
+                <!-- STATUS ----------------------------------------------- -->
+
+                <textarea class="form-control" id="Allnodes" name="Allnodes" style="display: none;">OG</textarea>
+
+                <!-- STATUS ----------------------------------------------- -->
+
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 20px; --bs-btn-bg: #002b49 !important;" onclick="injectthenodesjson()">Create</button>
+
+            </form>
+
+        </div>
+
+        <div class="col" style="margin: auto;">
+        </div>
+
+    </div>
+</div>
+
+
+<style>
+    #titleob::placeholder{
+        color: rgb(77, 77, 77);
+    }
+    .form-control::placeholder{
+        color: rgb(77, 77, 77);
+    }
+</style>
+
+<script>
+
+
+    const bundlejson = { 
+      "bundletitle": {
+        "title": "",
+        "description": "",
+        "inputfields": {
+          "Everything": ""
+        }
+      }
+    }
+
+    function injectthenodesjson() {
+        document.getElementById('Allnodes').innerHTML = bundlejson;
+        console.log('here');
+    }
+
+
+</script>

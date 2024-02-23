@@ -1,0 +1,23 @@
+<div class="scrolscape container-fluid container-fluid-custom pb-2 mb-5">
+
+    <div class="row">
+
+        <% if(searchResults != '') {%>
+        <% searchResults.forEach(function (note, index) { %>
+
+        <a href="/dash/item/<%= note._id %>">
+            <h4> <%= note.title %> </h4>
+        </a>
+
+        <%})%>
+
+
+        <%} else {%>
+
+        <p> Oops, no items found, check spelling mistakes.</p>
+
+        <%}%>
+
+    </div>
+
+</div>

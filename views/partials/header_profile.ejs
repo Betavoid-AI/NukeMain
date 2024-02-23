@@ -1,0 +1,131 @@
+<!-- this is header and this is linked to the main.ejs -->
+<header class="p-2 mb-4 border-bottom sticky-top bg-white shadow">
+
+  <div class="topba container-xxl">
+
+    <div class="bitch d-flex flex-wrap align-items-center">
+
+
+      <a href="/dash" class="compname d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+        N U K E
+      </a>
+
+
+      <!-- OFF CANVAS --------------------------------------------->
+      <button style="margin-top: 0px; margin-left: 445px;" class="webbb2" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
+
+      <div style="width: 700px;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Search Anything</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <hr style="margin-top: -5px;">
+        <div class="offcanvas-body">
+
+          <!-- GOOGLE ------------------------------ -->
+          <div style="text-align: left; height: 25px; width: 650px; margin-top: 5px;">
+            <script async src="https://cse.google.com/cse.js?cx=36aca3cbc47dc472c"></script>
+            <div class="gcse-search"></div>
+          </div>
+          <!-- GOOGLE ------------------------------ -->
+
+        </div>
+
+      </div>
+      <!-- OFF CANVAS --------------------------------------------->
+
+
+
+      <form class="searchbar2 nav col-5 col-md-auto-fill mb-2 justify-content-center mb-md-0" role="search" method="POST"
+        action="/dash/search">
+        <!-- this action goes to router, go there, and then goes to dashcontroller -->
+        <input type="search" name="searchTerm" class="form-control boarder-primary" placeholder="Search..."
+          aria-label="Search">
+      </form>
+
+
+
+      <div class="dropdown">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img class="notif" width="32" height="32">
+        </a>
+        <ul class="dropfu dropdown-menu shadow" style="width: 400px;">
+          <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-400px"
+            data-bs-theme="light">
+
+            <ul class="list-unstyled mb-0">
+
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+
+                  <img class="VC bd-placeholder-img card-img-top shadow bg-body">
+
+                  <span class="d-inline-block bg-danger rounded-circle p-1">
+                  </span>
+
+                  Missed Facetime with Supergearmaker_34
+
+                  <span class="justify-content-right" style="text-align:right; font-weight: normal;">- 6:54 pm</span>
+
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+
+                  <img class="VC2">
+
+                  <span class="d-inline-block bg-danger rounded-circle p-1"></span>
+
+                  Attention required - Torque Incorrect
+
+                  <span class="justify-content-right" style="text-align:right;">- 3:16 pm</span>
+
+                </a>
+              </li>
+              <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+                  <img class="VC3">
+                  <span class="d-inline-block bg-success rounded-circle p-1"></span>
+                  Purchase successfull
+                  <span class="justify-content-right" style="text-align: right;"> - 1d ago</span>
+                </a></li>
+
+              <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+                  <img class="VC3">
+                  <span class="d-inline-block bg-success rounded-circle p-1"></span>
+                  Build finished
+                  <span class="justify-content-right" style="text-align:right;">- 1d ago</span>
+                </a></li>
+
+            </ul>
+          </div>
+        </ul>
+      </div>
+
+
+
+      <div class="dropdown">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="<%= proimg%>" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropfu dropdown-menu shadow">
+          <li><a href="/dash/view-Addnotes" class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a href="/dash/usprofile" class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+
+  </div>
+</header>

@@ -1,0 +1,770 @@
+<!-- SIDEBAR -->
+<div class="sidebar d-flex sticky-top flex-column flex-shrink-0 p-3 text-bg-dark" style="position: fixed; width: 190px;height: 640px;margin-top: 56px;">
+    <a href="/" class="dashbobo d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+
+        <a
+            style="text-decoration: none; color: rgb(255, 255, 255); text-align: center; font-size: medium; padding-top: 15px; padding-bottom: 10px;">Dashboard</a>
+    </a>
+
+    <hr>
+
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li style="margin-bottom: 5px;">
+            <a style="padding-top: 0px;" href="#" class="active nav-link text-white">
+                <svg style="margin-left: -13px;" class="homeic bi pe-none me-6" width="16" height="16">
+                </svg>
+                Recent
+            </a>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <a style="padding-top: 0px;" href="/dash_newproject" class="nav-link text-white">
+                <svg style="margin-left: -17px;" class="homeic2 bi pe-none me-6" width="16" height="16"></svg>
+                New Project
+            </a>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <a style="padding-top: 0px;" href="/dash_bundlewithoutAI" class="nav-link text-white">
+                <svg style="margin-left: -17px;" class="homeic22 bi pe-none me-6" width="16" height="16"></svg>
+                New Bundle
+            </a>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <a style="padding-top: 0px;" href="/Bundle_Editor" class="nav-link text-white">
+                <svg style="margin-left: -17px;" class="homeic23 bi pe-none me-6" width="16" height="16"></svg>
+                Bundle Editor
+            </a>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <a style="padding-top: 0px;" href="/dash_market" class="nav-link text-white">
+                <svg style="margin-left: -17px;" class="homeic3 bi pe-none me-6" width="16" height="16"></svg>
+                Marketplace
+            </a>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <a style="padding-top: 0px;" href="/dash_manufact" class="nav-link text-white">
+                <svg style="margin-left: -17px;" class="homeic4 bi pe-none me-6" width="16" height="16"></svg>
+                Manufacturing
+            </a>
+        </li>
+    </ul>
+
+    <hr>
+
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <strong>Settings</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end text-small shadow">
+            <li><a class="dropdown-item" href="#">Plans</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Preferences</a></li>
+        </ul>
+    </div>
+</div>
+<!-- SIDEBAR -->
+
+<div class="backto" style="width: 60px; height: 60px; background-color: #ffffff00; position: absolute; margin-left: 215px;">
+    <a href="/dash">
+      <svg style="width: 25px; height: 40px;" class="backtodashfromnodes"></svg>
+    </a>
+</div>
+
+<!-- Breadcrub -------------------------------------------------------------------------->
+<div class="row" style="display: table-row-group;">
+
+        <!-- Breadcrub -->
+        <nav aria-label="breadcrumb" style="margin-left: 425px; margin-top: -14px;">
+          <ol class="breadcrumb breadcrumb-chevron p-1" style="margin-left: -195px; margin-top: 5px; margin-right: 0px; margin-bottom: 0px; padding-bottom: 5px;">
+  
+            <li style="z-index: 9; margin-right: 10px;" class="breadcrumb-item">
+                <!-- Settings ----------------------------------------------------------->
+                <button type="button homset" class="btn" data-bs-toggle="modal" data-bs-target="#Charset"
+                    style="display: contents; width: 100px; justify-content: center;">
+            
+                    <div class="homset" style=" justify-content: center; width: 32px; height: 32px;"></div>
+                </button>
+                <!-- Settings ----------------------------------------------------------->
+            </li>
+
+  
+            <li style="z-index: 9; display: flow;" class="breadcrumb-item">
+              <a class="link-body-emphasis fw-semibold text-decoration-none" style="font-size: small;" href="#"> <%= bundlefinal.titleob %></a>
+              <a class="link-body-emphasis text-decoration-none" style="font-size: small;"> - Bundle View</a>
+            </li>
+  
+  
+          </ol>
+        </nav>
+        <!-- Breadcrub -->
+  
+</div>
+<!-- Breadcrub -------------------------------------------------------------------------->
+
+
+
+
+
+<!-- Form for making new bundle project -->
+<div style="z-index: 99; position: absolute; height: 600px; width: 1000px; display: none; margin-left: 20%; margin-top: -120px;
+scale: 80%; background-color: #ffffff; box-shadow: 2px 2px 14px 9px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" id="makenewundleproject">
+    <div class="container text-center" style="margin-top: 35px;">
+        <div class="row" style="height: 500px; margin: auto; margin-top: -4px;">
+    
+            <div class="col" style="margin: auto;">
+            </div>
+    
+            <div class="col-8" style="margin: auto; width: 700px; margin-left: 150px; margin-right: 150px;">
+    
+                <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;" >
+                    <div class="closeee2"></div>
+                </a>
+    
+                <a class="row" style="
+                padding-bottom: 5px;
+                text-align: center;
+                justify-content: center; 
+                margin-top: -15px; 
+                font-size: x-large; 
+                font-weight: normal;
+                text-decoration: none;
+                color: black;">
+                    Make New Project
+                </a>
+    
+                <hr style="padding-bottom: 20px;">
+    
+                <form id="tehnewprojectform" action="/dash/Addprojectfrombundle/<%= bundlefinal._id %>" method="POST">
+    
+                    <div class="row mb-3">
+                        <label for="inputEmail3" style="text-align: left;" class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" required placeholder="Title of your project" id="title"
+                                name="title">
+                        </div>
+                    </div>
+    
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+                        <div class="edscripin col-sm-10" style="overflow: hidden;">
+                            <textarea style="height: 100%; width: 100%; text-align: start;" class="form-control"
+                                placeholder="Description of your project" required id="body" name="body"></textarea>
+                        </div>
+                        <div style="margin-top: 0px;" class="form-text" id="basic-addon4">Define what you want to design in
+                            as much detail as you
+                            can.
+                        </div>
+                    </div>   
+    
+    
+                    <!-- STATUS ----------------------------------------------- -->
+                    <textarea type="text" class="form-control" id="finish" name="finish" style="display: none;">OG</textarea>
+                    <!-- STATUS ----------------------------------------------- -->
+
+
+                    <!-- Bundle ID ----------------------------------------------- -->
+                    <textarea type="text" class="form-control" id="bundleid" name="bundleid" style="display: none;"><%= bundlefinal._id %></textarea>
+                    <!-- Bundle ID ----------------------------------------------- -->
+    
+    
+    
+                    <!-- SETTING TAG ----------------------------------------------- -->
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Type</label>
+                        <div class="col-sm-10">
+    
+                            <select class="form-select form-select-sm" id="tag" name="tag"
+                                aria-label=".form-select-sm example">
+                                <option value="part" selected>New Part</option>
+                                <option value="Assembly">New Assembly</option>
+    
+                            </select>
+                        </div>
+                    </div>
+                    <!-- SETTING TAG ----------------------------------------------- -->
+    
+    
+                    <fieldset class="row mb-3" style="text-align: left;">
+                        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                    I have intermidiate knowladge
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                    value="option2">
+                                <label class="form-check-label" for="gridRadios2">
+                                    I am a prodessional
+                                </label>
+                            </div>
+                            <div class="form-check disabled">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                    value="option3" disabled>
+                                <label class="form-check-label" for="gridRadios3">
+                                    I am non-tech person (Premium)
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+    
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2" style="text-align: left;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                <label class="form-check-label" for="gridCheck1">
+                                    Optimize exiting CAD model
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+    
+                </form>
+
+                <button id="submitbtnfornew" class="btn btn-primary">Create</button>
+    
+            </div>
+    
+            <div class="col" style="margin: auto;">
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+
+<!-- form for udating bundle -->
+<form style="display: none;" id="updatebundleshit" action="/Bundle_Editor/<%= bundleid %>?_method=PUT" method="POST">
+      
+    <!-- Title ----------------------------------------------- -->
+    <input type="text" class="form-control border-0"
+    style="display: none;" id="titleob" name="titleob"
+    value="<%= Thisbundle.titleob%>">
+    <!-- Title ----------------------------------------------- -->
+  
+    <!-- Description ----------------------------------------------- -->
+    <textarea type="text" class="form-control" id="descriptionob" name="descriptionob"
+      style="display: none;"><%= Thisbundle.descriptionob%></textarea>
+    <!-- Description ----------------------------------------------- -->
+  
+    <!-- Nodes ----------------------------------------------- -->
+    <textarea type="object" class="form-control" id="Allnodes" name="Allnodes"
+      style="display: none;"></textarea>
+    <!-- Nodes ----------------------------------------------- -->
+  
+</form>
+
+<div style="display: none;" id="allnodeposition" class="nodesall"><%= Thisbundle.Allnodes %></div>
+
+
+
+
+
+
+
+
+<div style="display: none;" id="bundleidofthisbundle"><%= bundlefinal._id %></div>
+
+<!-- CARDS -------------------------------- -->
+<div class="scrolscape container-fluid container-fluid-custom pb-2 mb-5" style="width: 1160px;">
+    <div class="row mb-4">
+
+
+
+
+
+
+
+        <!-- Editor heading -->
+        <div style="margin-top: 40px;"></div>
+        <hr style="position: relative;
+        width: 48px; border-width: 2px; border-color: black;">
+        <div class="resprotit col-md-2 themed-grid-col" style="margin-top: -14px; font-weight: bold;">Bundle Editor
+        </div>
+        <hr style="position: relative;
+        width: 702px; margin-left: -22px; border-width: 2px; border-color: black;">
+        <div id="addbut2" class="addbut2 col-md-3" style="margin-left: -50px; margin-right: -28px;">
+            <a class="addbut2 btn btn-primary" href="/Bundle_Editor/<%= bundlefinal._id %>"
+            style="margin-left: 85px; margin-top: -18px;text-align: center;">
+                Open Editor
+            </a>
+        </div>
+        <!-- Editor heading -->
+
+
+
+
+
+
+
+
+
+
+        <!-- Heading of the section -->
+        <div style="margin-top: 40px;"></div>
+        <hr style="position: relative;
+        width: 48px; border-width: 2px; border-color: black;">
+        <div class="resprotit col-md-2 themed-grid-col" style="margin-top: -14px; font-weight: bold;">Bundle Projects
+        </div>
+        <hr style="position: relative;
+        width: 702px; margin-left: -22px; border-width: 2px; border-color: black;">
+        <div id="addnu" class="addnu col-md-3" style="margin-left: -50px; margin-right: -28px;">
+            <a class="addbut btn btn-primary"
+                style="margin-left: 85px; margin-top: -18px;text-align: center;">
+                + New Project
+            </a>
+        </div>
+        <!-- onclick="printbundlepro()" -->
+        <!-- Heading of the section -->
+
+        <!-- Parts Section =============================================================== -->
+        <div clas="resca" style="margin-bottom: 20px; margin-top: 5px;">
+
+
+            <!-- CARDS RECENT -->
+            <!-- here we are printing this html snipped inside the for loop, and used % % to insert the content -->
+            <div class="container">
+                <div class="row row-cols-md-4 g-3">
+                    
+                    <% const allbundleprojects = []; %>
+
+                    <% for(var i=0; i<notes.length; i++){ %>
+                        <% if(notes[i].bundleid == bundlefinal._id) {%>
+                            <% allbundleprojects.push(notes[i]); %>
+                        <% } %>
+                    <% } %>
+
+
+                    <% if (allbundleprojects.length > 0){ for(var i=0; i<allbundleprojects.length; i++){ %>
+
+
+                    <!-- THE CARD ------------------------------------------->
+                    <div class="cardres col">
+                        <div class="card initialc shadow-sm bg-body">
+
+                            <!-- Thubnail -->
+                            <img class="thubim bd-placeholder-img card-img-top shadow bg-body" width="100%"
+                                height="145" />
+                            <!-- Thubnail -->
+
+
+                            <!-- Card Menu -->
+                            <button style="z-index: 9; position: absolute; margin-top: 2px; margin-left:12px;"
+                                class="cardmanu" type="button" data-bs-toggle="dropdown" aria-controls="false">
+                            </button>
+
+                            <div class="btn-group">
+                                <ul class="dropdown-menu shadow">
+
+                                    <li><a class="dropdown-item" type="button" onclick="sese(
+                                        s='<%= allbundleprojects[i].title %>', d='<%= allbundleprojects[i].body %>', time='<%= date %>', 
+                                        fn='<%= displayName %>', ln='<%= displayLast %>', id='<%= allbundleprojects[i]._id %>',
+                                        dele='<%= allbundleprojects[i]._id %>' )" data-bs-toggle="modal"
+                                            data-bs-target="#Charset">Advanced Options
+                                        </a></li>
+
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                                    <li><a class="dropdown-item" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal" onclick="deliteam (
+                                            na='<%= allbundleprojects[i].title %>',
+                                            dele='<%= allbundleprojects[i]._id %>'
+                                            )">
+                                            Delete
+                                        </a></li>
+
+                                    <li>
+                                        <hr style="border-color: aliceblue;" class="dropdown-divider">
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+
+                                </ul>
+                            </div>
+                            <!-- Card Menu -->
+
+
+                            <!-- Progress -->
+                            <% var po = allbundleprojects[i].finish %>
+                            <% if (po=="OG") { %>
+
+
+                            <% } else if (po=="FIN") { %>
+                            <% var tag = allbundleprojects[i].tag %>
+                            <%  if (tag=="Assembly") { %>
+                            <a class="progrrr2" style="position: absolute; margin-left: 90px; margin-top: 2px;"></a>
+                            <% } else { %>
+                            <a class="progrrr2" style="position: absolute; margin-left: 120px; margin-top: 2px;"></a>
+                            <% } %>
+                            <% } %>
+                            <!-- Progress -->
+
+
+                            <!-- Tag ad Badge-->
+                            <% var tag = allbundleprojects[i].tag %>
+                            <% console.log(allbundleprojects[i].finish); %>
+                            <% if (tag=="pro") { %>
+                            <span class="badge proo text-bg-primary rounded-pill" style="width: 50px;">Pro</span>
+                            <% } else if (tag=="part") { %>
+                            <span class="badge proo1 text-bg-light rounded-pill" style="width: 95px; ">Native
+                                Part</span>
+                            <% } else if (tag=="Assembly") { %>
+                            <span class="badge proo2 text-bg-light rounded-pill" style="width: 125px; ">Native
+                                Assembly</span>
+                            <% } else { %>
+                            <span class="badge proo text-bg-dark rounded-pill" style="width: 50px; ">EXT</span>
+                            <% } %>
+                            <!-- Tag ad Badge-->
+
+
+                            <!-- Body -->
+                            <div class="card-body">
+
+                                <!-- title and description -->
+                                <div class="titleshi initial">
+
+                                    <a href="/dash/item/<%= allbundleprojects[i]._id %>"
+                                        style="text-decoration: none; color:black;">
+                                        <p class="titleofcard card-text text-decoration-none"><%= allbundleprojects[i].title %></p>
+
+                                        <hr>
+
+                                        <p style="font-size: small;" class="card-text test-decoration-none">
+                                            <%= allbundleprojects[i].body %></p>
+                                    </a>
+
+                                </div>
+                                <!-- title and description -->
+
+                                <!-- Buttons edit on card-->
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sese(
+                                            s='<%= allbundleprojects[i].title %>', 
+                                            d='<%= allbundleprojects[i].body %>', 
+                                            time='<%= date %>', 
+                                            fn='<%= displayName %>', 
+                                            ln='<%= displayLast %>',
+                                            id='<%= allbundleprojects[i]._id %>',
+                                            dele='<%= allbundleprojects[i]._id %>' )" data-bs-toggle="modal"
+                                        data-bs-target="#Charset"
+                                        style="padding-left: 10px; padding-right: 10px; height: 30px;">Edit
+                                    </button>
+
+                                    <small class="timeof text-body-secondary">9 mins</small>
+
+                                </div>
+                                <!-- Buttons edit on card-->
+
+                            </div>
+                            <!-- Body -->
+
+                        </div>
+                    </div>
+                    <!-- THE CARD ------------------------------------------->
+
+
+
+                    <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+                    <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+                    <script>
+
+                        function deliteam(na, dele) {
+                            const bunid = document.getElementById('bundleidofthisbundle').innerHTML;
+                            document.getElementById('titlena').innerHTML = na;
+                            document.getElementById("deletefm").action = "/dash/item-delete/" + dele + "/" + bunid + "?_method=DELETE";
+                            console.log("/dash/item-delete/" + dele + "/" + bunid + "?_method=DELETE");
+                        }
+
+                    </script>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div style="height: 50px;" class="modal-header">
+
+                                    <h1 style="width: 70px;" class="modal-title fs-5" id="exampleModalLabel">
+                                        Delete:
+                                    </h1>
+
+                                    <p style="width: 400px; margin-top: 15px; font-weight: bold;" id="titlena"></p>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    </button>
+
+                                </div>
+
+                                <div class="modal-body">
+                                    Are you sure you wanna delete this project?
+                                </div>
+
+                                <div class="modal-footer">
+
+                                    <form action="" method="POST" id="deletefm">
+                                        <button class="btn btn-danger delbutton rounded-pill"
+                                            style="justify-content: center; margin: auto;" type="submit">Delete</button>
+                                    </form>
+
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+                    <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+
+
+
+
+
+                    <%}} else { %>
+
+                    <!-- Card for when no file is created by user -->
+                    <div class="modal-dialog">
+                        <div class="modal-content rounded-4 shadow"
+                            style="background-color: white; margin-top: 50px; margin-bottom: 55px; width: 600px; height: 400px;">
+                            <div class="col modal-body p-4">
+
+                                <!-- main stuff -->
+                                <p class="row fw-normal mb-0 text-dark"
+                                    style="font-family: monospace; color: #550dfd; justify-content: center; margin-top: 10px; text-align: center; font-size: 28px;">
+                                    Nothing in here bruh :[
+                                </p>
+
+                                <ul class=" row cent d-grid gap-3 my-4 list-unstyled small">
+
+                                    <li class="d-flex gap-4">
+                                        <a class="marketlogo1 bi flex-shrink-0"></a>
+                                        <a href="/dash/view-Addnotes" style="color: black; text-decoration: none;">
+                                            <h5 class="mb-0" style="color: #550dfd;">Make new Part</h5>
+                                            Make a new part from scratch
+                                        </a>
+                                    </li>
+
+                                    <li class="d-flex gap-4">
+                                        <a class="marketlogo bi flex-shrink-0"></a>
+                                        <a href="/dash_market" style="color: black; text-decoration: none;">
+                                            <h5 class="mb-0" style="color: #550dfd;">Visit Marketplace</h5>
+                                            Explore marketplace and find templates.
+                                        </a>
+                                    </li>
+
+                                    <li class="d-flex gap-4">
+                                        <a class="marketlogo3 bi flex-shrink-0"></a>
+                                        </svg>
+                                        <a href="#" style="color: black; text-decoration: none;">
+                                            <h5 class="mb-0" style="color: #550dfd;">Lean NUKE</h5>
+                                            Learn what you can do on Nuke
+                                        </a>`
+                                    </li>
+
+                                </ul>
+
+                                <div style="justify-content: center; ">
+                                    <a href="#" style="margin-left: 30%; width: 180px;" id="newbunpro"
+                                        class="row addbut btn btn-primary">Make new project
+                                    </a>
+                                </div>
+                                <!-- main stuff -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card for when no file is created by user -->
+
+                    <% } %>
+
+                </div>
+            </div>
+            <!-- CARDS RECENT -->
+
+
+
+        </div>
+        <!-- Parts Section =============================================================== -->
+
+
+    </div>
+</div>
+<!-- CARDS -------------------------------- -->
+
+
+
+
+<!-- make new bundleproject animation and show and hide stuff -->
+<style>
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-100%);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+</style>
+
+<script>
+    // Get the button and div element
+    const showDivButton = document.getElementById('addnu');
+    const showDivButton2 = document.getElementById('newbunpro');
+    const divElement = document.getElementById("makenewundleproject");
+    const closeButton = divElement.querySelector(".closeee2");
+
+
+    // Function to show the div and slide down animation
+    function showDivAndSlideDown() {
+        divElement.style.display = "block";
+        divElement.style.animation = "slideDown 1s";
+    }
+
+    // Function to handle the closing animation and hide the div
+    function closeDivAndSlideUp() {
+        divElement.style.animation = "slideUp 1s";
+
+        // Wait for the animation to finish and then set display to none
+        setTimeout(() => {
+            divElement.style.display = "none";
+        }, 990); // 1000ms is the same duration as the slideUp animation
+    }
+
+    // Add click event listener to the button to show the div and slide down
+    showDivButton.addEventListener("click", showDivAndSlideDown);
+
+    if (!showDivButton2 == '') {
+        showDivButton2.addEventListener("click", showDivAndSlideDown);   
+    }
+
+    // Add click event listener to the closeButton to close the div and slide up
+    closeButton.addEventListener("click", closeDivAndSlideUp);
+</script>
+<!-- make new bundleproject animation and show and hide stuff -->
+
+
+
+<!-- popup logic -->
+<script>
+    function printbundlepro() {
+        document.getElementById('makenewundleproject').style.display = 'block';
+    }
+    function unprintmakenewproject() {
+        document.getElementById('makenewundleproject').style.display = 'none';
+    }
+</script>
+<!-- popup logic -->
+
+
+
+<!-- submitting the form for new projects -->
+    <script>
+        const btnfornew = document.getElementById('submitbtnfornew');
+        const newprojectform = document.getElementById('tehnewprojectform');
+
+
+            
+        //getting position of the nodes from the db ======================
+        const positionofnodes = document.getElementById('allnodeposition').innerHTML;
+
+        //converts string to object, for position of nodes
+        function convertStringToObject(inputString) {
+
+            const keyValuePattern = /(\w+)\s*:\s*'([^']+)'/g;
+            const resultObject = {};
+
+            let match;
+            while ((match = keyValuePattern.exec(inputString)) !== null) {
+                    const key = match[1];
+                    const value = match[2];
+                    resultObject[key] = value;
+                }
+
+            return resultObject;
+
+        }     
+
+        const positionofallnodes = convertStringToObject(positionofnodes);
+        //getting position of the nodes from the db ======================
+
+
+
+        //number of keys in the JSON
+        const lengthofkeys = Object.keys(positionofallnodes).length;
+
+        
+
+        //adds new entry in the json
+        function newprojectmade(){
+
+            //adding fixed position for the new node ==============
+
+            const idofnode = 'node' + (lengthofkeys+1);
+
+            //getting latest location of the nodes
+            const ntop = 100;
+            const nleft = 960;
+
+            //puttingion of the nodes in the position map
+            positionofallnodes[idofnode] = [ntop, nleft];
+
+            //adding fixed position for the new node ==============
+
+
+            //putting thet hocation of the nodes into the update form
+            const mappp = Object.entries(positionofallnodes)
+            .map(([key, value]) => `${key}: '${value}'`)
+            .join(', ');
+
+            document.getElementById('Allnodes').innerHTML = mappp;
+            //putting the map that has  o    des into the update form
+
+        }
+
+
+        btnfornew.addEventListener('click', () => {
+
+            //pull position json from DB and update it
+            newprojectmade();
+
+            //Submites the position of the nodes form to the db
+            setTimeout(function() {
+                document.getElementById('updatebundleshit').submit();
+
+                //submites the form fot making a new project file
+                setTimeout(function() {
+
+                    newprojectform.submit();
+
+                }, 2000);
+
+            }, 1000);
+
+        });
+
+    </script>
+<!-- submitting the form for new projects -->
+
+
+
+
+
+
+
+<!-- make everypage a layout and then make sub-pages and use <- include('./view-notes-chat-partial.ejs') > to inject the parts of codes into the layouts -->

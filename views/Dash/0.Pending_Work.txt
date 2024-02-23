@@ -1,0 +1,10 @@
+
+
+search for -
+    1. //MAKE LOGIC FOR WHEN USER PROVIDED ALL THE VARIABLES UPFRONT
+    2. //add logic, user might say yes ill provide and then write /add.. hendle those types of shits
+    3. //fires when user provided all the inputs and tells user that it has enough inputs, and if user wanna add anything extra before AI calculates
+
+
+make the save msg to save all the custom AI messages
+

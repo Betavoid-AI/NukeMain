@@ -1,0 +1,69 @@
+
+---- TRAINING DATA ---- 
+
+step 1 -
+    make copy of the base folder, if you wanna make a speach AI, copy SPeach_AU_Base and paste anywhere else
+
+step 2 - 
+    open Training_data_base_Speach
+    put the training data in there, there is some already, follow that same formate and replace with yours
+    put the secondary data for what AI will retuern, it can be Yes and No.. follow data formate as shown in dummy data
+    if at index 0 of training data primary is 'this is yes' and you wnat AI to return yes, in secondary data, at index 0, this will be the data - 'yes', 'no'... and if you want AI to return no, put no at index 0 - 'no', 'yes'.
+
+step 3 -
+    give your AI a name, put name in the nameofai function
+
+
+
+
+
+---- INPUT AND OUTPUT ---- 
+
+step 4 - 
+    open the EJS_Use_AI.ejs
+    search for PutResponseHere and put the id of the div where you want to display the AI response
+    search for GetUserInputFromHere and put the id of the div from where you want the AI to take the innerHTML and use as inpput statement.
+
+
+
+
+
+---- GENRATING FILES ---- 
+
+step 5 -
+    open Base_AI_Speach.js
+    in line 2, just change the path of to wherever you put the traningdata file.
+    search for createJSFileInFolder() and set to true and save the file, open cmd or browner console to see progress of model being trained
+    once the model is trained, it will be saved as txt file in public folder
+
+step 6 -
+    set createJSFileInFolder() to false again
+    go to the second part of the js file and comment and uncomment the lines, comment onces which has //comment and uncommnet onces which has //uncomment next to them
+    once done, just open termninal and run this cmd:
+        browserify NAMEOFBASEFILE.js -o Public/NAME.js
+    
+    change the NAME to whatever name you gave to your txt model in public folder
+    change the NAMEOFBASEFILE to whatever name you gave to your base js file in which you just commented and uncommented the lines.
+
+    once done, reserse the comment and uncommnet of lines back to as it was.
+
+
+
+
+
+---- USING AI ---- 
+
+step 6 -
+    to use the model you genrated just now.
+    first rename the EJS_Use_AI.ejs file
+    in the file where you wanna use AI, put this -
+        <%- include('Path/name.ejs') %> 
+
+    change the path with the path of the ejs file you just renamed
+    change name with whatever name you gave
+
+step 7 -
+    whenever you will call - injectScript()
+    the AI will take input statement from the div you specified and put response in the div you specified
+
+    call as mamy times as you want

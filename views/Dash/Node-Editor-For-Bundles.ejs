@@ -1,0 +1,2215 @@
+
+<!-- NODE EDITOR SYSTEM ===================================================================== -->
+<div class="thebody">
+
+  
+<!-- A -->
+<!-- best node system ever ================================================ -->
+<div id="nodeparent"></div>
+<div id="wireparent" style="z-index: 999;"></div>
+
+<!-- Renders the wires and prints them from the db -->
+<script>
+
+  //this is where all the node version of the nodes are stored - used to save and render the wires from the DB
+  const nodesallofrem = [];
+
+  var xofcanvas = 0;
+  var yofcanvas = 0;
+  
+  //function doStuff(){ 
+  //   // wait until the node class is actually defined
+  //   if (window.XG5 === undefined){
+  //     setTimeout(doStuff, 50);
+  //     return;
+  //   }
+    
+  //   // Node 1
+  //   var node = new XG5.GUINode({name: 'Another One'});
+  //   node.addInput('Value1');
+  //   node.addInput('Value2');
+  //   node.addInput('Value3');
+  
+  //   // Node 2
+  //   var node2 = new XG5.GUINode({name: 'Node 2'});
+  //   node2.addInput('Text In');
+  //   node2.addInput('Value 5');
+  
+  //   // Node 3
+  //   var node3 = new XG5.GUINode({name: 'Something Else'});
+  //   node3.addInput('Color4');
+  //   node3.addInput('Position');
+  //   node3.addInput('Noise Octaves');
+    
+  //   // Node 4
+  //   var node4 = new XG5.GUINode({name: 'TextString'});
+  //   node4.addInput('Value', 'input');
+
+  //   // Calculate the center of the screen
+  //   const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  //   const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  //   const centerX = screenWidth / 2.5;
+  //   const centerY = screenHeight / 2.5;
+  
+  //   // Move to initial positions
+  //   node.moveTo({x: centerX+300, y: centerY+80});
+  //   node2.moveTo({x: centerX+20, y: centerY+70});
+  //   node3.moveTo({x: centerX+150, y: centerY+150});
+  //   node4.moveTo({x:centerX+150, y: centerY+20});
+
+  
+  //   // Connect Nodes
+  //   node.connectTo(node3.inputs[0]);
+  //   node3.connectTo(node2.inputs[1]);
+  //   node4.connectTo(node2.inputs[0]);
+  
+  //   // Add to DOM
+  //   node.initUI();
+  //   node2.initUI();
+  //   node3.initUI();
+  //   node4.initUI();
+    
+  //   node4.inputs[0].value = 'Some String';
+    
+  //   window.guiNodes = [];
+  //   window.guiNodes.push(node);
+  //   window.guiNodes.push(node2);
+  //   window.guiNodes.push(node3);
+  //   window.guiNodes.push(node4);
+
+  // }
+  // doStuff();
+
+  
+
+
+
+  //makes a wire between two nodes
+  
+  const ignore = ''; //del this anytime
+
+  function makeObjectEmpty(obj) {
+    for (let prop in obj) {
+      if (obj.hasOwnProperty(prop)) {
+        delete obj[prop];
+      }
+    }
+  }
+
+  //this prints the wires ==============================
+  //thewirejson is the JSON const that gets submitted to the DB
+  function printwiress(jsonwirefrondb, numofwires) {
+
+    try {
+
+
+      //if there are 3 wires in the wire JSON, this will lop 3 times to print those 3 wires
+      for (wires in jsonwirefrondb) {
+
+        const thewirecurrent = jsonwirefrondb[wires];
+
+        const nodeArray = thewirecurrent.split(',').map(node => node.trim());
+
+        //number of wires from the wire JSON file - num of keys in the json
+        const inofwire = nodeArray[0];
+        const outofwire = nodeArray[1];
+
+        //this is where we store the value of w, which is the index of the node in the nodesallofrem array which is labbled as input or output in the wire JSON
+        var inputnode = '';
+        var outputnode = '';
+
+        const numofnodes = nodesallofrem.length;
+
+
+        //to check and store the index of the node in the nodesallofrem array, which are input and output for this wire being rendered.
+        for (let r = 0; r < numofnodes; r++) {
+
+          const domelementa = nodesallofrem[r].domElement;
+
+          if (domelementa.id == inofwire) { //figures which node's id is same as the input id and stores the value of r
+            inputnode = r;
+          }
+
+          if (domelementa.id == outofwire) { //figures which node's id is same as the output id and stores the value of r
+            outputnode = r;
+          }
+
+          if (inputnode !== '' && outputnode !== '') { // checks if we have the value for the input and output index
+
+            //this prionts the wire:
+            nodesallofrem[inputnode].connectTo(nodesallofrem[outputnode].inputs[0]);
+            
+          }
+          
+        }
+
+      }
+
+      } catch (error) { // if you dont know what this does, give up!
+        console.log(error);
+    }
+
+
+
+
+
+
+    //clears the json file onces printed, temp- need to del or reevaluate the use ++++
+    makeObjectEmpty(thewirejson);
+
+  };
+
+</script>
+
+<style>
+.x-node:before {
+color: aliceblue;
+content: attr(title) " ";
+display: block;
+border-top-left-radius: 0.75em;
+border-top-right-radius: 0.75em;
+background-color:  #003366;
+padding-top: 0.3em;
+padding-right: 0.8em !important;
+padding-bottom: 0.3em;
+padding-left: 0.8em;
+margin: -0.1em -0.3em 0.2em;
+}
+.x-node {
+    color: #121212;
+    font-family: sans-serif;
+    background-color: #ffffff;
+    border-radius: 0.75em;
+    display: inline-block;
+    padding: 0.1em 0.3em 0.25em;
+    position: absolute;
+    box-shadow: 2px 2px 10px black;
+    white-space: nowrap;
+    font-size: smaller;
+}
+.x-output,
+.x-connection:after{
+  position:absolute;
+  border:solid 1px #dedede;
+  background-color: #003366;
+  width:0.7em;
+  height:0.7em;
+  border-radius:0.5em;  
+}
+.x-node.connected > .x-output,
+.x-connection.filled:after{
+  border:solid 4px transparent;
+  background-color:#256400;
+}
+.x-node > .x-output:hover,
+.x-connection:hover:after{
+  border-color:red;
+}
+.x-output{
+  left: -.5em;
+  top:1em;
+  cursor: pointer;
+}
+.x-output.hide{
+  display: none;
+}
+.x-connection, .x-input{
+  width:100%;
+  position:relative;
+  padding-right:2em;
+  padding-left: 0.6em;
+  cursor:pointer;
+}
+.x-connection:after{
+  content:"";
+  right:0em;
+  top:0.25em;
+}
+.x-input{
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  cursor: default;
+}
+.x-input input{
+  width: 15ch;
+}
+#node-graph{
+  background-image: linear-gradient(to right, transparent 18px, #b5b5b5 20px), linear-gradient(to bottom, #ededed 18px, #9d9d9d 20px);
+  background-size: 20px 20px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index:-100;
+  width:100%;
+  height:100%;
+}
+</style>
+
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+
+<!-- JSON for the wires -->
+<script>
+
+  //JSON for structure
+  const thewirejson = {};
+
+  //this will push the entry in the wire json
+  //classname or id of the wire will go to wireName
+  //input will have the div id of the node which will get the data
+  //output is the id of the node from where the data will flow
+  //inputcord is the cordinates of the input
+  //outputcord id the cordinates of the output
+  function updateWireProperties(wireName, output, input, inputcord, outputcord, outputname) {
+
+    //pushing the sturcture with the wire name
+    thewirejson[wireName] = {
+      output: '',
+      input: ''
+    };
+
+    //This will update the structure we added above and will push the info like names and cordinates
+    if (thewirejson[wireName]) {
+      thewirejson[wireName].output = output;
+      thewirejson[wireName].input = input;
+    } else {
+      console.log(`Wire '${wireName}' not found.`);
+    }
+
+  }
+
+</script>
+<!-- JSON for the wires -->
+
+
+<script>
+
+  var inputcord; //Cordinate of input 
+  var outputcord;
+
+  
+  var jij = 0;
+  var ofsetxofcanvas = 0;
+  var ofsetyofcanvas = 0;
+
+
+  var XG5 = window.XG5 || {};
+  if (!jQuery) alert('Must include jQueryUI');
+
+(function(sys, _$){
+  if (sys.GUINode) return;
+
+  // SVG Setup
+  var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.id = 'node-graph';
+  svg.style = 'height: 10000px; width: 10000px;';
+  svg.ns = svg.namespaceURI;
+  document.body.appendChild(svg);
+
+  document.getElementById('wireparent').append(svg);
+
+  
+  function createPath(a, b){
+    var diff = {
+      x: b.x - a.x,
+      y: b.y - a.y
+    };
+    
+    var pathStr = [
+      'M' + a.x + ',' + a.y + ' C',
+      a.x + diff.x / 3 * 2 + ',' + a.y + ' ',
+      a.x + diff.x / 3 + ',' + b.y + ' ',
+      b.x + ',' + b.y
+    ].join('');
+    
+    return pathStr;
+  }
+  
+  var mouse = {
+    currentInput: undefined
+  };
+  
+
+  //updating the x and y of the wire end here ----------------
+  svg.onmousemove = function(e){
+
+
+    if (mouse.currentInput){
+      var path = mouse.currentInput.path;
+      var inputPt = mouse.currentInput.getAttachPoint();
+
+      var outputPt = {x: e.pageX - ofsetxofcanvas, y: e.pageY - ofsetyofcanvas}; //here the ofsetyofcanvas and other is getting updated by another script at the bottom which 
+      //calculated howmuch the canvas moved and the adds the vlaue of x and y to these x and y of the wire end point so it always is at the coursor
+      
+      var val = createPath(inputPt, outputPt); // outputpt is the end of the wire that sticks with mouse coursor.
+      path.setAttributeNS(null, 'd', val);
+
+    }
+  };
+  
+  svg.onclick = function(e){
+    if (mouse.currentInput){
+      mouse.currentInput.path.removeAttribute('d');
+      
+      if (mouse.currentInput.node)
+        mouse.currentInput.node.detachInput(mouse.currentInput);
+      
+      mouse.currentInput = undefined;
+    }
+  };
+  
+  var getFullOffset = function(e){
+    var offset = {
+      top: e.offsetTop,
+      left: e.offsetLeft
+    };
+    
+    if (e.offsetParent){
+      var parentOff = getFullOffset(e.offsetParent);
+      offset.top += parentOff.top;
+      offset.left += parentOff.left;
+    }
+    
+    return offset;
+  };
+  
+  function node(options){
+    this.name = ' ';
+    this.value = '';
+    this.isRoot = false;
+    
+
+    for (var prop in options)
+      if (this.hasOwnProperty(prop))
+        this[prop] = options[prop];
+    
+    this.inputs = [];
+    this.attachedPaths = [];
+    this.connected = false;
+
+  
+
+    jij = jij+1;
+    this.domElement = document.createElement('div');
+    this.domElement.classList.add('x-node');
+    this.domElement.setAttribute('id', 'node'+jij); //giving nodes a diff id so we can catch them for event listners and all
+    this.domElement.setAttribute('title', this.name);
+    
+    var outputDom = document.createElement('span');
+    outputDom.classList.add('x-output');
+    outputDom.textContent = ' ';
+    
+    if (this.isRoot)
+      outputDom.classList.add('hide');
+    
+    this.domElement.appendChild(outputDom);
+    
+    var that = this;
+    outputDom.onclick = function(e){
+      if (mouse.currentInput && !that.ownsInput(mouse.currentInput)){
+        that.connectTo(mouse.currentInput);
+        mouse.currentInput = undefined;
+      }
+      
+      e.stopPropagation();
+    };
+  }
+  
+  function nodeInput(options){
+    this.name = '';
+    this.type = 'connection';
+    
+    for (var prop in options)
+      if (this.hasOwnProperty(prop))
+        this[prop] = options[prop];
+    
+    this.node = undefined;
+    
+    this.domElement = document.createElement('div');
+    this.domElement.textContent = this.name;
+    this.domElement.title = this.name;
+    
+    this.domElement.classList.add('x-' + this.type);
+    this.domElement.classList.add('empty');
+    
+    var that = this;
+    if (this.type == 'input'){
+      var input = document.createElement('input');
+      Object.defineProperty(that, 'value', {
+        get: function(){ return input.value; },
+        set: function(val){ input.value = val },
+        enumerable: true
+      });
+      this.domElement.textContent += ' ';
+      this.domElement.appendChild(input);
+    }
+    
+    this.path = document.createElementNS(svg.ns, 'path');
+    this.path.setAttributeNS(null, 'stroke', '#003366');
+    this.path.setAttributeNS(null, 'stroke-width', '3');
+    this.path.setAttributeNS(null, 'fill', 'none');
+    this.path.setAttributeNS(null, 'id', 'node' + jij + 'wire');//givinng the wires a id so we can select them when deleting the node
+    //'node' + jij is also id of the node, so just added wire to iit to make id for the wire.
+    svg.appendChild(this.path);
+
+    
+    if (this.type == 'connection'){
+      this.domElement.onclick = function(e){
+        if (mouse.currentInput){
+          if (mouse.currentInput.path.hasAttribute('d'))
+            mouse.currentInput.path.removeAttribute('d');
+          if (mouse.currentInput.node){
+            mouse.currentInput.node.detachInput(mouse.currentInput);
+            mouse.currentInput.node = undefined;
+          }
+        }
+        
+        mouse.currentInput = that;
+        if (that.node){
+          that.node.detachInput(that);
+          that.domElement.classList.remove('filled');
+          that.domElement.classList.add('empty');
+        }
+        
+        e.stopPropagation();
+      };
+    }
+  }
+  
+  nodeInput.prototype = {
+    getAttachPoint: function(){
+      var offset = getFullOffset(this.domElement);
+      return {
+        x: offset.left + this.domElement.offsetWidth - 2,
+        y: offset.top + this.domElement.offsetHeight / 2
+      };
+    }
+  };
+  
+
+
+  //node sending to div from inside here and can get the divs connected just now -------------------
+  node.prototype = {
+    getOutputPoint: function(){
+      var fchild = this.domElement.firstElementChild;
+      var offset = getFullOffset(fchild);
+      return {
+        x: offset.left + fchild.offsetWidth / 2,
+        y: offset.top + fchild.offsetHeight / 2
+      };
+    },
+    addInput: function(name, type){
+      var options = {};
+      options.name = name;
+      type === undefined ? true : options.type = type;
+      
+      var input = new nodeInput(options);
+      this.inputs.push(input);
+      this.domElement.appendChild(input.domElement);
+      
+      return input;
+    },
+    
+    
+    
+    detachInput: function(input){
+
+
+
+
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      const thedisconnectednode = this.attachedPaths[0].input.domElement;
+      const idofdisconnode = thedisconnectednode.parentElement.id;
+
+
+
+
+      if(Object.keys(thewirejson).length > 0){
+
+        for (const key in thewirejson) {
+          if (thewirejson.hasOwnProperty(key) && thewirejson[key].output === idofdisconnode) {
+            delete thewirejson[key];
+            console.log(thewirejson);
+            break;
+          }
+        }
+
+      } else if (Object.keys(conwiresobject).length > 0) {
+
+        for (const key in conwiresobject) {
+          const thevalues = conwiresobject[key];
+          const thearary = thevalues.split(',').map(item => item.trim());
+
+          if (conwiresobject.hasOwnProperty(key) && thearary[1] === idofdisconnode) {
+            delete conwiresobject[key];
+            console.log(conwiresobject);
+            break;
+          }
+        }
+
+      }
+
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+      var index = -1;
+      for (var i = 0; i < this.attachedPaths.length; i++){
+        if (this.attachedPaths[i].input == input)
+          index = i;
+      }
+      
+      if (index >= 0){
+        this.attachedPaths[index].path.removeAttribute('d');
+        this.attachedPaths[index].input.node = undefined;
+        this.attachedPaths.splice(index, 1);
+      }
+      
+      if (this.attachedPaths.length <= 0)
+        this.domElement.classList.remove('connected');
+    },
+
+    ownsInput: function(input){
+      for (var i = 0; i < this.inputs.length; i++){
+        if (this.inputs[i] == input)
+          return true;
+      }
+      
+      return false;
+    },
+    
+
+
+
+
+
+
+
+
+    //called eveytime the node is moved, this updates the start and end cords of the wire 
+    updatePosition: function(){
+      var outputPt = this.getOutputPoint();
+
+
+      for (var i = 0; i < this.attachedPaths.length; i++){
+        if (this.attachedPaths[i].input.node  === undefined) continue;
+
+        var inputPt = this.attachedPaths[i].input.getAttachPoint();
+        var pathStr = createPath(inputPt, outputPt);
+        this.attachedPaths[i].path.setAttributeNS(null, 'd', pathStr);
+      }
+      
+      for (var j = 0; j < this.inputs.length; j++){
+        if (this.inputs[j].node === undefined) continue;
+
+        var inputPt = this.inputs[j].getAttachPoint();
+        var outputPt = this.inputs[j].node.getOutputPoint();
+        
+        var pathStr = createPath(inputPt, outputPt);
+        this.inputs[j].path.setAttributeNS(null, 'd', pathStr);
+      }
+
+    },
+    // This is where we will get the divs connected just now -----------------
+    connectTo: function(input){
+      input.node = this;
+      this.connected = true;
+      this.domElement.classList.add('connected');
+      
+      input.domElement.classList.remove('empty');
+      input.domElement.classList.add('filled');
+      
+      this.attachedPaths.push({
+        input: input,
+        path: input.path
+      });
+      
+      var inputPt = input.getAttachPoint();
+      var outputPt = this.getOutputPoint();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+      inputcord = inputPt;
+      outputcord = outputPt;
+
+      const nodefromwherewirestart = (input.domElement).parentElement;
+      const titleofstartnode = nodefromwherewirestart.id;
+      const numberofnode = titleofstartnode[(titleofstartnode.length)-1]; // getting the number of the node in the id, if 'node1', this will return '1'
+
+      const nameofwire = 'wire'+numberofnode;
+
+      updateWireProperties(nameofwire, ((input.domElement).parentElement).id, (this.domElement).id, outputcord, inputcord, (input.domElement).title );
+
+
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+      var pathStr = createPath(inputPt, outputPt);
+      input.path.setAttributeNS(null, 'd', pathStr);
+    },
+    moveTo: function(point){
+      this.domElement.style.top = point.y + 'px';
+      this.domElement.style.left = point.x + 'px';
+      this.updatePosition();
+    },
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    // sending nodes from in here -----------------------------
+    initUI: function(){
+
+      var that = this;
+      
+      _$(this.domElement).draggable({
+        containment: 'window',
+        cancel: '.x-connection, .x-output, .x-input',
+        drag: function(e, ui){
+          that.updatePosition();
+        }
+      });
+      
+      this.domElement.style.position = 'absolute';
+
+
+
+
+      // this is where we send the nodes to the nodesparent div--------------------------------------------
+
+      document.getElementById('nodeparent').appendChild(this.domElement);
+
+      // this is where we send the nodes to the nodesparent div--------------------------------------------
+
+
+
+
+
+
+      this.updatePosition();
+    }
+  };
+  sys.GUINode = node;
+
+
+})(XG5, jQuery);
+
+
+</script>
+<!-- best node system ever ================================================ -->
+
+
+
+
+
+
+
+<!-- when we delete a node, it should also delete the corresponding location key in the node location json 
+in the DB, so the position of the other nodes are not changed.
+
+the position json is stroed in the ALlnodes schema in the DB-->
+
+
+
+
+
+
+<!--Background grid ========================== -->
+<div 
+id="backgg" 
+style="margin-top: -250000px !important; 
+margin-left: -250000px !important; 
+top: 0px; 
+left: 0px; 
+z-index: -10;
+width: 500000px; 
+position: absolute;
+z-index: -990;
+height: 500000px;   
+background-image: linear-gradient(to right, transparent 18px, #b5b5b5 20px), linear-gradient(to bottom, #ededed 18px, #9d9d9d 20px);
+background-size: 20px 20px;">
+</div>
+<!--Background grid ========================== -->
+<!--gets appended below from the script -->
+
+
+
+
+
+
+
+<!-- B -->
+<!-- INFINITE PANNABLE CANVAS ============================================== -->
+<!--https://codepen.io/octopus11/pen/ZEpGeqq-->
+<div class="grid">
+  <div class="contents">
+  </div>
+</div>
+
+<style>
+/* reset
+    http://meyerweb.com/eric/tools/css/reset/
+    v2.0 | 20110126
+    License: none (public domain)
+*/
+
+/* those types i moved out of the list because we dont want to reset and describe them all in our css..(too much work)
+    strong, i, b, u, small, strike,  sub, sup,
+    abbr, acronym, address, big, cite, code,
+    del, dfn,  ins, kbd, q, s, samp,
+    tt, var,
+*/
+
+html, body, div, span, applet, object, iframe, center,
+em, img,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 16px;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {list-style: none; margin: 0; padding: 0;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+
+    /* reset chrome useragent setting for blockqoute */
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+}
+
+table {
+
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* end of reset */
+
+
+/* reset focus */
+
+:focus {
+    outline-style:none;
+    box-shadow:none;
+    border-color:transparent;
+}
+
+
+/* universal polyfills for unknown html objects */
+
+main {
+    display: block;
+}
+
+app-media-resized {
+    display: block;
+    position: relative;
+}
+
+.grid {
+	position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+	overflow: hidden;
+}
+
+.grid .contents {
+	position: absolute;
+	width: 0;
+	height: 0;
+  transform-origin: 0 0;
+}
+
+</style>
+
+<script>
+
+//THIS IS WHERE WE ADD STUFF ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  const addStuffToContents = () => {
+
+
+
+  //getting the wires of the nodes ===============================================
+  const wires = document.getElementById("wireparent");
+  contents.append(wires);
+  //getting the wires of the nodes ===============================================
+
+
+
+  //passing the nodes here
+  //==========================================================================================================
+  //DEFINATELY CAN USE GET BY ID TO GET SHIT IN HERE
+
+  const nodes = document.getElementById('nodeparent');
+  contents.append(nodes);
+  //==========================================================================================================
+
+
+
+  const baclgg = document.getElementById('backgg');
+  contents.append(baclgg);
+
+
+
+};
+//THIS IS WHERE WE ADD STUFF ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+const grid = document.querySelector('.grid');
+const contents = document.querySelector('.contents');
+const gridSize = grid.getBoundingClientRect();
+
+let panningAllowed = false;
+let zoomFactor = 1;
+
+const translate = { scale: zoomFactor, translateX:0, translateY:0 };
+
+const initialContentsPos = { x:0, y:0 };
+const initialZoomPos = { x:0, y:0 };
+const pinnedMousePosition = { x:0, y:0 };
+const mousePosition = { x:0, y:0 };
+
+const mousedown = (event) => {
+
+  //Checks if the mousue is down on the Node, and if yes the pan on canvas gets disabled
+  if(!isMouseDown){
+	initialContentsPos.x = translate.translateX;
+	initialContentsPos.y = translate.translateY;
+	pinnedMousePosition.x = event.clientX;
+	pinnedMousePosition.y = event.clientY;
+	panningAllowed = true;
+  }
+
+};
+
+const mousemove = (event) => {
+
+	mousePosition.x = event.clientX;
+	mousePosition.y = event.clientY;
+	if (panningAllowed) {
+		  const diffX = (mousePosition.x - pinnedMousePosition.x);
+      const diffY = (mousePosition.y - pinnedMousePosition.y);
+      translate.translateX = initialContentsPos.x + diffX;
+      translate.translateY = initialContentsPos.y + diffY;
+	}
+	update();
+
+};
+
+const mouseup = (event) => {
+	panningAllowed = false;
+};
+
+const zoom = (event) => {
+    // Determine before anything else. Otherwise weird jumping.
+    if (zoomFactor + (event.deltaY / 5000) > 3 || 
+        zoomFactor + (event.deltaY / 5000) < .4
+       ) {
+      return;
+    }
+
+
+    const oldZoomFactor = zoomFactor; 
+	  zoomFactor += (event.deltaY / 2000);
+
+    mousePosition.x = event.clientX - gridSize.x;
+	  mousePosition.y = event.clientY - gridSize.y;
+
+    // Calculations
+  	translate.scale = zoomFactor;
+
+    const contentMousePosX = (mousePosition.x - translate.translateX);
+    const contentMousePosY = (mousePosition.y - translate.translateY);  
+    const x = mousePosition.x - (contentMousePosX * (zoomFactor / oldZoomFactor));
+    const y = mousePosition.y - (contentMousePosY * (zoomFactor / oldZoomFactor));
+  
+	  translate.translateX = x;
+   	translate.translateY = y;
+
+    update();
+};
+
+const update = () => {
+  const matrix = `matrix(${translate.scale},0,0,${translate.scale},${translate.translateX},${translate.translateY})`;
+  contents.style.transform = matrix;
+};
+
+addStuffToContents();
+grid.addEventListener('wheel', zoom);
+grid.addEventListener('mousedown', mousedown);
+grid.addEventListener('mousemove', mousemove);
+grid.addEventListener('mouseup', mouseup);
+</script>
+<!-- INFINITE PANNABLE CANVAS ============================================== -->
+
+
+
+
+
+<!-- C -->
+<!-- setting isMouseDown to true when user is dragging the node, so disable panning of canvas -->
+<script defer>
+  // this is where we send the nodes to the nodesparent div--------------------------------------------
+  //this figures if user is dragging the node or not, if yes tha canvas wont move
+  // Define the constant outside the function to store the mouse down state
+
+  let isMouseDown = false;
+
+
+  function delayedFunction() {
+
+  // Function to handle the mousedown event
+  function handleMouseDown() {
+  isMouseDown = true;
+  }
+
+  // Function to handle the mouseup event
+  function handleMouseUp() {
+  isMouseDown = false;
+  }
+
+  // Add event listeners to the div element
+  const allnodes = [];
+
+  //adding event listner to all nodes to detect if mouse is down
+  for(var y=0; y<jij; y++){
+    var temp = y+1;
+  const myDiv = document.getElementById('node'+temp);
+  myDiv.addEventListener("mousedown", handleMouseDown);
+  myDiv.addEventListener("mouseup", handleMouseUp);
+  }
+
+  }
+
+  setTimeout(delayedFunction, 1000);
+
+</script>
+
+
+<!-- D -->
+<!-- fixing the wire end position when canvas is moved -->
+<script>
+
+function hasDAttribute(pathElement) {
+  if (!pathElement || pathElement.tagName !== 'path') {
+    // If the provided element is not a valid path element, return false.
+    return false;
+  }
+
+  const dAttribute = pathElement.getAttribute('d');
+
+  // If the "d" attribute exists and is not an empty string, return true.
+  return dAttribute !== null && dAttribute.trim() !== '';
+}
+
+
+//updating wire end x and y based on how much canvas moved, as the wire end was not able to get updated value of the nodes or mouse
+function delayedFunction2() {
+
+  // Step 1: Select the target element
+  const targetDiv = document.querySelector('.contents');
+
+  // Step 2: Create a MutationObserver
+  const observer = new MutationObserver((mutationsList, observer) => {
+    // Step 3: Check for changes in the "style" attribute
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+        // Extract the matrix parameters from the "style" attribute
+        const matrixParams = mutation.target.style.transform.match(/matrix\(([^\)]+)\)/)[1].split(', ');
+
+        // Check if the last two parameters changed (5th and 6th in the matrix)
+        const param5 = parseFloat(matrixParams[4]);
+        const param6 = parseFloat(matrixParams[5]);
+
+        // Update the d attribute for all path elements
+        const paths = targetDiv.querySelectorAll('path');
+
+        ofsetxofcanvas = param5;
+        ofsetyofcanvas = param6;
+
+      }
+    }
+  });
+
+  // Step 4: Start observing the target element for mutations
+  observer.observe(targetDiv, { attributes: true });
+
+
+}
+setTimeout(delayedFunction2, 1000);
+
+</script>
+
+</div>
+<!-- NODE EDITOR SYSTEM ===================================================================== -->
+
+
+
+
+
+<!-- E OVERLAYS -->
+<!-- side controls at top left corner -->
+<div class="rex" style="border-radius: 10px; width: 30px; height: 120px; background-color: #ffffff; position: absolute; margin-left: 20px; margin-top: 20px;">
+
+  <a href="#" onclick="plusbtnclicked()">
+    <svg style="width: 25px; margin-left: 2px; margin-top: 6px; height: 25px;" class="zoominico"></svg>
+  </a>
+
+  <a href="#" onclick="minusbtnclicked()">
+    <svg style="width: 25px; margin-left: 2px; margin-top: 6px; height: 25px;" class="zoomouico"></svg>
+  </a>
+
+  <hr style=" width: 22px; height: 2px; border-top-width: 3px; margin-left: 4px; color: white; margin-top: 5px; margin-bottom: 5px;">
+
+  <a href="#" onclick="updatebybtn()">
+    <svg style="width: 20px; margin-left: 4px; margin-top: 4px; height: 25px;" class="centerrrr"></svg>
+  </a>
+
+</div>
+<!-- side controls at top left corner -->
+
+
+
+<!-- for zoom in and out using the buttons -->
+<script>
+  const zoombybtn = (inoro) => {
+    // Determine before anything else. Otherwise weird jumping.
+    if (zoomFactor + (inoro / 5000) > 3 ||
+      zoomFactor + (inoro / 5000) < .4
+    ) {
+      return;
+    }
+
+    const oldZoomFactor = zoomFactor;
+    zoomFactor += (inoro / 2000);
+
+    // Calculate the center of the screen
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    mousePosition.x = centerX - gridSize.x;
+    mousePosition.y = centerY - gridSize.y;
+
+    // Calculations
+    translate.scale = zoomFactor;
+
+    const contentMousePosX = (mousePosition.x - translate.translateX);
+    const contentMousePosY = (mousePosition.y - translate.translateY);
+    const x = mousePosition.x - (contentMousePosX * (zoomFactor / oldZoomFactor));
+    const y = mousePosition.y - (contentMousePosY * (zoomFactor / oldZoomFactor));
+
+    translate.translateX = x;
+    translate.translateY = y;
+
+    update();
+  };
+
+  //resets the canvas to bring the nodes back to center of the screen
+  const updatebybtn = () => {
+
+    const matrix = `matrix(1, 0, 0, 1, 0, 0)`;
+    document.getElementsByClassName('contents')[0].style.transform = matrix;
+    translate.translateY = 0;
+    translate.translateX = 0;
+    translate.scale = 1;
+    zoomFactor = 1;
+
+  };
+
+  function plusbtnclicked() {
+    zoombybtn(100);
+  }
+
+  function minusbtnclicked() {
+    zoombybtn(-100);
+  }
+</script>
+<!-- for zoom in and out using the buttons -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- bundle id from the db -->
+<div style="display: none;" id="bundleidforredirect"><%= bundleid %></div>
+
+<!-- Click the node to select it ========================================================== -->
+<script>
+
+  //at index 0, stores the div of the node selected
+  const selectednode = [];
+  const wiresofselectednodes = [];
+
+  const nodeandidmap = {}; // Mapping the id of the projects to the nodes rendered, so when node is selected we will have id too -->
+
+
+
+
+  function addGlowingBorderToNodes() {
+
+    const nodesforclick = document.getElementsByClassName('x-node');
+
+    for (var r = 0; r < nodesforclick.length; r++) {
+
+      const node = nodesforclick[r];
+      node.addEventListener('click', () => {
+
+        // Remove glowing border from all nodes
+        for (var rq = 0; rq < nodesforclick.length; rq++) {
+          nodesforclick[rq].style.border = '';
+          nodesforclick[rq].style.borderStyle = '';
+          nodesforclick[rq].style.borderRadius = '';
+        }
+
+        // Add glowing border to the clicked node// You can change the color and size as per your preference
+        node.style.border = '#3edf2b';
+        node.style.borderStyle = 'solid';
+        node.style.borderRadius = '14px';
+
+        //storeing div of the node selected
+        selectednode.length = 0;
+        selectednode.push(node);
+
+
+        //setting the href for the open button in the toolbar ===========
+        const openbutton = document.getElementById('openthenode');
+        const projectid = selectednode[0].id;
+  
+        openbutton.href = '/dash/Item/' + nodeandidmap[projectid];
+
+
+        //setting heading of the edit form
+        document.getElementById('headingofeditform').innerHTML = 'Edit: ' + node.title;
+
+
+      });
+    }
+  }
+
+
+
+  // Call the function to add event listeners
+  setTimeout(addGlowingBorderToNodes, 2000);
+  
+</script>
+<!-- Click the node to select it ========================================================== -->
+
+
+
+<!-- F -->
+<!-- Add new node -->
+<div class="contpan" style="border-radius: 10px; width: 750px; height: 86px; background-color: #ffffff; position: absolute; margin-left: 300px;">
+  <a href="#">
+    <svg style="width: 25px; margin-left: 80px; margin-top: 4px; height: 25px;" class="Undonode"></svg>
+  </a>
+  <a href="#" id="addnewnode">
+    <svg style="width: 50px; margin-left: 30px; margin-top: 4px; height: 50px;" class="makenewnode"></svg>
+  </a>
+  <a href="#" id="editbtni">
+    <svg style="width: 50px; margin-left: 30px; margin-top: 4px; height: 50px;" class="editnode"></svg>
+  </a>
+  <a href="#" id="delnode">
+    <svg style="width: 50px; margin-left: 30px; margin-top: 4px; height: 50px;" class="delnode"></svg>
+  </a>
+  <a href="#" id="openthenode">
+    <svg style="width: 50px; margin-left: 30px; margin-top: 4px; height: 50px;" class="opennode"></svg>
+  </a>
+  <a href="#">
+    <svg style="width: 50px; margin-left: 30px; margin-top: 4px; height: 50px;" class="resetnode"></svg>
+  </a>
+  <a href="#">
+    <svg style="width: 50px; margin-left: 30px; margin-top: 4px; height: 50px;" class="settingsofnode"></svg>
+  </a>
+  <a href="#">
+    <svg style="width: 25px; margin-left: 30px; margin-top: 4px; height: 25px;" class="redonode"></svg>
+  </a>
+
+  <div class="row" style="margin-top: 5px; margin-left: 65px; display: flex; width: 645px;">
+    <h2 class="col">Undo</h2>
+    <h2 class="col" style="padding-left: 2px;">New</h2>
+    <h2 class="col" style="padding-left: 15px;">Edit</h2>
+    <h2 class="col">Delete</h2>
+    <h2 class="col">Open</h2>
+    <h2 class="col">Reset</h2>
+    <h2 class="col">Settings</h2>
+    <h2 class="col">Redo</h2>
+  </div>
+
+</div>
+
+<div class="backto" style="width: 60px; height: 60px; background-color: #ffffff00; position: absolute; margin-left: 1290px; margin-top: 40px;">
+  <a href="/Bundleview/<%= bundleid %>">
+    <svg style="width: 40px; height: 40px;" class="backtodashfromnodes"></svg>
+  </a>
+</div>
+<!-- Add new node -->
+
+
+
+
+
+<!-- form for making a new node project, this will make a new entry in the notes in mongo -->
+<div class="row" id="addform" style="display: none; position: absolute; top: 14%; right: 35.4%; bottom: 50%; width: 595px;">
+  <div class="card" style="box-shadow: rgba(0, 0, 0, 0.2) -1px 7px 8px 0px, rgb(0 0 0 / 19%) 0px 9px 20px 0px;">
+    <div class="card-body">
+
+
+      <h2 style="font-size: 18px; font-weight: bold; font-family: sans-serif; color: #040404;">Make New Project / Node</h2>
+      <hr>
+
+
+      <form id="newprojectform2" action="/dash/nodeprojectfromeditor/<%= bundleid %>" method="POST">
+      
+          <div class="row mb-3">
+            <label for="inputEmail3" style="text-align: left;" class="col-sm-2 col-form-label">Title</label>
+            <br>
+            <div class="col-sm-10">
+              <input class="form-control" required placeholder="Title of your project" id="title" name="title">
+            </div>
+          </div>
+      
+          <div class="row mb-3">
+            <label for="inputPassword3" style="width: 100px; text-align: left;" class="col-sm-2 col-form-label">Description</label>
+            <div class="edscripin col-sm-10" style="overflow: hidden;">
+              <textarea style="height: 100%; width: 100%; text-align: start;" class="form-control"
+                placeholder="Description of your project" required id="body" name="body"></textarea>
+            </div>
+            <div style="margin-top: 0px;" class="form-text" id="basic-addon4">Define what you want to design in
+              as much detail as you
+              can.
+            </div>
+          </div>
+      
+      
+          <!-- STATUS ----------------------------------------------- -->
+          <textarea type="text" class="form-control" id="finish" name="finish" style="display: none;">OG</textarea>
+          <!-- STATUS ----------------------------------------------- -->
+      
+      
+          <!-- Bundle ID ----------------------------------------------- -->
+          <textarea type="text" class="form-control" id="bundleid" name="bundleid"
+            style="display: none;"><%= bundleid %></textarea>
+          <!-- Bundle ID ----------------------------------------------- -->
+      
+      
+      
+          <!-- SETTING TAG ----------------------------------------------- -->
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Type</label>
+            <div class="col-sm-10">
+      
+              <select class="form-select form-select-sm" id="tag" name="tag" aria-label=".form-select-sm example">
+                <option value="part" selected>New Part</option>
+                <option value="Assembly">New Assembly</option>
+      
+              </select>
+            </div>
+          </div>
+          <!-- SETTING TAG ----------------------------------------------- -->
+      
+      
+          <fieldset class="row mb-3" style="text-align: left;">
+            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  I have intermidiate knowladge
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  I am a prodessional
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                <label class="form-check-label" for="gridRadios3">
+                  I am non-tech person (Premium)
+                </label>
+              </div>
+            </div>
+          </fieldset>
+      
+          <div class="row mb-3">
+            <div class="col-sm-10 offset-sm-2" style="text-align: left;">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  Optimize exiting CAD model
+                </label>
+              </div>
+            </div>
+          </div>
+      
+      </form>
+      <button id="newnodeprojectbtn" class="btn btn-primary">Create</button>
+
+    </div>
+  </div>
+</div>
+<!-- form for making a new node project, this will make a new entry in the notes in mongo -->
+
+<!-- getting data of the nodes from the DB -->
+<div style="display: none;" id="numberofnodes" class="numberofnodes"><%= Nodes.length %></div>
+
+<% for (let q = 0; q < Nodes.length; q++) {%>
+  <div style="display: none;" id="node<%= q %>_title" class="nodesall"><%= Nodes[q].title %></div>
+  <div style="display: none;" id="node<%= q %>_description" class="nodesall"><%= Nodes[q].body %></div>
+  <div style="display: none;" id="node<%= q %>_id" class="nodesall"><%= Nodes[q]._id %></div>
+<% } %>
+
+<div style="display: none;" id="allnodeposition" class="nodesall"><%= Thisbundle.Allnodes %></div>
+<div style="display: none;" id="wiresconnected" class="wiresconnected"><%= Thisbundle.Allwire %></div>
+<!-- getting data of the nodes from the DB -->
+
+<script>
+  //the dialog box that pops up when page is exites, these variables are to block them when making new project
+  const displaydia = [true];
+</script>
+
+<!-- submits the new node project form jsut above and updates bundle json -->
+<script>
+
+
+  //mnakes a new project and also updates the bundle entry in the db
+  function newprojectmaker() {
+  
+    displaydia.push(false);
+
+    //updates the map of node positions to include a fixed position for the new node or it wont render as the position of the nodes are to be pulled from the json which is in the bundel entry in db
+    newprojectmade();
+
+    document.getElementById('updatebundleshit').action = '/Bundle_Editor/<%= bundleid %>?_method=PUT';
+
+    //Submites the position of the nodes form to the db
+    setTimeout(function() {
+        console.log("Updating the Node Position Map of the bundle and push JSON");
+        document.getElementById('updatebundleshit').submit();
+
+        //submites the form fot making a new project file
+        setTimeout(function() {
+          console.log("Making a new project file");
+          document.getElementById('newprojectform2').submit();
+          document.getElementById('newprojectform2').action = '/Bundle_Editor2/<%= bundleid %>?_method=PUT';
+          
+          //when this is true, the pop will show when user try to go to other pages
+          displaydia.push(true);
+
+        }, 2000);
+
+    }, 1000);
+
+  }
+
+  //adding event listner
+  document.getElementById('newnodeprojectbtn').addEventListener('click', function(event){
+    newprojectmaker();
+  })
+
+</script>
+
+
+
+
+
+
+<!-- EDIT FORM =========================================== -->
+<div class="row" id="editform" style="display: none; position: absolute; top: 14%; right: 28%; bottom: 50%; width: 595px;">
+  <div class="card" style="box-shadow: rgba(0, 0, 0, 0.2) -1px 7px 8px 0px, rgb(0 0 0 / 19%) 0px 9px 20px 0px;">
+    <div class="card-body">
+
+      <h2 id="headingofeditform" style="font-size: 18px; font-weight: bold; font-family: sans-serif; color: #040404;"></h2>
+      <hr>
+
+      <form action="/dash/nodeprojectfromeditor/<%= bundleid %>" method="POST">
+      
+          <div class="row mb-3">
+            <label for="inputEmail3" style="text-align: left;" class="col-sm-2 col-form-label">Title</label>
+            <br>
+            <div class="col-sm-10">
+              <input class="form-control" required placeholder="Title of your project" id="title" name="title">
+            </div>
+          </div>
+      
+          <div class="row mb-3">
+            <label for="inputPassword3" style="width: 100px; text-align: left;" class="col-sm-2 col-form-label">Description</label>
+            <div class="edscripin col-sm-10" style="overflow: hidden;">
+              <textarea style="height: 100%; width: 100%; text-align: start;" class="form-control"
+                placeholder="Description of your project" required id="body" name="body"></textarea>
+            </div>
+            <div style="margin-top: 0px;" class="form-text" id="basic-addon4">Define what you want to design in
+              as much detail as you
+              can.
+            </div>
+          </div>
+      
+      
+          <!-- STATUS ----------------------------------------------- -->
+          <textarea type="text" class="form-control" id="finish" name="finish" style="display: none;">OG</textarea>
+          <!-- STATUS ----------------------------------------------- -->
+      
+      
+          <!-- Bundle ID ----------------------------------------------- -->
+          <textarea type="text" class="form-control" id="bundleid" name="bundleid"
+            style="display: none;"><%= bundleid %></textarea>
+          <!-- Bundle ID ----------------------------------------------- -->
+      
+      
+      
+          <!-- SETTING TAG ----------------------------------------------- -->
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Type</label>
+            <div class="col-sm-10">
+      
+              <select class="form-select form-select-sm" id="tag" name="tag" aria-label=".form-select-sm example">
+                <option value="part" selected>New Part</option>
+                <option value="Assembly">New Assembly</option>
+      
+              </select>
+            </div>
+          </div>
+          <!-- SETTING TAG ----------------------------------------------- -->
+      
+      
+          <fieldset class="row mb-3" style="text-align: left;">
+            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  I have intermidiate knowladge
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  I am a prodessional
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                <label class="form-check-label" for="gridRadios3">
+                  I am non-tech person (Premium)
+                </label>
+              </div>
+            </div>
+          </fieldset>
+      
+          <div class="row mb-3">
+            <div class="col-sm-10 offset-sm-2" style="text-align: left;">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  Optimize exiting CAD model
+                </label>
+              </div>
+            </div>
+          </div>
+      
+          <button type="submit" class="btn btn-primary">Create</button>
+      
+      </form>
+      
+
+    </div>
+  </div>
+</div>
+<!-- EDIT FORM =========================================== -->
+
+
+
+
+
+
+
+<form action="" method="POST" id="deletefmb">
+  <button class="btn btn-danger delbutton" id="delproject"
+      style="display: none;" type="submit"></button>
+</form>
+
+<!-- toolbar functionalities and Logic to add nodes in the canvas ==================== -->
+<script>
+
+  //number of nodes
+  const numofnodes = document.getElementById('numberofnodes').innerHTML;
+
+
+
+
+  //getting position of the nodes from the db ======================
+  const positionofnodes = document.getElementById('allnodeposition').innerHTML;
+
+  //getting position of the nodes from the db ======================
+  const connectedwires = document.getElementById('wiresconnected').innerHTML;
+
+  //converts string to object, for position of nodes
+  function convertStringToObject(inputString) {
+
+    const keyValuePattern = /(\w+)\s*:\s*'([^']+)'/g;
+    const resultObject = {};
+
+    let match;
+    while ((match = keyValuePattern.exec(inputString)) !== null) {
+        const key = match[1];
+        const value = match[2];
+        resultObject[key] = value;
+    }
+
+    return resultObject;
+
+  }
+  const positionofallnodes = convertStringToObject(positionofnodes);
+
+  //converting from string to json
+  const conwiresobject = convertStringToObject(connectedwires);
+
+  //to convert the key of node position into an array ==============
+  function convertStringToArray(inputString) {
+
+    if(inputString){
+    const numbers = inputString.split(',').map(str => parseFloat(str));
+    return numbers;
+    }
+
+  }
+  //to convert the key of node position into an array ==============
+
+
+
+
+
+  //to add node that already exist, using the JSON in DB ===================
+  function addnewnode() {
+
+    for (let n = 0; n < numofnodes; n++) {
+
+
+      //Prep ================================================================
+      //getting title and description of the node/project being printed
+      const title = document.getElementById('node'+n+'_title').innerHTML;
+      const description = document.getElementById('node'+n+'_description').innerHTML;
+      const idofproject = document.getElementById('node'+n+'_id').innerHTML;
+      //Prep ================================================================
+
+
+
+      //maping the project _id with element id of the rendered nodes ===========
+        const numplusone = n+1;
+        const idofthenode = 'node'+numplusone;
+
+        nodeandidmap[idofthenode] = idofproject; //adding key and value to the map object
+      //maping the project _id with element id of the rendered nodes ===========
+
+
+
+
+      // THIS IS WHERE THE NODES ARE CREATED +++++++++++++++++++++++++++++++
+      // Node - Step 1
+      var node = new XG5.GUINode({
+        name: title
+      });
+
+
+      node.addInput('All data');
+
+
+      //getting the saved position of the nodes from prev seesion
+      const thisnodeposition = positionofallnodes['node'+(n+1)];
+      const positionarrayofthisnode = convertStringToArray(thisnodeposition);
+
+
+      //checks if the json length is same as num of projects
+      if(typeof thisnodeposition !== 'undefined'){
+        
+        // Move to initial positions - Step 3
+        node.moveTo({
+          x: positionarrayofthisnode[1],
+          y: positionarrayofthisnode[0]
+        });
+
+      }
+      
+
+
+      //putting the node formate of nodes in a array for making paths laters using DB
+      nodesallofrem.push(node);
+
+      
+
+      // Add to DOM - Step 4
+      node.initUI();
+
+      //THIS IS WHERE THE NODES ARE CREATED +++++++++++++++++++++++++++++++
+
+
+    }
+    //to see the project id map with element id of rendered nodes -
+    //console.log(nodeandidmap);
+
+
+    if(numofnodes>0){
+    //Fixing ================================================================
+    //to fix dragging the node 
+    function fixdragging() {
+
+      // Function to handle the mousedown event
+      function handleMouseDown() {
+        isMouseDown = true;
+      }
+
+      // Function to handle the mouseup event
+      function handleMouseUp() {
+        isMouseDown = false;
+      }
+
+      //adding event listner to all nodes to detect if mouse is down
+      const myDiv = document.getElementById('node' + jij);
+      myDiv.addEventListener("mousedown", handleMouseDown);
+      myDiv.addEventListener("mouseup", handleMouseUp);
+
+    }
+    fixdragging();
+    //to fix dragging the node 
+
+    //click to select 
+    function addGlowingBorderToNodes() {
+
+
+    const nodesforclick = document.getElementById('node' + jij);;
+
+    const node = nodesforclick;
+    node.addEventListener('click', () => {
+
+
+    //deletes the green border from old selected nodes
+    const nodesforclickold = document.getElementsByClassName('x-node');
+    for (var rq = 0; rq < nodesforclickold.length; rq++) {
+      nodesforclickold[rq].style.border = '';
+      nodesforclickold[rq].style.borderStyle = '';
+      nodesforclickold[rq].style.borderRadius = '';
+    }
+
+
+    // Remove glowing border from all nodes
+    for (var rq = 0; rq < nodesforclick.length; rq++) {
+      nodesforclick[rq].style.border = '';
+      nodesforclick[rq].style.borderStyle = '';
+      nodesforclick[rq].style.borderRadius = '';
+    }
+
+    // Add glowing border to the clicked node// You can change the color and size as per your preference
+    node.style.border = '#3edf2b';
+    node.style.borderStyle = 'solid';
+    node.style.borderRadius = '14px';
+
+    //storeing div of the node selected
+    selectednode.length = 0;
+    selectednode.push(node);
+
+    });
+    }
+    // Call the function to add event listeners
+    setTimeout(addGlowingBorderToNodes, 2000);
+    //click to select 
+    //Fixing ================================================================
+    }
+
+    //console.log(nodesallofrem); this is the node formate of all nodes, used for making wires
+
+
+    const length_of_wirejson = Object.keys(conwiresobject).length;
+    printwiress(conwiresobject, length_of_wirejson);
+
+
+  }
+  addnewnode()
+
+
+
+
+
+
+
+  //prints the add new node popup ==========================
+  function printpopup() {
+
+    //show the make new project card =====================
+    const theform = document.getElementById('addform').style.display;
+    if (theform == 'none') { //if the form is hidden it displays it
+      document.getElementById('editform').style.display = 'none';
+      document.getElementById('addform').style.display = 'block';
+
+    } else { // if the form is not hidden it displays
+      document.getElementById('addform').style.display = 'none';
+    }
+
+  }
+  const addnewbtn = document.getElementById('addnewnode');
+  addnewbtn.addEventListener('click', function(event) {
+    printpopup();
+  });
+
+
+  //to delete using the btn in toolbar ====================
+  function removenode() {
+
+    const idofselectednode = selectednode[0].id;
+    const idofwire = idofselectednode + 'wire'; // id of wire is set in a way that it has 'wire' in it after node's id, to make it easy to catch
+    const thewires = document.querySelectorAll(`path#${idofwire}`);
+
+    //deleting all the wires coming out of a node
+    thewires.forEach(element => {
+      element.remove();
+    }); 
+
+    selectednode[0].remove();
+
+
+    const idoftheproject = nodeandidmap[idofselectednode];
+    console.log(idoftheproject);
+    const redirectbundleid = document.getElementById('bundleidforredirect').innerHTML;
+    document.getElementById("deletefmb").action = "/dash/Item-delete-fromnodeeditor/" + idoftheproject + "/" + redirectbundleid + "?_method=DELETE";
+    document.getElementById('delproject').click();
+
+  }
+  const deletenode = document.getElementById('delnode');
+  deletenode.addEventListener('click', function(event) {
+    removenode();
+  });
+
+
+  //prints the add new node popup ==========================
+  function printpopupedit() {
+
+    //show the make new project card =====================
+      const theform = document.getElementById('editform').style.display;
+      if (theform == 'none') { //if the form is hidden it displays it
+        document.getElementById('addform').style.display = 'none';
+        document.getElementById('editform').style.display = 'block';
+      } else { // if the form is not hidden it displays
+        document.getElementById('editform').style.display = 'none';
+      }
+
+  }
+  const editbtn = document.getElementById('editbtni');
+  editbtn.addEventListener('click', function(event) {
+    printpopupedit();
+  });
+
+</script>
+<!-- toolbar functionalities and Logic to add nodes in the canvas ==================== -->
+
+
+
+
+
+
+<!-- Save form ================================ -->
+<style>
+  .sticky-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<form id="updatebundleshit" action="/Bundle_Editor2/<%= bundleid %>?_method=PUT" method="POST">
+      
+  <!-- Title ----------------------------------------------- -->
+  <input type="text" class="form-control border-0"
+  style="display: none;" id="titleob" name="titleob"
+  value="<%= Thisbundle.titleob%>">
+  <!-- Title ----------------------------------------------- -->
+
+  <!-- Description ----------------------------------------------- -->
+  <textarea type="text" class="form-control" id="descriptionob" name="descriptionob"
+    style="display: none;"><%= Thisbundle.descriptionob%></textarea>
+  <!-- Description ----------------------------------------------- -->
+
+  <!-- Nodes ----------------------------------------------- -->
+  <textarea type="object" class="form-control" id="Allnodes" name="Allnodes"
+    style="display: none;"></textarea>
+  <!-- Nodes ----------------------------------------------- -->
+
+  <!-- Wires ----------------------------------------------- -->
+  <textarea type="object" class="form-control" id="Allwire" name="Allwire"
+    style="display: none;"></textarea>
+  <!-- Wires ----------------------------------------------- -->
+  
+  <button onclick="updatepositionfordb()" type="submit" id="savechanges" class="sticky-button btn btn-primary">Save</button>
+
+</form>
+
+
+<!-- Whne the user is leaving the page, this stores the position of the nodes -->
+<script>
+
+  //this creats a json for wires for the db
+  function makewirejsonfromjsonofwires() {
+    
+    const jsonString = JSON.stringify(thewirejson, null, 2);
+
+    const wiremap = {};
+    const keys = Object.keys(thewirejson);
+
+    const keysfromdb = Object.keys(conwiresobject);
+
+
+    if(keys.length > 0){
+      for (let q = 0; q < keys.length; q++) {
+
+        const currentwire = keys[q];
+        const insidethewirejson = thewirejson[currentwire]
+
+        //input value will be in the outer and output value will be in the inner of the func that prints wires.
+        wiremap[currentwire] = [insidethewirejson['input'], insidethewirejson['output']];
+
+        const wiresjson = Object.entries(wiremap)
+        .map(([key, value]) => `${key}: '${value}'`)
+        .join(', ');
+        //wiresjson is the const where the actuall json for printing the wire is stored and we will store this in the db.
+    
+        if((q+1) == keys.length){
+          return wiresjson;
+        }
+
+      }
+    } else {
+
+      for (let q = 0; q < keysfromdb.length; q++) {
+
+      const currentwire = keys[q];
+      const insidethewirejson = conwiresobject[currentwire]
+
+      //input value will be in the outer and output value will be in the inner of the func that prints wires.
+      wiremap[currentwire] = [insidethewirejson['input'], insidethewirejson['output']];
+
+      const wiresjson = Object.entries(wiremap)
+      .map(([key, value]) => `${key}: '${value}'`)
+      .join(', ');
+      //wiresjson is the const where the actuall json for printing the wire is stored and we will store this in the db.
+
+      if((q+1) == keys.length){
+        return wiresjson;
+      }
+
+      }
+
+    }
+
+
+
+  }
+  //this creats a json for wires for the db
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //when node 2 is disconnected, it is erasing the postions of node 2 and node 3, check whatsup there.
+  //when wire is not updated but the position is, it fucks up the position too, same shit happnening
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //sets the position map in the update form
+  const positionmap = {};
+  function updatepositionfordb() {
+
+    //prevents the popup that says you might have unsaved changes
+    displaydia.push(false);
+
+    const numofnodes = document.getElementById('numberofnodes').innerHTML;
+    for (let q = 0; q < numofnodes; q++) {
+
+      const num = q + 1;
+      const idofnode = 'node' + num;
+
+      //getting latest location of the nodes
+      const ntop = document.getElementById(idofnode).style.top;
+      const nleft = document.getElementById(idofnode).style.left;
+
+      //putting loaction of the nodes in the position map
+      positionmap[idofnode] = [ntop, nleft];
+
+
+      //putting the map that has the location of the nodes into the update form
+      const mappp = Object.entries(positionmap)
+        .map(([key, value]) => `${key}: '${value}'`)
+        .join(', ');
+      document.getElementById('Allnodes').innerHTML = mappp;
+      //putting the map that has the location of the nodes into the update form
+
+      
+
+      //getting the wire json and storing in a new const
+      const thewirejsonfinal = makewirejsonfromjsonofwires();
+
+
+      // pushing the wire JSON in the form for submitting to JSON
+      document.getElementById('Allwire').innerHTML = thewirejsonfinal;
+
+    }
+    
+  }
+  //sets the position map in the update form
+
+
+
+  //called when new node project is made
+  function newprojectmade() {
+
+    var nn = 0;
+    const numofnodes = document.getElementById('numberofnodes').innerHTML;
+    for (let q = 0; q < numofnodes; q++) {
+
+      nn = nn+1;
+
+      const num = q + 1;
+      const idofnode = 'node' + num;
+
+      //getting latest location of the nodes
+      const ntop = document.getElementById(idofnode).style.top;
+      const nleft = document.getElementById(idofnode).style.left;
+
+      //putting loaction of the nodes in the position map
+      positionmap[idofnode] = [ntop, nleft];
+
+    }
+
+
+    //adding fixed position for the new node ==============
+
+    const idofnode = 'node' + (nn+1);
+
+    //getting latest location of the nodes
+    const ntop = 100;
+    const nleft = 960;
+
+    //putting loaction of the nodes in the position map
+    positionmap[idofnode] = [ntop, nleft];
+
+    //adding fixed position for the new node ==============
+
+
+    //putting the map that has the location of the nodes into the update form
+    const mappp = Object.entries(positionmap)
+    .map(([key, value]) => `${key}: '${value}'`)
+    .join(', ');
+
+    document.getElementById('Allnodes').innerHTML = mappp;
+    //putting the map that has the location of the nodes into the update form
+    
+  }
+  //called when new node project is made
+
+
+
+
+  // Function to handle beforeunload event
+  function confirmBeforeUnload(event) {
+
+    if(displaydia[displaydia.length - 1]){
+      displaydia.length=0;
+      displaydia.push(true);
+
+      if(checkingifchanged == 'changed'){
+
+        const confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
+        event.returnValue = confirmationMessage;
+
+      }
+    }
+
+  }
+  // Attach the event listener for beforeunload
+  window.addEventListener('beforeunload', confirmBeforeUnload);
+
+
+  
+  // Attach the event listener for clicking on links
+  document.addEventListener('click', function (event) {
+    const target = event.target;
+    
+    if(displaydia[displaydia.length - 1]){
+      displaydia.length=0;
+      displaydia.push(true);
+
+    // Check if the clicked element is a link (anchor tag)
+    if (target.tagName === 'A') {
+      // Check if the link is external (i.e., navigating to a different domain)
+      const isExternalLink = target.hostname !== window.location.hostname;
+
+      // If it's an external link, don't show the confirmation
+      if (isExternalLink) {
+        return;
+      }
+
+
+      if(checkingifchanged == 'changed'){
+        // If it's an internal link, show the confirmation
+        if (!confirm('You have unsaved changes. Are you sure you want to leave?')) {
+          event.preventDefault();
+        }
+      }
+
+    }
+
+    }
+
+  });
+  
+
+</script>
+<!-- Save form ================================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- work on the edit form, and also on the add new form to add the add input fields -->
+<!-- when del btn is clicked, make a popup to confirm the delete action -->
+<!-- them the settings popup -->
+<!-- then work on storing thr position of the nodes -->
+<!-- add a new field in the design room in the promt where the inherited data will apear -->
+
+
+<!-- make same form submit form for when new project is made from the view bundle page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3520 @@
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+
+<!-- form for udating bundle -->
+<form style="display: none;" id="updatebundleshit" method="POST">
+      
+  <!-- Title ----------------------------------------------- -->
+  <textarea type="text" class="form-control" id="titleob" name="titleob"
+    style="display: none;"></textarea>
+  <!-- Title ----------------------------------------------- -->
+
+  <!-- Description ----------------------------------------------- -->
+  <textarea type="text" class="form-control" id="descriptionob" name="descriptionob"
+    style="display: none;"></textarea>
+  <!-- Description ----------------------------------------------- -->
+
+  <!-- Nodes ----------------------------------------------- -->
+  <textarea type="object" class="form-control" id="Allnodes" name="Allnodes"
+    style="display: none;"></textarea>
+  <!-- Nodes ----------------------------------------------- -->
+
+  <!-- emogi ----------------------------------------------- -->
+  <textarea type="object" class="form-control" id="emogi" name="emogi"
+    style="display: none;"></textarea>
+  <!-- emogi ----------------------------------------------- -->
+
+  <!-- Allwire ----------------------------------------------- -->
+  <textarea type="object" class="form-control" id="Allwire" name="Allwire"
+    style="display: none;"></textarea>
+  <!-- Allwire ----------------------------------------------- -->
+
+</form>
+<!-- when user likes a bundle using button -->
+
+<!-- logic for liking a bundle -->
+<script>
+
+  //when a bundle is to be liked
+  function likedthisbundle(desc, title, allnodes, emogi, Allwire, id, index) {
+    
+    //not liked btn
+    if (document.getElementById('notlikedbtndb'+index)) {
+      document.getElementById('notlikedbtndb'+index).style.display = 'none';
+    }
+    if (document.getElementById('notlikedbtnh'+index)) {
+      document.getElementById('notlikedbtnh'+index).style.display = 'none';
+    }
+
+    //like btn
+    if (document.getElementById('likedbtnh'+index)) {
+      document.getElementById('likedbtnh'+index).style.display = 'block';
+    }
+    if (document.getElementById('likedbtndb'+index)) {
+      document.getElementById('likedbtndb'+index).style.display = 'block';
+    }
+
+    
+
+    document.getElementById('titleob').innerHTML = title;
+    document.getElementById('descriptionob').innerHTML = desc;
+    document.getElementById('Allnodes').innerHTML = allnodes;
+    document.getElementById('Allwire').innerHTML = Allwire;
+    document.getElementById('emogi').innerHTML = emogi;
+
+    document.getElementById('updatebundleshit').action = "/Bundle_Editorfromhome/"+id+"?_method=PUT";
+    document.getElementById('updatebundleshit').submit();
+
+    setTimeout(function() {
+      window.stop();
+    }, 2000);
+  }
+
+  //when a bundle is to be unliked
+  function unlikedthisbundle(desc, title, allnodes, emogi, Allwire, id, index) {
+    
+    //not liked btn
+    if (document.getElementById('notlikedbtndb'+index)) {
+      document.getElementById('notlikedbtndb'+index).style.display = 'block';
+    }
+    if (document.getElementById('notlikedbtnh'+index)) {
+      document.getElementById('notlikedbtnh'+index).style.display = 'block';
+    }
+
+    //like btn
+    if (document.getElementById('likedbtnh'+index)) {
+      document.getElementById('likedbtnh'+index).style.display = 'none';
+    }
+    if (document.getElementById('likedbtndb'+index)) {
+      document.getElementById('likedbtndb'+index).style.display = 'none';
+    }
+
+    document.getElementById('titleob').innerHTML = title;
+    document.getElementById('descriptionob').innerHTML = desc;
+    document.getElementById('Allnodes').innerHTML = allnodes;
+    document.getElementById('Allwire').innerHTML = Allwire;
+    document.getElementById('emogi').innerHTML = emogi;
+
+    document.getElementById('updatebundleshit').action = "/Bundle_Editorfromhome/"+id+"?_method=PUT";
+    document.getElementById('updatebundleshit').submit();
+
+    setTimeout(function() {
+      window.stop();
+    }, 2000);
+
+  }
+
+
+</script>
+<!-- logic for liking a bundle -->
+
+
+
+<body>
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="/dash">
+          <i class="dashnew bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="pronew bi-menu-button-wide"></i><span>Projects</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+
+        <div id="components-nav" class="collapse show">
+          <ul class="nav-content" data-bs-parent="#sidebar-nav">
+            <li style="margin-top: -20px;">
+              <a href="/dash">
+                <i style="scale: 0.8;" class="respro bi-circle"></i><span style="font-size: 12px; font-weight: lighter;">Recent
+                  Projects</span>
+              </a>
+            </li>
+            <li style="margin-top: -20px;">
+              <a href="/dash_newproject">
+                <i style="scale: 0.8;" class="newnew bi-circle"></i><span style="font-size: 12px; font-weight: lighter;">Make
+                  New Project</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </li><!-- End Rencents Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bundnew bi-journal-text"></i><span>Bundle Projects</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+
+        <div id="forms-nav" class="collapse show">
+          <ul class="nav-content" data-bs-parent="#sidebar-nav">
+            <li style="margin-top: -20px;">
+              <a href="/dash_bundlewithoutAI">
+                <i style="scale: 0.8;" class="newbundnew bi-circle"></i><span style="font-size: 12px; font-weight: lighter;">New
+                  Bundle</span>
+              </a>
+            </li>
+            <li style="margin-top: -20px;">
+              <a href="/dash">
+                <i style="scale: 0.8;" class="resbundnew bi-circle"></i><span
+                  style="font-size: 12px; font-weight: lighter;">Recent Bundles</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+
+      </li><!-- End Bundle Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="marknew bi-bar-chart"></i><span>Market</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+
+        <div id="tables-nav" class="collapse show">
+          <ul class="nav-content" data-bs-parent="#sidebar-nav">
+            <li style="margin-top: -20px;">
+              <a href="/dash_market">
+                <i style="scale: 0.8;" class="dashnew bi-circle"></i><span
+                  style="font-size: 12px; font-weight: lighter;">Dashboard</span>
+              </a>
+            </li>
+            <li style="margin-top: -20px;">
+              <a href="#">
+                <i style="scale: 0.8;" class="buynewnew bi-circle"></i><span style="font-size: 12px; font-weight: lighter;">Buy
+                  and sell</span>
+              </a>
+            </li>
+            <li style="margin-top: -20px;">
+              <a href="#">
+                <i style="scale: 0.8;" class="listingnew bi-circle"></i><span
+                  style="font-size: 12px; font-weight: lighter;">Your Listings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </li><!-- End Market Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="manunew bi-bar-chart"></i><span>Manufacturing</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        
+        <div id="charts-nav" class="collapse show">
+          <ul class="nav-content" data-bs-parent="#sidebar-nav">
+            <li style="margin-top: -20px;">
+              <a href="/dash_manufact">
+                <i style="scale: 0.8;" class="dashnew bi-circle"></i><span
+                  style="font-size: 12px; font-weight: lighter;">Dashboard</span>
+              </a>
+            </li>
+            <li style="margin-top: -20px;">
+              <a href="#">
+                <i style="scale: 0.8;" class="partnernew bi-circle"></i><span
+                  style="font-size: 12px; font-weight: lighter;">Partner Listing</span>
+              </a>
+            </li>
+            <li style="margin-top: -20px;">
+              <a href="#">
+                <i style="scale: 0.8;" class="yournew bi-circle"></i><span style="font-size: 12px; font-weight: lighter;">Your
+                  Products</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </li><!-- End Manufacturing Nav -->
+
+      <hr>
+
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <strong>Settings</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end text-small shadow">
+          <li><a class="dropdown-item" href="#">Plans</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Preferences</a></li>
+        </ul>
+      </div>
+
+    </ul>
+
+  </aside>
+  <!-- End Sidebar-->
+
+
+
+  <!-- mini Sidebar -->
+  <div class="containerm" style="position: absolute; z-index: 5;">
+    <div class="sidebarm">
+    
+      <a class="row">
+        <button id="projButton" style="scale: 1;" class="projicoco bi-circle"></button>
+      </a>
+      <a class="row">
+        <button id="scrollButton" style="scale: 1;" class="salesicoco bi-circle"></button>
+      </a>
+      <a class="row">
+        <button id="manufButton" style="scale: 1;" class="manuficoco bi-circle"></button>
+      </a>
+      <a class="row">
+        <button id="teamsButton" style="scale: 1;" class="teamsicoco bi-circle"></button>
+      </a>
+    
+    </div>
+  </div>
+  <style>
+  
+    .containerm {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+  
+    .contentm {
+      flex: 1;
+      padding: 20px;
+    }
+  
+    .sidebarm {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background-color: #ffffff;
+      padding: 10px;
+      border: 1px solid #cccccc00;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <!-- mini Sidebar -->
+
+
+
+  <!-- #main / CARD INSIDE-->
+  <main id="main" class="main">
+
+    <section class="section dashboard">
+      <div class="row">
+    
+
+
+
+
+      
+        <!-- MAIN PAGE -->
+        <div class="scrolscape container-fluid container-fluid-custom pb-2 mb-5"
+          style="width: 100%; height: -webkit-fill-available; margin-bottom: 0px !important;">
+      
+      
+          <div class="row mb-4">
+            <div class="row mb-0 text-center"></div>
+      
+      
+      
+      
+      
+      
+      
+            <!-- CARDS INSIDE HERE ======================================= -->
+            <div class="container">
+      
+      
+      
+              <!-- Bundles -->
+              <!-- Heading of the section -->
+              <div class="row">
+                <div style="margin-top: 10px;"></div>
+      
+                <div class="resprotit col-md-2 themed-grid-col"
+                  style="display: contents; width: auto; margin-top: -14px; padding: 10px 0 10px 0; font-size: 18px; font-weight: 400; color: #012970; font-family: 'Poppins', sans-serif; padding: 0px;">
+                  Bundle Projects
+                </div>
+      
+                <div class="addnu col-md-3">
+                  <a href="/dash_bundlewithoutAI" class="addbut btn btn-primary"
+                    style="background: #f5f5dc00; border-color: transparent; color: #9ba2b3; display: flex; align-items: center; padding: 0px;">
+                    <svg class="addnewbunddash bi-journal-text"></svg>
+                    New Bundle
+                  </a>
+                </div>
+      
+              </div>
+              <!-- Heading of the section -->
+      
+              <div class="row">
+      
+                <!-- Bundle Section =============================================================== -->
+                <div id='bundlesection' style=" margin-bottom: 20px; height: 240px; width: 1160px; display: contents;">
+                  <ul>
+                    <% if (allbundles.length > 0){ for(var i=0; i<allbundles.length; i++){ %>
+      
+      
+                    <!-- Calculating the number of projects inside the bundle ======= -->
+                    <% var numofprosinsidebund = 0; %>
+                    <% for(var f=0; f<notes.length; f++){ %>
+                    <% if(notes[f].bundleid == allbundles[i]._id ) {%>
+      
+                    <% numofprosinsidebund = numofprosinsidebund + 1; %>
+      
+                    <% } %>
+                    <% } %>
+                    <!-- Calculating the number of projects inside the bundle ======= -->
+      
+      
+      
+                    <!-- The Card -->
+                    <div class="cardpros"
+                      style="margin-right: 10px; margin-left: 10px; margin-top: 20px; width: 200px; --bs-card-bg: #fff0 !important; --background:#5D9CEC; --text:white; --bs-card-bg: var(--bs-body-bg);">
+      
+                      <div class="multi-button">
+      
+                        <!-- liked a budnle -->
+                        <button class="fas fa-heart" data-bs-toggle="tooltip" data-bs-placement="right" title="Favirot" onclick="likedthisbundle(desc='<%= allbundles[i].descriptionob %>', title='<%= allbundles[i].titleob %>', allnodes='<%= allbundles[i].Allnodes %>', emogi='heart', Allwire='<%= allbundles[i].Allwire %>', id ='<%= allbundles[i]._id %>', index='<%= i %>')">
+                          <svg class="fas_fav bi-journal-text"></svg></button>
+      
+                        <!-- Edit -->
+                        <button class="fas fa-comment" data-bs-toggle="tooltip" data-bs-placement="right" title="Edit"><svg
+                          class="fas_edit bi-journal-text"></svg></button>
+      
+                        <button class="fas fa-share-alt" data-bs-toggle="tooltip" data-bs-placement="right" title="Share"><svg
+                            class="fas_share bi-journal-text"></svg></button>
+      
+                        <!-- Delete -->
+                        <button class="fas_trash fa-trash" data-bs-toggle="tooltip" data-bs-placement="right"
+                          title="Delete"><svg data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            onclick="delbundle (na='<%= allbundles[i].titleob %>', dele='<%= allbundles[i]._id %>')"
+                            class="fas_trash bi-journal-text"></svg></button>
+      
+                      </div>
+      
+                      <div class="container" style="padding: 0px; box-shadow: 0px 0px 1rem 0.1rem rgb(0 0 0 / 17%);">
+                        <div class="card initialc shadow-sm bg-body">
+                        
+                        
+                        
+                          <!-- Liked Button hidden -->
+                          <a id="likedbtnh<%= i%>" class="row" style="position: absolute; display: none;">
+                            <button id="likebtnforbundle<%= i%>"
+                              onclick="unlikedthisbundle(desc='<%= allbundles[i].descriptionob %>', title='<%= allbundles[i].titleob %>', allnodes='<%= allbundles[i].Allnodes %>', emogi='', Allwire='<%= allbundles[i].Allwire %>', id ='<%= allbundles[i]._id %>', index='<%= i %>')"
+                              style="scale: 1.2; margin-left: 175px; margin-top: 5px; background-image: url(../img/carmeny/liked.png);"
+                              class="likebtn bi-circle"></button>
+                          </a>
+                          <!-- Liked Button hidden -->
+                        
+                          <!-- not Like Button hidden -->
+                          <a id="notlikedbtnh<%= i%>" class="row" style="position: absolute; display: none;">
+                            <button id="likebtnforbundle<%= i%>"
+                              onclick="likedthisbundle(desc='<%= allbundles[i].descriptionob %>', title='<%= allbundles[i].titleob %>', allnodes='<%= allbundles[i].Allnodes %>', emogi='heart', Allwire='<%= allbundles[i].Allwire %>', id ='<%= allbundles[i]._id %>', index='<%= i %>')"
+                              style="scale: 1.2; margin-left: 175px; margin-top: 5px; background-image: url(../img/carmeny/like.png);"
+                              class="likebtn bi-circle"></button>
+                          </a>
+                          <!-- not Like Button hidden -->
+                        
+                        
+                        
+                          <% if( allbundles[i].emogi == 'heart' ) {%> <!-- checking if the bundle is liked or na -->
+                          <!-- Liked Button -->
+                          <a id="likedbtndb<%= i%>" class="row" style="position: absolute; display: block;">
+                            <button id="likebtnforbundle<%= i%>"
+                              onclick="unlikedthisbundle(desc='<%= allbundles[i].descriptionob %>', title='<%= allbundles[i].titleob %>', allnodes='<%= allbundles[i].Allnodes %>', emogi='', Allwire='<%= allbundles[i].Allwire %>', id ='<%= allbundles[i]._id %>', index='<%= i %>')"
+                              style="scale: 1.2; margin-left: 175px; margin-top: 5px; background-image: url(../img/carmeny/liked.png);"
+                              class="likebtn bi-circle"></button>
+                          </a>
+                          <!-- Liked Button -->
+                          <% } else { %>
+                          <!-- not Like Button -->
+                          <a id="notlikedbtndb<%= i%>" class="row" style="position: absolute; display: block;">
+                            <button id="likebtnforbundle<%= i%>" onclick="likedthisbundle(desc='<%= allbundles[i].descriptionob %>', title='<%= allbundles[i].titleob %>', allnodes='<%= allbundles[i].Allnodes %>', emogi='heart', Allwire='<%= allbundles[i].Allwire %>', id ='<%= allbundles[i]._id %>', index='<%= i %>')" style="scale: 1.2; margin-left: 175px; margin-top: 5px; background-image: url(../img/carmeny/like.png);"
+                              class="likebtn bi-circle"></button>
+                          </a>
+                          <!-- not Like Button -->
+                          <% } %>
+                        
+                        
+                        
+                          <!-- Thubnail -->
+                          <img class="thubim2 bd-placeholder-img card-img-top shadow bg-body"
+                            style="width: 100%; height: 100%;" />
+                          <!-- Thubnail -->
+      
+                          <!-- Body -->
+                          <div class="card-body" style="padding-bottom: 10px;">
+      
+                            <!-- title and description -->
+                            <div class="titleshi initial">
+      
+                              <a href="/Bundleview/<%= allbundles[i]._id %>" style="text-decoration: none; color:black;">
+                                <p class="titleofcard card-text text-decoration-none" style="margin-top: 5px;">
+                                  <%= allbundles[i].titleob %></p>
+      
+                                <hr>
+      
+                                <p style="font-size: small;" class="card-text test-decoration-none">
+                                  <%= allbundles[i].descriptionob %></p>
+      
+                                <small class="timeof text-body-secondary">Nodes - <%= numofprosinsidebund %></small>
+      
+                              </a>
+      
+                            </div>
+                            <!-- title and description -->
+      
+                            <hr>
+      
+                            <!-- Buttons edit on card-->
+                            <div class="d-flex justify-content-between align-items-center" style="margin-top: -15px;">
+      
+                              <li>
+                                <a style="display: flex; flex-direction: row; cursor: pointer;" data-bs-toggle="modal"
+                                  data-bs-target="#Charset"
+                                  onclick="sese(s='<%= allbundles[i].titleob %>', d='<%= allbundles[i].descriptionob %>', time='<%= date %>', fn='<%= displayName %>', ln='<%= displayLast %>', id='<%= allbundles[i]._id %>', dele='<%= allbundles[i]._id %>' )">
+                                  <i class="bundleedit bi-circle" style="display: inline-table;"></i><span
+                                    style="display: contents; font-size: 12px; color: #313131;">Edit</span>
+                                </a>
+                              </li>
+      
+                              <li>
+                                <a style="display: flex; flex-direction: row;" href="/Bundle_Editor/<%= allbundles[i]._id %>">
+                                  <i class="bundleopen bi-circle" style="display: inline-table;"></i><span
+                                    style="display: contents; font-size: 12px; color: #313131;">Open Editor</span>
+                                </a>
+                              </li>
+      
+                            </div>
+                            <!-- Buttons edit on card-->
+      
+                          </div>
+                          <!-- Body -->
+      
+                        </div>
+                      </div>
+      
+                    </div>
+                    <!-- The Card -->
+                    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      
+      
+      
+      
+                    <script>
+                      function delbundle(na, dele) { //this deletes the bundle and all the bundle projects inside it.
+                        document.getElementById('titlenab').innerHTML = na;
+                        document.getElementById("deletefmb").action = "/dash/Bundle/" + dele + "?_method=DELETE";
+                      }
+                    </script>
+      
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+      
+                          <div style="height: 50px;" class="modal-header">
+      
+                            <h1 style="width: 70px;" class="modal-title fs-5" id="exampleModalLabel">
+                              Delete:
+                            </h1>
+      
+                            <p style="width: 400px; margin-top: 15px; font-weight: bold;" id="titlenab"></p>
+      
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+      
+                          </div>
+      
+                          <div class="modal-body">
+                            Are you sure you wanna delete this project?
+                          </div>
+      
+                          <div class="modal-footer">
+      
+                            <form action="" method="POST" id="deletefmb">
+                              <button class="btn btn-danger delbutton rounded-pill"
+                                style="justify-content: center; margin: auto;" type="submit">Delete</button>
+                            </form>
+      
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                            </button>
+      
+                          </div>
+      
+                        </div>
+                      </div>
+                    </div>
+      
+      
+      
+                    <%}} else { %>
+                  </ul>
+      
+                  <!-- Card for when no file is created by user -->
+                  <div class="modal-dialog">
+                    <div class="modal-content rounded-4 shadow"
+                      style="background-color: white; margin-top: 50px; margin-bottom: 55px; width: 600px; height: 390px;">
+                      <div class="col modal-body p-4">
+      
+                        <!-- main stuff -->
+                        <p class="row fw-normal mb-0 text-dark"
+                          style="font-family: monospace; justify-content: center; margin-top: 10px; text-align: center; font-size: 28px;">
+                          Nothing in here bruh :[
+                        </p>
+      
+                        <ul class=" row cent d-grid gap-3 my-4 list-unstyled small" style="justify-content: center;">
+      
+                          <li class="d-flex gap-4">
+                            <a class="marketlogo2 bi flex-shrink-0" style="margin-left: 88px;"></a>
+                            <a href="/dash_bundlewithoutAI" style="color: black; text-decoration: none;">
+                              <h5 class="mb-0" style="color: #550dfd;">Make new Bunlde
+                              </h5>
+                              Make a new bundle from scratch
+                            </a>
+                          </li>
+                          <li class="d-flex gap-4">
+                            <a class="marketlogo bi flex-shrink-0"></a>
+                            <a href="/dash_market" style="color: black; text-decoration: none;">
+                              <h5 class="mb-0" style="color: #550dfd;">Visit Marketplace
+                              </h5>
+                              Explore marketplace and find templates.
+                            </a>
+                          </li>
+      
+                          <li class="d-flex gap-4">
+                            <a class="marketlogo3 bi flex-shrink-0"></a>
+                            </svg>
+                            <a href="#" style="color: black; text-decoration: none;">
+                              <h5 class="mb-0" style="color: #550dfd;">Lean NUKE</h5>
+                              Learn what you can do on Nuke
+                            </a>`
+                          </li>
+      
+                        </ul>
+      
+      
+                        <div style="justify-content: center; ">
+                          <a href="/dash_bundlewithoutAI" style="margin-left: 30%; width: 205px;"
+                            class="row addbut btn btn-primary">Make new Bundle
+                          </a>
+                        </div>
+                        <!-- main stuff -->
+      
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Card for when no file is created by user -->
+      
+                  <% } %>
+      
+                </div>
+                <!-- Bundle Section ===============================================================  -->
+      
+              </div>
+      
+      
+      
+      
+              <!-- Parts -->
+              <div class="row">
+      
+                <!-- Heading of the section -->
+                <div style="margin-top: 40px;"></div>
+      
+                <div class="resprotit col-md-2 themed-grid-col"
+                  style="display: contents; width: auto; margin-top: -14px; padding: 10px 0 10px 0; font-size: 18px; font-weight: 500; color: #012970; font-family: 'Poppins', sans-serif; padding: 0px;">
+                  Parts Projects
+                </div>
+      
+                <div class="addnu col-md-3">
+                  <a href="/dash/view-Addnotes" class="addbut btn btn-primary"
+                    style="background: #f5f5dc00; border-color: transparent; color: #9ba2b3; display: flex; align-items: center; padding: 0px;">
+                    <svg class="addnewbunddash bi-journal-text"></svg>
+                    New Projects
+                  </a>
+                </div>
+                <!-- Heading of the section -->
+      
+                <!-- Parts Section =============================================================== -->
+                <div clas="resca" style="margin-bottom: 20px; margin-top: 5px;">
+      
+      
+                  <!-- CARDS RECENT -->
+                  <!-- here we are printing this html snipped inside the for loop, and used % % to insert the content -->
+                  <div class="container" style="margin-top: 10px;">
+                    <div class="row row-cols-md-4 g-3">
+      
+      
+      
+      
+      
+                      <!-- This is where we calculate the number of projects that are not part of a bundle === -->
+                      <% var bunpros = 0; %>
+                      <% for(var i=0; i<notes.length; i++){ %>
+      
+                      <% if(notes[i].bundleid == 'nun') {%>
+                      <% } else { %>
+      
+                      <% bunpros = bunpros + 1; %>
+      
+                      <% } %>
+      
+                      <% } %>
+                      <% const pros = notes.length - bunpros; %>
+                      <!-- This is where we calculate the number of projects that are not part of a bundle === -->
+      
+      
+      
+      
+      
+      
+                      <% if (pros > 0){ for(var i=0; i<notes.length; i++){ %>
+                      <% if(notes[i].bundleid == 'nun') {%>
+      
+                      <!-- THE CARD ------------------------------------------->
+                      <div class="cardres col">
+                        <div class="card initialc shadow-sm bg-body">
+      
+                          <!-- Thubnail -->
+                          <img class="thubim bd-placeholder-img card-img-top shadow bg-body" width="100%" height="145" />
+                          <!-- Thubnail -->
+      
+      
+                          <!-- Card Menu -->
+                          <button style="z-index: 9; position: absolute; margin-top: 2px; margin-left:12px;" class="cardmanu"
+                            type="button" data-bs-toggle="dropdown" aria-controls="false">
+                          </button>
+                          <div class="btn-group">
+                            <ul class="dropdown-menu shadow">
+      
+                              <li><a class="dropdown-item" type="button" onclick="sese(
+                                                                                  s='<%= notes[i].title %>', d='<%= notes[i].body %>', time='<%= date %>', 
+                                                                                  fn='<%= displayName %>', ln='<%= displayLast %>', id='<%= notes[i]._id %>',
+                                                                                  dele='<%= notes[i]._id %>' )"
+                                  data-bs-toggle="modal" data-bs-target="#Charset">Advanced Options
+                                </a></li>
+      
+                              <li><a class="dropdown-item" href="#">Another action</a>
+                              </li>
+      
+                              <li><a class="dropdown-item" type="button" data-bs-toggle="modal"
+                                  data-bs-target="#exampleModalp" onclick=" deliteamparts(
+                                                                                      na='<%= notes[i].title %>',
+                                                                                      dele='<%= notes[i]._id %>'
+                                                                                      )">
+                                  Delete
+                                </a></li>
+                              <li>
+                                <hr style="border-color: aliceblue;" class="dropdown-divider">
+                              </li>
+      
+                              <li><a class="dropdown-item" href="#">Separated link</a>
+                              </li>
+      
+                            </ul>
+                          </div>
+                          <!-- Card Menu -->
+      
+      
+                          <!-- Progress -->
+                          <% var po = notes[i].finish %>
+                          <% if (po=="OG") { %>
+      
+      
+                          <% } else if (po=="FIN") { %>
+                          <% var tag = notes[i].tag %>
+                          <%  if (tag=="Assembly") { %>
+                          <a class="progrrr2" style="position: absolute; margin-left: 70px; margin-top: 2px;"></a>
+                          <% } else { %>
+                          <a class="progrrr2" style="position: absolute; margin-left: 100px; margin-top: 2px;"></a>
+                          <% } %>
+                          <% } %>
+                          <!-- Progress -->
+      
+      
+                          <!-- Tag ad Badge-->
+                          <% var tag = notes[i].tag %>
+                          <% console.log(notes[i].finish); %>
+                          <% if (tag=="pro") { %>
+                          <span class="badge proo text-bg-primary rounded-pill" style="width: 50px;">Pro</span>
+                          <% } else if (tag=="part") { %>
+                          <span class="badge proo1 text-bg-light rounded-pill" style="width: 95px; ">Native
+                            Part</span>
+                          <% } else if (tag=="Assembly") { %>
+                          <span class="badge proo2 text-bg-light rounded-pill" style="width: 125px; ">Native
+                            Assembly</span>
+                          <% } else { %>
+                          <span class="badge proo text-bg-dark rounded-pill" style="width: 50px; ">EXT</span>
+                          <% } %>
+                          <!-- Tag ad Badge-->
+      
+      
+                          <!-- Body -->
+                          <div class="card-body">
+      
+                            <!-- title and description -->
+                            <div class="titleshi initial">
+      
+                              <a href="/dash/item/<%= notes[i]._id %>" style="text-decoration: none; color:black;">
+                                <p class="titleofcard card-text text-decoration-none">
+                                  <%= notes[i].title %></p>
+      
+                                <hr>
+      
+                                <p style="font-size: small;" class="card-text test-decoration-none">
+                                  <%= notes[i].body %></p>
+                              </a>
+      
+                            </div>
+                            <!-- title and description -->
+      
+                            <!-- Buttons edit on card-->
+                            <div class="d-flex justify-content-between align-items-center">
+      
+                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sese(
+                                                                                      s='<%= notes[i].title %>', 
+                                                                                      d='<%= notes[i].body %>', 
+                                                                                      time='<%= date %>', 
+                                                                                      fn='<%= displayName %>', 
+                                                                                      ln='<%= displayLast %>',
+                                                                                      id='<%= notes[i]._id %>',
+                                                                                      dele='<%= notes[i]._id %>' )"
+                                data-bs-toggle="modal" data-bs-target="#Charset"
+                                style="padding-left: 10px; padding-right: 10px; height: 30px;">Edit
+                              </button>
+      
+                              <small class="timeof text-body-secondary">9 mins</small>
+      
+                            </div>
+                            <!-- Buttons edit on card-->
+      
+                          </div>
+                          <!-- Body -->
+      
+                        </div>
+                      </div>
+                      <!-- THE CARD ------------------------------------------->
+      
+      
+      
+                      <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+                      <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+                      <script>
+
+                        function deliteamparts(na, dele) {
+                          document.getElementById('titlenap').innerHTML = na;
+                          document.getElementById("deletefmforpart").action = "/dash/Item-delete-fromdash/" + dele + "?_method=DELETE";
+                        }
+
+                      </script>
+      
+                      <div class="modal fade" id="exampleModalp" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+      
+                            <div style="height: 50px;" class="modal-header">
+      
+                              <h1 style="width: 70px;" class="modal-title fs-5" id="exampleModalLabel">
+                                Delete:
+                              </h1>
+      
+                              <p style="width: 400px; margin-top: 15px; font-weight: bold;" id="titlenap">
+                              </p>
+      
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                              </button>
+      
+                            </div>
+      
+                            <div class="modal-body">
+                              Are you sure you wanna delete this project?
+                            </div>
+      
+                            <div class="modal-footer">
+      
+                              <form action="" method="POST" id="deletefmforpart">
+                                <button class="btn btn-danger delbutton rounded-pill"
+                                  style="justify-content: center; margin: auto;" type="submit">Delete</button>
+                              </form>
+      
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                              </button>
+      
+                            </div>
+      
+                          </div>
+                        </div>
+                      </div>
+                      <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+                      <!-- SURE YOU WANNA DELETE - linked to the card manu delete button -->
+      
+      
+                      <% } %>
+                      <%}} else { %>
+      
+                      <!-- Card for when no file is created by user -->
+                      <div class="modal-dialog">
+                        <div class="modal-content rounded-4 shadow"
+                          style="background-color: white; margin-top: 50px; margin-bottom: 55px; width: 600px; height: 400px;">
+                          <div class="col modal-body p-4">
+      
+                            <!-- main stuff -->
+                            <p class="row fw-normal mb-0 text-dark"
+                              style="font-family: monospace; color: #550dfd; justify-content: center; margin-top: 10px; text-align: center; font-size: 28px;">
+                              Nothing in here bruh :[
+                            </p>
+      
+                            <ul class=" row cent d-grid gap-3 my-4 list-unstyled small">
+      
+                              <li class="d-flex gap-4">
+                                <a class="marketlogo1 bi flex-shrink-0"></a>
+                                <a href="/dash/view-Addnotes" style="color: black; text-decoration: none;">
+                                  <h5 class="mb-0" style="color: #550dfd;">Make new
+                                    Part</h5>
+                                  Make a new part from scratch
+                                </a>
+                              </li>
+      
+                              <li class="d-flex gap-4">
+                                <a class="marketlogo bi flex-shrink-0"></a>
+                                <a href="/dash_market" style="color: black; text-decoration: none;">
+                                  <h5 class="mb-0" style="color: #550dfd;">Visit
+                                    Marketplace</h5>
+                                  Explore marketplace and find templates.
+                                </a>
+                              </li>
+      
+                              <li class="d-flex gap-4">
+                                <a class="marketlogo3 bi flex-shrink-0"></a>
+                                </svg>
+                                <a href="#" style="color: black; text-decoration: none;">
+                                  <h5 class="mb-0" style="color: #550dfd;">Lean NUKE
+                                  </h5>
+                                  Learn what you can do on Nuke
+                                </a>`
+                              </li>
+      
+                            </ul>
+      
+                            <div style="justify-content: center; ">
+                              <a href="/dash/view-Addnotes" style="margin-left: 30%; width: 180px;"
+                                class="row addbut btn btn-primary">Make new project
+                              </a>
+                            </div>
+                            <!-- main stuff -->
+      
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card for when no file is created by user -->
+      
+                      <% } %>
+      
+                    </div>
+                  </div>
+                  <!-- CARDS RECENT -->
+      
+      
+      
+                </div>
+                <!-- Parts Section =============================================================== -->
+      
+              </div>
+      
+      
+      
+            </div>
+            <!-- CARDS INSIDE HERE ======================================= -->
+      
+      
+      
+      
+      
+      
+      
+      
+      
+            <!-- Pagination---------------------------------------------------------------------->
+            <% if(notes.length > 0 ) { %>
+      
+            <nav aria-label="Page navigation" style="align-self: center; margin-bottom: 10px;">
+              <ul class="pagination justify-content-center">
+      
+                <% if(current == 1) { %>
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <% } else { %>
+                <li class="page-item"><a class="page-link" href="/dash">First</a></li>
+                <% } %>
+      
+                <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                <% if (i !== 1 ) { %>
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <% } %>
+      
+                <% for (; i <= (Number(current) + 4) && i<= pages; i++) { %>
+      
+                <% if (i==current) { %>
+                <li class="page-item"><a class="page-link" href="#"><%= i %></a></li>
+                <% } else { %>
+                <li class="page-item"><a class="page-link" href="/dash?page=<%= i %>"><%= i %></a></li>
+                <% } %>
+      
+                <% if (i == Number(current) + 4 && i<pages) { %>
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <% } %>
+      
+                <% } %>
+      
+                <% if(current == pages) { %>
+                <li class="page-item disabled"><a class="page-link" href="#">Last</a></li>
+                <% } else {%>
+                <li class="page-item"><a class="page-link" href="/dash?page=<%= pages %>">Next</a></li>
+                <% } %>
+      
+              </ul>
+            </nav>
+      
+            <% } %>
+            <!-- Pagination---------------------------------------------------------------------->
+      
+      
+            <!-- script for seting the title and description of the card, for the settings/edit cards ------------------------>
+            <script>
+
+              //READ THIS
+
+              //THIS IS HOW DEL WORKS - actions method and id are very imp, action is the ket and the button must be
+              //be wrapped inside the form, then we made a script above in line 294, seach for "script for seting the title" to find it
+              //and inside there we made a function which accepts bunch of inputs, then we call this funciton from the button "edit" search for "Buttons edit on card"
+              //to find it, and we pass the title, desctiprion, name, id of the node we want to edit and etc.
+              //the button calls the script nad passes all that info in, and inside the script we use find by id to find the delete button above,
+              //or to find the tiitle line or description line, and we do
+              //"document.getElementById("delete ").action ="
+              //to edit action, or if you wanna put value inside the blovk use innerHTML.
+
+              //this is imp that we pass the info from edit button which renders the settings card, beacause the cards are
+              //rendered by a loop and when it was rendering the card it stored all the info about the card in the body that it rendered, and edit button
+              //is inside that body, so when we call the func inside the script block from inside the bobdy during rendering, it pulls upp all info we need to links
+              //it up with that edit button on a specific card so when we press that edit button on a specific card, it already have values related to that card.
+
+              function sese(s, d, time, fn, ln, id, dele) {
+                document.getElementById("exampleModalLabel").innerHTML = s;
+                document.getElementById("title_del").innerHTML = s + "?";
+                document.getElementById("title").value = s;
+                document.getElementById("body").value = d;
+                document.getElementById("date").innerHTML = "Date:" + time;
+                document.getElementById("una").innerHTML = "Created by:" + fn + "&nbsp" + ln;
+                document.getElementById("titleform").action = "/dash/" + id + "?_method=PUT";
+                document.getElementById("delete").action = "/dash/item-delete/" + dele + "?_method=DELETE";
+              }
+            </script>
+            <!-- script for seting the title and description of the card, for the settings/edit cards ------------------------>
+      
+      
+            <!-- the edit card ------------------------------------------------------------------------------------------------->
+            <div class="modal fade modal-dialog"
+              style="width: 1200px; position: absolute; margin-top: 166px; margin-left: -20px;" id="Charset" tabindex="-1"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="setttt modal-content">
+      
+                  <!-- Header -------------------------------------------------------------- -->
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-6" id="exampleModalLabel"></h1>
+                    <h1 class="modal-title fs-6 fw-semibold" id="exampleModalLabel">&nbsp Settings
+                      and Actions
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <!-- Header -------------------------------------------------------------- -->
+      
+                  <!-- inside the card, this is the info doby -------------------------------------------------------------- -->
+                  <div class="modal-body">
+                    <div class="row">
+      
+                      <!---------------- Colunn left for sideabr ------------------------------------------------------------------------------------>
+                      <div class="col-md-3 ms-0" style="margin-left: 0px;">
+      
+                        <div class="sidebarsets d-flex flex-column flex-shrink-0 p-3 text-bg-white"
+                          style="width: 190px; color: rgb(20, 20, 20);">
+      
+                          <!-- MAIN DROPDOWNS -->
+                          <ul class="sidebarsetsin list-unstyled ps-0" style="color: rgb(26, 26, 26); justify-content:start;">
+      
+                            <li class="mb-1">
+      
+                              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;"
+                                data-bs-toggle="collapse" data-bs-target="#home1s-collapse" aria-expanded="false">
+                                + Actions
+                              </button>
+      
+                              <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+      
+                              <div class="collapse" id="home1s-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="display: contents;">
+      
+                                  <li><a onclick="myFunction(v='1')"
+                                      style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                      class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Information</a>
+                                  </li>
+      
+                                  <li><a onclick="myFunction(v='3')"
+                                      style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                      class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Share</a>
+                                  </li>
+      
+                                  <li><a onclick="myFunction(v='4')"
+                                      style="color: rgb(17, 17, 17); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                      class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Export</a>
+                                  </li>
+                                </ul>
+                              </div>
+      
+      
+                            </li>
+      
+                            <li class="mb-1">
+      
+                              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;"
+                                data-bs-toggle="collapse" data-bs-target="#home3s-collapse" aria-expanded="false">
+                                + Preferences
+                              </button>
+      
+                              <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+      
+                              <div class="collapse" id="home3s-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="display: contents;">
+                                  <li><a href="#" onclick="myFunction(v='7')"
+                                      style="color: rgb(27, 27, 27); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                      class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Themes</a>
+                                  </li>
+      
+                                  <li><a href="#" onclick="myFunction(v='8')"
+                                      style="color: rgb(17, 17, 17); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                      class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Visibility</a>
+                                  </li>
+                                </ul>
+                              </div>
+      
+      
+                            </li>
+      
+                          </ul>
+                          <!-- MAIN DROPDOWNS -->
+      
+                        </div>
+      
+                      </div>
+                      <!---------------- Colunn left for sideabr - END --------------------------------------------------------------------->
+      
+      
+      
+      
+                      <!--   ░███████╗  ░░░░░░  ░██████╗██╗░░██╗██████╗░░█████╗░██████╗░███████╗██████╗░  ░░░░░░  ░███████╗ -->
+                      <!--   ██╔██╔══╝  ░░░░░░  ██╔════╝██║░░██║██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗  ░░░░░░  ██╔██╔══╝ -->
+                      <!--   ╚██████╗░  █████╗  ╚█████╗░███████║██████╔╝███████║██║░░██║█████╗░░██████╔╝  █████╗  ╚██████╗░ -->
+                      <!--   ░╚═██╔██╗  ╚════╝  ░╚═══██╗██╔══██║██╔══██╗██╔══██║██║░░██║██╔══╝░░██╔══██╗  ╚════╝  ░╚═██╔██╗ -->
+                      <!--   ███████╔╝  ░░░░░░  ██████╔╝██║░░██║██║░░██║██║░░██║██████╔╝███████╗██║░░██║  ░░░░░░  ███████╔╝ -->
+                      <!--   ╚══════╝░  ░░░░░░  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚══════╝╚═╝░░╚═╝  ░░░░░░  ╚══════╝░ -->
+      
+      
+      
+      
+                      <!----------- Colunn right for Info body - START -------------------------------------------------------------------->
+                      <!----------- Colunn right for Info body - START -------------------------------------------------------------------->
+      
+      
+                      <!----------------------------------- How this sys works? ------------------------------------------------------------------------------------->
+      
+      
+                      <!-- 1. go to side pannel section above, for reference - line 300, see there i added a onclick event and inside it i called "myFunction()" at 452 -->
+                      <!-- 2. this myfunction is defined in <script> and inside it we have if statement -->
+                      <!-- 3. when from onclick we call function with v= somthing, the if condition checks it and goes in -->
+                      <!-- 4. in the getElementById we have targeted a html bliock  which we want to be printed, for reference line - 637, make sure this block is inside -->
+                      <!-- a div with element id which we will get in this step using getElementById... make sure the div block has " style="display: none;" " -->
+                      <!-- 5. .style.display = 'none' makes the block hidden and 'block' makes it unhidden,  -->
+                      <!-- 6. every component must be set to none in all other elseif's or it will not get hidden when you will switch to other card by other onclick call -->
+      
+      
+                      <!----------------------------------- How this sys works? ------------------------------------------------------------------------------------->
+      
+                      <div class="col-md-2 ms-auto" style="width: 328px;">
+      
+                        <!-- setting card content ------------------------------------------------------------>
+                        <script>
+                          var v = '1';
+                          function myFunction(v = '1') {
+                            if (v == '1') { //show always at end, first hide other cards
+
+                              //butt) Show butt -------------------------------------------------------------------
+                              document.getElementById("subbutt").style.display = 'none';
+                              document.getElementById("closebutt").style.marginRight = "162px";
+                              //butt) Show butt -------------------------------------------------------------------
+
+                              //7) Show Personality -------------------------------------------------------------------
+                              document.getElementById("theme").style.display = 'none';
+                              //7) Show Personality -------------------------------------------------------------------
+
+
+                              //4) Show Delete -------------------------------------------------------------------
+                              document.getElementById("expp").style.display = 'none';
+                              //4) Show Delete -------------------------------------------------------------------
+
+
+                              //3) Show Delete -------------------------------------------------------------------
+                              document.getElementById("shar").style.display = 'none';
+                              //3) Show Delete -------------------------------------------------------------------
+
+
+                              //2) Hide Delete --------------------------------------------------------------
+                              document.getElementById("delsec").style.display = 'none';
+                              //2) Hide Delete --------------------------------------------------------------
+
+
+                              //1) tiit --------------------------------------------------------------
+                              document.getElementById("titleofp").style.display = 'block';
+                              //1) tiit --------------------------------------------------------------
+
+                            } else if (v == '2') { //show always at end, first hide other cards
+
+                              //butt) Show butt -------------------------------------------------------------------
+                              document.getElementById("subbutt").style.display = 'block';
+                              document.getElementById("closebutt").style.marginRight = "0px";
+                              //butt) Show butt -------------------------------------------------------------------
+
+                              //7) Show Personality -------------------------------------------------------------------
+                              document.getElementById("theme").style.display = 'none';
+                              //7) Show Personality -------------------------------------------------------------------
+
+
+                              //4) Show export -------------------------------------------------------------------
+                              document.getElementById("expp").style.display = 'none';
+                              //4) Show export -------------------------------------------------------------------
+
+
+                              //3) Show share -------------------------------------------------------------------
+                              document.getElementById("shar").style.display = 'none';
+                              //3) Show share -------------------------------------------------------------------
+
+                              //1) tiit --------------------------------------------------------------
+                              document.getElementById("titleofp").style.display = 'none';
+                              //1) tiit --------------------------------------------------------------
+
+                              //2) Show Delete -------------------------------------------------------------------
+                              document.getElementById("delsec").style.display = 'block';
+                              //2) Show Delete -------------------------------------------------------------------
+
+
+                            } else if (v == '3') {
+
+                              //butt) Show butt -------------------------------------------------------------------
+                              document.getElementById("subbutt").style.display = 'block';
+                              document.getElementById("closebutt").style.marginRight = "0px";
+                              //butt) Show butt -------------------------------------------------------------------
+
+                              //7) Show Personality -------------------------------------------------------------------
+                              document.getElementById("theme").style.display = 'none';
+                              //7) Show Personality -------------------------------------------------------------------
+
+
+                              //4) Show Delete -------------------------------------------------------------------
+                              document.getElementById("expp").style.display = 'none';
+                              //4) Show Delete -------------------------------------------------------------------
+
+                              //1) tiit --------------------------------------------------------------
+                              document.getElementById("titleofp").style.display = 'none';
+                              //1) tiit --------------------------------------------------------------
+
+                              //2) Show Delete -------------------------------------------------------------------
+                              document.getElementById("delsec").style.display = 'none';
+                              //2) Show Delete -------------------------------------------------------------------
+
+                              //3) Show share -------------------------------------------------------------------
+                              document.getElementById("shar").style.display = 'block';
+                              //3) Show share -------------------------------------------------------------------
+
+                            } else if (v == '4') {
+
+                              //butt) Show butt -------------------------------------------------------------------
+                              document.getElementById("subbutt").style.display = 'block';
+                              document.getElementById("closebutt").style.marginRight = "0px";
+                              //butt) Show butt -------------------------------------------------------------------
+
+                              //7) Show Personality -------------------------------------------------------------------
+                              document.getElementById("theme").style.display = 'none';
+                              //7) Show Personality -------------------------------------------------------------------
+
+
+                              //1) tiit --------------------------------------------------------------
+                              document.getElementById("titleofp").style.display = 'none';
+                              //1) tiit --------------------------------------------------------------
+
+                              //2) Show Delete -------------------------------------------------------------------
+                              document.getElementById("delsec").style.display = 'none';
+                              //2) Show Delete -------------------------------------------------------------------
+
+                              //3) Show share -------------------------------------------------------------------
+                              document.getElementById("shar").style.display = 'none';
+                              //3) Show share -------------------------------------------------------------------
+
+                              //4) Show export -------------------------------------------------------------------
+                              document.getElementById("expp").style.display = 'block';
+                              //4) Show export -------------------------------------------------------------------
+
+
+                            } else if (v == '7') {
+
+                              //butt) Show butt -------------------------------------------------------------------
+                              document.getElementById("subbutt").style.display = 'block';
+                              document.getElementById("closebutt").style.marginRight = "0px";
+                              //butt) Show butt -------------------------------------------------------------------
+
+                              //1) tiit --------------------------------------------------------------
+                              document.getElementById("titleofp").style.display = 'none';
+                              //1) tiit --------------------------------------------------------------
+
+                              //2) Show Delete -------------------------------------------------------------------
+                              document.getElementById("delsec").style.display = 'none';
+                              //2) Show Delete -------------------------------------------------------------------
+
+                              //3) Show share -------------------------------------------------------------------
+                              document.getElementById("shar").style.display = 'none';
+                              //3) Show share -------------------------------------------------------------------
+
+                              //4) Show export -------------------------------------------------------------------
+                              document.getElementById("expp").style.display = 'none';
+                              //4) Show export -------------------------------------------------------------------
+
+                              //7) Show Personality -------------------------------------------------------------------
+                              document.getElementById("theme").style.display = 'block';
+                              //7) Show Personality -------------------------------------------------------------------
+
+
+                            }
+
+                          }
+                        </script>
+                        <!-- setting card content -------------------------------------------------------------->
+      
+      
+                        <!-- These are the Tags where are being set above in setting card conetnt -->
+      
+      
+                        <!--2) DELETE SECTION - START ----------------------------------------------->
+                        <div id="delsec" style="display: none;">
+      
+                          <hr style="margin-top: 25px;">
+      
+                          <p style="text-align: center; font-size: medium;">Are you sure you
+                            wanna delete
+                            all the
+                            files inside your project:
+                          <p id="title_del" style="text-align: center; font-size: medium; font-weight: bold;">
+      
+                          </p>
+                          </p>
+      
+                          <form action="" method="POST" id="delete">
+                            <button class="btn btn-danger delbutton rounded-pill"
+                              style="justify-content: center; margin: auto;" type="submit">Delete</button>
+                          </form>
+                          <hr>
+      
+                          <!--READ THIS - -->
+                          <!-- 
+                                                                              THIS IS HOW DEL WORKS - actions method and id are very imp, action is the ket and the button must be
+                                                                              be wrapped inside the form, then we made a script above in line 294, seach for "script for seting the title" to find it
+                                                                              and inside there we made a function which accepts bunch of inputs, then we call this funciton from the button "edit" search for "Buttons edit on card"
+                                                                              to find it, and we pass the title, desctiprion, name, id of the node we want to edit and etc.
+                                                                              the button calls the script nad passes all that info in, and inside the script we use find by id to find the delete button above,
+                                                                              or to find the tiitle line or description line, and we do 
+                                                                              "document.getElementById("delete").action ="
+                                                                              to edit action, or if you wanna put value inside the blovk use innerHTML.
+                                          
+                                                                              this is imp that we pass the info from edit button which renders the settings card, beacause the cards are
+                                                                              rendered by a loop and when it was rendering the card it stored all the info about the card in the body that it rendered, and edit button
+                                                                              is inside that body, so when we call the func inside the script block from inside the bobdy during rendering, it pulls upp all info we need to links
+                                                                              it up with that edit button on a specific card so when we press that edit button on a specific card, it already have values related to that card. -->
+      
+                        </div>
+                        <!--2) DELETE SECTION - START ----------------------------------------------->
+      
+      
+      
+                        <!--3) SHARE - START ----------------------------------------------->
+                        <div id="shar" style="display: none;">
+      
+                          <a class="shareim" href="#" style="justify-content: center; margin: auto;">
+                            <div class="sharebu"></div>
+                          </a>
+      
+      
+                          <p style="text-align: center; font-size: medium;">Share your project
+                            with anyone
+                          </p>
+      
+      
+      
+                          <div class="container text-center" style="position: absolute; margin-top: 10px;">
+                            <div class="row row-cols-4">
+      
+                              <div class="col" style="width: 80px;">
+                                <li style="list-style: none;">
+                                  <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                    <div class="slack"></div>
+                                  </a>
+                                  <p style="text-align: center; font-size: medium;">
+                                    Slack</p>
+                                </li>
+                              </div>
+      
+                              <div class="col" style="width: 80px;">
+                                <li style="list-style: none;">
+                                  <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                    <div class="trello"></div>
+                                  </a>
+                                  <p style="text-align: center; font-size: medium;">
+                                    Trello</p>
+                                </li>
+                              </div>
+      
+                              <div class="col" style="width: 80px;">
+                                <li style="list-style: none;">
+                                  <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                    <div class="sell"></div>
+                                  </a>
+                                  <p style="text-align: center; font-size: medium;">
+                                    Sell</p>
+                                </li>
+                              </div>
+      
+                              <div class="col" style="width: 80px;">
+                                <li style="list-style: none;">
+                                  <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                    <div class="schat"></div>
+                                  </a>
+                                  <p style="text-align: center; font-size: medium;">
+                                    Chat</p>
+                                </li>
+                              </div>
+      
+                            </div>
+                          </div>
+      
+      
+                          <hr>
+      
+                        </div>
+                        <!--3) SHARE - START ----------------------------------------------->
+      
+      
+      
+                        <!--3) EXPORT - START ----------------------------------------------->
+                        <div id="expp" style="display: none;">
+      
+                          <a class="shareim" href="#" style="justify-content: center; margin: auto;">
+                            <div class="expo"></div>
+                          </a>
+      
+      
+                          <p style="text-align: center; font-size: medium;">Export the project
+                          </p>
+      
+      
+      
+                          <div class="container text-center"
+                            style="margin-left: 68px; position: absolute; margin-top: 10px; justify-content: center;">
+                            <div class="row row-cols-4">
+      
+                              <div class="col" style="width: 80px;">
+                                <li style="list-style: none;">
+                                  <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                    <div class="dd"></div>
+                                  </a>
+                                  <p style="text-align: center; font-size: medium;">3D
+                                    CAD</p>
+                                </li>
+                              </div>
+      
+                              <div class="col" style="width: 80px;">
+                                <li style="list-style: none;">
+                                  <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                    <div class="pack"></div>
+                                  </a>
+                                  <p style="text-align: center; font-size: medium;">
+                                    Package</p>
+                                </li>
+                              </div>
+      
+                            </div>
+                          </div>
+      
+      
+                          <hr>
+      
+                        </div>
+                        <!--3) EXPORT - START ----------------------------------------------->
+      
+      
+                        <!--4) Temes - START ----------------------------------------------->
+                        <div id="theme" style="display: none;">
+      
+      
+      
+                          <a class="shareim" href="#" style="justify-content: center; margin-top: 50px;">
+                            <div class="theme"></div>
+                          </a>
+      
+      
+      
+      
+                          <div class="container text-center" style="margin-left: 25px; margin-top: 10px;">
+                            <div class="row row-cols-1">
+      
+                              <div class="form-check form-switch"
+                                style="text-align: start; padding-bottom: 10px; margin-left: 50px;">
+                                <input class="form-check-input" style="margin-top: 8px;" type="checkbox" role="switch"
+                                  id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault"
+                                  style="font-size: small; padding-bottom: 5px; padding-left: 0px;">
+                                  Dark Mode</label>
+                              </div>
+      
+      
+                            </div>
+                          </div>
+      
+                        </div>
+                        <!--4) Temes - START ----------------------------------------------->
+      
+      
+                        <!--f) title and description - START ----------------------------------------------->
+                        <div id="titleofp" style="display: none;">
+      
+                          <!-- This action is how we will update the things in data base, 
+                                                                              first we made button and made it type=submit, in line 964 and 
+                                                                              then we set the action url here now we will set things in the App.js in line 7, it is = require method-override  
+                                                                              That _method is defined in app.js in line 43, and before 43 we did a require in line 7 in app.js 
+                                                                                              
+                                                                              after doing all this, we defined dashupdatenote in dashcontroller in line 137, which actually grabs data from here
+                                                                              using the name="title" we gave in the <input block and updates the database go there to see final thing
+                                                                              -->
+      
+                          <form action="" method="POST" style="width: fit-content; position: absolute;" id="titleform">
+      
+                            <div id="titcr" class="form-group mb4"> Title:
+                              <input type="text" class="form-control border-0" style="font-weight: bold;  width: 300px;"
+                                id="title" name="title" value="" placeholder="Title">
+                            </div>
+      
+                            <div id="descr" class="form-group mb4"> Description:
+                              <input type="text" class="form-control border-0"
+                                style="font-weight: bold; height: 35px; width: 300px;" id="body" name="body" value=""
+                                placeholder="Description">
+                            </div>
+      
+                            <div id="date" style="font-size: small; margin-top: 50px;">
+                            </div>
+      
+                            <div id="una" style="font-size: small;"></div>
+      
+                            <button type="submit" id="sumchng" class="btn btn-primary"
+                              style="margin-bottom: 0px; margin-left: 158px; margin-top: 30px; position: absolute;">
+                              Save changes
+                            </button>
+      
+                          </form>
+                        </div>
+                        <!--f) title and description - START ----------------------------------------------->
+      
+      
+      
+                      </div>
+      
+                      <!----------- Colunn right for Info body - END ----------------------------------------------------------------------->
+                      <!----------- Colunn right for Info body - END ----------------------------------------------------------------------->
+      
+                    </div>
+      
+                  </div>
+                  <!-- inside the card, this is the info doby -------------------------------------------------------------- -->
+      
+                  <!-- Footer -------------------------------------------------------------- -->
+                  <div class="modal-footer" style="height: 65px; padding-top: 0px;">
+      
+                    <button id="closebutt" type="button" style="margin-right: 0px;" class="btn btn-secondary"
+                      data-bs-dismiss="modal">Close
+                    </button>
+      
+                    <button id="subbutt" style="display: block;" type="submit" class="btn btn-primary">Save
+                      changes
+                    </button>
+      
+                    <!-- function defined in line 450 in the form block -->
+                    <!-- when the title and description are updated in the input box, user will click on save changes button. 
+                                                                  the text input feild have a action tag in it, go see that, that is how we will call the API and update the stuff in database. -->
+      
+                  </div>
+                  <!-- Footer -------------------------------------------------------------- -->
+      
+                </div>
+              </div>
+            </div>
+            <!-- the edit card ------------------------------------------------------------------------------------------------->
+      
+      
+          </div>
+      
+        </div>
+        <!-- MAIN PAGE -->
+      
+        
+
+
+
+
+
+
+
+        <!-- SALES SECTION ============================================= -->
+        <div id="salespoint" style="margin-bottom: 75px;"></div>
+      
+      
+        <!-- Heading of the section -->
+        <div class="row">
+          <div style="margin-top: 10px;"></div>
+      
+          <div class="resprotit col-md-2 themed-grid-col"
+            style="display: contents; width: auto; margin-top: -14px; padding: 10px 0 10px 0; font-size: 18px; font-weight: 400; color: #012970; font-family: 'Poppins', sans-serif; padding: 0px;">
+            Sales Statistics
+          </div>
+      
+          <div class="addnu col-md-3">
+            <a href="/dash_market" class="addbut btn btn-primary"
+              style="background: #f5f5dc00; border-color: transparent; color: #9ba2b3; display: flex; align-items: center; padding: 0px;">
+              <svg class="openmp bi-journal-text"></svg>
+              Open Market Dashboard
+            </a>
+          </div>
+      
+        </div>
+        <!-- Heading of the section -->
+      
+      
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+      
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+      
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+      
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+      
+                <div class="card-body">
+                  <h5 class="card-title">Sales <span>| Today</span></h5>
+      
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>0</h6>
+                      <span class="text-success small pt-1 fw-bold">0%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
+      
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+            </div><!-- End Sales Card -->
+      
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+      
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+      
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+      
+                <div class="card-body">
+                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+      
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>$0.0</h6>
+                      <span class="text-success small pt-1 fw-bold">0%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
+      
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+            </div><!-- End Revenue Card -->
+      
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+      
+              <div class="card info-card customers-card">
+      
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+      
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+      
+                <div class="card-body">
+                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+      
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>0</h6>
+                      <span class="text-danger small pt-1 fw-bold">0%</span> <span
+                        class="text-muted small pt-2 ps-1">decrease</span>
+      
+                    </div>
+                  </div>
+      
+                </div>
+              </div>
+      
+            </div><!-- End Customers Card -->
+      
+          </div>
+        </div>
+        <!-- End Left side columns -->
+      
+      
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+      
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+      
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+      
+            <div class="card-body">
+              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+      
+              <div class="activity">
+      
+      
+      
+                <% var timemulti = 10; %>
+      
+                <!-- Bundle -->
+                <% if (allbundles.length > 0){ for(var i=0; i<allbundles.length; i++){ %>
+                <% var numofprosinsidebund = 0; %>
+                <% for(var f=0; f<notes.length; f++){ %>
+                <% if(notes[f].bundleid == allbundles[i]._id ) {%>
+      
+                <% } %>
+                <% } %>
+      
+                <% const timefin = timemulti + (Math.floor(Math.random() * (20 - 1 + 1)) + 1); %>
+      
+                <div class="activity-item d-flex">
+                  <div class="activite-label"><%= timefin %> min</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    Created <a href="/Bundleview/<%= allbundles[i]._id %>"
+                      class="fw-bold text-dark"><%= allbundles[i].titleob %></a>
+                  </div>
+                </div>
+      
+                <% } %>
+                <% } %>
+      
+      
+      
+                <!-- Parts -->
+                <% for(var i=0; i<notes.length; i++){ %>
+                <% if(notes[i].bundleid == 'nun') {%>
+      
+                <% const timefin2 = timemulti + (Math.floor(Math.random() * (20 - 1 + 1)) + 1); %>
+      
+                <div class="activity-item d-flex">
+                  <div class="activite-label"><%= timefin2 %> min</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                    Created <a href="/dash/item/<%= notes[i]._id %>" class="fw-bold text-dark"><%= notes[i].title %></a>
+                  </div>
+                </div>
+      
+                <% } %>
+                <% } %>
+      
+      
+      
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 hrs</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Set user name
+                  </div>
+                </div><!-- End activity item-->
+      
+                <div class="activity-item d-flex">
+                  <div class="activite-label">1 day</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                    Account created
+                  </div>
+                </div><!-- End activity item-->
+      
+              </div>
+      
+            </div>
+          </div><!-- End Recent Activity -->
+      
+        </div>
+        <!-- End Right side columns -->
+    
+
+
+
+
+
+
+
+
+
+        <!-- MANUFACTURING SECTION ============================================= -->
+        <div id="manufacturingpoint" style="margin-bottom: 75px;"></div>
+     
+        <!-- Heading of the section -->
+        <div class="row">
+          <div style="margin-top: 10px;"></div>
+      
+          <div class="resprotit col-md-2 themed-grid-col"
+            style="display: contents; width: auto; margin-top: -14px; padding: 10px 0 10px 0; font-size: 18px; font-weight: 400; color: #012970; font-family: 'Poppins', sans-serif; padding: 0px;">
+            Manufacturing
+          </div>
+      
+          <div class="addnu col-md-3">
+            <a href="/dash_market" class="addbut btn btn-primary"
+              style="background: #f5f5dc00; border-color: transparent; color: #9ba2b3; display: flex; align-items: center; padding: 0px;">
+              <svg class="openmp bi-journal-text"></svg>
+              Open Manufacturing Dashboard
+            </a>
+          </div>
+      
+        </div>
+        <!-- Heading of the section -->
+      
+      
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+      
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+      
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+      
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+      
+                <div class="card-body">
+                  <h5 class="card-title">Sales <span>| Today</span></h5>
+      
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>0</h6>
+                      <span class="text-success small pt-1 fw-bold">0%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
+      
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+            </div><!-- End Sales Card -->
+      
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+      
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+      
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+      
+                <div class="card-body">
+                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+      
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>$0.0</h6>
+                      <span class="text-success small pt-1 fw-bold">0%</span> <span
+                        class="text-muted small pt-2 ps-1">increase</span>
+      
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+            </div><!-- End Revenue Card -->
+      
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+      
+              <div class="card info-card customers-card">
+      
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+      
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+      
+                <div class="card-body">
+                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+      
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>0</h6>
+                      <span class="text-danger small pt-1 fw-bold">0%</span> <span
+                        class="text-muted small pt-2 ps-1">decrease</span>
+      
+                    </div>
+                  </div>
+      
+                </div>
+              </div>
+      
+            </div><!-- End Customers Card -->
+      
+          </div>
+        </div>
+        <!-- End Left side columns -->
+      
+      
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+      
+          <!-- Recent Activity -->
+          <div class="card">
+
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+      
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+      
+            <div class="card-body">
+              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+      
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 hrs</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Set user name
+                  </div>
+                </div><!-- End activity item-->
+      
+                <div class="activity-item d-flex">
+                  <div class="activite-label">1 day</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                    Account created
+                  </div>
+                </div><!-- End activity item-->
+      
+              </div>
+      
+            </div>
+          </div><!-- End Recent Activity -->
+      
+        </div>
+        <!-- End Right side columns -->
+
+
+
+
+
+
+
+
+        
+        <!-- TRAMS SECTION ============================================= -->
+        <div id="teamspoint" style="margin-bottom: 75px;"></div>
+        
+        <!-- Heading of the section -->
+        <div class="row">
+          <div style="margin-top: 10px;"></div>
+        
+          <div class="resprotit col-md-2 themed-grid-col"
+            style="display: contents; width: auto; margin-top: -14px; padding: 10px 0 10px 0; font-size: 18px; font-weight: 400; color: #012970; font-family: 'Poppins', sans-serif; padding: 0px;">
+            Teams
+          </div>
+        
+          <div class="addnu col-md-3">
+            <a href="/dash_market" class="addbut btn btn-primary"
+              style="background: #f5f5dc00; border-color: transparent; color: #9ba2b3; display: flex; align-items: center; padding: 0px;">
+              <svg class="openmp bi-journal-text"></svg>
+              Open Teams Dashboard
+            </a>
+          </div>
+        
+        </div>
+        <!-- Heading of the section -->
+
+
+        <!-- PENDING -->
+
+
+      
+      
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main / CARD INSIDE -->
+
+
+
+</body>
+
+
+
+
+
+<!-- the scroll to bar -->
+<script>
+  document.getElementById('scrollButton').addEventListener('click', function() {
+    // Calculate the Y-coordinate of the target point you want to scroll to
+
+    var targetDiv = document.getElementById('salespoint');
+  
+    // Scroll to the target div with smooth animation
+    targetDiv.scrollIntoView({
+      behavior: 'smooth'
+    });
+
+  });
+  document.getElementById('manufButton').addEventListener('click', function() {
+    // Calculate the Y-coordinate of the target point you want to scroll to
+
+    var targetDiv = document.getElementById('manufacturingpoint');
+  
+    // Scroll to the target div with smooth animation
+    targetDiv.scrollIntoView({
+      behavior: 'smooth'
+    });
+
+  });
+  document.getElementById('teamsButton').addEventListener('click', function() {
+    // Calculate the Y-coordinate of the target point you want to scroll to
+
+    var targetDiv = document.getElementById('teamspoint');
+  
+    // Scroll to the target div with smooth animation
+    targetDiv.scrollIntoView({
+      behavior: 'smooth'
+    });
+
+  });
+  document.getElementById('projButton').addEventListener('click', function() {
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+  });
+</script>
+<!-- the scroll to bar -->
+
+
+
+<!-- New card animation -->
+<style>
+    .cardpros {
+        --background: #ffffff00;
+        --text: black;
+        position: relative;
+        height: 12rem;
+    }
+
+    .cardpros .multi-button {
+        z-index: 0;
+        position: absolute;
+        top: 1.8rem;
+        left: 1.8rem;
+        border-radius: 100%;
+        width: 0rem;
+        height: 0rem;
+        transform: translate(-50%, -50%);
+        transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
+    }
+
+    .cardpros .multi-button button {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 100%;
+        background: var(--background);
+        color: var(--text);
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
+        box-shadow: 0 0 0rem -0.25rem var(--background);
+        z-index: 2000;
+    }
+
+    .cardpros .multi-button button:hover {
+        background: black;
+        color: var(--background);
+        box-shadow: 0 0 1rem -0.25rem var(--background);
+        z-index: 2000;
+    }
+
+    .cardpros .multi-button button:first-child:nth-last-child(1) {
+        left: 25%;
+        top: 25%;
+    }
+
+    .cardpros .multi-button button:first-child:nth-last-child(2),
+    .cardpros .multi-button button:first-child:nth-last-child(2)~* {
+        &:nth-child(1) {
+            left: 37.5%;
+            top: 18.75%;
+        }
+
+        &:nth-child(2) {
+            left: 18.75%;
+            top: 37.5%;
+        }
+    }
+
+    .cardpros .multi-button button:first-child:nth-last-child(3),
+    .cardpros .multi-button button:first-child:nth-last-child(3)~* {
+        &:nth-child(1) {
+            left: 50%;
+            top: 15.625%;
+        }
+
+        &:nth-child(2) {
+            left: 25%;
+            top: 25%;
+        }
+
+        &:nth-child(3) {
+            left: 15.625%;
+            top: 50%;
+        }
+    }
+
+    .cardpros .multi-button button:first-child:nth-last-child(4),
+    .cardpros .multi-button button:first-child:nth-last-child(4)~* {
+        &:nth-child(1) {
+            left: 62.5%;
+            top: 18.75%;
+        }
+
+        &:nth-child(2) {
+            left: 37.5%;
+            top: 18.75%;
+        }
+
+        &:nth-child(3) {
+            left: 18.75%;
+            top: 37.5%;
+        }
+
+        &:nth-child(4) {
+            left: 18.75%;
+            top: 62.5%;
+        }
+    }
+
+    .cardpros .container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        background: var(--background);
+        color: var(--text);
+        box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.05);
+    }
+
+    .cardpros:hover .multi-button,
+    .cardpros .multi-button:focus-within {
+        width: 10rem;
+        height: 10rem;
+        z-index: 2000;
+    }
+
+
+</style>
+<!-- New card animation -->
+
+
+<!-- New UI Layout Design -->
+<style>
+/**
+* Template Name: NiceAdmin
+* Updated: Jul 27 2023 with Bootstrap v5.3.1
+* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #f6f9ff;
+  color: #444444;
+}
+
+a {
+  color: #4154f1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #717ff5;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Main
+--------------------------------------------------------------*/
+#main {
+  margin-top: 10px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    padding: 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Page Title
+--------------------------------------------------------------*/
+.pagetitle {
+  margin-bottom: 10px;
+}
+
+.pagetitle h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: #4154f1;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 24px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #6776f4;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Override some default Bootstrap stylings
+--------------------------------------------------------------*/
+/* Dropdown menus */
+.dropdown-menu {
+  border-radius: 4px;
+  padding: 10px 0;
+  animation-name: dropdown-animate;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  border: 0;
+  box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
+}
+
+.dropdown-menu .dropdown-header,
+.dropdown-menu .dropdown-footer {
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 25px;
+}
+
+.dropdown-menu .dropdown-footer a {
+  color: #444444;
+  text-decoration: underline;
+}
+
+.dropdown-menu .dropdown-footer a:hover {
+  text-decoration: none;
+}
+
+.dropdown-menu .dropdown-divider {
+  color: #a5c5fe;
+  margin: 0;
+}
+
+.dropdown-menu .dropdown-item {
+  font-size: 14px;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+.dropdown-menu .dropdown-item i {
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 0;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f6f9ff;
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu-arrow::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    background: #fff;
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    transform: rotate(45deg);
+    border-top: 1px solid #eaedf1;
+    border-left: 1px solid #eaedf1;
+  }
+}
+
+@keyframes dropdown-animate {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+  0% {
+    opacity: 0;
+  }
+}
+
+/* Light Backgrounds */
+.bg-primary-light {
+  background-color: #cfe2ff;
+  border-color: #cfe2ff;
+}
+
+.bg-secondary-light {
+  background-color: #e2e3e5;
+  border-color: #e2e3e5;
+}
+
+.bg-success-light {
+  background-color: #d1e7dd;
+  border-color: #d1e7dd;
+}
+
+.bg-danger-light {
+  background-color: #f8d7da;
+  border-color: #f8d7da;
+}
+
+.bg-warning-light {
+  background-color: #fff3cd;
+  border-color: #fff3cd;
+}
+
+.bg-info-light {
+  background-color: #cff4fc;
+  border-color: #cff4fc;
+}
+
+.bg-dark-light {
+  background-color: #d3d3d4;
+  border-color: #d3d3d4;
+}
+
+/* Card */
+.card {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+.card-header,
+.card-footer {
+  border-color: #ebeef4;
+  background-color: #fff;
+  color: #798eb3;
+  padding: 15px;
+}
+
+.card-title {
+  padding: 20px 0 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #012970;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-title span {
+  color: #899bbd;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-body {
+  padding: 0 20px 20px 20px;
+}
+
+.card-img-overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Alerts */
+.alert-heading {
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+/* Close Button */
+.btn-close {
+  background-size: 25%;
+}
+
+.btn-close:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Accordion */
+.accordion-item {
+  border: 1px solid #ebeef4;
+}
+
+.accordion-button:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #012970;
+  background-color: #f6f9ff;
+}
+
+.accordion-flush .accordion-button {
+  padding: 15px 0;
+  background: none;
+  border: 0;
+}
+
+.accordion-flush .accordion-button:not(.collapsed) {
+  box-shadow: none;
+  color: #4154f1;
+}
+
+.accordion-flush .accordion-body {
+  padding: 0 0 15px 0;
+  color: #3e4f6f;
+  font-size: 15px;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  color: #899bbd;
+  font-weight: 600;
+}
+
+.breadcrumb a {
+  color: #899bbd;
+  transition: 0.3s;
+}
+
+.breadcrumb a:hover {
+  color: #51678f;
+}
+
+.breadcrumb .breadcrumb-item::before {
+  color: #899bbd;
+}
+
+.breadcrumb .active {
+  color: #51678f;
+  font-weight: 600;
+}
+
+/* Bordered Tabs */
+.nav-tabs-bordered {
+  border-bottom: 2px solid #ebeef4;
+}
+
+.nav-tabs-bordered .nav-link {
+  margin-bottom: -2px;
+  border: none;
+  color: #2c384e;
+}
+
+.nav-tabs-bordered .nav-link:hover,
+.nav-tabs-bordered .nav-link:focus {
+  color: #4154f1;
+}
+
+.nav-tabs-bordered .nav-link.active {
+  background-color: #fff;
+  color: #4154f1;
+  border-bottom: 2px solid #4154f1;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.logo {
+  line-height: 1;
+}
+
+@media (min-width: 1200px) {
+  .logo {
+    width: 280px;
+  }
+}
+
+.logo img {
+  max-height: 26px;
+  margin-right: 6px;
+}
+
+.logo span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #012970;
+  font-family: "Nunito", sans-serif;
+}
+
+.header {
+  transition: all 0.5s;
+  z-index: 997;
+  height: 60px;
+  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+  padding-left: 20px;
+  /* Toggle Sidebar Button */
+  /* Search Bar */
+}
+
+.header .toggle-sidebar-btn {
+  font-size: 32px;
+  padding-left: 10px;
+  cursor: pointer;
+  color: #012970;
+}
+
+.header .search-bar {
+  min-width: 360px;
+  padding: 0 20px;
+}
+
+@media (max-width: 1199px) {
+  .header .search-bar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 0px rgba(1, 41, 112, 0.1);
+    background: white;
+    z-index: 9999;
+    transition: 0.3s;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .header .search-bar-show {
+    top: 60px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.header .search-form {
+  width: 100%;
+}
+
+.header .search-form input {
+  border: 0;
+  font-size: 14px;
+  color: #012970;
+  border: 1px solid rgba(1, 41, 112, 0.2);
+  padding: 7px 38px 7px 8px;
+  border-radius: 3px;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.header .search-form input:focus,
+.header .search-form input:hover {
+  outline: none;
+  box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
+  border: 1px solid rgba(1, 41, 112, 0.3);
+}
+
+.header .search-form button {
+  border: 0;
+  padding: 0;
+  margin-left: -30px;
+  background: none;
+}
+
+.header .search-form button i {
+  color: #012970;
+}
+
+/*--------------------------------------------------------------
+# Header Nav
+--------------------------------------------------------------*/
+.header-nav ul {
+  list-style: none;
+}
+
+.header-nav>ul {
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav .nav-icon {
+  font-size: 22px;
+  color: #012970;
+  margin-right: 25px;
+  position: relative;
+}
+
+.header-nav .nav-profile {
+  color: #012970;
+}
+
+.header-nav .nav-profile img {
+  max-height: 36px;
+}
+
+.header-nav .nav-profile span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header-nav .badge-number {
+  position: absolute;
+  inset: -2px -5px auto auto;
+  font-weight: normal;
+  font-size: 12px;
+  padding: 3px 6px;
+}
+
+.header-nav .notifications {
+  inset: 8px -15px auto auto !important;
+}
+
+.header-nav .notifications .notification-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  transition: 0.3s;
+}
+
+.header-nav .notifications .notification-item i {
+  margin: 0 20px 0 10px;
+  font-size: 24px;
+}
+
+.header-nav .notifications .notification-item h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.header-nav .notifications .notification-item p {
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: #919191;
+}
+
+.header-nav .notifications .notification-item:hover {
+  background-color: #f6f9ff;
+}
+
+.header-nav .messages {
+  inset: 8px -15px auto auto !important;
+}
+
+.header-nav .messages .message-item {
+  padding: 15px 10px;
+  transition: 0.3s;
+}
+
+.header-nav .messages .message-item a {
+  display: flex;
+}
+
+.header-nav .messages .message-item img {
+  margin: 0 20px 0 10px;
+  max-height: 40px;
+}
+
+.header-nav .messages .message-item h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444444;
+}
+
+.header-nav .messages .message-item p {
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: #919191;
+}
+
+.header-nav .messages .message-item:hover {
+  background-color: #f6f9ff;
+}
+
+.header-nav .profile {
+  min-width: 240px;
+  padding-bottom: 0;
+  top: 8px !important;
+}
+
+.header-nav .profile .dropdown-header h6 {
+  font-size: 18px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #444444;
+}
+
+.header-nav .profile .dropdown-header span {
+  font-size: 14px;
+}
+
+.header-nav .profile .dropdown-item {
+  font-size: 14px;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+.header-nav .profile .dropdown-item i {
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 0;
+}
+
+.header-nav .profile .dropdown-item:hover {
+  background-color: #f6f9ff;
+}
+
+/*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  z-index: 996;
+  transition: all 0.3s;
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #aab7cf transparent;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+}
+
+@media (max-width: 1199px) {
+  .sidebar {
+    left: -300px;
+  }
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #fff;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #aab7cf;
+}
+
+@media (min-width: 1200px) {
+
+  #main,
+  #footer {
+    margin-left: 250px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .toggle-sidebar .sidebar {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .toggle-sidebar #main,
+  .toggle-sidebar #footer {
+    margin-left: 0;
+  }
+
+  .toggle-sidebar .sidebar {
+    left: -300px;
+  }
+}
+
+.sidebar-nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav .nav-item {
+  margin-bottom: 5px;
+}
+
+.sidebar-nav .nav-heading {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #899bbd;
+  font-weight: 600;
+  margin: 10px 0 5px 15px;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  transition: 0.3;
+  background: #f6f9ff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  width: auto;
+}
+
+.sidebar-nav .nav-link i {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #000000;
+}
+
+.sidebar-nav .nav-link.collapsed {
+  color: #000000;
+  background: #fff;
+}
+
+.sidebar-nav .nav-link.collapsed i {
+  color: #899bbd;
+}
+
+.sidebar-nav .nav-link:hover {
+  color: #808080;
+  background: #dfe3ff;
+}
+
+.sidebar-nav .nav-link:hover i {
+  color: #4154f1;
+}
+
+.sidebar-nav .nav-link .bi-chevron-down {
+  margin-right: 0;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+.sidebar-nav .nav-content {
+  padding: 5px 0 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav .nav-content a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #012970;
+  transition: 0.3;
+  padding: 10px 0 10px 48px;
+  transition: 0.3s;
+}
+
+.sidebar-nav .nav-content a i {
+  font-size: 6px;
+  margin-right: 8px;
+  line-height: 0;
+  border-radius: 50%;
+}
+
+.sidebar-nav .nav-content a:hover,
+.sidebar-nav .nav-content a.active {
+  color: #4154f1;
+}
+
+.sidebar-nav .nav-content a.active i {
+  background-color: #4154f1;
+}
+
+/*--------------------------------------------------------------
+# Dashboard
+--------------------------------------------------------------*/
+/* Filter dropdown */
+.dashboard .filter {
+  position: absolute;
+  right: 0px;
+  top: 15px;
+}
+
+.dashboard .filter .icon {
+  color: #aab7cf;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.dashboard .filter .icon:hover,
+.dashboard .filter .icon:focus {
+  color: #4154f1;
+}
+
+.dashboard .filter .dropdown-header {
+  padding: 8px 15px;
+}
+
+.dashboard .filter .dropdown-header h6 {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #aab7cf;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.dashboard .filter .dropdown-item {
+  padding: 8px 15px;
+}
+
+/* Info Cards */
+.dashboard .info-card {
+  padding-bottom: 10px;
+}
+
+.dashboard .info-card h6 {
+  font-size: 28px;
+  color: #012970;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard .card-icon {
+  font-size: 32px;
+  line-height: 0;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.dashboard .sales-card .card-icon {
+  color: #4154f1;
+  background: #f6f6fe;
+}
+
+.dashboard .revenue-card .card-icon {
+  color: #2eca6a;
+  background: #e0f8e9;
+}
+
+.dashboard .customers-card .card-icon {
+  color: #ff771d;
+  background: #ffecdf;
+}
+
+/* Activity */
+.dashboard .activity {
+  font-size: 14px;
+}
+
+.dashboard .activity .activity-item .activite-label {
+  color: #888;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+  min-width: 64px;
+}
+
+.dashboard .activity .activity-item .activite-label::before {
+  content: "";
+  position: absolute;
+  right: -11px;
+  width: 4px;
+  top: 0;
+  bottom: 0;
+  background-color: #eceefe;
+}
+
+.dashboard .activity .activity-item .activity-badge {
+  margin-top: 3px;
+  z-index: 1;
+  font-size: 11px;
+  line-height: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 3px solid #fff;
+  flex-grow: 0;
+}
+
+.dashboard .activity .activity-item .activity-content {
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+
+.dashboard .activity .activity-item:first-child .activite-label::before {
+  top: 5px;
+}
+
+.dashboard .activity .activity-item:last-child .activity-content {
+  padding-bottom: 0;
+}
+
+/* News & Updates */
+.dashboard .news .post-item+.post-item {
+  margin-top: 15px;
+}
+
+.dashboard .news img {
+  width: 80px;
+  float: left;
+  border-radius: 5px;
+}
+
+.dashboard .news h4 {
+  font-size: 15px;
+  margin-left: 95px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.dashboard .news h4 a {
+  color: #012970;
+  transition: 0.3s;
+}
+
+.dashboard .news h4 a:hover {
+  color: #4154f1;
+}
+
+.dashboard .news p {
+  font-size: 14px;
+  color: #777777;
+  margin-left: 95px;
+}
+
+/* Recent Sales */
+.dashboard .recent-sales {
+  font-size: 14px;
+}
+
+.dashboard .recent-sales .table thead {
+  background: #f6f6fe;
+}
+
+.dashboard .recent-sales .table thead th {
+  border: 0;
+}
+
+.dashboard .recent-sales .dataTable-top {
+  padding: 0 0 10px 0;
+}
+
+.dashboard .recent-sales .dataTable-bottom {
+  padding: 10px 0 0 0;
+}
+
+/* Top Selling */
+.dashboard .top-selling {
+  font-size: 14px;
+}
+
+.dashboard .top-selling .table thead {
+  background: #f6f6fe;
+}
+
+.dashboard .top-selling .table thead th {
+  border: 0;
+}
+
+.dashboard .top-selling .table tbody td {
+  vertical-align: middle;
+}
+
+.dashboard .top-selling img {
+  border-radius: 5px;
+  max-width: 60px;
+}
+
+/*--------------------------------------------------------------
+# Icons list page
+--------------------------------------------------------------*/
+.iconslist {
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  padding-top: 15px;
+}
+
+.iconslist .icon {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  text-align: center;
+  color: #012970;
+  padding: 15px 0;
+}
+
+.iconslist i {
+  margin: 0.25rem;
+  font-size: 2.5rem;
+}
+
+.iconslist .label {
+  font-family: var(--bs-font-monospace);
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.25rem;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+}
+
+/*--------------------------------------------------------------
+# Profie Page
+--------------------------------------------------------------*/
+.profile .profile-card img {
+  max-width: 120px;
+}
+
+.profile .profile-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c384e;
+  margin: 10px 0 0 0;
+}
+
+.profile .profile-card h3 {
+  font-size: 18px;
+}
+
+.profile .profile-card .social-links a {
+  font-size: 20px;
+  display: inline-block;
+  color: rgba(1, 41, 112, 0.5);
+  line-height: 0;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.profile .profile-card .social-links a:hover {
+  color: #012970;
+}
+
+.profile .profile-overview .row {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.profile .profile-overview .card-title {
+  color: #012970;
+}
+
+.profile .profile-overview .label {
+  font-weight: 600;
+  color: rgba(1, 41, 112, 0.6);
+}
+
+.profile .profile-edit label {
+  font-weight: 600;
+  color: rgba(1, 41, 112, 0.6);
+}
+
+.profile .profile-edit img {
+  max-width: 120px;
+}
+
+/*--------------------------------------------------------------
+# F.A.Q Page
+--------------------------------------------------------------*/
+.faq .basic h6 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4154f1;
+}
+
+.faq .basic p {
+  color: #6980aa;
+}
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact .info-box {
+  padding: 28px 30px;
+}
+
+.contact .info-box i {
+  font-size: 38px;
+  line-height: 0;
+  color: #4154f1;
+}
+
+.contact .info-box h3 {
+  font-size: 20px;
+  color: #012970;
+  font-weight: 700;
+  margin: 20px 0 10px 0;
+}
+
+.contact .info-box p {
+  padding: 0;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.contact .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  border-radius: 0;
+}
+
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
+  border-color: #4154f1;
+}
+
+.contact .php-email-form input {
+  padding: 10px 15px;
+}
+
+.contact .php-email-form textarea {
+  padding: 12px 15px;
+}
+
+.contact .php-email-form button[type=submit] {
+  background: #4154f1;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: #5969f3;
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Error 404
+--------------------------------------------------------------*/
+.error-404 {
+  padding: 30px;
+}
+
+.error-404 h1 {
+  font-size: 180px;
+  font-weight: 700;
+  color: #4154f1;
+  margin-bottom: 0;
+  line-height: 150px;
+}
+
+.error-404 h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #012970;
+  margin-bottom: 30px;
+}
+
+.error-404 .btn {
+  background: #51678f;
+  color: #fff;
+  padding: 8px 30px;
+}
+
+.error-404 .btn:hover {
+  background: #3e4f6f;
+}
+
+@media (min-width: 992px) {
+  .error-404 img {
+    max-width: 50%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer {
+  padding: 20px 0;
+  font-size: 14px;
+  transition: all 0.3s;
+  border-top: 1px solid #cddfff;
+}
+
+.footer .copyright {
+  text-align: center;
+  color: #012970;
+}
+
+.footer .credits {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: #012970;
+}
+</style>
+<!-- New UI Layout Design -->

@@ -1,0 +1,123 @@
+
+
+<!-- Worry About This Only - NEED YOUR INPUT -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <script>
+
+    // name of the public bundle of the AI 
+    //go to AI_Routes, there you have name, you can also find name of the bundle in the .js file, its the name you put when makeing js file
+
+
+    const GetUserInputFromHere = 'userinputforai'; 
+    //put the id of the div, that has input for AI. 
+    //(example - <div id="thisdiv">user input</div> if you want AI to take that 'user input' put the id 
+    //  which will be "thisdiv".. AI will get the innerHTML of that div and use that as input.)    
+
+
+    const PutResponseHere = 'Ai_1_responsediv';
+    //put id of the div where you want AI to put response.
+    //it will use innerHTML = to set the response.
+
+
+    //GO TO LINE 121 AND CHANGE THE NAME OF THE PUBLIC BUNDLE FILE TO INJECT
+
+  </script>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+
+
+<!-- Loading model and Displaying -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!--Load the model -->
+<div class="getdataorna1" id="getdataorna1" style="display: none;">1</div>
+<script src="/VariableName_AI.js"></script>
+<!--Load the model -->
+
+
+<!-- heighest value from AI here -->
+<script>
+  var heighvalue_fromAI;
+</script>
+<!-- heighest value from AI here -->
+
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+
+
+<!-- Getting AI response, Executing the public bundle script -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!-- THREE -->
+<!-- S3 AI Model for the var check gets loaded from the txt file HERE -->
+<div id="AI_Model_txt3" style="display: none;"></div>
+<!-- S3 AI Model for the var check gets loaded from the txt file HERE -->
+
+
+<!-- TWO -->
+<!-- S2 Bundle gets injected here for response -->
+<div id="targetElement3">
+    <!-- AI Scripts Call variable check-->
+</div>
+<!-- S2 Bundle gets injected here for response -->
+
+
+
+<!-- ONE -->
+<!-- S1 Inject the script and execute to get reply from AI -->
+<script>
+
+  function AI_3_response() {
+
+    // name of the public bundle of the AI 
+    //go to AI_Routes, there you have name, you can also find name of the bundle in the .js file, its the name you put when makeing js file
+    const nameoftheai3 = '/'+'allreqfordesign'+'.js'; 
+    
+
+    var target3 = document.getElementById('targetElement3');
+
+    
+    // ------------------------------- VARIABLE NAME -----------------------------------------
+
+    var scriptTag = document.createElement('script');
+    scriptTag.src = nameoftheai3; // pass the genrated public bundle AI script here =======
+
+    // Append the new script tag to the target element
+    target3.appendChild(scriptTag);
+
+    // Execute the injected script
+    scriptTag.onload = function () {
+      console.log('AI-3 Executed Successfully');
+      console.log('__________________________');
+    };
+
+    // ------------------------------- VARIABLE NAME -----------------------------------------
+
+  }
+
+</script>
+<!-- S1 Inject the script and execute to get reply from AI -->
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+<!-- IMPORTANT -->
+<!-- AI_1_response() is called from the hundlesubmit when user gives the /des and statement. -->
+
+
+

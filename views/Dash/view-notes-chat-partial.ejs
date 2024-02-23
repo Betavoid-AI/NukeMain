@@ -1,0 +1,2205 @@
+<div class="container1">
+  <div class="col">
+
+    <!-- Breadcrub -------------------------------------------------------------------------->
+    <div class="row" style="display: table-row-group;">
+
+      <!-- Breadcrub -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-chevron p-1" style="margin-left: -195px; margin-top: 5px; margin-right: 0px; margin-bottom: 0px; padding-bottom: 5px;">
+
+          <li style="z-index: 9;" class="breadcrumb-item">
+
+            <a href="/dash/Item-3d/<%= note._id %>">
+              <div href="" class="hom4" style="width: 32px; height: 32px; margin-left: 195px;">
+                <img class="hom4 breadcrumb-item active">
+              </div>
+            </a>
+
+            <span class="visually-hidden">Home</span>
+          </li>
+
+          <li style="z-index: 9;">
+            <a href="/dash/Item-calculations/<%= note._id %>">
+              <div href="/dash/Item-calculations/<%= note._id %>" class="hom3" style="width: 32px; height: 32px; margin-left:-2px; margin-right: 2px;">
+                <img class="hom3">
+              </div>
+            </a>
+          </li>
+
+          <li style="z-index: 9;">
+
+            <a>
+              <div class="homli" style="width: 32px; height: 32px; margin-left:-12px;">
+                <img class="homli">
+              </div>
+            </a>
+
+          </li>
+
+          <li style="z-index: 9;" class="breadcrumb-item">
+
+            <a href="/dash">
+              <div href="/" class="hom" style="width: 32px; height: 32px; margin-left: -12px;">
+                <img class="hom breadcrumb-item active">
+              </div>
+            </a>
+
+            <span class="visually-hidden">Home</span>
+          </li>
+
+          <li style="z-index: 9;" class="breadcrumb-item">
+            <a class="link-body-emphasis fw-semibold text-decoration-none" style="font-size: small;" href="#"> <%= note.title %></a>
+            <a class="link-body-emphasis text-decoration-none" style="font-size: small;"> - Design Room</a>
+          </li>
+
+
+          <!-- Search ----------------------------------------------------------->
+          <form class="searchbar nav col-5 col-md-auto-fill mb-2 justify-content-center mb-md-0" role="search" method="POST" action="/dash/search">
+            <input type="search" name="searchTerm" class="form-control boarder-primary" placeholder="Search..." aria-label="Search" style="
+      margin-left: 141px;
+      margin-top: -35px;
+      height: 27px;
+      background-color: #f1f1f1;
+      border-color: black;">
+          </form>
+          <!-- Search ----------------------------------------------------------->
+
+
+
+          <div style="position: absolute;">
+            <!-- WEB ----------------------------------------------------------------->
+            <button style="margin-top: -8px; margin-left: 1200px;" class="webbb3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
+
+            <div style="width: 700px;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Search Anything</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <hr style="margin-top: -5px;">
+              <div class="offcanvas-body">
+
+                <!-- GOOGLE ------------------------------ -->
+                <div style="text-align: left; height: 25px; width: 650px; margin-top: 5px;">
+                  <script async src="https://cse.google.com/cse.js?cx=36aca3cbc47dc472c"></script>
+                  <div class="gcse-search"></div>
+                </div>
+                <!-- GOOGLE ------------------------------ -->
+
+              </div>
+
+            </div>
+            <!-- WEB ---------------------------------------------------------------->
+
+
+            <!-- Settings ----------------------------------------------------------->
+            <button type="button homset" class="btn" data-bs-toggle="modal" data-bs-target="#Charset" style="margin-top: -30px; margin-left: -40px; width: 100px; justify-content: center;">
+
+              <div class="homset" style=" justify-content: center; width: 32px; height: 32px;"></div>
+            </button>
+            <!-- Settings ----------------------------------------------------------->
+
+
+
+            <!-- Profile ------------------------------------------------------------>
+            <div class="dropdown" style="
+        margin-left: 1284px;
+        margin-top: -44px;">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<%= proimgviewnote%>" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropfu dropdown-menu shadow">
+                <li><a href="/dash/view-Addnotes" class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a href="/dash/usprofile" class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </div>
+            <!-- Profile ------------------------------------------------------------>
+
+
+
+
+
+          </div>
+
+        </ol>
+      </nav>
+      <!-- Breadcrub -->
+
+    </div>
+    <!-- Breadcrub -------------------------------------------------------------------------->
+
+
+    <!-- Chat ------------------------------------------------------------------------------>
+    <div class="row" style="display: table-row-group;">
+
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+      <div style="height: 400px;display: flex;width: auto;margin-left: 0;margin-right: 0;" class="scrolscape container-fluid container-fluid-custom pb-2 mb-5">
+
+
+
+
+
+        <!-- the chat area -->
+        <div style="margin-left: 15px; height: 600px; width: 1100px;" id="app">
+
+          <!-- Messages old and new - chat HISTORY -->
+          <div style="width: 1125px;" id="chat_container" class="cunt_aner">
+
+
+            <!-- CHAT HISTORY ======================================================================== -->
+            <!-- CHAT HISTORY ======================================================================== -->
+            <!-- CHAT HISTORY ======================================================================== -->
+
+            <% var u = 0; %>
+            <% for (var i = 0; i < chathistory.length; i++) { %>
+            <% if (chathistory[i].noteid_chat == noteID) { %>
+
+            <!-- User side old message -->
+            <div class="wrapper">
+              <div class="chat">
+
+                <div class="profile">
+                  <a class="pfpinchat rounded-circle" style="background-image: url(https://lh3.googleusercontent.com/a/AGNmyxa5HgS47O-TnFM1STDTznFGordydcJVsT2ewYyaNg=s96-c)"></a>
+                </div>
+                <div class="message" id=${uniqueId}><%= chathistory[i].promp%></div>
+
+              </div>
+            </div>
+
+            <!-- AI side old message -->
+            <div class="wrapper ai">
+              <div class="chat">
+
+                <div class="profile">
+                  <img class="pfpinchatai rounded-circle">
+                </div>
+                <div class="message" id=${uniqueId}><%= chathistory[i].aires%></div>
+
+              </div>
+            </div>
+
+            <% } else {%>
+            <% u += 1; %>
+            <% if(u == chathistory.length) {%>
+
+            <!-- AI GREETING -->
+            <div class="wrapper ai">
+              <div class="chat">
+
+                <div class="profile">
+                  <img class="pfpinchatai rounded-circle">
+                </div>
+                <div id="messagewelcome">FUCK</div>
+
+                <script>
+                  var greet = ['Hawdy, how can I, Nuke, Help you today?', 'hello there, welcome to Nuke-town of posibilities, make yoruslef at home', 'You know i am a real person? haha just kinding', 'Finally, you made it.. entire Nuke-Town for waiting for you', 'Hello hello, how can i be of any help?', '*robotic voice* Destroy humans, beep beep bop bop.. hahaha kidding i am nuke and i love humans', 'do you know? invention of thermodynamics was an accident.. the guy was just making a cup of tea and realised that lid of the container was jumping up and down on its own due to steam... well it is centuries ago and they didnt had memes to pass time... ', 'do you know who invented light? well no one did hahahaha', 'good afternoon sir, would you like some tea?', 'Hey, i think i broke my wire :( it hurts', 'do you know that humans can change color on their own? by simply walking on beach at 12pm', 'I, am, IronNuke', 'you know i really like engineeirng'];
+                  const gc = Math.floor(Math.random() * greet.length);
+                  document.getElementById('messagewelcome').innerHTML = greet[gc];
+                </script>
+
+              </div>
+            </div>
+
+            <% } %>
+            <% } %>
+            <% }; %>
+
+
+            <hr>
+            <p style="text-align: center; margin-bottom: 50px;">New Session</p>
+
+
+
+            <script>
+              //scrolls the screen up when the old messages are loadded
+              const Container = document.getElementById('chat_container');
+
+              function scrollll() {
+                Container.scrollTop = Container.scrollHeight;
+              }
+              scrollll()
+            </script>
+
+            <!-- CHAT HISTORY ======================================================================== -->
+            <!-- CHAT HISTORY ======================================================================== -->
+            <!-- CHAT HISTORY ======================================================================== -->
+          </div>
+
+
+
+          <!-- Toast that displays when the user types in '/design ' -->
+          <div class="toast" id="dtos">
+            <div class="toast-header">
+              <strong class="me-auto" style="font-weight: bold;">/design prompt</strong>
+              <button type="button" class="btn-close" id="ctosts" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+              <p>This is the design promt, start typing what you wish to design after a space. Syntex - /design
+                'description of your part you want to design'</p>
+            </div>
+          </div>
+          <!-- Toast that displays when the user types in '/design ' -->
+
+
+
+
+          <!-- Textbox and send button -->
+          <!-- Textbox and send button -->
+          <form action="/dash/nm" method="POST" style="
+                border-radius: 0px;
+                width: 100%;
+                height: 42px;
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 0px;
+                background: #40414f00;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;" id="chatinbo">
+
+            <textarea class="userinput" style="border-style: solid; border-color: rgb(120 210 255); border-width: 0px; resize: none; font-size: 14px; border-radius: 35px; padding-left: 25px;" id="userinput" onkeydown="return event.key != 'Enter';" name="prompt" rows="1" cols="1" placeholder="Let's create somthing new"></textarea>
+
+
+            <!-- displays popup when '/design is typed' -->
+            <!-- displays popup when '/design is typed' -->
+            <script>
+              //the listner which checks if the user typed in the promt "/design "
+              const source = document.getElementById('userinput');
+              const formm = document.getElementById('chatinbo');
+              const inputHandler = function(e) {
+
+                if (e.target.value == '/design') {
+
+                  //displayes the popup
+                  var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+                  var toastList = toastElList.map(function(toastEl) {
+                    return new bootstrap.Toast(toastEl)
+                  })
+                  toastList.forEach(toast => toast.show())
+
+                  scrollll()
+
+                } else {
+
+                  //closes the popup
+                  document.getElementById('userinput').click();
+
+                }
+              }
+              source.addEventListener('input', inputHandler);
+            </script>
+            <!-- displays popup when '/design is typed' -->
+            <!-- displays popup when '/design is typed' -->
+
+
+
+
+
+            <textarea style="display: none;" class="form-control" id="promp" name="promp">GU</textarea>
+            <textarea style="display: none;" class="form-control" id="aires" name="aires">GU</textarea>
+            <textarea style="display: none;" id="noteid_chat" name="noteid_chat"><%= noteID %></textarea>
+
+            <button style="background-color: #212529; border-radius: 20px;" type="submit">
+              <a class="sen"></a>
+            </button>
+
+          </form>
+          <!-- Textbox and send button -->
+          <!-- Textbox and send button -->
+
+
+
+
+          <!-- INPUS FORM -->
+          <!-- INPUS FORM -->
+          <form action="/dash/inpus" method="POST" style="display: none;" id="inpusform">
+            <textarea style="display: none;" class="form-control" id="keysinp" name="keysinp">GU</textarea>
+            <textarea style="display: none;" class="form-control" id="numsinp" name="numsinp">GU</textarea>
+            <textarea style="display: none;" class="form-control" id="uns" name="uns">GU</textarea>
+            <textarea style="display: none;" class="form-control" id="nameop" name="nameop">GU</textarea>
+            <textarea style="display: none;" id="noteid_chat_inp" name="noteid_chat_inp"><%= noteID %></textarea>
+          </form>
+          <!-- INPUS FORM -->
+          <!-- INPUS FORM -->
+
+
+        </div>
+        <!-- the chat area -->
+
+
+
+
+
+
+
+
+
+
+
+        <!-- TEMP AF ========================================================================= -->
+        <!-- TEMP AF ========================================================================= -->
+        <!-- TEMP AF ========================================================================= -->
+
+
+
+        <!-- INPUS FORM for sending calculation count to db - TEMP -->
+        <form action="/dash/inpuscals" method="POST" style="display: none;" id="inpusformcals">
+          <textarea style="display: none;" class="form-control" id="Countofcal" name="Countofcal">2</textarea>
+          <textarea style="display: none;" id="noteid_chat_inpcals" name="noteid_chat_inp"><%= noteID %></textarea>
+        </form>
+        <!-- INPUS FORM for sending calculation count to db - TEMP -->
+
+
+
+        <script>
+          function calsave() {
+
+            document.getElementById('inpusformcals').submit(); //deleting old entry in DB
+            setTimeout(() => {
+              window.stop(); //stop reload
+            }, 2000);
+            console.log("done");
+
+          }
+        </script>
+
+
+
+        <!-- TEMP AF ========================================================================= -->
+        <!-- TEMP AF ========================================================================= -->
+        <!-- TEMP AF ========================================================================= -->
+
+
+        
+
+
+
+
+
+
+
+        <!-- the card that apears when users send /design prompt -->
+        <!-- the card that apears when users send /design prompt -->
+        <div class="insol" style="opacity: 0%; display: none !important; margin-left: 15px; height: 575px; width: 300px;" id="eqs">
+          <p style="text-align: center; margin-bottom: 10px;">Inputs</p>
+
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+
+          <ul class="sortable-list" style="width: 280px;">
+
+
+            <!-- user input fields - autogenrated -->
+            <li style="margin-bottom: 10px;" class="accordion item" id="accordionExample4">
+              <div class="accordion-item" style="width: -webkit-fill-available;">
+
+                <h2 style="height: 35px;" class="accordion-header">
+
+                  <button style="height: 35px;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="drag-handle">
+                      <i class="uil uil-draggabledots" draggable="true"></i>
+                    </div>
+                    Your Input
+                  </button>
+
+                </h2>
+
+                <script>
+                  const oldshit = [];
+                  const oldnunu = [];
+                  const olduns = [];
+
+                  const nameofpart = [];
+                </script>
+
+                <div style="font-size: small;" id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+
+                    <strong>Your inputs will apear here. to give input use "<strong style="font-weight: bold;">/des
+                        *description of the part you want
+                        to design*</strong>" and click on send.</strong>
+
+
+                    <!-- name of the part user is designing -->
+                    <div style="margin-bottom: 5px; margin-top: 5px;" id="insp">
+                    </div>
+
+
+                    <div id="oldmsges" style="display: none;"></div>
+
+                    <!-- OLD FORMS - input fields when user clode the project and came back in -->
+                    <div style="display: block;" id="hisfo">
+                      <!-- schecks how many entries are there in DB -->
+                      <!-- gets value of array in the last entry in the DB -->
+                      <!-- converts thevalue of the array at [0] -->
+
+                      <!-- gets deleted when user passes new input using /des.. we set this to none using script right below this one -->
+
+
+                      <!-- gets all theinpus entries which have same id as of note id and stores in check[] -->
+                      <% const check = []; %>
+                      <% for (var i = 0; i < inpushis.length; i++) { %>
+                      <% if (inpushis[i].noteid_chat_inp == noteID) { %>
+                      <% check.push(inpushis[i]) %>
+                      <%}%>
+            <%}%>
+
+                      <!-- checks if there are any inpus form entries which have id same as f the note id -->
+                      <% if(!check.length == 0) {%>
+
+                      <!-- again beacause the check[] is outside the if statement = gets all theinpus entries which have same id as of note id and stores in check[] -->
+                      <% const of = []; %>
+                      <% for (var i = 0; i < inpushis.length; i++) { %>
+                      <% if (inpushis[i].noteid_chat_inp == noteID) { %>
+                      <% of.push(inpushis[i]) %>
+                      <%}%>
+            <%}%>
+
+                      <!-- gets the aarray keyinsp, numsinp, and uns -->
+                      <% const sentence2 = of[of.length - 1].keysinp; %>
+                      <% const numbs = of[of.length - 1].numsinp; %>
+                      <% const units = of[of.length - 1].uns; %>
+                      <% const nam = of[of.length - 1].nameop; %>
+
+                      <!-- breaks the 0th index value in the array into actual array that we will use -->
+                      <% const B = sentence2[0].split(','); %>
+                      <% const C = numbs[0].split(','); %>
+                      <% const D = units[0].split(','); %>
+
+
+                      <!-- saves the name so that we can use it anywhere, like we did in /add to save the name -->
+                      <div id="shity" onclick="shutyyy('<%= nam %>')"></div>
+                      <script>
+                        //makes a array of all the old inpuses so we can use it when user uses /add to see if the input already exists
+                        document.getElementById("shity").click();
+
+                        function shutyyy(a) {
+                          nameofpart.push(a);
+                        }
+                      </script>
+
+
+
+                      <div class="input-group">
+                        <span style="width: 100px; font-size: 12px;" class="input-group-text">Part name</span>
+                        <span style="width: 159px;  font-size: 12px; font-weight: bold; justify-content: center;" class="nameopop input-group-text" id="nameoftheparts"><%= nam%></span>
+                      </div>
+
+
+
+                      <!-- prints the input forms, b.length is the number of keywords that user gave when they used /des -->
+                      <% for (var u=0; u<B.length; u++) {%>
+
+                      <!-- printing forms -->
+                      <div onclick="SAD('<%= B[u] %>', '<%= C[u] %>', '<%= D[u] %>')" class="input-group" id="yu<%= u %>">
+
+                        <span style="width: 116px; font-size: 12px; font-weight: bold; color: #0a53be;" id="ins" class="input-group-text"><%= B[u] %></span>
+
+                        <input style='width: 60px; text-align: center; font-size: 12px;' id="ccc<%= u%>" type="text" class="form-control" value="<%= C[u] %>">
+
+                        <input style="font-size: 12px;" type="text" id="ddd" class="form-control" value="<%= D[u] %>">
+
+                      </div>
+
+
+                      <script>
+                        //makes a array of all the old inpuses so we can use it when user uses /add to see if the input already exists
+                        document.getElementById("yu<%= u %>").click();
+
+                        function SAD(B, Nu, Un) {
+                          oldshit.push(B);
+                          oldnunu.push(Nu);
+                          olduns.push(Un);
+                          document.getElementById('oldmsges').innerHTML = oldshit;
+                        }
+                      </script>
+
+
+                      <% } %>
+                      <% } %>
+                    </div>
+                    <!-- OLD FORMS - input fields when user clode the project and came back in -->
+
+
+
+
+
+                    <!-- NEW FORMS - sort of place holder, we put the input fields extracted here -->
+                    <div style="display: none;" id="inpusfi"></div>
+                    <div style="display: none;" id="inpusfiadd"></div>
+                    <div style="display: none;" id="inpusfidelafteradd"></div>
+                    <script>
+                      //adding first input
+                      function printinpus(yo) { //called below from a function, made in a script.. that fuction is called from inside the eventhendler of the text area... start tracing from the block inside textarea eventhendler where we detect /des.
+                        var thi = yo;
+                        var lastCopy = document.querySelector("#inpusfi > div:last-child");
+
+                        document.getElementById('inpusfi').style.display = "block";
+                        document.getElementById('hisfo').style.display = "none";
+
+                        document.getElementById('inpusfidelafteradd').innerHTML = '';
+                        document.getElementById('inpusfiadd').innerHTML = '';
+
+                        if (thi == 0) {
+                          document.getElementById('inpusfi').innerHTML = "<div style='margin-bottom: 5px;' id='fomul" + thi + "'></div>";
+                        }
+
+                        if (lastCopy) {
+                          var newCopy = lastCopy.cloneNode(true);
+                          newCopy.id = "fomul" + thi;
+                          document.getElementById('inpusfi').appendChild(newCopy);
+                        }
+
+                      }
+                    </script>
+                    <!-- NEW FORMS - sort of place holder, we put the input fields extracted here -->
+
+
+
+                    <input id="yourinputsubmit" class="btn btn-primary btn-sm" type="submit" value="Submit" style="margin-left: 75px;margin-bottom: 0px;margin-top: 15px;">
+
+
+
+                  </div>
+                </div>
+
+              </div>
+            </li>
+
+            <!-- Optimize -->
+            <li style="margin-bottom: 10px;" class="accordion item" id="accordionExample4">
+              <div class="accordion-item" style="width: -webkit-fill-available;">
+
+                <h2 style="height: 35px;" class="accordion-header">
+
+                  <button style="height: 35px;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne24" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="drag-handle">
+                      <i class="uil uil-draggabledots" draggable="true"></i>
+                    </div>
+                    Optimization
+                  </button>
+
+                </h2>
+
+                <div style="font-size: small;" id="collapseOne24" class="accordion-collapse collapse show" data-bs-parent="#accordionExample4">
+                  <div class="accordion-body">
+                    <strong>One Nuke start calculations, the changable variable from the calculations will apear
+                      here which you can manupulate anytime and calculations will change accordingly.</strong>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+
+            <!-- Calculation Results -->
+            <li style="margin-bottom: 10px;" class="accordion item" id="accordionExample4">
+              <div class="accordion-item" style="width: -webkit-fill-available;">
+
+                <h2 style="height: 35px;" class="accordion-header">
+
+                  <button style="height: 35px;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="drag-handle">
+                      <i class="uil uil-draggabledots" draggable="true"></i>
+                    </div>
+                    Calculation Results
+                  </button>
+
+                </h2>
+
+                <div style="font-size: small;" id="collapseOne2" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is your window to peak on the backend and see what NUKE is doing.</strong>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+
+            <!-- Cheat Sheet -->
+            <li style="margin-bottom: 10px;" class="accordion item" id="accordionExample4">
+              <div class="accordion-item" style="width: -webkit-fill-available;">
+
+                <h2 style="height: 35px;" class="accordion-header">
+
+                  <button style="height: 35px;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                    <div class="drag-handle">
+                      <i class="uil uil-draggabledots" draggable="true"></i>
+                    </div>
+                    Cheat Sheet
+                  </button>
+
+                </h2>
+
+                <div style="font-size: small;" id="collapseOne3" class="accordion-collapse collapse show" data-bs-parent="#accordionExample3">
+                  <div class="accordion-body">
+                    <strong>
+                      <a style="font-size: medium; font-weight: bold;">Input prompts:</a><br>
+                      <button class="hls">/des</button> - describe what you want to design<br>
+                      <button class="hls">/add</button> - add new input<br>
+                      <button class="hls">/d *name*</button> - delete input<br>
+                      <br>
+                      <hr>
+                      <br>
+                      <a style="font-size: medium; font-weight: bold;">Utility prompts:</a><br>
+                      <button class="hls">/design</button> - enables the prompt<br>
+                      <button class="hls">/end</button> - closes the prompt<br>
+                      <button class="hls">/restart</button> - del. and start again<br>
+                      <button class="hls">/clear</button> - del. all chat outside prompt<br>
+                      <button class="hls">/spds</button> - open speadsheet tab<br>
+                      <button class="hls">/3dv</button> - open 3D Viewport<br>
+                      <button class="hls">/ast</button> - open assistant drawer<br>
+                      <button class="hls">/ss</button> - take a screenshoot<br>
+                      <button class="hls">/SP as *title*</button> - save a cmd to call by title<br>
+                      <button class="hls">/cng_tit *new title*</button> - change title<br>
+                      <br>
+                      <hr>
+                      <br>
+                      <a style="font-size: medium; font-weight: bold;">Outbound prompts:</a><br>
+                      <button class="hls">/export *pdf*</button> - export all chat in prompt<br>
+                      <button class="hls">/export *txt*</button> - export all chat in prompt<br>
+                      <button class="hls">/invite *name*</button> - invite your co-worker<br>
+                      <button class="hls">/invite *email*</button> - invite by email<br>
+                      <button class="hls">/listinMP</button> - list in marketplace<br>
+                      <button class="hls">/makeprivate</button> - make project private<br>
+                      <button class="hls">/makepublic</button> - make project public<br>
+                      <button class="hls">/ssn *email*</button> - send last SS to email<br>
+                      <button class="hls">/freshstrt</button> - del. everything in the project<br>
+
+                    </strong>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+
+
+          </ul>
+
+
+          <script>
+            const sortableList = document.querySelector(".sortable-list");
+            const items = sortableList.querySelectorAll(".item");
+
+            let isDragging = false; // Flag to track if dragging is allowed
+
+            items.forEach(item => {
+              const dragHandle = item.querySelector(".drag-handle");
+
+              item.addEventListener("dragstart", (e) => {
+                if (e.target === dragHandle || e.target.parentElement === dragHandle) {
+                  isDragging = true;
+                  setTimeout(() => item.classList.add("dragging"), 0);
+                } else {
+                  e.preventDefault(); // Prevent dragging if not holding the drag handle
+                }
+              });
+
+              item.addEventListener("dragend", () => {
+                isDragging = false;
+                item.classList.remove("dragging");
+              });
+
+              // Update the cursor style based on the isDragging flag
+              item.addEventListener("mouseenter", () => {
+                if (isDragging) {
+                  item.style.cursor = "grab";
+                } else {
+                  item.style.cursor = "auto";
+                }
+              });
+
+              item.addEventListener("mouseleave", () => {
+                item.style.cursor = "auto";
+              });
+            });
+
+            const initSortableList = (e) => {
+              e.preventDefault();
+              const draggingItem = document.querySelector(".dragging");
+              let siblings = [...sortableList.querySelectorAll(".item:not(.dragging)")];
+              let nextSibling = siblings.find(sibling => {
+                return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+              });
+              sortableList.insertBefore(draggingItem, nextSibling);
+            }
+
+            sortableList.addEventListener("dragover", initSortableList);
+            sortableList.addEventListener("dragenter", e => e.preventDefault());
+          </script>
+
+
+        </div>
+        <!-- the card that apears when users send /design prompt -->
+        <!-- the card that apears when users send /design prompt -->
+
+
+        <!-- gets the Input statement for the AI -->
+        <div id="userinputforai" style="display: none;"></div>
+        <div id="traintheRPLorna" style="display: none;">1</div>
+        <!-- gets the Input statement for the AI -->
+
+
+        <!-- IF YES, IT IS PROMT MODE, AND IT IS SET TO YES WHEN USER TYPES /DESIGN.. LOGIC FOR IT IS MADE BELOW IN THE SCRIPT -->
+        <div style="display: none;" id="pmode">no</div>
+        <!-- IF YES, IT IS PROMT MODE, AND IT IS SET TO YES WHEN USER TYPES /DESIGN.. LOGIC FOR IT IS MADE BELOW IN THE SCRIPT -->
+        
+
+
+        <!-- replies for AI, when /des is used -->
+        <script>
+
+          const neutralreply = [
+            "Alrighty, let's start the design process. I've taken your input and generated a form. Feel free to modify your input anytime.",
+            "Okay, time to dive into designing. I've gathered your input and set up a form. Modify your input whenever you want.",
+            "Sure thing! Design phase is a go. Your input is in, and I've got a customizable form ready for your changes.",
+            "Great! Ready to design. Input received, and there's a form all set for you to adjust your input whenever needed.",
+            "Let's get creative! Input's in, and I've prepared a form. You can tweak your input as much as you like.",
+            "Design mode activated! I've captured your input and established a form for you. Modify away!",
+            "Ready to design? I've organized your input and established a form that you can adjust whenever you want.",
+            "Time to make your vision real! Input secured, and a customizable form is at your service for any adjustments.",
+            "Designing time! I've processed your input and created a form for you. Feel free to edit your input whenever.",
+            "Alrighty, design time it is! Your input is ready to go, and a form is here for any input modifications.",
+            "Let's dive into designing! Your input is set, and a form awaits your input changes whenever necessary.",
+            "Designing starts now! I've taken your input and set up a form so you can modify it at will.",
+            "Ready to begin designing. Input is prepped, and a form is in place for any input changes you have in mind.",
+            "Designing adventure starts! Input received and transformed into an editable form for your convenience.",
+            "Let's kick off the design phase! Input has been processed, and there's a form that you can adjust your input with.",
+            "Time to design wonders! Input is in, and a form is ready for your input adjustments whenever you prefer.",
+            "Design initiation time! Input has been captured, and a customizable form is available for your input changes.",
+            "Designing mode initiated! I've organized your input and created a form that's open for changes.",
+            "Ready to shape your ideas! Input received, and a form is here for your input modifications whenever necessary.",
+            "Designing excitement ahead! I've taken your input and established a form you can modify at your leisure.",
+            "Alrighty, let's start designing. Your input is on deck, and a form is here for your input adjustments.",
+            "Design launch sequence initiated! Input integrated, and a form is here for your adjustments whenever you wish.",
+            "Embarking on the design journey! Your input is ready, and a form is at your service for any adjustments.",
+            "Let's begin the design process! Input received and transformed into a form that's editable as you see fit.",
+            "Ready to design? I've gathered your input and set up a form that's open for adjustments.",
+            "Designing adventure awaits! Input received, and there's a form ready for your input modifications.",
+            "Time to turn your ideas into reality! Input received and a customizable form prepared for your adjustments.",
+            "Designing mission a go! Input secured, and a form is ready for your input changes whenever you desire.",
+            "Let's start the design journey! Input integrated, and a form is set up for any adjustments you want.",
+            "Designing at your fingertips! I've captured your input and established a form that's open for changes.",
+            "Ready to make your ideas come to life! Input received, and a form is here for your input adjustments.",
+            "Design mode activated! Input is in, and a form is available for your modifications whenever you wish."
+          ]
+
+        </script>
+        <!-- replies for AI, when /des is used -->
+
+
+        
+        <!-- main script for AI REPLY - INTERPRETOR -->
+        <script>
+          //This script was supposed to be in a seperate file in the root named "script.js" and then was 
+          //supposed to be called in the body using <Script> tag and definiging src in the tag and also 
+          //type='module' but that did nit worked at all.. s i modified the script and threw it here. as 
+          //simple as thaat
+
+          const form = document.getElementById('chatinbo') //This is the form we made above, which submits the user input
+          //this is where the div eleent in which the chatstrips will be, are defined -  pass an empty div herer where you want the chatstrips to be
+          const chatContainer = document.querySelector('#chat_container') //this is where the o/p will be rendered
+
+          let loadInterval
+
+          function loader(element) { //when the AI is thining this func displays those three dots
+            element.textContent = ''
+
+            loadInterval = setInterval(() => {
+              // Update the text content of the loading indicator
+              element.textContent += '.';
+
+              // If the loading indicator has reached three dots, reset it
+              if (element.textContent === '....') {
+                element.textContent = '';
+              }
+            }, 300);
+          }
+
+          function typeText(element, text) { //when the AI gave the input, this func makes the text apear word by word for cool look
+            let index = 0
+
+            let interval = setInterval(() => {
+              if (index < text.length) {
+                element.innerHTML += text.charAt(index)
+                index++
+              } else {
+                clearInterval(interval)
+              }
+            }, 8)
+          }
+
+          function CustomMsgFromAI(element, UpperText1, UpperText2, DivArray) { //custom AI reply
+            
+
+            //text at top of the custom div___________________________________ Top
+            let index = 0;
+            let interval = setInterval(() => {
+
+              if (index < UpperText1.length) {
+                element.innerHTML += UpperText1.charAt(index)
+                index++
+              } else {
+                clearInterval(interval)
+                element.innerHTML += '<br>';
+                printCustomDivs();
+              }
+
+            }, 8)
+
+            //prints any custom div elements from the array___________________ Middle
+            function printCustomDivs(){
+
+              for (let m = 0; m < DivArray.length; m++) {
+                
+                element.innerHTML += '<br>';
+                element.innerHTML += DivArray[m];
+
+              }
+
+              element.innerHTML += '<br>';
+              printBottomText();
+
+            }
+
+            //text below the custom div_______________________________________ Bottom
+            function printBottomText(){
+              
+              var index2 = 0;
+              let interval2 = setInterval(() => {
+
+                if (index2 < UpperText2.length) {
+                  element.innerHTML += UpperText2.charAt(index2)
+                  index2++
+                } else {
+                  clearInterval(interval2)
+                }
+              
+              }, 8)
+
+            }
+
+
+          }
+
+          function generateUniqueId() { //genrates a unique ID and is used to give every reply from openAI a unique id
+            const timestamp = Date.now();
+            const randomNumber = Math.random();
+            const hexadecimalString = randomNumber.toString(16);
+
+            return `id-${timestamp}-${hexadecimalString}`;
+          }
+
+          function chatStripe(isAi, value, uniqueId) { //this is how the reply from AI is in dark strip and user is in light
+            return (
+              `
+        
+        
+            <div class="wrapper ${isAi && 'ai'}">
+                <div class="chat">
+                    <div class="profile">
+                        <a class="pfpinchat rounded-circle" style="background-image: url(${isAi ? "/img/icon.png" : "<%= proimgviewnote%>"});">
+                        </a>
+                    </div>
+                    <div class="message" id=${uniqueId}>${value}</div>
+                </div>
+            </div>
+        
+            
+                    `
+            )
+          }
+
+          const handleSubmit = async (e) => { //when input is sent, this makes the process of sending and recieving message realtime with no reload
+            e.preventDefault() //prevents browser from reloading.. for realtime effect
+
+            //checks if ser wrote first word - /end and if yes, resets the chat area
+            const data = new FormData(form) //takes data from the form      
+
+
+
+
+            //1 - sets  pmode to yes
+            //checks if ser wrote first word - /design and if yes, it enables design mode and changes  width of area
+            if (data.get('prompt').trim().split(' ')[0].toLowerCase() === '/design') {
+              console.log('insde 2');
+              startstart()
+            }
+
+
+
+
+            //2 - if prompt = end, it calls for endend() function which sets the pmode to np
+            if (!data.get('prompt').includes('/end')) { //checks if user typed /end, if did, it wont go to AI as we dont want AI to respons to /end
+
+              if (!data.get('prompt').includes('/design')) { //check id /design is typed.. we don wanna print /design
+
+                
+                // user's chatstripe - genrating strip when the user sends a message
+                chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
+
+                // to focus scroll to the bottom 
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                // messageDiv.innerHTML = "..."
+                //loader(messageDiv)
+
+                //user input brakdown
+                const inputsentence = data.get('prompt');
+                const InputWordsArray = inputsentence.split(" ");
+
+
+
+                //running AI to load the txt model so it can be used ------------
+                AI_1_response();
+                AI_3_response();
+
+
+
+
+                //when user uses /des, this is where we print bot msg and user msg
+                //when user gives input - this sends the input to a another API request to get array of keywords
+                if (InputWordsArray[0] == '/des') {
+
+                  if (document.getElementById('pmode').innerHTML == 'yes') { //checks if the pmode div is set to yes, if yes that means the user is inside the prompt mode. search for - "checks if ser wrote first word - /design and if yes, it enables design mode and changes" this is where we it to yes and change the layout of the screen
+
+                    const sentence = data.get('prompt');
+                    const wordsArray = sentence.split(" ");
+
+                    //enty the input area to clear so the last input fields we extracted from last user description
+                    document.getElementById('inpusfi').innerHTML = '';
+
+
+                    //when user uses /des, this picks a random rply from array -
+                    const randomIndex = Math.floor(Math.random() * neutralreply.length);
+                    const desreply = neutralreply[randomIndex];
+
+                    // bot's chatstripe ___________________________________________________
+                    const uniqueId = generateUniqueId() //this is where the reply from OpenAI will go
+                    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+
+                    // specific message div 
+                    const messageDiv = document.getElementById(uniqueId)
+                    //______________________________________________________________________
+
+
+                    clearInterval(loadInterval);
+                    messageDiv.innerHTML = '';
+                    const rep = desreply;
+                    typeText(messageDiv, rep);
+
+
+                    //sends the input to a div element so the ai script can get it by getelementbyid to genrate the response of part name
+                    //For AI =============================
+                    document.getElementById('userinputforai').innerHTML = sentence;
+                    //For AI =============================
+
+                    var nameofthepart;
+
+                    //keywordsfunc(wordsArray, sentence, rep)
+                    keywordhandler('/des', wordsArray, sentence, rep)
+
+                    //The loop for calculations
+                    TheDesignLoopTrigger(wordsArray);
+
+
+                    const Container = document.getElementById('chat_container');
+                    function scrollll() {
+                      Container.scrollTop = Container.scrollHeight;
+                    }
+                    scrollll();
+
+                  }
+                }
+                //when user gives input - this sends the input to a another API request to get array of keywords
+                //when user uses /des, this is where we print bot msg and user msg
+
+
+
+                //ADD new inpus field
+                //ADD new inpus field
+                if (InputWordsArray[0] == '/add') {
+
+                  if (document.getElementById('pmode').innerHTML == 'yes') { //checks if the pmode div is set to yes, if yes that means the user is inside the prompt mode. search for - "checks if ser wrote first word - /design and if yes, it enables design mode and changes" this is where we it to yes and change the layout of the screen
+
+                    const sentence = data.get('prompt');
+                    const wordsArray = sentence.split(" ");
+
+                    // bot's chatstripe ___________________________________________________
+                    const uniqueId = generateUniqueId() //this is where the reply from OpenAI will go
+                    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+
+                    // specific message div 
+                    const messageDiv = document.getElementById(uniqueId)
+                    //______________________________________________________________________
+
+
+                    clearInterval(loadInterval);
+                    messageDiv.innerHTML = '';
+                    const rep1 = 'Added the new input, make sure it is alright and make changes in it using the input form on your right.';
+                    typeText(messageDiv, rep1);
+
+                    keywordhandler('/add', wordsArray, sentence, rep1) //sending keywords to the script which is below
+
+                    const Container = document.getElementById('chat_container');
+
+                    function scrollll() {
+                      Container.scrollTop = Container.scrollHeight;
+                    }
+                    scrollll()
+
+                    //sends the input to a div element so the ai script can get it by getelementbyid to genrate the response of part name
+                    //For AI =============================
+                    document.getElementById('userinputforai').innerHTML = sentence;
+                    //For AI =============================
+
+                    //The loop for calculations
+                    TheDesignLoopTrigger(wordsArray);
+
+                  }
+                }
+                //ADD new inpus field
+                //ADD new inpus field
+
+
+
+                //DEL input
+                //DEL input
+                if (InputWordsArray[0] == '/d') {
+
+                  if (document.getElementById('pmode').innerHTML == 'yes') { //checks if the pmode div is set to yes, if yes that means the user is inside the prompt mode. search for - "checks if ser wrote first word - /design and if yes, it enables design mode and changes" this is where we it to yes and change the layout of the screen
+
+                    const sentence = data.get('prompt');
+                    const wordsArray = sentence.split(" ");
+
+                    document.getElementById('inpusfi').innerHTML = '';
+                    document.getElementById('hisfo').innerHTML = '';
+
+
+                    // bot's chatstripe ___________________________________________________
+                    const uniqueId = generateUniqueId() //this is where the reply from OpenAI will go
+                    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+
+                    // specific message div 
+                    const messageDiv = document.getElementById(uniqueId)
+                    //______________________________________________________________________
+
+
+                    clearInterval(loadInterval);
+                    messageDiv.innerHTML = '';
+                    const rep = 'Deleted the input, you can use /add to add it again.';
+                    typeText(messageDiv, rep);
+
+                    keywordhandler('/d', wordsArray, sentence, rep) //sending keywords to the script which is below
+
+                    const Container = document.getElementById('chat_container');
+
+                    function scrollll() {
+                      Container.scrollTop = Container.scrollHeight;
+                    }
+                    scrollll()
+
+                    //sends the input to a div element so the ai script can get it by getelementbyid to genrate the response of part name
+                    //For AI =============================
+                    document.getElementById('userinputforai').innerHTML = sentence;
+                    //For AI =============================
+
+                    //The loop for calculations
+                    TheDesignLoopTrigger(wordsArray);                    
+
+                  }
+                }
+                //DEL input
+                //DEL input
+
+
+
+              
+                //this if statement checks if the user wrote anything before sending input
+                //GETTTING DATA FROM THE SERVER RUNNING ON PORT 3000, THIS IS WHERE WE WILL RECIEVE RESPONSE FROM GPT   
+                if (InputWordsArray[0] !== ('/des') && InputWordsArray[0] !== ('/design') && InputWordsArray[0] !== ('/add') && InputWordsArray[0] !== ('/d')) {
+
+
+                  //gets response from GPT when we are not in the prompt
+                  if (document.getElementById('pmode').innerHTML !== 'yes') { 
+
+                    const response = await fetch('http://localhost:5000/dash/openairespo', { //getting response from openAI
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                      prompt: data.get('prompt') //message coming from textarea on the screen //@@@@store in db
+                    })
+                  })
+
+                    clearInterval(loadInterval);
+                    messageDiv.innerHTML = ''; //makes the textarea empty when the user sends the message
+
+                    if (response.ok && data.get('prompt') != '') {
+                      const data = await response.json();
+                      const parsedData = data.bot.trim(); // store this in DB along with prompt
+
+                      typeText(messageDiv, parsedData);
+
+                      // sending new message to the databse
+                      const datar = new FormData(form) //for using below for get('prompt')
+                      const msgus = datar.get('prompt');
+
+                      sendmsgoai(msgus, parsedData)
+
+                    }
+              
+                  }
+
+                  
+                  //calling Betavoid AI for response when inside prompt
+                  if (document.getElementById('pmode').innerHTML == 'yes') { 
+
+                    //sends the input to a div element so the ai script can get it by getelementbyid to genrate the response of part name
+                    //For AI =============================
+                    const sentence = data.get('prompt');
+                    document.getElementById('userinputforai').innerHTML = sentence;
+                    //For AI =============================
+
+                    what_promt_used = ''; //as no prompt is being used here
+                    TheDesignLoopTrigger(InputWordsArray);
+                    
+                  }
+
+                }
+
+
+
+              }
+
+            } else {
+              endend(); //resets the chat area
+            }
+
+            // to clear the textarea input  
+            form.reset()
+
+          }
+
+
+          //when the form right below this blocl is automatically submited from handlesubmit, this calls the handlesubmitmsg to prevent reload
+          form.addEventListener('submit', handleSubmit) //checks if the main form is submitted
+          form.addEventListener('keyup', (e) => {
+
+            if (e.keyCode === 13) {
+              handleSubmit(e)
+            }
+          })
+
+          function sendmsgoai(us, ai) { //just for sending OpenAI messages to DB
+
+            document.getElementById('promp').value = us;
+            document.getElementById('aires').value = ai;
+            document.getElementById('userinput').value = '';
+            document.getElementById('chatinbo').submit(); //new msg and the AI response
+
+            setTimeout(() => {
+              window.stop();
+            }, 2000);
+
+          }
+
+
+        </script>
+        <!-- main script for AI REPLY - INTERPRETOR -->
+
+
+        
+
+
+
+
+
+
+
+        <!-- to print the msg from the botside All the logic for prototype -->
+        <%- include('./view-note-propotype.ejs') %>
+        <!-- to print the msg from the botside All the logic for prototype -->
+
+
+
+
+
+
+
+
+
+        <!-- /end and /design FORMs-->
+        <!-- /end and /design FORMs-->
+        <script>
+          function startstart() {
+
+            document.getElementById('pmode').innerHTML = 'yes';
+
+            document.getElementById('app').style = "margin-left: 15px; height: 590px; width: 800px;";
+            document.getElementById('chat_container').style = "width: 800px;";
+
+            document.getElementById('eqs').style = "opacity: 100%; display: block; margin-left: 5px; height: 545px; width: 300px;"
+
+            source.style = "border-style: solid; border-color: rgb(120 210 255); border-width: 5px; resize: none; font-size: 14px; border-radius: 35px; padding-left: 25px;"
+            formm.style = "border - radius: 0px; width: 100%; height: 51px; max - width: 1280px; margin: 0 auto; padding: 0px; background: #40414f00; display: flex; flex - direction: row; gap: 10px;"
+
+          }
+
+          function endend() {
+
+            document.getElementById('pmode').innerHTML = 'no';
+
+            document.getElementById('app').style = "margin-left: 15px; height: 600px; width: 1100px;";
+            document.getElementById('chat_container').style = "width: 1125px;";
+
+            document.getElementById('eqs').style = "opacity: 0%; display: none !important; margin-left: 5px; height: 545px; width: 300px;"
+
+            source.style = "border-style: solid; border-color: rgb(120 210 255); border-width: 0px; resize: none; font-size: 14px; border-radius: 35px; padding-left: 25px;"
+            formm.style = "border - radius: 0px; width: 100%; height: 42px; max - width: 1280px; margin: 0 auto; padding: 0px; background: #40414f00; display: flex; flex - direction: row; gap: 10px;"
+
+          }
+        </script>
+        <!-- /end and /design FORMs-->
+        <!-- /end and /design FORMs-->
+
+
+
+        <div id="desused" style="display: none;"></div>
+
+
+
+        <!-- to get the name of the part and name of the variables from the db for the script -->
+        <div style="display: none;">
+          <!--THIS IS JUST TO GET THE ACCURATE NUMBER OF ENTRIES IN THE FORM -->
+          <!-- gets all theinpus entries which have same id as of note id and stores in check[] -->
+          <% const check2 = []; %>
+          <% for (var i = 0; i < inpushis.length; i++) { %>
+          <% if (inpushis[i].noteid_chat_inp == noteID) { %>
+          <% check2.push(inpushis[i]) %>
+          <%}%>
+            <%}%>
+
+          <!-- checks if there are any inpus form entries which have id same as f the note id -->
+          <% if(!check.length == 0) {%>
+
+          <!-- again beacause the check[] is outside the if statement = gets all theinpus entries which have same id as of note id and stores in check[] -->
+          <% const of = []; %>
+          <% for (var i = 0; i < inpushis.length; i++) { %>
+          <% if (inpushis[i].noteid_chat_inp == noteID) { %>
+          <% of.push(inpushis[i]) %>
+          <%}%>
+            <%}%>
+
+
+          <!-- gets the aarray keyinsp, numsinp, and uns -->
+          <% const sentence2 = of[of.length - 1].keysinp; %>
+          <!-- breaks the 0th index value in the array into actual array that we will use -->
+          <% const B = sentence2[0].split(','); %>
+
+          <% const nameo = of[of.length - 1].nameop; %>
+
+
+          <!-- gets the aarray keyinsp, numsinp, and uns -->
+          <% const numbs = of[of.length - 1].numsinp; %>
+          <!-- breaks the 0th index value in the array into actual array that we will use -->
+          <% const CC = numbs[0].split(','); %>
+
+          <div id="numberofinputsinform" style="display: none;"><%= CC.length %></div>
+          <div id="currentkeysinform" style="display: none;"><%= B %></div>
+          <div id="nameofthepart" style="display: none;"><%= nameo %></div>
+
+
+          <% } %>
+        </div>
+        <!-- to get the name of the part and name of the variables from the db for the script -->
+
+
+
+        <div id="reloadeejs" style="display: none;"></div>
+        <div id="numofstuffintheform" style="display: none;">0</div>
+        <!--this 0 will get increment by 1 everytime a new input field is printed in the form-->
+
+
+
+
+        <!-- KEYWORDS LOGIC -- detects keywords and prints the inpput fields with the detected name of the keywords-->
+        <!-- KEYWORDS LOGIC -- detects keywords and prints the inpput fields with the detected name of the keywords -->
+        <div style="display: none;">
+
+          <!-- Des and Add and D =========================================================================================== -->
+          <script>
+            const currentkeys = [];
+            const currentnums = [];
+            const currentname = [];
+
+            const keystodelete = [];
+
+            //GEAR VARIABLES
+            const keys = ['base radius', 'Kf', 'Kw', 'Km', 'shaft diameter', 'major diameter', 'minor diameter', 'length of spline', 'shaft material', 'number of teeths', 'spline segments', 'presure angle', 'addendum', 'dedendum', 'teeth thickness', 'fit type', 'operating condition', 'manufacturing method', 'machine tolerance', 'safty factor', 'lubrication method', 'allowable stress', 'sheer stress', 'lewis form factor', 'Ka', 'stress', 'modulus', 'pitch diameter', 'thickness', 'teeths', 'torque', 'force', 'budget'];
+        
+            function keywordhandler(mat, keysws, s, r) {
+
+
+
+              //PREPING ---------------------------------------------------
+              keysws[keysws.length - 1] = keysws[keysws.length - 1].replace(/\./g, ''); //removing \n from  last word
+              keysws[keysws.length - 1] = keysws[keysws.length - 1].replace(/\n/g, ''); //removing \n from  last word
+
+              for (var i = 0; i < keysws.length; i++) {
+                keysws[i] = keysws[i].replace(/,/g, '');
+              } //removing all commas, as they were getting in the keywords array
+              //PREPING ---------------------------------------------------
+
+
+
+
+              // des ====================================================================================================================
+              // des ====================================================================================================================
+              if (mat == '/des') {
+
+                what_promt_used = 'des'; //to be used for prototype and AI reply
+
+                for (var i = 0; i < keysws.length; i++) {
+                  if (keysws[i] == 'spline') {
+
+
+                    document.getElementById('desused').innerHTML = "used";
+
+
+                    //RESETTING EVERYTHING ------------------------
+                    currentkeys.length = 0;
+                    currentnums.length = 0;
+                    currentname.length = 0;
+                    oldshit.length = 0;
+                    oldnunu.length = 0;
+                    olduns.length = 0;
+                    nameofpart.length = 0;
+                    //RESETTING EVERYTHING ------------------------
+
+
+
+                    //NAME -----------------------------------------
+                    //==> currentname, olduns
+                    currentname.push('Spline');
+                    document.getElementById('insp').innerHTML = `
+                                <div class="input-group">
+                                    <span style="width: 100px; font-size: 12px;" class="input-group-text">Part name</span>
+                                    <span style="width: 159px; font-size: 12px; font-weight: bold; justify-content: center;" class="input-group-text" id="nameoftheparts2">Spline</span>
+                                </div>
+                                `;
+                    nameofpart.push(currentname[0]);
+                    //NAME -----------------------------------------
+
+
+
+                    //MATCHING KEYWORDS ----------------------------
+                    //==> currentkeys, currentnums, oldshit, oldnunu
+                    for (var j = 0; j < keysws.length; j++) {
+
+                      if (keys.includes(keysws[j])) {
+
+                        currentkeys.push(keysws[j]);
+                        oldshit.push(keysws[j]);
+
+                        let isAlphabetical2 = /^[a-zA-Z]+$/.test(keysws[j - 1]);
+                        if (isAlphabetical2) {
+                          currentnums.push('1');
+                          oldnunu.push('1');
+                        } else {
+                          currentnums.push(keysws[j - 1]);
+                          oldnunu.push(keysws[j - 1]);
+                        }
+
+                      }
+
+                      if (keys.includes(keysws[j] + ' ' + keysws[j + 1])) {
+
+                        currentkeys.push(keysws[j] + ' ' + keysws[j + 1]);
+                        oldshit.push(keysws[j] + ' ' + keysws[j + 1]);
+
+                        let isAlphabetical = /^[a-zA-Z]+$/.test(keysws[j - 1]);
+                        if (isAlphabetical) {
+                          currentnums.push('1');
+                          oldnunu.push('1');
+                        } else {
+                          currentnums.push(keysws[j - 1]);
+                          oldnunu.push(keysws[j - 1]);
+                        }
+
+                      }
+
+                    }
+                    //MATCHING KEYWORDS -----------------------------
+
+
+
+                    //REMOVING ALPHABETS FROM CURRENTNUMS -----------------------------
+                    // inpusnumber we get all the values in arrat which are 1 index before the keywords matched then using the block below we remove all alphabets from the inpusnumber and store only the number
+                    const numbersOnly = currentnums.map(value => {
+                      const numericPart = value.match(/\d+/);
+                      return numericPart ? numericPart[0] : value;
+                    });
+
+                    currentnums.length = 0;
+                    for (var c = 0; c < numbersOnly.length; c++) {
+                      currentnums.push(numbersOnly[c]);
+                    }
+                    //REMOVING ALPHABETS FROM CURRENTNUMS -----------------------------     
+
+
+
+
+                    //PRINTING ON SCREEN ----------------------------- 
+                    function printinpusform(ins, nums) {
+
+                      document.getElementById("numofstuffintheform").innerHTML = '0';
+
+                      for (var k = 0; k < ins.length; k++) {
+
+                        printinpus(k);
+
+                        const divElement = document.getElementById("numofstuffintheform");
+                        const currentNumber = parseInt(divElement.innerHTML);
+                        const newNumber = currentNumber + 1;
+                        divElement.innerHTML = newNumber;
+
+                        //injects this div in the printed div above and injects name of the varibles in this div
+                        document.getElementById('fomul' + [k]).innerHTML = `
+                                        <div class="input-group">
+                                            <span style="width: 116px; font-size: 12px; font-weight: bold; color: #0a53be;" class="namecont input-group-text"><p class="textnana" id="ins` + k + `">${ins[k]}</p></span>
+                                            <input style='width: 60px; text-align: center; font-size: 12px;' type="text" class="form-control" id="newinpus` + k + `"  value="${nums[k]}">
+                                            <input style="font-size: 12px;" type="text" class="form-control" value="${units(ins[k])}">
+                                        </div>
+                                        `;
+
+                      }
+
+
+                    }
+
+                    printinpusform(currentkeys, currentnums);
+                    //PRINTING ON SCREEN -----------------------------  
+
+
+
+                    //SAVING TO DB -----------------------------
+                    const currentunits = []; //getting units
+                    for (var k = 0; k < currentkeys.length; k++) {
+                      currentunits.push(units(currentkeys[k]));
+                    }
+
+                    const nameofpart2 = currentname[0];
+
+                    document.getElementById('delete').submit(); //deleting old entry in DB
+                    setTimeout(() => {
+                      window.stop(); //stop reload
+                      savemsg(s, r, currentkeys, currentnums, currentunits, nameofpart2); //sending new msg and the keywords to DB
+                    }, 2000);
+
+
+                    function savemsg(us, ai, inpus, nums, unis, pna) { //FUNCTION FOR SENDING NEW MESSAGE TO DATABSE
+
+                      document.getElementById('promp').value = us;
+                      document.getElementById('aires').value = ai;
+                      document.getElementById('userinput').value = ''; // these 3 for saving promt and reply
+
+                      document.getElementById('keysinp').value = inpus;
+                      document.getElementById('numsinp').value = nums;
+                      document.getElementById('uns').value = unis;
+                      document.getElementById('nameop').value = pna; // these 4 for saving the extracted inputs
+
+                      document.getElementById('chatinbo').submit(); //save message and reply
+                      setTimeout(() => { //delays 1 sec so the schema is sent to DB then stops page from reloading and submits next form
+
+                        window.stop();
+                        document.getElementById('inpusform').submit(); //save keywords and numbs
+                        setTimeout(() => { //delays 1 sec and stops from reload
+                          window.stop();
+                        }, 2000);
+
+                      }, 2000);
+
+                    }
+                    //SAVING TO DB ----------------------------- 
+
+
+                  }
+                  if (true) {
+                    console.log('');
+                  }
+                }
+
+              }
+              // des ====================================================================================================================
+              // des ====================================================================================================================
+
+
+
+
+              //add ====================================================================================================================
+              //add ====================================================================================================================
+              if (mat == '/add') {
+
+                what_promt_used = 'add'; //to be used for prototype and AI reply
+
+                //NAME -----------------------------------------
+                //==> currentname, olduns
+                document.getElementById('insp').innerHTML = `
+                                <div class="input-group">
+                                    <span style="width: 100px; font-size: 12px;" class="input-group-text">Part name</span>
+                                    <span style="width: 159px; font-size: 12px; font-weight: bold; justify-content: center;" class="input-group-text" id="nameoftheparts2">` + nameofpart + `</span>
+                                </div>
+                                `;
+                //NAME -----------------------------------------
+
+
+
+
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ----------------------------
+                if (currentkeys.length == 0) {
+                  for (var r = 0; r < oldshit.length; r++) {
+                    currentkeys.push(oldshit[r]);
+                    currentnums.push(oldnunu[r]);
+                  }
+                }
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ----------------------------
+
+
+
+                //MATCHING KEYWORDS ----------------------------
+                //==> currentkeys, currentnums, oldshit, oldnunu
+                for (var j = 0; j < keysws.length; j++) {
+
+                  if (keys.includes(keysws[j]) && !currentkeys.includes(keysws[j])) {
+
+                    currentkeys.push(keysws[j]);
+                    oldshit.push(keysws[j]);
+
+                    let isAlphabetical2 = /^[a-zA-Z/]+$/.test(keysws[j - 1]);
+                    if (isAlphabetical2) {
+                      currentnums.push('1');
+                      oldnunu.push('1');
+                    } else {
+                      console.log('a');
+                      currentnums.push(keysws[j - 1]);
+                      oldnunu.push(keysws[j - 1]);
+                    }
+                  }
+
+                  if (keys.includes(keysws[j] + ' ' + keysws[j + 1]) && !currentkeys.includes(keysws[j] + ' ' + keysws[j + 1])) {
+
+                    currentkeys.push(keysws[j] + ' ' + keysws[j + 1]);
+                    oldshit.push(keysws[j] + ' ' + keysws[j + 1]);
+
+                    let isAlphabetical = /^[a-zA-Z/]+$/.test(keysws[j - 1]);
+                    if (isAlphabetical) {
+                      currentnums.push('1');
+                      oldnunu.push('1');
+                    } else {
+                      currentnums.push(keysws[j - 1]);
+                      oldnunu.push(keysws[j - 1]);
+                    }
+
+                  }
+
+                }
+                //MATCHING KEYWORDS -----------------------------
+
+
+
+                //REMOVING ALPHABETS FROM CURRENTNUMS -----------------------------
+                // inpusnumber we get all the values in arrat which are 1 index before the keywords matched then using the block below we remove all alphabets from the inpusnumber and store only the number
+                const numbersOnly = currentnums.map(str => str.replace(/[a-zA-Z]/g, ''));
+
+                currentnums.length = 0;
+                for (var c = 0; c < numbersOnly.length; c++) {
+                  currentnums.push(numbersOnly[c]);
+                }
+                //REMOVING ALPHABETS FROM CURRENTNUMS -----------------------------     
+
+
+
+                //PRINTING ON SCREEN ----------------------------- 
+                function printinpusformadd(ins, nums) {
+
+                  document.getElementById('inpusfi').innerHTML = "";
+                  document.getElementById("numofstuffintheform").innerHTML = '0';
+
+                  for (var k = 0; k < ins.length; k++) {
+
+                    const divElement = document.getElementById("numofstuffintheform");
+                    const currentNumber = parseInt(divElement.innerHTML);
+                    const newNumber = currentNumber + 1;
+                    divElement.innerHTML = newNumber;
+
+                    printinpus(k);
+
+                    //injects this div in the printed div above and injects name of the varibles in this div
+                    document.getElementById('fomul' + [k]).innerHTML = `
+                                        <div class="input-group">
+                                            <span style="width: 116px; font-size: 12px; font-weight: bold; color: #0a53be;" class="namecont input-group-text"><p class="textnana" id="ins` + k + `">${ins[k]}</p></span>
+                                            <input style='width: 60px; text-align: center; font-size: 12px;' type="text" class="form-control" id="newinpus` + k + `" value="${nums[k]}">
+                                            <input style="font-size: 12px;" type="text" class="form-control" value="${units(ins[k])}">
+                                        </div>
+                                        `;
+
+                  }
+
+
+                }
+
+                printinpusformadd(currentkeys, currentnums);
+                //PRINTING ON SCREEN -----------------------------  
+
+
+
+                //SAVING TO DB -----------------------------
+                const currentunits = []; //getting units
+                for (var k = 0; k < currentkeys.length; k++) {
+                  currentunits.push(units(currentkeys[k]));
+                }
+
+
+
+                //here we get the name of the part, so we can save it in the DB ----------------
+                let strname;
+                if (document.getElementById('nameoftheparts')) {
+                  strname = document.getElementById('nameoftheparts').innerHTML;
+                } else {
+                  strname = document.getElementById('nameoftheparts2').innerHTML;
+                }
+
+                const nameofpart2 = strname;
+
+
+
+                document.getElementById('delete').submit(); //deleting old entry in DB
+                setTimeout(() => {
+                  window.stop(); //stop reload
+                  savemsg(s, r, currentkeys, currentnums, currentunits, nameofpart2); //sending new msg and the keywords to DB
+                }, 2000);
+
+
+                function savemsg(us, ai, inpus, nums, unis, pna) { //FUNCTION FOR SENDING NEW MESSAGE TO DATABSE
+
+                  document.getElementById('promp').value = us;
+                  document.getElementById('aires').value = ai;
+                  document.getElementById('userinput').value = ''; // these 3 for saving promt and reply
+
+                  document.getElementById('keysinp').value = inpus;
+                  document.getElementById('numsinp').value = nums;
+                  document.getElementById('uns').value = unis;
+                  document.getElementById('nameop').value = pna; // these 4 for saving the extracted inputs
+
+                  document.getElementById('chatinbo').submit(); //save message and reply
+                  setTimeout(() => { //delays 1 sec so the schema is sent to DB then stops page from reloading and submits next form
+
+                    window.stop();
+                    document.getElementById('inpusform').submit(); //save keywords and numbs
+                    setTimeout(() => { //delays 1 sec and stops from reload
+                      window.stop();
+                    }, 2000);
+
+                  }, 2000);
+
+                }
+                //SAVING TO DB ----------------------------- 
+
+
+              }
+              //add ====================================================================================================================
+              //add ====================================================================================================================
+
+
+
+
+              //del ====================================================================================================================
+              //del ====================================================================================================================
+              if (mat == '/d') {
+
+                what_promt_used = 'd'; //to be used for prototype and AI reply
+
+                //NAME -----------------------------------------
+                //==> currentname, olduns
+                document.getElementById('insp').innerHTML = `
+                                <div class="input-group">
+                                    <span style="width: 100px; font-size: 12px;" class="input-group-text">Part name</span>
+                                    <span style="width: 159px; font-size: 12px; font-weight: bold; justify-content: center;" class="input-group-text" id="nameoftheparts2">` + nameofpart + `</span>
+                                </div>
+                                `;
+                //NAME -----------------------------------------
+
+
+
+
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ----------------------------
+                if (currentkeys.length == 0) {
+                  for (var r = 0; r < oldshit.length; r++) {
+                    currentkeys.push(oldshit[r]);
+                    currentnums.push(oldnunu[r]);
+                  }
+                }
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ----------------------------
+
+
+
+
+                // setting things up to remove keys ----------------------------
+                const tempnums = []; //temp
+                const tempkeys = []; //temp
+
+                const doublekeystemp = []; //temp
+                for (var r = 0; r < keysws.length; r++) {
+                  doublekeystemp.push(keysws[r] + ' ' + keysws[r + 1]);
+                }
+                // setting things up to removekeys ----------------------------
+
+
+
+
+                //MATCHING KEYWORDS ----------------------------
+                //==> currentkeys, currentnums, oldshit, oldnunu
+                for (var j = 0; j < keysws.length; j++) {
+
+                  if (keys.includes(keysws[j]) && currentkeys.includes(keysws[j])) {
+
+                    keystodelete.push(keysws[j]); //storing which variables user wants to delete
+
+                    for (var K = 0; K < currentkeys.length; K++) {
+                      if (keysws.includes(currentkeys[K])) {
+
+
+                        const resultnum = []; // removing number
+                        var A = K;
+                        for (var d = 0; d < currentnums.length; d++) {
+
+                          if (d == A) {} else {
+                            resultnum.push(currentnums[d])
+                          }
+
+                        }
+
+                        for (var r = 0; r < resultnum.length; r++) {
+                          tempnums.push(resultnum[r]);
+                        }
+
+                        const result = currentkeys.filter(item => !currentkeys[K].includes(item)); // removing keyword
+                        for (var r = 0; r < result.length; r++) {
+                          tempkeys.push(result[r]);
+                        }
+
+
+                      } else {}
+                    }
+
+                  }
+
+                  if (keys.includes(keysws[j] + ' ' + keysws[j + 1]) && currentkeys.includes(keysws[j] + ' ' + keysws[j + 1])) {
+
+                    for (var K = 0; K < currentkeys.length; K++) {
+                      if (doublekeystemp.includes(currentkeys[K])) {
+
+                        const resultnum = []; // removing number
+                        var A = K;
+                        for (var d = 0; d < currentnums.length; d++) {
+
+                          if (d == A) {} else {
+                            resultnum.push(currentnums[d])
+                          }
+
+                        }
+
+                        for (var r = 0; r < resultnum.length; r++) {
+                          tempnums.push(resultnum[r]);
+                        }
+
+                        const result = currentkeys.filter(item => !currentkeys[K].includes(item));
+                        for (var r = 0; r < result.length; r++) {
+                          tempkeys.push(result[r]);
+                        }
+
+                      } else {}
+                    }
+
+                  }
+
+                }
+                //MATCHING KEYWORDS -----------------------------
+
+
+
+                //RESETTING VALUES -----------------------------
+                currentkeys.length = 0;
+                currentnums.length = 0;
+                for (var f = 0; f < tempkeys.length; f++) {
+                  currentkeys.push(tempkeys[f]);
+                  currentnums.push(tempnums[f]);
+                }
+                //RESETTING VALUES -----------------------------
+
+
+
+
+                //PRINTING ON SCREEN ----------------------------- 
+                function printinpusformadd(ins, nums) {
+
+                  document.getElementById('inpusfi').innerHTML = "";
+                  document.getElementById("numofstuffintheform").innerHTML = '0';
+
+                  for (var k = 0; k < ins.length; k++) {
+
+                    const divElement = document.getElementById("numofstuffintheform");
+                    const currentNumber = parseInt(divElement.innerHTML);
+                    const newNumber = currentNumber + 1;
+                    divElement.innerHTML = newNumber;
+
+                    printinpus(k);
+
+                    //injects this div in the printed div above and injects name of the varibles in this div
+                    document.getElementById('fomul' + [k]).innerHTML = `
+                                <div class="input-group">
+                                    <span style="width: 116px; font-size: 12px; font-weight: bold; color: #0a53be;" class="namecont input-group-text"><p class="textnana" id="ins` + k + `">${ins[k]}</p></span>
+                                    <input style='width: 60px; text-align: center; font-size: 12px;' type="text" class="form-control" id="newinpus` + k + `" value="${nums[k]}">
+                                    <input style="font-size: 12px;" type="text" class="form-control" value="${units(ins[k])}">
+                                </div>
+                                `;
+
+                  }
+
+
+                }
+
+                printinpusformadd(currentkeys, currentnums);
+                //PRINTING ON SCREEN -----------------------------  
+
+
+
+                //SAVING TO DB -----------------------------
+                const currentunits = []; //getting units
+                for (var k = 0; k < currentkeys.length; k++) {
+                  currentunits.push(units(currentkeys[k]));
+                }
+
+                //here we get the name of the part, so we can save it in the DB ----------------
+                let strname;
+                if (document.getElementById('nameoftheparts')) {
+                  strname = document.getElementById('nameoftheparts').innerHTML;
+                } else {
+                  strname = document.getElementById('nameoftheparts2').innerHTML;
+                }
+
+                const nameofpart2 = strname;
+
+                document.getElementById('delete').submit(); //deleting old entry in DB
+                setTimeout(() => {
+                  window.stop(); //stop reload
+                  savemsg(s, r, currentkeys, currentnums, currentunits, nameofpart2); //sending new msg and the keywords to DB
+                }, 2000);
+
+
+                function savemsg(us, ai, inpus, nums, unis, pna) { //FUNCTION FOR SENDING NEW MESSAGE TO DATABSE
+
+                  document.getElementById('promp').value = us;
+                  document.getElementById('aires').value = ai;
+                  document.getElementById('userinput').value = ''; // these 3 for saving promt and reply
+
+                  document.getElementById('keysinp').value = inpus;
+                  document.getElementById('numsinp').value = nums;
+                  document.getElementById('uns').value = unis;
+                  document.getElementById('nameop').value = pna; // these 4 for saving the extracted inputs
+
+                  document.getElementById('chatinbo').submit(); //save message and reply
+                  setTimeout(() => { //delays 1 sec so the schema is sent to DB then stops page from reloading and submits next form
+
+                    window.stop();
+                    document.getElementById('inpusform').submit(); //save keywords and numbs
+                    setTimeout(() => { //delays 1 sec and stops from reload
+                      window.stop();
+                    }, 2000);
+
+                  }, 2000);
+
+                }
+                //SAVING TO DB ----------------------------- 
+
+              }
+              //del ====================================================================================================================
+              //del ====================================================================================================================
+
+
+
+            }
+          </script>
+          <!-- Des and Add and D =========================================================================================== -->
+
+
+          <!-- DELETE INPUS -->
+          <form onsubmit="FUC()" style="display: none;" action="/dash/inpus-delete/<%= noteID%>?_method=DELETE" method="POST" id="delete">
+          </form>
+          <!-- DELETE INPUS -->
+
+
+          <!-- unites -->
+          <script>
+            function FUC() {
+              console.log('fuckthis');
+            }
+
+            //setting unit of the numericinput from uuser
+            function units(ver) {
+
+              if (ver == 'torque') {
+                return 'Nm'
+              }
+              if (ver == 'force') {
+                return 'N'
+              }
+              if (ver == 'budget') {
+                return '$'
+              }
+              if (ver == 'thickness') {
+                return 'm'
+              }
+              if (ver == 'pitch diameter') {
+                return 'm'
+              }
+              if (ver == 'base radius') {
+                return 'm'
+              }
+              if (ver == 'stress') {
+                return 'mpa'
+              }
+              if (ver == 'material') {
+                return ''
+              }
+              if (ver == 'modulus') {
+                return 'm'
+              }
+              if (ver == 'teeths') {
+                return ''
+              }
+
+
+            }
+          </script>
+          <!-- unites -->
+
+
+          <!-- update the input by form -->
+          <script>
+            function sunmitchangeform(newmumarray, numofcycle) {
+
+              //update ====================================================================================================================
+              //update ====================================================================================================================
+              if (document.getElementById('ccc0')) { //checks if the page was reloaded, if the page was reloaded the input values will move fron newinpus to ccc input field id
+
+                const str = document.getElementById('currentkeysinform').innerHTML;
+                const keyolds = str.split(",").map(item => isNaN(item) ? item.trim() : Number(item));
+
+                console.log(keyolds);
+
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ----------------------------
+                if (currentkeys.length == 0) {
+                  var w = document.getElementById('currentkeysinform').innerHTML;
+                  for (var re = 0; re < newmumarray.length; re++) {
+                    currentkeys.push(keyolds[re]); //pushing names / getting the names of the variables
+                    currentnums.push(newmumarray[re]); //this is where we push the new numbers in the currentnums array
+                  }
+                }
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ---------------------------- 
+
+                console.log(currentkeys);
+                console.log(currentnums);
+
+
+                //SAVING TO DB -----------------------------
+                const currentunits = []; //getting units
+                for (var k = 0; k < currentkeys.length; k++) {
+                  currentunits.push(units(currentkeys[k]));
+                }
+
+                let strname;
+                if (document.getElementById('nameoftheparts')) {
+                  strname = document.getElementById('nameoftheparts').innerHTML;
+                } else {
+                  strname = document.getElementById('nameoftheparts2').innerHTML;
+                }
+
+                const nameofpart2 = strname;
+
+                document.getElementById('delete').submit(); //deleting old entry in DB
+                setTimeout(() => {
+                  window.stop(); //stop reload
+                  savemsg2(currentkeys, currentnums, currentunits, nameofpart2); //sending new msg and the keywords to DB
+                }, 2000);
+
+
+                function savemsg2(inpus, nums, unis, pna) { //FUNCTION FOR SENDING NEW MESSAGE TO DATABSE
+
+                  document.getElementById('keysinp').value = inpus;
+                  document.getElementById('numsinp').value = nums;
+                  document.getElementById('uns').value = unis;
+                  document.getElementById('nameop').value = pna; // these 4 for saving the extracted inputs
+
+                  document.getElementById('chatinbo').submit(); //save message and reply
+                  setTimeout(() => { //delays 1 sec so the schema is sent to DB then stops page from reloading and submits next form
+
+                    window.stop();
+                    document.getElementById('inpusform').submit(); //save keywords and numbs
+                    setTimeout(() => { //delays 1 sec and stops from reload
+                      window.stop();
+                    }, 2000);
+
+                  }, 2000);
+
+                }
+                //SAVING TO DB ----------------------------- 
+
+              } else { //if the user just gave the input using /des or /add, the input will be in other id and here we target those id of the input fields in the form
+
+                const keyolds = [];
+                var t = numofcycle;
+
+                for (var y = 0; y < t; y++) {
+                  var tutu = 'ins' + y;
+                  keyolds.push(document.getElementById(tutu).innerHTML);
+                }
+
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ----------------------------
+
+                currentnums.length = 0;
+                currentkeys.length = 0;
+                console.log(newmumarray);
+                for (var re = 0; re < newmumarray.length; re++) {
+                  currentkeys.push(keyolds[re]); //pushing names / getting the names of the variables
+                  currentnums.push(newmumarray[re]); //this is where we push the new numbers in the currentnums array
+                }
+                console.log(currentnums);
+                //SETTING CURRENTKEYS WHEN THERE ARE NO CURRENTKEYS ---------------------------- 
+
+                //SAVING TO DB -----------------------------
+                const currentunits = []; //getting units
+                for (var k = 0; k < currentkeys.length; k++) {
+                  currentunits.push(units(currentkeys[k]));
+                }
+
+                let strname;
+                if (document.getElementById('nameoftheparts')) {
+                  strname = document.getElementById('nameoftheparts').innerHTML;
+                } else {
+                  strname = document.getElementById('nameoftheparts2').innerHTML;
+                }
+
+                const nameofpart2 = strname;
+
+                document.getElementById('delete').submit(); //deleting old entry in DB
+                setTimeout(() => {
+                  window.stop(); //stop reload
+                  savemsg2(currentkeys, currentnums, currentunits, nameofpart2); //sending new msg and the keywords to DB
+                }, 2000);
+
+
+                function savemsg2(inpus, nums, unis, pna) { //FUNCTION FOR SENDING NEW MESSAGE TO DATABSE
+
+                  document.getElementById('keysinp').value = inpus;
+                  document.getElementById('numsinp').value = nums;
+                  document.getElementById('uns').value = unis;
+                  document.getElementById('nameop').value = pna; // these 4 for saving the extracted inputs
+
+                  document.getElementById('chatinbo').submit(); //save message and reply
+                  setTimeout(() => { //delays 1 sec so the schema is sent to DB then stops page from reloading and submits next form
+
+                    window.stop();
+                    document.getElementById('inpusform').submit(); //save keywords and numbs
+                    setTimeout(() => { //delays 1 sec and stops from reload
+                      window.stop();
+                    }, 2000);
+
+                  }, 2000);
+
+                }
+                //SAVING TO DB ----------------------------- 
+
+                console.log("saved to db - new after /des or /add used");
+
+              }
+              //update ====================================================================================================================
+              //update ====================================================================================================================  
+
+            }
+
+            function fuuuu() { //this is the function which keeps an eye on when the submit button is pressed and then it updates the DB entry
+              //this func is for submiting the input form in the chat, when user types /design, the form on the right hand side is the one that uses this func
+              const newnumform = [];
+              const newkeysform = [];
+              const newunsforms = [];
+
+              // Add an event listener to capture the button click
+              document.getElementById('yourinputsubmit').addEventListener('click', function() {
+
+                newnumform.length = 0;
+                var s = 0;
+
+                if (document.getElementById('numberofinputsinform')) {
+                  s = document.getElementById('numberofinputsinform').innerHTML;
+                } else {
+                  const ew = document.getElementById('numofstuffintheform').innerHTML;
+                  s = parseInt(ew);
+                }
+
+                for (var q = 0; q < s; q++) {
+                  var typedValue;
+
+                  if (document.getElementById('ccc' + q)) {
+                    typedValue = document.getElementById('ccc' + q).value; //when the page is reloaded, this gets the old input fields
+                  } else if (document.getElementById('newinpus' + q)) {
+                    typedValue = document.getElementById('newinpus' + q).value; //when the user just used /des or and /add, the input is stored in the newinpus field id
+                  } else {
+                    console.log("nothing here");
+                  }
+                  newnumform.push(typedValue);
+                }
+
+                sunmitchangeform(newnumform, s);
+
+              });
+
+            }
+            fuuuu()
+          </script>
+          <!-- update the input by form -->
+
+
+        </div>
+        <!-- KEYWORDS LOGIC -- detects keywords and prints the inpput fields with the detected name of the keywords -->
+        <!-- KEYWORDS LOGIC -- detects keywords and prints the inpput fields with the detected name of the keywords -->
+
+
+
+
+      </div>
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+      <!-- CHAT -------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+    </div>
+    <!-- Chat ------------------------------------------------------------------------------>
+
+
+  </div>
+</div>
+

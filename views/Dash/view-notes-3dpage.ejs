@@ -1,0 +1,1318 @@
+<div class="container-fluid">
+  <div class="row" style="display: flex; justify-content: space-between;">
+
+    <!-- LEFT -->
+    <div class="col-3 bg-dark text-light" style="padding-left: 0px; width: 15%; position: sticky; height: 2040px;">
+
+      <!-- Sidebar ----------------------------------------------------------------->
+      <div class="sidebar d-flex sticky-top flex-column flex-shrink-0 p-3 text-bg-dark"
+        style="width: 190px; color: white; height: 725px !important;">
+
+        <div class="container text-center" style="height: fit-content;">
+          <div class="row row-cols-4">
+
+            <a href="/dash" style="justify-content: center; margin-left: 0px;">
+              <div class="das"></div>
+            </a>
+
+            <p style="font-size: medium;">Dashboard</p>
+
+          </div>
+        </div>
+
+        <hr style="color: rgb(255, 255, 255); margin-top: 1px; margin-bottom: 0px;">
+
+        <!-- MAIN DROPDOWNS -->
+        <ul class="list-unstyled ps-0" style="color: white; margin-bottom: 300px;">
+
+          <li class="mb-1">
+
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+              style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;"
+              data-bs-toggle="collapse" data-bs-target="#home1-collapse" aria-expanded="false">
+              + Current Design
+            </button>
+
+            <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+            <div class="collapse" id="home1-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+                </li>
+
+                <li><a href="/dash/item/<%= note._id %>"
+                    style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+                </li>
+              </ul>
+            </div>
+
+
+          </li>
+
+          <li class="mb-1">
+
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+              style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;"
+              data-bs-toggle="collapse" data-bs-target="#home2-collapse" aria-expanded="false">
+              + Home
+            </button>
+
+            <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+            <div class="collapse" id="home2-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+                </li>
+              </ul>
+            </div>
+
+
+          </li>
+
+          <li class="mb-1">
+
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+              style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;"
+              data-bs-toggle="collapse" data-bs-target="#home3-collapse" aria-expanded="false">
+              + Assistant
+            </button>
+
+            <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+            <div class="collapse" id="home3-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+                </li>
+              </ul>
+            </div>
+
+
+          </li>
+
+          <li class="mb-1">
+
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+              style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;"
+              data-bs-toggle="collapse" data-bs-target="#home4-collapse" aria-expanded="false">
+              + Help and Shortcuts
+            </button>
+
+            <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+            <div class="collapse" id="home4-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Prompts</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Shortcuts</a>
+                </li>
+              </ul>
+            </div>
+
+
+          </li>
+
+          <li class="mb-1">
+
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+              style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;"
+              data-bs-toggle="collapse" data-bs-target="#home5-collapse" aria-expanded="false">
+              + History
+            </button>
+
+            <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+            <div class="collapse" id="home5-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+                </li>
+
+                <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;"
+                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+                </li>
+              </ul>
+            </div>
+
+
+          </li>
+
+        </ul>
+        <!-- MAIN DROPDOWNS -->
+
+        <!-- Settings-->
+        <div class="dropdown sticky-bottom" style="justify-content: baseline; margin-top: 60px;">
+          <hr>
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom: 15px;">
+            <strong>Settings</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end text-small shadow">
+            <li><a class="dropdown-item" href="#">Plans</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Preferences</a></li>
+          </ul>
+        </div>
+        <!-- Settings-->
+
+      </div>
+      <!-- Sidebar ----------------------------------------------------------------->
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-9" style="height: 91vh; width: 85%;">
+      <div class="d-flex align-items-center justify-content-center"
+        style="height: 100%; display: flex !important; flex-direction: column;">
+
+
+
+        <!-- Breadcrub -->
+        <nav aria-label="breadcrumb" style="width: -webkit-fill-available;">
+          <ol class="breadcrumb breadcrumb-chevron p-1"
+            style="margin-left: 0px; margin-top: opx; margin-right: 0px; margin-bottom: 0px; padding-bottom: 5px;">
+
+            <li style="z-index: 9;" class="breadcrumb-item">
+
+              <a href="">
+                <div href="" class="hom4" style="width: 32px; height: 32px;">
+                  <img class="hom4 breadcrumb-item active">
+                </div>
+              </a>
+
+              <span class="visually-hidden">Home</span>
+            </li>
+
+            <li style="z-index: 9;">
+
+              <a href="/dash/item/<%= note._id %>">
+                <div href="/" class="hom2" style="width: 32px; height: 32px; margin-left:-2px; margin-right: 2px;">
+                  <img class="hom2">
+                </div>
+              </a>
+
+            </li>
+
+            <li style="z-index: 9;">
+
+              <a>
+                <div class="homli" style="width: 32px; height: 32px; margin-left:-12px;">
+                  <img class="homli">
+                </div>
+              </a>
+
+            </li>
+
+            <li style="z-index: 9;" class="breadcrumb-item">
+
+              <a href="/dash">
+                <div href="/" class="hom" style="width: 32px; height: 32px; margin-left: -12px;">
+                  <img class="hom breadcrumb-item active">
+                </div>
+              </a>
+
+              <span class="visually-hidden">Home</span>
+            </li>
+
+            <li style="z-index: 9;" class="breadcrumb-item">
+              <a class="link-body-emphasis fw-semibold text-decoration-none" style="font-size: small;" href="#">
+                <%= note.title %></a>
+              <a class="link-body-emphasis text-decoration-none" style="font-size: small;"> - Calculations</a>
+            </li>
+
+
+            <div style="position: absolute;">
+              <!-- WEB ----------------------------------------------------------------->
+              <button style="margin-top: -8px; margin-left: 1022px;" class="webbb3" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
+
+              <div style="width: 700px;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasRightLabel">Search Anything</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <hr style="margin-top: -5px;">
+                <div class="offcanvas-body">
+
+                  <!-- GOOGLE ------------------------------ -->
+                  <div style="text-align: left; height: 25px; width: 650px; margin-top: 5px;">
+                    <script async src="https://cse.google.com/cse.js?cx=36aca3cbc47dc472c"></script>
+                    <div class="gcse-search"></div>
+                  </div>
+                  <!-- GOOGLE ------------------------------ -->
+
+                </div>
+
+              </div>
+              <!-- WEB ---------------------------------------------------------------->
+
+
+              <button type="button homset" class="btn" data-bs-toggle="modal" data-bs-target="#Charset"
+                style="margin-top: -30px; margin-left: -40px; width: 100px; justify-content: center;">
+
+                <div class="homset" style=" justify-content: center; width: 32px; height: 32px;"></div>
+              </button>
+            </div>
+
+          </ol>
+        </nav>
+        <!-- Breadcrub -->
+
+
+
+        <!-- SETTINGS POPUP IN CHHAT ---------------------------------------------------------------->
+        <div class="modal fade modal-dialog" style="width: 1200px;" id="Charset" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+
+            <div class="setttt modal-content">
+
+              <div class="modal-header">
+                <h1 class="modal-title fs-6" id="exampleModalLabel"><%= note.title %></h1>
+                <h1 class="modal-title fs-6 fw-semibold" id="exampleModalLabel">&nbsp Settings and Actions</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+
+
+                <!-- inside the card, this is the info doby -------------------------------------------------------------- -->
+
+
+                <div class="row">
+                  <div class="row">
+
+
+
+
+                    <!---------------- Colunn left for sideabr ------------------------------------------------------------------------------------>
+                    <div class="col-md-3 ms-0" style="margin-left: 0px;">
+
+                      <div class="sidebarsets d-flex flex-column flex-shrink-0 p-3 text-bg-white"
+                        style="width: 190px; color: rgb(20, 20, 20);">
+
+                        <!-- MAIN DROPDOWNS -->
+                        <ul class="sidebarsetsin list-unstyled ps-0"
+                          style="color: rgb(26, 26, 26); justify-content:start;">
+
+                          <li class="mb-1">
+
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                              style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;"
+                              data-bs-toggle="collapse" data-bs-target="#home1s-collapse" aria-expanded="false">
+                              + Actions
+                            </button>
+
+                            <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+                            <div class="collapse" id="home1s-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+                                <li><a onclick="myFunction(v='0.1')"
+                                    style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Status</a>
+                                </li>
+
+                                <li><a onclick="myFunction(v='1')"
+                                    style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Information</a>
+                                </li>
+
+                                <li><a onclick="myFunction(v='2')"
+                                    style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Delete</a>
+                                </li>
+
+                                <li><a onclick="myFunction(v='3')"
+                                    style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Share</a>
+                                </li>
+
+                                <li><a onclick="myFunction(v='4')"
+                                    style="color: rgb(17, 17, 17); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Export</a>
+                                </li>
+                              </ul>
+                            </div>
+
+
+                          </li>
+
+                          <li class="mb-1">
+
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                              style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;"
+                              data-bs-toggle="collapse" data-bs-target="#home2s-collapse" aria-expanded="false">
+                              + Settings
+                            </button>
+
+                            <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+                            <div class="collapse" id="home2s-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+                                <li><a onclick="myFunction(v='6')"
+                                    style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">AI
+                                    Peronality</a>
+                                </li>
+
+                              </ul>
+                            </div>
+
+
+                          </li>
+
+                          <li class="mb-1">
+
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                              style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;"
+                              data-bs-toggle="collapse" data-bs-target="#home3s-collapse" aria-expanded="false">
+                              + Preferences
+                            </button>
+
+                            <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+                            <div class="collapse" id="home3s-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" onclick="myFunction(v='7')"
+                                    style="color: rgb(27, 27, 27); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Themes</a>
+                                </li>
+
+                                <li><a href="#" onclick="myFunction(v='8')"
+                                    style="color: rgb(17, 17, 17); margin-left: 15px ; font-weight: lighter; font-size: small;"
+                                    class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Visibility</a>
+                                </li>
+                              </ul>
+                            </div>
+
+
+                          </li>
+
+                        </ul>
+                        <!-- MAIN DROPDOWNS -->
+
+                      </div>
+
+                    </div>
+                    <!---------------- Colunn left for sideabr - END --------------------------------------------------------------------->
+
+
+
+
+                    <div class="col-md-2 ms-auto" style="width: 328px;">
+
+                      <!-- setting card content ------------------------------------------------------------>
+                      <script>
+                        var v = '1';
+
+                        function myFunction(v = '1') {
+                          if (v == '1') { //show always at end, first hide other cards
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'none';
+                            document.getElementById("closebutt").style.marginRight = "162px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                            //7) Show Personality -------------------------------------------------------------------
+                            document.getElementById("theme").style.display = 'none';
+                            //7) Show Personality -------------------------------------------------------------------
+
+                            //5) Show Personality -------------------------------------------------------------------
+                            document.getElementById("perso").style.display = 'none';
+                            //5) Show Personality -------------------------------------------------------------------
+
+                            //4) Show Delete -------------------------------------------------------------------
+                            document.getElementById("expp").style.display = 'none';
+                            //4) Show Delete -------------------------------------------------------------------
+
+
+                            //3) Show Delete -------------------------------------------------------------------
+                            document.getElementById("shar").style.display = 'none';
+                            //3) Show Delete -------------------------------------------------------------------
+
+
+                            //2) Hide Delete --------------------------------------------------------------
+                            document.getElementById("delsec").style.display = 'none';
+                            //2) Hide Delete --------------------------------------------------------------
+
+
+                            //1) tiit --------------------------------------------------------------
+                            document.getElementById("titleofp").style.display = 'block';
+                            //1) tiit --------------------------------------------------------------
+
+                            //8) Show Personality -------------------------------------------------------------------
+                            document.getElementById("status").style.display = 'none';
+                            //8) Show Personality -------------------------------------------------------------------
+
+                          } else if (v == '2') { //show always at end, first hide other cards
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'block';
+                            document.getElementById("closebutt").style.marginRight = "0px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                            //7) Show Personality -------------------------------------------------------------------
+                            document.getElementById("theme").style.display = 'none';
+                            //7) Show Personality -------------------------------------------------------------------
+
+                            //5) Show Personality -------------------------------------------------------------------
+                            document.getElementById("perso").style.display = 'none';
+                            //5) Show Personality -------------------------------------------------------------------
+
+                            //4) Show export -------------------------------------------------------------------
+                            document.getElementById("expp").style.display = 'none';
+                            //4) Show export -------------------------------------------------------------------
+
+
+                            //3) Show share -------------------------------------------------------------------
+                            document.getElementById("shar").style.display = 'none';
+                            //3) Show share -------------------------------------------------------------------
+
+                            //1) tiit --------------------------------------------------------------
+                            document.getElementById("titleofp").style.display = 'none';
+                            //1) tiit --------------------------------------------------------------
+
+                            //2) Show Delete -------------------------------------------------------------------
+                            document.getElementById("delsec").style.display = 'block';
+                            //2) Show Delete -------------------------------------------------------------------
+
+                            //8) Show Personality -------------------------------------------------------------------
+                            document.getElementById("status").style.display = 'none';
+                            //8) Show Personality -------------------------------------------------------------------
+
+                          } else if (v == '3') {
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'block';
+                            document.getElementById("closebutt").style.marginRight = "0px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                            //7) Show Personality -------------------------------------------------------------------
+                            document.getElementById("theme").style.display = 'none';
+                            //7) Show Personality -------------------------------------------------------------------
+
+                            //5) Show Personality -------------------------------------------------------------------
+                            document.getElementById("perso").style.display = 'none';
+                            //5) Show Personality -------------------------------------------------------------------
+
+                            //4) Show Delete -------------------------------------------------------------------
+                            document.getElementById("expp").style.display = 'none';
+                            //4) Show Delete -------------------------------------------------------------------
+
+                            //1) tiit --------------------------------------------------------------
+                            document.getElementById("titleofp").style.display = 'none';
+                            //1) tiit --------------------------------------------------------------
+
+                            //2) Show Delete -------------------------------------------------------------------
+                            document.getElementById("delsec").style.display = 'none';
+                            //2) Show Delete -------------------------------------------------------------------
+
+                            //3) Show share -------------------------------------------------------------------
+                            document.getElementById("shar").style.display = 'block';
+                            //3) Show share -------------------------------------------------------------------
+
+                            //8) Show Personality -------------------------------------------------------------------
+                            document.getElementById("status").style.display = 'none';
+                            //8) Show Personality -------------------------------------------------------------------
+
+                          } else if (v == '4') {
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'block';
+                            document.getElementById("closebutt").style.marginRight = "0px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                            //7) Show Personality -------------------------------------------------------------------
+                            document.getElementById("theme").style.display = 'none';
+                            //7) Show Personality -------------------------------------------------------------------
+
+                            //5) Show Personality -------------------------------------------------------------------
+                            document.getElementById("perso").style.display = 'none';
+                            //5) Show Personality -------------------------------------------------------------------
+
+                            //1) tiit --------------------------------------------------------------
+                            document.getElementById("titleofp").style.display = 'none';
+                            //1) tiit --------------------------------------------------------------
+
+                            //2) Show Delete -------------------------------------------------------------------
+                            document.getElementById("delsec").style.display = 'none';
+                            //2) Show Delete -------------------------------------------------------------------
+
+                            //3) Show share -------------------------------------------------------------------
+                            document.getElementById("shar").style.display = 'none';
+                            //3) Show share -------------------------------------------------------------------
+
+                            //4) Show export -------------------------------------------------------------------
+                            document.getElementById("expp").style.display = 'block';
+                            //4) Show export -------------------------------------------------------------------
+
+                            //8) Show Personality -------------------------------------------------------------------
+                            document.getElementById("status").style.display = 'none';
+                            //8) Show Personality -------------------------------------------------------------------
+
+                          } else if (v == '6') {
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'block';
+                            document.getElementById("closebutt").style.marginRight = "0px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                            //7) Show Personality -------------------------------------------------------------------
+                            document.getElementById("theme").style.display = 'none';
+                            //7) Show Personality -------------------------------------------------------------------
+
+                            //1) tiit --------------------------------------------------------------
+                            document.getElementById("titleofp").style.display = 'none';
+                            //1) tiit --------------------------------------------------------------
+
+                            //2) Show Delete -------------------------------------------------------------------
+                            document.getElementById("delsec").style.display = 'none';
+                            //2) Show Delete -------------------------------------------------------------------
+
+                            //3) Show share -------------------------------------------------------------------
+                            document.getElementById("shar").style.display = 'none';
+                            //3) Show share -------------------------------------------------------------------
+
+                            //4) Show export -------------------------------------------------------------------
+                            document.getElementById("expp").style.display = 'none';
+                            //4) Show export -------------------------------------------------------------------
+
+                            //5) Show Personality -------------------------------------------------------------------
+                            document.getElementById("perso").style.display = 'block';
+                            //5) Show Personality -------------------------------------------------------------------
+
+                            //8) Show Personality -------------------------------------------------------------------
+                            document.getElementById("status").style.display = 'none';
+                            //8) Show Personality -------------------------------------------------------------------
+
+                          } else if (v == '7') {
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'block';
+                            document.getElementById("closebutt").style.marginRight = "0px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                            //1) tiit --------------------------------------------------------------
+                            document.getElementById("titleofp").style.display = 'none';
+                            //1) tiit --------------------------------------------------------------
+
+                            //2) Show Delete -------------------------------------------------------------------
+                            document.getElementById("delsec").style.display = 'none';
+                            //2) Show Delete -------------------------------------------------------------------
+
+                            //3) Show share -------------------------------------------------------------------
+                            document.getElementById("shar").style.display = 'none';
+                            //3) Show share -------------------------------------------------------------------
+
+                            //4) Show export -------------------------------------------------------------------
+                            document.getElementById("expp").style.display = 'none';
+                            //4) Show export -------------------------------------------------------------------
+
+                            //5) Show Personality -------------------------------------------------------------------
+                            document.getElementById("perso").style.display = 'none';
+                            //5) Show Personality -------------------------------------------------------------------
+
+                            //7) Show Personality -------------------------------------------------------------------
+                            document.getElementById("theme").style.display = 'block';
+                            //7) Show Personality -------------------------------------------------------------------
+
+                            //8) Show Personality -------------------------------------------------------------------
+                            document.getElementById("status").style.display = 'none';
+                            //8) Show Personality -------------------------------------------------------------------
+
+                          } else if (v == '0.1') {
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'block';
+                            document.getElementById("closebutt").style.marginRight = "0px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                            //1) tiit --------------------------------------------------------------
+                            document.getElementById("titleofp").style.display = 'none';
+                            //1) tiit --------------------------------------------------------------
+
+                            //2) Show Delete -------------------------------------------------------------------
+                            document.getElementById("delsec").style.display = 'none';
+                            //2) Show Delete -------------------------------------------------------------------
+
+                            //3) Show share -------------------------------------------------------------------
+                            document.getElementById("shar").style.display = 'none';
+                            //3) Show share -------------------------------------------------------------------
+
+                            //4) Show export -------------------------------------------------------------------
+                            document.getElementById("expp").style.display = 'none';
+                            //4) Show export -------------------------------------------------------------------
+
+                            //5) Show Personality -------------------------------------------------------------------
+                            document.getElementById("perso").style.display = 'none';
+                            //5) Show Personality -------------------------------------------------------------------
+
+                            //7) Show Personality -------------------------------------------------------------------
+                            document.getElementById("theme").style.display = 'none';
+                            //7) Show Personality -------------------------------------------------------------------
+
+                            //8) Show Personality -------------------------------------------------------------------
+                            document.getElementById("status").style.display = 'block';
+                            //8) Show Personality -------------------------------------------------------------------
+
+                            //butt) Show butt -------------------------------------------------------------------
+                            document.getElementById("subbutt").style.display = 'none';
+                            document.getElementById("closebutt").style.marginRight = "162px";
+                            //butt) Show butt -------------------------------------------------------------------
+
+                          }
+
+                        }
+                      </script>
+                      <!-- setting card content -------------------------------------------------------------->
+
+
+
+
+                      <!-- These are the Tags where are being set above in setting card conetnt -->
+
+
+
+
+                      <!--1) Properties and text --------------------------------------------------->
+                      <p id="ti" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+                      <p id="des" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+                      <p id="datet" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+                      <p id="meme" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+                      <!--1) Properties and text --------------------------------------------------->
+
+
+
+                      <!--2) DELETE SECTION - START ----------------------------------------------->
+                      <div id="delsec" style="display: none;">
+
+                        <hr style="margin-top: 25px;">
+
+                        <p style="text-align: center; font-size: medium;">Are you sure you wanna delete all the
+                          files inside your project:
+                        <p style="text-align: center; font-size: medium; font-weight: bold;">
+                          <%= note.title %> ?
+                        </p>
+                        </p>
+
+                        <!-- this deletes the note, go to dashcontroler and look at the ""dashDeleteNote"" funciton
+                                this func is passed to this page via router, go check it out too. -->
+
+                        <form action="/dash/item-delete/<%= noteID %>?_method=DELETE" method="POST" id="delete">
+                          <button class="btn btn-danger delbutton rounded-pill"
+                            style="justify-content: center; margin: auto;" type="submit">Delete</button>
+                        </form>
+
+                      </div>
+                      <!--2) DELETE SECTION - START ----------------------------------------------->
+
+
+
+                      <!--3) SHARE - START ----------------------------------------------->
+                      <div id="shar" style="display: none;">
+
+                        <a class="shareim" href="#" style="justify-content: center; margin: auto;">
+                          <div class="sharebu"></div>
+                        </a>
+
+
+                        <p style="text-align: center; font-size: medium;">Share your project with anyone
+                        </p>
+
+
+
+                        <div class="container text-center" style="position: absolute; margin-top: 10px;">
+                          <div class="row row-cols-4">
+
+                            <div class="col" style="width: 80px;">
+                              <li style="list-style: none;">
+                                <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                  <div class="slack"></div>
+                                </a>
+                                <p style="text-align: center; font-size: medium;">Slack</p>
+                              </li>
+                            </div>
+
+                            <div class="col" style="width: 80px;">
+                              <li style="list-style: none;">
+                                <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                  <div class="trello"></div>
+                                </a>
+                                <p style="text-align: center; font-size: medium;">Trello</p>
+                              </li>
+                            </div>
+
+                            <div class="col" style="width: 80px;">
+                              <li style="list-style: none;">
+                                <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                  <div class="sell"></div>
+                                </a>
+                                <p style="text-align: center; font-size: medium;">Sell</p>
+                              </li>
+                            </div>
+
+                            <div class="col" style="width: 80px;">
+                              <li style="list-style: none;">
+                                <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                  <div class="schat"></div>
+                                </a>
+                                <p style="text-align: center; font-size: medium;">Chat</p>
+                              </li>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                        <hr>
+
+                      </div>
+                      <!--3) SHARE - START ----------------------------------------------->
+
+
+
+                      <!--3) EXPORT - START ----------------------------------------------->
+                      <div id="expp" style="display: none;">
+
+                        <a class="shareim" href="#" style="justify-content: center; margin: auto;">
+                          <div class="expo"></div>
+                        </a>
+
+
+                        <p style="text-align: center; font-size: medium;">Export the project
+                        </p>
+
+
+
+                        <div class="container text-center"
+                          style="margin-left: 68px; position: absolute; margin-top: 10px; justify-content: center;">
+                          <div class="row row-cols-4">
+
+                            <div class="col" style="width: 80px;">
+                              <li style="list-style: none;">
+                                <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                  <div class="dd"></div>
+                                </a>
+                                <p style="text-align: center; font-size: medium;">3D CAD</p>
+                              </li>
+                            </div>
+
+                            <div class="col" style="width: 80px;">
+                              <li style="list-style: none;">
+                                <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                                  <div class="pack"></div>
+                                </a>
+                                <p style="text-align: center; font-size: medium;">Package</p>
+                              </li>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                        <hr>
+
+                      </div>
+                      <!--3) EXPORT - START ----------------------------------------------->
+
+
+
+                      <!--4) Personality - START ----------------------------------------------->
+                      <div id="perso" style="display: none;">
+
+                        <!-- 1st Slider -->
+                        <label for="customRange3" class="form-label"
+                          style="font-size: small; font-weight: bold; margin-bottom: 0px;">AI Personality
+                        </label>
+
+                        <label for="customRange3" class="form-label"
+                          style="font-size: xx-small; font-weight:lighter;">Selecting noob will make AI talk
+                          in a way that a 10 year old can understand, pro is when AI will consider you expert
+                          in engineerng</label>
+
+                        <div class="row">
+                          <div class="col" style="width: 40px; font-size: small; color: green;">
+                            Noob
+                          </div>
+                          <div class="col-8">
+                            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+                          </div>
+                          <div class="col" style="font-size: small; color: brown;">
+                            Pro
+                          </div>
+                        </div>
+                        <!-- 1st Slider -->
+
+
+                        <!-- 2nd Slider -->
+                        <label for="customRange3" class="form-label"
+                          style="font-size: small; font-weight: bold;">Calculation Fidelity</label>
+
+                        <div class="row">
+                          <div class="col" style="width: 40px; font-size: small; color: brown;">
+                            Low
+                          </div>
+                          <div class="col-8">
+                            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+                          </div>
+                          <div class="col" style="font-size: small; color: green;">
+                            High
+                          </div>
+                        </div>
+                        <!-- 2nd Slider -->
+
+
+
+                        <div class="container text-center"
+                          style="margin-left: 0px; position: absolute; margin-top: 10px;">
+                          <div class="row row-cols-1">
+
+                            <div class="form-check form-switch" style="text-align: start; padding-bottom: 10px;">
+                              <input class="form-check-input" style="margin-top: 8px;" type="checkbox" role="switch"
+                                id="flexSwitchCheckDefault">
+                              <label class="form-check-label" for="flexSwitchCheckDefault"
+                                style="font-size: small; padding-bottom: 5px; padding-left: 0px;">
+                                Learning Mode</label>
+                            </div>
+
+                            <div class="form-check form-switch" style="text-align: start; padding-bottom: 2px;">
+                              <input class="form-check-input" style="margin-top: 8px;" type="checkbox" role="switch"
+                                id="flexSwitchCheckDefault">
+                              <label class="form-check-label" for="flexSwitchCheckDefault"
+                                style="font-size: small; padding-bottom: 5px; padding-left: 0px;">
+                                Prototype Mode</label>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+
+
+                      </div>
+                      <!--4) Personality - START ----------------------------------------------->
+
+
+                      <!--4) Temes - START ----------------------------------------------->
+                      <div id="theme" style="display: none;">
+
+
+
+                        <a class="shareim" href="#" style="justify-content: center; margin-top: 50px;">
+                          <div class="theme"></div>
+                        </a>
+
+
+
+
+                        <div class="container text-center" style="margin-left: 25px; margin-top: 10px;">
+                          <div class="row row-cols-1">
+
+                            <div class="form-check form-switch"
+                              style="text-align: start; padding-bottom: 10px; margin-left: 50px;">
+                              <input class="form-check-input" style="margin-top: 8px;" type="checkbox" role="switch"
+                                id="flexSwitchCheckDefault">
+                              <label class="form-check-label" for="flexSwitchCheckDefault"
+                                style="font-size: small; padding-bottom: 5px; padding-left: 0px;">
+                                Dark Mode</label>
+                            </div>
+
+
+                          </div>
+                        </div>
+
+
+
+
+
+                      </div>
+                      <!--4) Temes - START ----------------------------------------------->
+
+
+                      <!--f) title and description - START ----------------------------------------------->
+                      <div id="titleofp" style="display: none;">
+
+                        <!-- This action is how we will update the things in data base, 
+                                             first we made button and made it type=submit, in line 964 and 
+                                             then we set the action url here now we will set things in the App.js in line 7, it is = require method-override  
+                                             That _method is defined in app.js in line 43, and before 43 we did a require in line 7 in app.js 
+                                            
+                                            after doing all this, we defined dashupdatenote in dashcontroller in line 137, which actually grabs data from here
+                                            using the name="title" we gave in the <input block and updates the database go there to see final thing
+                                            -->
+
+                        <form action="/dash/item/<%= noteID %>?_method=PUT" method="POST"
+                          style="width: fit-content; position: absolute;" id="titleform">
+
+                          <div id="titcr" class="form-group mb4"> Title:
+                            <input type="text" class="form-control border-0" style="font-weight: bold;  width: 300px;"
+                              id="title" name="title" value="<%= note.title%>" placeholder="Title">
+                          </div>
+
+                          <div id="descr" class="form-group mb4"> Description:
+                            <input type="text" class="form-control border-0"
+                              style="font-weight: bold; height: 35px; width: 300px;" id="body" name="body"
+                              value="<%= note.body%>" placeholder="Description">
+                          </div>
+
+                          <div id="date" style="font-size: small; margin-top: 50px;">Date: <%= note.createAt%>
+                          </div>
+
+                          <div id="una" style="font-size: small;">Created by:
+                            <%= displayName %>&nbsp<%= displayLast %></div>
+
+                          <button type="submit" id="sumchng" class="btn btn-primary"
+                            style="margin-bottom: 0px; margin-left: 158px; margin-top: 30px; position: absolute;">
+                            Save changes
+                          </button>
+
+                        </form>
+
+                      </div>
+                      <!--f) title and description - START ----------------------------------------------->
+
+
+                      <!--S) Status ----------------------------------------------->
+                      <div id="status" style="display: none;">
+
+                        <form action="/dash/item/<%= noteID %>?_method=PUT" method="POST">
+
+                          <a class="shareim" href="#" style="justify-content: center; margin-top: 50px;">
+                            <div class="prog"></div>
+                          </a>
+
+                          <p style="font-size: small; font-weight: normal; text-align: center;">Is this
+                            project
+                            finished? mark it finished
+                          </p>
+
+                          <script>
+                            function shi() {
+                              if (document.getElementById('success-outlined').checked) {
+
+                                if (document.getElementById("finish") != null) {
+
+                                  document.getElementById('finish').innerHTML = 'OG';
+
+                                  console.log(document.getElementById('finish').innerHTML);
+                                };
+
+                              } else if (document.getElementById('danger-outlined').checked) {
+
+                                if (document.getElementById("finish") != null) {
+
+                                  document.getElementById('finish').innerHTML = 'FIN';
+
+                                  console.log(document.getElementById('finish').innerHTML);
+                                };
+
+                              }
+                            };
+                          </script>
+
+                          <div class="container text-center"
+                            style="width: 200px; height: 50px; margin-left: 50px; margin-top: 10px;">
+
+                            <div class="row row-cols-1">
+
+
+                              <!-- SETTING TAG ----------------------------------------------- -->
+                              <input type="radio" value="OG" class="btn-check" name="options-outlined"
+                                id="success-outlined" autocomplete="off" checked>
+                              <label class="btn btn-outline-success" for="success-outlined">On
+                                Going</label>
+
+                              <input type="radio" value="FIN" class="btn-check" name="options-outlined"
+                                id="danger-outlined" autocomplete="off">
+                              <label class="btn btn-outline-danger" for="danger-outlined">Finished</label>
+                              <!-- SETTING TAG ----------------------------------------------- -->
+
+
+                              <textarea type="text" class="form-control" id="finish" name="finish"
+                                style="display: none;">YY</textarea>
+
+                              <div style="display: none;" id="titcr" class="form-group mb4"> Title:
+                                <input type="text" class="form-control border-0"
+                                  style="font-weight: bold;  width: 300px;" id="title" name="title"
+                                  value="<%= note.title%>" placeholder="Title">
+                              </div>
+
+                              <div style="display: none;" id="descr" class="form-group mb4"> Description:
+                                <input type="text" class="form-control border-0"
+                                  style="font-weight: bold; height: 35px; width: 300px;" id="body" name="body"
+                                  value="<%= note.body%>" placeholder="Description">
+                              </div>
+
+
+
+                            </div>
+
+                            <button onclick="shi()" type="submit" class="btn btn-primary"
+                              style="margin-bottom: 0px; margin-left: 8px; margin-top: 41px; position: absolute;">
+                              Save changes
+                            </button>
+
+                          </div>
+
+
+
+                        </form>
+
+                      </div>
+                      <!--S) Status ----------------------------------------------->
+
+
+
+                    </div>
+
+
+
+                    <!----------- Colunn right for Info body - END ----------------------------------------------------------------------->
+                    <!----------- Colunn right for Info body - END ----------------------------------------------------------------------->
+
+
+
+
+                  </div>
+                </div>
+
+
+                <div class="modal-footer">
+                  <button id="closebutt" type="button" style="margin-right: 0px;" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+
+                  <button id="subbutt" style="display: block;" type="submit" class="btn btn-primary">Save
+                    changes</button>
+                  <!-- function defined in line 450 in the form block -->
+
+
+                  <!-- when the title and description are updated in the input box, user will click on save changes button. 
+            the text input feild have a action tag in it, go see that, that is how we will call the API and update the stuff in database. -->
+
+
+                </div>
+
+                <!-- inside the card, this is the info doby -------------------------------------------------------------- -->
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <!-- SETTINGS POPUP IN CHHAT ---------------------------------------------------------------->
+
+
+
+        <!-- Calculationns ======================================================================= -->
+        <!-- Calculationns ======================================================================= -->
+
+
+        <!-- The div where the hard coded calculations will start to genrate -->
+        <div class="calcualtions_hardcode" style="height: 1000px; width: 1000px;" id="calculations_hard">
+
+          <!-- this one is the main box in which we will displaty the calculatins -->
+          <div id="thecalculation_area" style="background-color: #ffffff;color: white; margin-top: 10px; width: 1080px; margin-left: -40px;
+            height: 600px;
+            position: absolute;
+            border: #212529;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 12px;
+            z-index: 2;">
+
+            <div style="color: rgb(172, 172, 172); margin-bottom: 10px; margin-top: -10px; font-size: medium;">cAD Model
+              for - <%= note.title %></div>
+            <div style="height: 1px; width: auto; background-color: rgb(172, 172, 172);"></div>
+
+            <!-- 3D model frame 
+            <a-scene>
+
+              <a-entity id="the3dshit" position="0 0 0">
+              </a-entity>
+
+              <a-entity camera position wasd-controls rotation look-controls aframe-injected></a-entity>
+
+              <a-box position="-1 0.5 -3" rotation="0 45 0" color="blue"></a-box>
+              <a-sphere position="0 1.25 -5" radius="1.25" color="gray"></a-sphere>
+              <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="white"></a-cylinder>
+              <a-sky color="white"></a-sky>
+
+            </a-scene> -->
+            <canvas data-engine="three.js r158" width="1066" height="658" style="display: block; width: 1066px; height: 658px; touch-action: none;" id="mycanfor3"></canvas>
+
+
+
+
+
+
+
+
+            <script>
+
+              //const the3denv = document.getElementById('the3dshit');
+
+              //var theval = 5;
+              //for (let a = 0; a < 39; a++) {
+
+              //  const theridline = `<a-entity line="start: -4.666 0 `+theval+`; end: 1.666 0 `+theval+`; color: black" scale="5 1 1"></a-entity>`;
+              //  const theridlin2 = `<a-entity line="start: `+theval/3+` 0 5; end: `+theval/3+` 0 -14; color: black" scale="5 1 1"></a-entity>`;
+
+              //  the3denv.innerHTML += theridline;
+              //  the3denv.innerHTML += theridlin2;
+              //  theval = theval - 0.5
+
+              //}
+
+            </script>
+
+
+<script src="/Orbitcontrol.js" type="module"></script>
+<script>
+
+  // Your Three.js code goes here
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, 1066 / 658, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('mycanfor3') });
+
+  renderer.setSize(1066, 658);
+
+  const geometry = new THREE.BoxGeometry();
+  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+  const cube = new THREE.Mesh(geometry, material);
+
+  scene.add(cube);
+
+  camera.position.z = 5;
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableRotate = true;
+
+  function animate() {
+      requestAnimationFrame(animate);
+
+      renderer.render(scene, camera);
+  }
+
+  animate();
+</script>
+
+
+
+
+
+          </div>
+
+          <!-- this one is for the border, for the gradiet animation, that runs when the AI is typing -->
+          <div class="borderforcolors" style="background-color: #ffffff; color: white;
+            margin-top: 0px;
+            width: 1100px;
+            margin-left: -50px;
+            height: 630px;
+            position: absolute;
+            border: #212529;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 12px;">
+            The calculation
+          </div>
+
+        </div>
+
+        <style>
+          .sticky-button {
+            position: fixed;
+            bottom: 20px;
+            z-index: 10;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        </style>
+
+        <!-- Calculationns ======================================================================= -->
+        <!-- Calculationns ======================================================================= -->
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+
+async function stringToHash(inputString) {
+  // Convert the string to a Uint8Array
+  const encoder = new TextEncoder();
+  const data = encoder.encode(inputString);
+
+  // Calculate the SHA-256 hash
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+  // Convert the hash to a hexadecimal string
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+  return hashHex;
+}
+
+// Example usage:
+const inputString = 'Hello, World!';
+stringToHash(inputString).then(hash => {
+  console.log(`Hash of '${inputString}': ${hash}`);
+});
+
+</script>
+
+
+
+
+
+<!--
+_____________________________________ __  ______  ___    ____  __________________________________________________ 
+_______________________________/ ___// / / / __ \/   |  / __ \/ ____/ __ \_______________________________________
+_______________________________\__ \/ /_/ / /_/ / /| | / / / / __/ / /_/ /_______________________________________
+_________________________________/ / __  / _, _/ ___ |/ /_/ / /___/ _, _/________________________________________
+_____________________________/____/_/ /_/_/ |_/_/  |_/_____/_____/_/ |_|_________________________________________
+-->

@@ -1,0 +1,2185 @@
+
+
+
+<div class="container-fluid">
+  <div class="row" style="display: flex; justify-content: space-between;">
+
+  <!-- LEFT -->
+  <div class="col-3 bg-dark text-light" style="padding-left: 0px; width: 15%; position: sticky; height: 2040px;">
+
+  <!-- Sidebar ----------------------------------------------------------------->
+  <div class="sidebar d-flex sticky-top flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 190px; color: white; height: 725px !important;">
+
+  <div class="container text-center" style="height: fit-content;">
+    <div class="row row-cols-4">
+
+      <a href="/dash" style="justify-content: center; margin-left: 0px;">
+        <div class="das"></div>
+      </a>
+
+      <p style="font-size: medium;">Dashboard</p>
+
+    </div>
+  </div>
+
+  <hr style="color: rgb(255, 255, 255); margin-top: 1px; margin-bottom: 0px;">
+
+  <!-- MAIN DROPDOWNS -->
+  <ul class="list-unstyled ps-0" style="color: white; margin-bottom: 300px;">
+
+    <li class="mb-1">
+
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home1-collapse" aria-expanded="false">
+        + Current Design
+      </button>
+
+      <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+      <div class="collapse" id="home1-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+          </li>
+
+          <li><a href="/dash/item/<%= note._id %>" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+          </li>
+        </ul>
+      </div>
+
+
+    </li>
+
+    <li class="mb-1">
+
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home2-collapse" aria-expanded="false">
+        + Home
+      </button>
+
+      <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+      <div class="collapse" id="home2-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+          </li>
+        </ul>
+      </div>
+
+
+    </li>
+
+    <li class="mb-1">
+
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home3-collapse" aria-expanded="false">
+        + Assistant
+      </button>
+
+      <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+      <div class="collapse" id="home3-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+          </li>
+        </ul>
+      </div>
+
+
+    </li>
+
+    <li class="mb-1">
+
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home4-collapse" aria-expanded="false">
+        + Help and Shortcuts
+      </button>
+
+      <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+      <div class="collapse" id="home4-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Prompts</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Shortcuts</a>
+          </li>
+        </ul>
+      </div>
+
+
+    </li>
+
+    <li class="mb-1">
+
+      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="font-size: small; color: rgb(248, 248, 248); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home5-collapse" aria-expanded="false">
+        + History
+      </button>
+
+      <hr style="color: rgb(255, 255, 255); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+      <div class="collapse" id="home5-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Calculations</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Viewport</a>
+          </li>
+
+          <li><a href="#" style="color: white; margin-left: 15px ; font-weight: lighter; font-size: x-small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Design Room</a>
+          </li>
+        </ul>
+      </div>
+
+
+    </li>
+
+  </ul>
+  <!-- MAIN DROPDOWNS -->
+
+  <!-- Settings-->
+  <div class="dropdown sticky-bottom" style="justify-content: baseline; margin-top: 60px;">
+    <hr>
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="margin-bottom: 15px;">
+      <strong>Settings</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end text-small shadow">
+      <li><a class="dropdown-item" href="#">Plans</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Preferences</a></li>
+    </ul>
+  </div>
+  <!-- Settings-->
+
+  </div>
+  <!-- Sidebar ----------------------------------------------------------------->
+
+    </div>
+        
+    <!-- RIGHT -->
+    <div class="col-9" style="height: 91vh; width: 85%;">
+      <div class="d-flex align-items-center justify-content-center" style="height: 100%; display: flex !important; flex-direction: column;">
+
+        <!-- Breadcrub -->
+        <nav aria-label="breadcrumb" style="width: -webkit-fill-available;">
+          <ol class="breadcrumb breadcrumb-chevron p-1" style="margin-left: 0px; margin-top: opx; margin-right: 0px; margin-bottom: 0px; padding-bottom: 5px;">
+
+    <li style="z-index: 9;" class="breadcrumb-item">
+
+      <a href="/dash/Item-3d/<%= note._id %>">
+        <div href="" class="hom4" style="width: 32px; height: 32px;">
+          <img class="hom4 breadcrumb-item active">
+        </div>
+      </a>
+
+      <span class="visually-hidden">Home</span>
+    </li>
+
+    <li style="z-index: 9;">
+
+      <a href="/dash/item/<%= note._id %>">
+        <div href="/" class="hom2" style="width: 32px; height: 32px; margin-left:-2px; margin-right: 2px;">
+          <img class="hom2">
+        </div>
+      </a>
+
+    </li>
+
+    <li style="z-index: 9;">
+
+      <a>
+        <div class="homli" style="width: 32px; height: 32px; margin-left:-12px;">
+          <img class="homli">
+        </div>
+      </a>
+
+    </li>
+
+    <li style="z-index: 9;" class="breadcrumb-item">
+
+      <a href="/dash">
+        <div href="/" class="hom" style="width: 32px; height: 32px; margin-left: -12px;">
+          <img class="hom breadcrumb-item active">
+        </div>
+      </a>
+
+      <span class="visually-hidden">Home</span>
+    </li>
+
+    <li style="z-index: 9;" class="breadcrumb-item">
+      <a class="link-body-emphasis fw-semibold text-decoration-none" style="font-size: small;" href="#"> <%= note.title %></a>
+      <a class="link-body-emphasis text-decoration-none" style="font-size: small;"> - Calculations</a>
+    </li>
+
+
+    <div style="position: absolute;">
+      <!-- WEB ----------------------------------------------------------------->
+      <button style="margin-top: -8px; margin-left: 1022px;" class="webbb3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
+
+      <div style="width: 700px;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Search Anything</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <hr style="margin-top: -5px;">
+        <div class="offcanvas-body">
+
+          <!-- GOOGLE ------------------------------ -->
+          <div style="text-align: left; height: 25px; width: 650px; margin-top: 5px;">
+            <script async src="https://cse.google.com/cse.js?cx=36aca3cbc47dc472c"></script>
+            <div class="gcse-search"></div>
+          </div>
+          <!-- GOOGLE ------------------------------ -->
+
+        </div>
+
+      </div>
+      <!-- WEB ---------------------------------------------------------------->
+
+
+      <button type="button homset" class="btn" data-bs-toggle="modal" data-bs-target="#Charset" style="margin-top: -30px; margin-left: -40px; width: 100px; justify-content: center;">
+
+        <div class="homset" style=" justify-content: center; width: 32px; height: 32px;"></div>
+      </button>
+    </div>
+
+            </ol>
+          </nav>
+          <!-- Breadcrub -->
+
+
+
+          <!-- SETTINGS POPUP IN CHHAT ---------------------------------------------------------------->
+          <div class="modal fade modal-dialog" style="width: 1200px;" id="Charset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="setttt modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" id="exampleModalLabel"><%= note.title %></h1>
+        <h1 class="modal-title fs-6 fw-semibold" id="exampleModalLabel">&nbsp Settings and Actions</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+
+        <!-- inside the card, this is the info doby -------------------------------------------------------------- -->
+
+
+        <div class="row">
+          <div class="row">
+
+
+
+
+            <!---------------- Colunn left for sideabr ------------------------------------------------------------------------------------>
+            <div class="col-md-3 ms-0" style="margin-left: 0px;">
+
+              <div class="sidebarsets d-flex flex-column flex-shrink-0 p-3 text-bg-white" style="width: 190px; color: rgb(20, 20, 20);">
+
+                <!-- MAIN DROPDOWNS -->
+                <ul class="sidebarsetsin list-unstyled ps-0" style="color: rgb(26, 26, 26); justify-content:start;">
+
+                  <li class="mb-1">
+
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home1s-collapse" aria-expanded="false">
+                      + Actions
+                    </button>
+
+                    <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+                    <div class="collapse" id="home1s-collapse">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+                        <li><a onclick="myFunction(v='0.1')" style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Status</a>
+                        </li>
+
+                        <li><a onclick="myFunction(v='1')" style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Information</a>
+                        </li>
+
+                        <li><a onclick="myFunction(v='2')" style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Delete</a>
+                        </li>
+
+                        <li><a onclick="myFunction(v='3')" style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Share</a>
+                        </li>
+
+                        <li><a onclick="myFunction(v='4')" style="color: rgb(17, 17, 17); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Export</a>
+                        </li>
+                      </ul>
+                    </div>
+
+
+                  </li>
+
+                  <li class="mb-1">
+
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home2s-collapse" aria-expanded="false">
+                      + Settings
+                    </button>
+
+                    <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+                    <div class="collapse" id="home2s-collapse">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+                        <li><a onclick="myFunction(v='6')" style="color: rgb(22, 22, 22); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">AI
+                            Peronality</a>
+                        </li>
+
+                      </ul>
+                    </div>
+
+
+                  </li>
+
+                  <li class="mb-1">
+
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" style="color: rgb(24, 24, 24); text-align: left; padding-left: 0px; margin-left: opx;" data-bs-toggle="collapse" data-bs-target="#home3s-collapse" aria-expanded="false">
+                      + Preferences
+                    </button>
+
+                    <hr style="color: rgb(22, 22, 22); margin-top: 0px; width: 100px; margin-bottom: 0px;">
+
+                    <div class="collapse" id="home3s-collapse">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="#" onclick="myFunction(v='7')" style="color: rgb(27, 27, 27); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Themes</a>
+                        </li>
+
+                        <li><a href="#" onclick="myFunction(v='8')" style="color: rgb(17, 17, 17); margin-left: 15px ; font-weight: lighter; font-size: small;" class="link-body-emphasis tretex d-inline-flex text-decoration-none rounded">Visibility</a>
+                        </li>
+                      </ul>
+                    </div>
+
+
+                  </li>
+
+                </ul>
+                <!-- MAIN DROPDOWNS -->
+
+              </div>
+
+            </div>
+            <!---------------- Colunn left for sideabr - END --------------------------------------------------------------------->
+
+
+
+
+
+            <!--   ░███████╗  ░░░░░░  ░██████╗██╗░░██╗██████╗░░█████╗░██████╗░███████╗██████╗░  ░░░░░░  ░███████╗ -->
+            <!--   ██╔██╔══╝  ░░░░░░  ██╔════╝██║░░██║██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗  ░░░░░░  ██╔██╔══╝ -->
+            <!--   ╚██████╗░  █████╗  ╚█████╗░███████║██████╔╝███████║██║░░██║█████╗░░██████╔╝  █████╗  ╚██████╗░ -->
+            <!--   ░╚═██╔██╗  ╚════╝  ░╚═══██╗██╔══██║██╔══██╗██╔══██║██║░░██║██╔══╝░░██╔══██╗  ╚════╝  ░╚═██╔██╗ -->
+            <!--   ███████╔╝  ░░░░░░  ██████╔╝██║░░██║██║░░██║██║░░██║██████╔╝███████╗██║░░██║  ░░░░░░  ███████╔╝ -->
+            <!--   ╚══════╝░  ░░░░░░  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚══════╝╚═╝░░╚═╝  ░░░░░░  ╚══════╝░ -->
+
+
+
+
+            <!----------- Colunn right for Info body - START -------------------------------------------------------------------->
+            <!----------- Colunn right for Info body - START -------------------------------------------------------------------->
+
+
+            <!----------------------------------- How this sys works? ------------------------------------------------------------------------------------->
+
+
+            <!-- 1. go to side pannel section above, for reference - line 300, see there i added a onclick event and inside it i called "myFunction()" at 452 -->
+            <!-- 2. this myfunction is defined in <script> and inside it we have if statement -->
+            <!-- 3. when from onclick we call function with v= somthing, the if condition checks it and goes in -->
+            <!-- 4. in the getElementById we have targeted a html bliock  which we want to be printed, for reference line - 637, make sure this block is inside -->
+            <!-- a div with element id which we will get in this step using getElementById... make sure the div block has " style="display: none;" " -->
+            <!-- 5. .style.display = 'none' makes the block hidden and 'block' makes it unhidden,  -->
+            <!-- 6. every component must be set to none in all other elseif's or it will not get hidden when you will switch to other card by other onclick call -->
+
+
+            <!----------------------------------- How this sys works? ------------------------------------------------------------------------------------->
+
+
+
+
+            <div class="col-md-2 ms-auto" style="width: 328px;">
+
+              <!-- setting card content ------------------------------------------------------------>
+              <script>
+                var v = '1';
+
+                function myFunction(v = '1') {
+                  if (v == '1') { //show always at end, first hide other cards
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'none';
+                    document.getElementById("closebutt").style.marginRight = "162px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                    //7) Show Personality -------------------------------------------------------------------
+                    document.getElementById("theme").style.display = 'none';
+                    //7) Show Personality -------------------------------------------------------------------
+
+                    //5) Show Personality -------------------------------------------------------------------
+                    document.getElementById("perso").style.display = 'none';
+                    //5) Show Personality -------------------------------------------------------------------
+
+                    //4) Show Delete -------------------------------------------------------------------
+                    document.getElementById("expp").style.display = 'none';
+                    //4) Show Delete -------------------------------------------------------------------
+
+
+                    //3) Show Delete -------------------------------------------------------------------
+                    document.getElementById("shar").style.display = 'none';
+                    //3) Show Delete -------------------------------------------------------------------
+
+
+                    //2) Hide Delete --------------------------------------------------------------
+                    document.getElementById("delsec").style.display = 'none';
+                    //2) Hide Delete --------------------------------------------------------------
+
+
+                    //1) tiit --------------------------------------------------------------
+                    document.getElementById("titleofp").style.display = 'block';
+                    //1) tiit --------------------------------------------------------------
+
+                    //8) Show Personality -------------------------------------------------------------------
+                    document.getElementById("status").style.display = 'none';
+                    //8) Show Personality -------------------------------------------------------------------
+
+                  } else if (v == '2') { //show always at end, first hide other cards
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'block';
+                    document.getElementById("closebutt").style.marginRight = "0px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                    //7) Show Personality -------------------------------------------------------------------
+                    document.getElementById("theme").style.display = 'none';
+                    //7) Show Personality -------------------------------------------------------------------
+
+                    //5) Show Personality -------------------------------------------------------------------
+                    document.getElementById("perso").style.display = 'none';
+                    //5) Show Personality -------------------------------------------------------------------
+
+                    //4) Show export -------------------------------------------------------------------
+                    document.getElementById("expp").style.display = 'none';
+                    //4) Show export -------------------------------------------------------------------
+
+
+                    //3) Show share -------------------------------------------------------------------
+                    document.getElementById("shar").style.display = 'none';
+                    //3) Show share -------------------------------------------------------------------
+
+                    //1) tiit --------------------------------------------------------------
+                    document.getElementById("titleofp").style.display = 'none';
+                    //1) tiit --------------------------------------------------------------
+
+                    //2) Show Delete -------------------------------------------------------------------
+                    document.getElementById("delsec").style.display = 'block';
+                    //2) Show Delete -------------------------------------------------------------------
+
+                    //8) Show Personality -------------------------------------------------------------------
+                    document.getElementById("status").style.display = 'none';
+                    //8) Show Personality -------------------------------------------------------------------
+
+                  } else if (v == '3') {
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'block';
+                    document.getElementById("closebutt").style.marginRight = "0px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                    //7) Show Personality -------------------------------------------------------------------
+                    document.getElementById("theme").style.display = 'none';
+                    //7) Show Personality -------------------------------------------------------------------
+
+                    //5) Show Personality -------------------------------------------------------------------
+                    document.getElementById("perso").style.display = 'none';
+                    //5) Show Personality -------------------------------------------------------------------
+
+                    //4) Show Delete -------------------------------------------------------------------
+                    document.getElementById("expp").style.display = 'none';
+                    //4) Show Delete -------------------------------------------------------------------
+
+                    //1) tiit --------------------------------------------------------------
+                    document.getElementById("titleofp").style.display = 'none';
+                    //1) tiit --------------------------------------------------------------
+
+                    //2) Show Delete -------------------------------------------------------------------
+                    document.getElementById("delsec").style.display = 'none';
+                    //2) Show Delete -------------------------------------------------------------------
+
+                    //3) Show share -------------------------------------------------------------------
+                    document.getElementById("shar").style.display = 'block';
+                    //3) Show share -------------------------------------------------------------------
+
+                    //8) Show Personality -------------------------------------------------------------------
+                    document.getElementById("status").style.display = 'none';
+                    //8) Show Personality -------------------------------------------------------------------
+
+                  } else if (v == '4') {
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'block';
+                    document.getElementById("closebutt").style.marginRight = "0px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                    //7) Show Personality -------------------------------------------------------------------
+                    document.getElementById("theme").style.display = 'none';
+                    //7) Show Personality -------------------------------------------------------------------
+
+                    //5) Show Personality -------------------------------------------------------------------
+                    document.getElementById("perso").style.display = 'none';
+                    //5) Show Personality -------------------------------------------------------------------
+
+                    //1) tiit --------------------------------------------------------------
+                    document.getElementById("titleofp").style.display = 'none';
+                    //1) tiit --------------------------------------------------------------
+
+                    //2) Show Delete -------------------------------------------------------------------
+                    document.getElementById("delsec").style.display = 'none';
+                    //2) Show Delete -------------------------------------------------------------------
+
+                    //3) Show share -------------------------------------------------------------------
+                    document.getElementById("shar").style.display = 'none';
+                    //3) Show share -------------------------------------------------------------------
+
+                    //4) Show export -------------------------------------------------------------------
+                    document.getElementById("expp").style.display = 'block';
+                    //4) Show export -------------------------------------------------------------------
+
+                    //8) Show Personality -------------------------------------------------------------------
+                    document.getElementById("status").style.display = 'none';
+                    //8) Show Personality -------------------------------------------------------------------
+
+                  } else if (v == '6') {
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'block';
+                    document.getElementById("closebutt").style.marginRight = "0px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                    //7) Show Personality -------------------------------------------------------------------
+                    document.getElementById("theme").style.display = 'none';
+                    //7) Show Personality -------------------------------------------------------------------
+
+                    //1) tiit --------------------------------------------------------------
+                    document.getElementById("titleofp").style.display = 'none';
+                    //1) tiit --------------------------------------------------------------
+
+                    //2) Show Delete -------------------------------------------------------------------
+                    document.getElementById("delsec").style.display = 'none';
+                    //2) Show Delete -------------------------------------------------------------------
+
+                    //3) Show share -------------------------------------------------------------------
+                    document.getElementById("shar").style.display = 'none';
+                    //3) Show share -------------------------------------------------------------------
+
+                    //4) Show export -------------------------------------------------------------------
+                    document.getElementById("expp").style.display = 'none';
+                    //4) Show export -------------------------------------------------------------------
+
+                    //5) Show Personality -------------------------------------------------------------------
+                    document.getElementById("perso").style.display = 'block';
+                    //5) Show Personality -------------------------------------------------------------------
+
+                    //8) Show Personality -------------------------------------------------------------------
+                    document.getElementById("status").style.display = 'none';
+                    //8) Show Personality -------------------------------------------------------------------
+
+                  } else if (v == '7') {
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'block';
+                    document.getElementById("closebutt").style.marginRight = "0px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                    //1) tiit --------------------------------------------------------------
+                    document.getElementById("titleofp").style.display = 'none';
+                    //1) tiit --------------------------------------------------------------
+
+                    //2) Show Delete -------------------------------------------------------------------
+                    document.getElementById("delsec").style.display = 'none';
+                    //2) Show Delete -------------------------------------------------------------------
+
+                    //3) Show share -------------------------------------------------------------------
+                    document.getElementById("shar").style.display = 'none';
+                    //3) Show share -------------------------------------------------------------------
+
+                    //4) Show export -------------------------------------------------------------------
+                    document.getElementById("expp").style.display = 'none';
+                    //4) Show export -------------------------------------------------------------------
+
+                    //5) Show Personality -------------------------------------------------------------------
+                    document.getElementById("perso").style.display = 'none';
+                    //5) Show Personality -------------------------------------------------------------------
+
+                    //7) Show Personality -------------------------------------------------------------------
+                    document.getElementById("theme").style.display = 'block';
+                    //7) Show Personality -------------------------------------------------------------------
+
+                    //8) Show Personality -------------------------------------------------------------------
+                    document.getElementById("status").style.display = 'none';
+                    //8) Show Personality -------------------------------------------------------------------
+
+                  } else if (v == '0.1') {
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'block';
+                    document.getElementById("closebutt").style.marginRight = "0px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                    //1) tiit --------------------------------------------------------------
+                    document.getElementById("titleofp").style.display = 'none';
+                    //1) tiit --------------------------------------------------------------
+
+                    //2) Show Delete -------------------------------------------------------------------
+                    document.getElementById("delsec").style.display = 'none';
+                    //2) Show Delete -------------------------------------------------------------------
+
+                    //3) Show share -------------------------------------------------------------------
+                    document.getElementById("shar").style.display = 'none';
+                    //3) Show share -------------------------------------------------------------------
+
+                    //4) Show export -------------------------------------------------------------------
+                    document.getElementById("expp").style.display = 'none';
+                    //4) Show export -------------------------------------------------------------------
+
+                    //5) Show Personality -------------------------------------------------------------------
+                    document.getElementById("perso").style.display = 'none';
+                    //5) Show Personality -------------------------------------------------------------------
+
+                    //7) Show Personality -------------------------------------------------------------------
+                    document.getElementById("theme").style.display = 'none';
+                    //7) Show Personality -------------------------------------------------------------------
+
+                    //8) Show Personality -------------------------------------------------------------------
+                    document.getElementById("status").style.display = 'block';
+                    //8) Show Personality -------------------------------------------------------------------
+
+                    //butt) Show butt -------------------------------------------------------------------
+                    document.getElementById("subbutt").style.display = 'none';
+                    document.getElementById("closebutt").style.marginRight = "162px";
+                    //butt) Show butt -------------------------------------------------------------------
+
+                  }
+
+                }
+              </script>
+              <!-- setting card content -------------------------------------------------------------->
+
+
+
+
+              <!-- These are the Tags where are being set above in setting card conetnt -->
+
+
+
+
+              <!--1) Properties and text --------------------------------------------------->
+              <p id="ti" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+              <p id="des" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+              <p id="datet" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+              <p id="meme" style="font-size:medium; display: none; margin-bottom: 0px;"> </p>
+              <!--1) Properties and text --------------------------------------------------->
+
+
+
+              <!--2) DELETE SECTION - START ----------------------------------------------->
+              <div id="delsec" style="display: none;">
+
+                <hr style="margin-top: 25px;">
+
+                <p style="text-align: center; font-size: medium;">Are you sure you wanna delete all the
+                  files inside your project:
+                <p style="text-align: center; font-size: medium; font-weight: bold;">
+                  <%= note.title %> ?
+                </p>
+                </p>
+
+                <!-- this deletes the note, go to dashcontroler and look at the ""dashDeleteNote"" funciton
+                                this func is passed to this page via router, go check it out too. -->
+
+                <form action="/dash/item-delete/<%= noteID %>?_method=DELETE" method="POST" id="delete">
+                  <button class="btn btn-danger delbutton rounded-pill" style="justify-content: center; margin: auto;" type="submit">Delete</button>
+                </form>
+
+              </div>
+              <!--2) DELETE SECTION - START ----------------------------------------------->
+
+
+
+              <!--3) SHARE - START ----------------------------------------------->
+              <div id="shar" style="display: none;">
+
+                <a class="shareim" href="#" style="justify-content: center; margin: auto;">
+                  <div class="sharebu"></div>
+                </a>
+
+
+                <p style="text-align: center; font-size: medium;">Share your project with anyone
+                </p>
+
+
+
+                <div class="container text-center" style="position: absolute; margin-top: 10px;">
+                  <div class="row row-cols-4">
+
+                    <div class="col" style="width: 80px;">
+                      <li style="list-style: none;">
+                        <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                          <div class="slack"></div>
+                        </a>
+                        <p style="text-align: center; font-size: medium;">Slack</p>
+                      </li>
+                    </div>
+
+                    <div class="col" style="width: 80px;">
+                      <li style="list-style: none;">
+                        <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                          <div class="trello"></div>
+                        </a>
+                        <p style="text-align: center; font-size: medium;">Trello</p>
+                      </li>
+                    </div>
+
+                    <div class="col" style="width: 80px;">
+                      <li style="list-style: none;">
+                        <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                          <div class="sell"></div>
+                        </a>
+                        <p style="text-align: center; font-size: medium;">Sell</p>
+                      </li>
+                    </div>
+
+                    <div class="col" style="width: 80px;">
+                      <li style="list-style: none;">
+                        <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                          <div class="schat"></div>
+                        </a>
+                        <p style="text-align: center; font-size: medium;">Chat</p>
+                      </li>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <hr>
+
+              </div>
+              <!--3) SHARE - START ----------------------------------------------->
+
+
+
+              <!--3) EXPORT - START ----------------------------------------------->
+              <div id="expp" style="display: none;">
+
+                <a class="shareim" href="#" style="justify-content: center; margin: auto;">
+                  <div class="expo"></div>
+                </a>
+
+
+                <p style="text-align: center; font-size: medium;">Export the project
+                </p>
+
+
+
+                <div class="container text-center" style="margin-left: 68px; position: absolute; margin-top: 10px; justify-content: center;">
+                  <div class="row row-cols-4">
+
+                    <div class="col" style="width: 80px;">
+                      <li style="list-style: none;">
+                        <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                          <div class="dd"></div>
+                        </a>
+                        <p style="text-align: center; font-size: medium;">3D CAD</p>
+                      </li>
+                    </div>
+
+                    <div class="col" style="width: 80px;">
+                      <li style="list-style: none;">
+                        <a href="#" style="justify-content: center; margin: auto; margin-left: 20px;">
+                          <div class="pack"></div>
+                        </a>
+                        <p style="text-align: center; font-size: medium;">Package</p>
+                      </li>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <hr>
+
+              </div>
+              <!--3) EXPORT - START ----------------------------------------------->
+
+
+
+              <!--4) Personality - START ----------------------------------------------->
+              <div id="perso" style="display: none;">
+
+                <!-- 1st Slider -->
+                <label for="customRange3" class="form-label" style="font-size: small; font-weight: bold; margin-bottom: 0px;">AI Personality
+                </label>
+
+                <label for="customRange3" class="form-label" style="font-size: xx-small; font-weight:lighter;">Selecting noob will make AI talk
+                  in a way that a 10 year old can understand, pro is when AI will consider you expert
+                  in engineerng</label>
+
+                <div class="row">
+                  <div class="col" style="width: 40px; font-size: small; color: green;">
+                    Noob
+                  </div>
+                  <div class="col-8">
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+                  </div>
+                  <div class="col" style="font-size: small; color: brown;">
+                    Pro
+                  </div>
+                </div>
+                <!-- 1st Slider -->
+
+
+                <!-- 2nd Slider -->
+                <label for="customRange3" class="form-label" style="font-size: small; font-weight: bold;">Calculation Fidelity</label>
+
+                <div class="row">
+                  <div class="col" style="width: 40px; font-size: small; color: brown;">
+                    Low
+                  </div>
+                  <div class="col-8">
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+                  </div>
+                  <div class="col" style="font-size: small; color: green;">
+                    High
+                  </div>
+                </div>
+                <!-- 2nd Slider -->
+
+
+
+                <div class="container text-center" style="margin-left: 0px; position: absolute; margin-top: 10px;">
+                  <div class="row row-cols-1">
+
+                    <div class="form-check form-switch" style="text-align: start; padding-bottom: 10px;">
+                      <input class="form-check-input" style="margin-top: 8px;" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                      <label class="form-check-label" for="flexSwitchCheckDefault" style="font-size: small; padding-bottom: 5px; padding-left: 0px;">
+                        Learning Mode</label>
+                    </div>
+
+                    <div class="form-check form-switch" style="text-align: start; padding-bottom: 2px;">
+                      <input class="form-check-input" style="margin-top: 8px;" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                      <label class="form-check-label" for="flexSwitchCheckDefault" style="font-size: small; padding-bottom: 5px; padding-left: 0px;">
+                        Prototype Mode</label>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+
+              </div>
+              <!--4) Personality - START ----------------------------------------------->
+
+
+              <!--4) Temes - START ----------------------------------------------->
+              <div id="theme" style="display: none;">
+
+
+
+                <a class="shareim" href="#" style="justify-content: center; margin-top: 50px;">
+                  <div class="theme"></div>
+                </a>
+
+
+
+
+                <div class="container text-center" style="margin-left: 25px; margin-top: 10px;">
+                  <div class="row row-cols-1">
+
+                    <div class="form-check form-switch" style="text-align: start; padding-bottom: 10px; margin-left: 50px;">
+                      <input class="form-check-input" style="margin-top: 8px;" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                      <label class="form-check-label" for="flexSwitchCheckDefault" style="font-size: small; padding-bottom: 5px; padding-left: 0px;">
+                        Dark Mode</label>
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+
+
+
+              </div>
+              <!--4) Temes - START ----------------------------------------------->
+
+
+              <!--f) title and description - START ----------------------------------------------->
+              <div id="titleofp" style="display: none;">
+
+                <!-- This action is how we will update the things in data base, 
+                                             first we made button and made it type=submit, in line 964 and 
+                                             then we set the action url here now we will set things in the App.js in line 7, it is = require method-override  
+                                             That _method is defined in app.js in line 43, and before 43 we did a require in line 7 in app.js 
+                                            
+                                            after doing all this, we defined dashupdatenote in dashcontroller in line 137, which actually grabs data from here
+                                            using the name="title" we gave in the <input block and updates the database go there to see final thing
+                                            -->
+
+                <form action="/dash/item/<%= noteID %>?_method=PUT" method="POST" style="width: fit-content; position: absolute;" id="titleform">
+
+                  <div id="titcr" class="form-group mb4"> Title:
+                    <input type="text" class="form-control border-0" style="font-weight: bold;  width: 300px;" id="title" name="title" value="<%= note.title%>" placeholder="Title">
+                  </div>
+
+                  <div id="descr" class="form-group mb4"> Description:
+                    <input type="text" class="form-control border-0" style="font-weight: bold; height: 35px; width: 300px;" id="body" name="body" value="<%= note.body%>" placeholder="Description">
+                  </div>
+
+                  <div id="date" style="font-size: small; margin-top: 50px;">Date: <%= note.createAt%>
+                  </div>
+
+                  <div id="una" style="font-size: small;">Created by:
+                    <%= displayName %>&nbsp<%= displayLast %></div>
+
+                  <button type="submit" id="sumchng" class="btn btn-primary" style="margin-bottom: 0px; margin-left: 158px; margin-top: 30px; position: absolute;">
+                    Save changes
+                  </button>
+
+                </form>
+
+              </div>
+              <!--f) title and description - START ----------------------------------------------->
+
+
+              <!--S) Status ----------------------------------------------->
+              <div id="status" style="display: none;">
+
+                <form action="/dash/item/<%= noteID %>?_method=PUT" method="POST">
+
+                  <a class="shareim" href="#" style="justify-content: center; margin-top: 50px;">
+                    <div class="prog"></div>
+                  </a>
+
+                  <p style="font-size: small; font-weight: normal; text-align: center;">Is this
+                    project
+                    finished? mark it finished
+                  </p>
+
+                  <script>
+                    function shi() {
+                      if (document.getElementById('success-outlined').checked) {
+
+                        if (document.getElementById("finish") != null) {
+
+                          document.getElementById('finish').innerHTML = 'OG';
+
+                          console.log(document.getElementById('finish').innerHTML);
+                        };
+
+                      } else if (document.getElementById('danger-outlined').checked) {
+
+                        if (document.getElementById("finish") != null) {
+
+                          document.getElementById('finish').innerHTML = 'FIN';
+
+                          console.log(document.getElementById('finish').innerHTML);
+                        };
+
+                      }
+                    };
+                  </script>
+
+                  <div class="container text-center" style="width: 200px; height: 50px; margin-left: 50px; margin-top: 10px;">
+
+                    <div class="row row-cols-1">
+
+
+                      <!-- SETTING TAG ----------------------------------------------- -->
+                      <input type="radio" value="OG" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+                      <label class="btn btn-outline-success" for="success-outlined">On
+                        Going</label>
+
+                      <input type="radio" value="FIN" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                      <label class="btn btn-outline-danger" for="danger-outlined">Finished</label>
+                      <!-- SETTING TAG ----------------------------------------------- -->
+
+
+                      <textarea type="text" class="form-control" id="finish" name="finish" style="display: none;">YY</textarea>
+
+                      <div style="display: none;" id="titcr" class="form-group mb4"> Title:
+                        <input type="text" class="form-control border-0" style="font-weight: bold;  width: 300px;" id="title" name="title" value="<%= note.title%>" placeholder="Title">
+                      </div>
+
+                      <div style="display: none;" id="descr" class="form-group mb4"> Description:
+                        <input type="text" class="form-control border-0" style="font-weight: bold; height: 35px; width: 300px;" id="body" name="body" value="<%= note.body%>" placeholder="Description">
+                      </div>
+
+
+
+                    </div>
+
+                    <button onclick="shi()" type="submit" class="btn btn-primary" style="margin-bottom: 0px; margin-left: 8px; margin-top: 41px; position: absolute;">
+                      Save changes
+                    </button>
+
+                  </div>
+
+
+
+                </form>
+
+              </div>
+              <!--S) Status ----------------------------------------------->
+
+
+
+            </div>
+
+
+
+            <!----------- Colunn right for Info body - END ----------------------------------------------------------------------->
+            <!----------- Colunn right for Info body - END ----------------------------------------------------------------------->
+
+
+
+
+          </div>
+        </div>
+
+
+        <div class="modal-footer">
+          <button id="closebutt" type="button" style="margin-right: 0px;" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          <button id="subbutt" style="display: block;" type="submit" class="btn btn-primary">Save
+            changes</button>
+          <!-- function defined in line 450 in the form block -->
+
+
+          <!-- when the title and description are updated in the input box, user will click on save changes button. 
+            the text input feild have a action tag in it, go see that, that is how we will call the API and update the stuff in database. -->
+
+
+        </div>
+
+        <!-- inside the card, this is the info doby -------------------------------------------------------------- -->
+
+      </div>
+
+    </div>
+
+  </div>
+          </div>
+          <!-- SETTINGS POPUP IN CHHAT ---------------------------------------------------------------->
+
+
+
+          <!-- Calculationns ======================================================================= -->
+          <!-- Calculationns ======================================================================= -->
+
+          
+          <!-- The div where the hard coded calculations will start to genrate -->
+          <div class="calcualtions_hardcode" style="height: 1000px; width: 1000px;" id="calculations_hard">
+            
+            <!-- this one is the main box in which we will displaty the calculatins -->
+            <div id="thecalculation_area" style="background-color: #ffffff;color: white;
+            margin-top: 10px;
+            width: 1080px;
+            margin-left: -40px;
+            height: 1980px;
+            position: absolute;
+            border: #212529;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 12px;
+            z-index: 2;">
+              
+              <div class="sticky-button btn btn-primary" style="width: 120px; height: 40px; display: flex; justify-content: center; margin-bottom: 20px;">Regenerate</div>
+              <div style="color: rgb(172, 172, 172); margin-bottom: 10px; margin-top: -10px; font-size: medium;">Genrating calculations for - <%= note.title %></div>
+              <div style="height: 1px; width: auto; background-color: rgb(172, 172, 172);" ></div>
+            </div>
+
+            <!-- this one is for the border, for the gradiet animation, that runs when the AI is typing -->
+            <div class="borderforcolors" style="background-color: #ffffff; color: white;
+            margin-top: 0px;
+            width: 1100px;
+            margin-left: -50px;
+            height: 2000px;
+            position: absolute;
+            border: #212529;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 12px;">
+              The calculation
+            </div>
+
+          </div>
+
+          <style>
+            .sticky-button {
+              position: fixed;
+              bottom: 20px;
+              z-index: 10;
+              right: 20px;
+              background-color: #007bff;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+          </style>
+
+          <script>
+            
+            //getthing the div in which we will display the hardcoded calculations
+            const thediv = document.getElementById('calculations_hard');
+
+          </script>
+
+          <!-- Calculationns ======================================================================= -->
+          <!-- Calculationns ======================================================================= -->
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- start and stop animation for when AI is writing -->
+<div id="styleemptydivforcalc"></div>
+<script>
+
+  const stylediv = `<style>
+
+.userinput_calc {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgb(111, 0, 255), rgb(61, 184, 0), rgb(0, 174, 255), rgb(255, 30, 0));
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  animation-play-state: paused;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+</style>`;
+
+  function startAnimation() {
+
+    document.getElementById('styleemptydivforcalc').innerHTML = stylediv;
+    var animatedDiv = document.querySelector('.userinput_calc');
+    animatedDiv.style.animationPlayState = 'running';
+
+  }
+  
+  function stopAnimation() {
+
+    document.getElementById('styleemptydivforcalc').innerHTML = '';
+
+  }
+
+</script>
+<!-- start and stop animation for when AI is writing -->
+
+
+
+
+<!-- Animating the border gradient when the ai is typing the calculations -->
+<script>
+  
+  //to stop the gradient animation on input put this -
+  startAnimation();
+  setTimeout(function () {
+    stopAnimation();
+  }, 5000);
+
+</script>
+<!-- Animating the border gradient when the ai is typing the calculations -->
+
+
+
+
+<!--
+_____________________________________ __  ______  ___    ____  __________________________________________________ 
+_______________________________/ ___// / / / __ \/   |  / __ \/ ____/ __ \_______________________________________
+_______________________________\__ \/ /_/ / /_/ / /| | / / / / __/ / /_/ /_______________________________________
+_________________________________/ / __  / _, _/ ___ |/ /_/ / /___/ _, _/________________________________________
+_____________________________/____/_/ /_/_/ |_/_/  |_/_____/_____/_/ |_|_________________________________________
+-->
+
+
+
+
+<!-- Formulas - Not to be messed with ==================================================== -->
+<!-- style="display: none;" -->
+<div class="example" id="example" style="display: none;">
+
+  <div style="font-size: 14px;">
+
+    <br/>
+    quadratic equation: $${px^2 + qx + r = 0}$$
+    <hr style="color: rgb(255, 255, 255);width: 300px;border-width: 2px;margin-left: 145px;">
+    <br/>
+    roots of quadratic equation:
+    $$x = {-q \pm \sqrt{q^2-4pr} \over {2p}}$$
+    <hr style="color: rgb(255, 255, 255);width: 300px;border-width: 2px;margin-left: 145px;">
+    <br/>
+    Einstein equation: E=\(mc^2\)
+    <br/>
+    Linear equation: \(ax+by+c\)
+
+  </div>
+</div>
+<!-- Formulas - Not to be messed with ==================================================== -->
+
+
+<!-- hardcode stuff _____________________________________________________ -->
+<div id="indicator_calc" style="display: none;">yes</div>
+<!-- hardcode stuff _____________________________________________________ -->
+
+
+<!-- THE MAIN LOOP FOR CONTENT _______________________________________________________________ -->
+<!-- CONTENT TO PRINT -->
+<script>
+
+  //reprint content 1
+  const contforreprint0 = [ 
+  `We have room to iterate on the variables listed above in the tables, material, and other variables as given in the formulas.
+  These are picked based on application so I will consider the observation and the given parameters:
+  `, 
+  `Step 3: Assuming some variables Pressure angle: 30 degree (this is standard, anything above this or below this will have poor performance until there is special need to specific angle, for most applications this value works).`,
+  `For Ka:
+	We will pick the intermediate shock and medium shock for Ka, as we are designing for a bike and gear will be connected to a IC engine and will expertise the engine level shocks and as it is a normal bike, intermediate is relevant as heavy is rock level heavy or higher.
+  `,
+  `For Kw:
+	Here we will consider all the rotational motion of the gear, we can again consider 100k but with FOS of 2, so that will be 200k and we will have to pick a value in between 2.8 and 2.
+  `,
+  `  Once we have the modules and number of teethes we will apply the relations to get the width/ length of the teeth.`,
+  `Ka : 2.4`];
+
+  //reprint content 2
+  const contforreprint1 = [
+    `Observations from given parameters : We have a fixed budget, cannot change material unless really needed, and is being made for a bike gearbox which means the extreme operating conditions won’t be too harsh, we most probably will have to make tradeoff in factor of safety `,
+    `Comment : this observation will help me make assumptions later for iterations, like when I will assume the number of teeth or the module of the gear, I will consider these observation to pick a relevant value to start the iteration process.`,
+    `From this, we need tensile strength, yield. That is the stress at which the material starts to break, it bends or morphs till plastic limit and then micro cracks starts to appear which propagates into bigger cracks until the material raptures.`,
+    `We will need these 4 variables to calculate the stress on the base of the teeth, these are from the regulations provided by gov and community and all.`,
+    `We have room to iterate on the variables listed above in the tables, material, and other variables as given in the formulas.
+Once we have the modules and number of teethes we will apply the relations to get the width/ length of the teeth.
+These are picked based on application so I will consider the observation and the given parameters: 
+`,
+    `For Ka:
+	We will pick the intermediate shock and medium shock for Ka, as we are designing for a bike and gear will be connected to a IC engine and will expertise the engine level shocks and as it is a normal bike, intermediate is relevant as heavy is rock level heavy or higher.
+Ka : 2.4
+`,
+  ];
+
+  //reprint content 3
+  const contforreprint2 = [
+    `For Km:
+	This is for considering misalignment of gears and 1 means it is minor and 3 mean its too much. For a product like a mass manufactured bike where the manufacturing time needs to be as low as possible which means compromising accuracy therefore allowing some level of misalignment which, it is saft to consider higher value as the initial misalignment of the gears will increase in operation due to forces, heat and other factors. So, a good start point can be 2 and later after designing user will recalculate this and reduce the misalignment from 2 to 1 and it will make gear further safe to use.
+`,
+    `Wont need to recalculate all this once engineer has the actual misalignment, using higher values that makes parts strong under budget and weight constrains is always better and preferable as we don’t want anyone to die, so the stronger the better in most cases. Kw : 2`,
+    `For Kf:
+	This is where we consider the speed of the gear, not idle speed. For a normal bike that can touch may be 12k engine rpm,  it is safe to consider that gear might experience 4 times of 12k = 48k rpm and with FOS of 2 and as it’s a bike with no reverse gear, its unidirectional.
+
+Kf : 0.5
+`,
+    `For Kw:
+	Here we will consider all the rotational motion of the gear, we can again consider 100k but with FOS of 2, so that will be 200k and we will have to pick a value in between 2.8 and 2.
+
+Kw : 2.2
+`,
+    `Step: Assuming some variables
+We need pressure angle to calculate the forces on the tooth, the forces are at an angle on a tooth and to get a perpendicular force on a tooth so we can calculate moment in the tooth so we can calculate the stress generated at the root of the tooth we need to know at what angle the force will be from horizontal.
+`,
+    `Pressure angle : 30 degree (this is standard, anything above this or below this will have poor performance until there is special need to specific angle, for most applications this value works).`,
+  ];
+
+  //reprint content 4
+  const contforreprint3 = [
+    `Number of teeth : To start the calculations, I considered 24 teeth then I iterated on this number under the FOS of the gear was around 2. `,
+    `Pitch diameter : We have a volume of 100 x 100 mm, which means we need use 80% of the length and width so that we have extra space for tooth and clearance. Things wiggle in operation regardless of how well you align them, so we need to make sure we have clearance or extra space for part to breathe. We also need extra space for lubricant to flow and cool the part. 20% of the space will be ok. We can consider the pitch diameter to be 80% of the length which is 80mm`,
+    `Step: Calculate
+We can now start to calculate, I will start with putting the values we have to get the stress of the tooth:
+`,
+    `Now we have Pd (Diametric pitch), and Dre which is relation of Pd and number of teeth. Here is what we have thus far after calculating module which is just (Pitch Diameter div by Number) of teethes:`,
+    `Before calculating the module, everything was in Inches, so when you see the formula of module, you’ll see 39.978 something that is just to convert the diameter to mm, the reason why I converted to mm for module is just that I am familiar with module in mm and its easy to read. `,
+    `One thing, we can not use different units in calculation, it will mess it up. Units need to be same across the calculations, if I want to use mm, I will have to use mm in everything related to length, if I want to use inch everything needs to be inch. This is not a good practice this is a requirement, we NEED to do this. So, if you see me converting to diff unit, it is purely just for my convenience.`,
+  ];
+
+  //reprint content 5
+  const contforreprint4 = [
+    `Now, this value is how much stress is in the teeth during harshest operations and material can handle: 50,764 PSI.
+As we started with 24 number of teeth, the generated stress were very low, 5 times lower then what material can handle, which is great but bad because if we move forward with 24 teethes, there will be 2 to 3 times more material used then we need which is unnecessary material being used.
+FOS: Stress material can handle div by stress in gear during operation`,
+    `So I started to reduce number of teethes until we touch FOS of 3, I reached 12 and got to 3.97, which is again little too much but alight as going lower than 12 won’t be good, it is recommended to be around 15, and 12 is ok.
+We still will have little extra material on gear, which means engineer can optimize the gear and reduce material from it later once CAD is generated to reduce weight and further save cost.
+`,
+    `There are more formulas to calculate bunch of stresses and forces in the gear but for sake of keeping it simple, I just used 1, there are 4 to 5 total but using this alone is alight. This formula calculates the stress, other formulas calculate other stuff like fatigue, tensile forces, sheer forces, etc. and to compensate we assumed parameters on extreme side. In this case, engineer will have to simulate the gear and see if the gear will break, it won’t but its not recommended to assume it won’t break, everything needs to be checked and backed by real data and simulation data and only then we can push something into real world for people to use.`,
+    `So even if we assumed that other forces and stresses will be under the limit, and the tests in simulations are alright and test in lab is alright, then we are good to go still if budget is also alright.`,
+    `Step: Dimensions of gear teethes
+Here are the formulas, defined by books, regulations, and all: 
+`,
+    `I connected the cells in the excel according to formulas and thats how these values are calculated.
+Here is a diagram to make sense of what these dimensions are:
+`,
+  ];
+
+
+
+  
+
+  const thecalcarray = [
+  `Observations from given parameters : We have a fixed budget, cannot change material unless really needed, and is being made for a bike gearbox which means the extreme operating conditions wont be too harsh, we most probably will have to make tradeoff in factor of safety and performance to fit under budget and it will be ok as it is for a mass product and not for some luxury product or performance product.
+  Comment : this observation will help me make assumptions later for iterations, like when I will assume the number of teeth or the module of the gear, I will consider these observation to pick a relevant value to start the iteration process.
+  `, 
+  `From this, we need tensile strength, yield. That is the stress at which the material starts to break, it bends or morphs till plastic limit and then micro cracks starts to appear which propagates into bigger cracks until the material raptures.`, 
+  `Step 2: Picking the variables we need from tables for stress –
+  We will need these 4 variables to calculate the stress on the base of the teeth, these are from the regulations provided by gov and community and all.
+  `, 
+  `We have room to iterate on the variables listed above in the tables, material, and other variables as given in the formulas.
+Once we have the modules and number of teethes we will apply the relations to get the width/ length of the teeth.
+These are picked based on application so I will consider the observation and the given parameters: 
+
+For Ka:
+	We will pick the intermediate shock and medium shock for Ka, as we are designing for a bike and gear will be connected to a IC engine and will expertise the engine level shocks and as it is a normal bike, intermediate is relevant as heavy is rock level heavy or higher.
+Ka = 2.4
+For Km:
+	This is for considering misalignment of gears and 1 means it is minor and 3 mean its too much. For a product like a mass manufactured bike where the manufacturing time needs to be as low as possible which means compromising accuracy therefore allowing some level of misalignment which, it is saft to consider higher value as the initial misalignment of the gears will increase in operation due to forces, heat and other factors. So, a good start point can be 2 and later after designing user will recalculate this and reduce the misalignment from 2 to 1 and it will make gear further safe to use.
+
+Wont need to recalculate all this once engineer has the actual misalignment, using higher values that makes parts strong under budget and weight constrains is always better and preferable as we dot want anyone to die, so the stronger the better in most cases.
+
+Kw = 2
+
+For Kf:
+	This is where we consider the speed of the gear, not idle speed. For a normal bike that can touch may be 12k engine rpm,  it is safe to consider that gear might experience 4 times of 12k = 48k rpm and with FOS of 2 and as its a bike with no reverse gear, its unidirectional.
+
+Kf = 0.5
+
+For Kw:
+	Here we will consider all the rotational motion of the gear, we can again consider 100k but with FOS of 2, so that will be 200k and we will have to pick a value in between 2.8 and 2.
+
+Kw = 2.2
+`, 
+  `Step 3: Assuming some variables
+We need pressure angle to calculate the forces on the tooth, the forces are at an angle on a tooth and to get a perpendicular force on a tooth so we can calculate moment in the tooth so we can calculate the stress generated at the root of the tooth we need to know at what angle the force will be from horizontal.
+Pressure angle: 30 degree (this is standard, anything above this or below this will have poor performance until there is special need to specific angle, for most applications this value works).
+Number of teeth: To start the calculations, I considered 24 teeth then I iterated on this number under the FOS of the gear was around 2. 
+Pitch diameter: We have a volume of 100 x 100 mm, which means we need use 80% of the length and width so that we have extra space for tooth and clearance. Things wiggle in operation regardless of how well you align them, so we need to make sure we have clearance or extra space for part to breathe. We also need extra space for lubricant to flow and cool the part. 20% of the space will be ok. We can consider the pitch diameter to be 80% of the length which is 80mm
+`];
+
+  const thecalcarray2 = [
+  `iuvsdds`, 
+  `gyuspend`, 
+  `tfgyudsv`, 
+  `asdvsd`,
+  `xdcfgvbhnjkm`];
+
+  const theforums = [
+  "$${E=\(mc^2\)}$$",
+  "$${px^2 + qx + r = 0}$$",
+  "$${px^2 = - (r + qx)}$$",
+  "$${px = \\sqrt{- (r + qx)}}$$",
+  "$${p = \\sqrt{- (r + qx)} \\over {x}}$$",
+  "$${E=\(mc^2\)}$$",
+  "$${px^2 + qx + r = 0}$$"];
+
+</script>
+
+
+<!-- /end and /design FORMs-->
+<script>
+          function startstart2() {
+            document.getElementById('pmode').innerHTML = 'yes';
+          }
+
+          function endend2() {
+            document.getElementById('pmode').innerHTML = 'no';
+          }
+</script>
+<!-- /end and /design FORMs-->
+
+
+
+
+<!-- THE MAIN PRINTING LOOP -->
+<script>
+
+          //this is where the div eleent in which the chatstrips will be, are defined -  pass an empty div herer where you want the chatstrips to be
+          const chatContainer = document.getElementById('thecalculation_area') //this is where the o/p will be rendered
+
+          let loadInterval
+          var flipflo = 0;
+          const calsteps = 9;
+          var delayforloop = 0;
+          var previndx = 0;
+          const allformulas = [];// storing all formulas here
+          const allformulasnippets = []; //storing snippets of all formulas
+          const uniqueidcatcher_arr = [];
+          var uniqueidcatcher;
+          var theindexforthedivs = 0;
+          var isforformulashidden = false;
+
+          var count_when_reprinted = 0;
+
+          function loader(element) { //when the AI is thining this func displays those three dots
+            element.textContent = ''
+
+            loadInterval = setInterval(() => {
+              // Update the text content of the loading indicator
+              element.textContent += '.';
+
+              // If the loading indicator has reached three dots, reset it
+              if (element.textContent === '....') {
+                element.textContent = '';
+              }
+            }, 300);
+          }
+
+          function typeText(element, text) { //when the AI gave the input, this func makes the text apear word by word for cool look
+            let index = 0;
+            let interval = setInterval(() => {
+              if (index < text.length) {
+                element.innerHTML += text.charAt(index)
+                index++
+              } else {
+                clearInterval(interval)
+              }
+            }, 10)
+          }
+
+          function generateUniqueId() { //genrates a unique ID and is used to give every reply from openAI a unique id
+            const timestamp = Date.now();
+            const randomNumber = Math.random();
+            const hexadecimalString = randomNumber.toString(16);
+
+            return `id-${timestamp}-${hexadecimalString}`;
+          }
+
+          function chatStripe(isAi, value, uniqueId) { //this is how the reply from AI is in dark strip and user is in light
+            
+            if (isforformulashidden) {
+
+            const toreturn = `
+              <div class="wrapper ${isAi && 'ai'}" id="thediv_hidden" style="background: #ffffff !important; display: none !important;">
+                <div class="chat">
+                  <div style="color: black; display: grid;" class="message" contentEditable="true" id=${uniqueId}>${value}</div>
+                </div>
+              </div>
+            `;
+            isforformulashidden = false;
+            return (toreturn);
+
+            } else {
+
+            const theind = theindexforthedivs;
+            const toreturn = `
+              <div class="wrapper ${isAi && 'ai'}" id="thediv`+theind+`" style="background: #ffffff !important;">
+                <div class="chat">
+                  <div style="color: black; display: grid;" class="message" contentEditable="true" id=${uniqueId}>${value}</div>
+                </div>
+              </div>
+            `;
+
+            theindexforthedivs = theindexforthedivs + 1;
+            return (toreturn);
+
+            }
+
+          }
+          
+          function containsSpecialChars(inputString) { //checks if the content is formula or na
+            const specialChars = /[+\-/^=]/;
+            return specialChars.test(inputString);
+          }
+          //const hasSpecialChars = containsSpecialChars();
+
+          
+
+
+          //_________________________________________________PRINTERS
+          //print content on the strips
+          function customdivprint(cont) {
+
+            //content to print
+            var contenttoprint;
+            contenttoprint = customdivcontentmaker(cont);
+
+
+            //________________content
+            isforformulashidden = true;
+
+    
+            // Chatstripe ___________________________________________________
+            const uniqueId = generateUniqueId();
+            uniqueidcatcher = uniqueId;
+            uniqueidcatcher_arr.push(uniqueidcatcher); //storing all the unique ids of all the formulas in the array
+            chatContainer.innerHTML += chatStripe(true, " ", uniqueId) //adding the div for new chatstrip
+            //for custom, we wil just add the custom html snippet
+
+            // Specific message div 
+            const messageDiv = document.getElementById(uniqueId) //selecting it
+            //______________________________________________________________________
+
+
+            //storing the unique id in the array so we can get the snippet and store in the array
+            if (cont[0] == '$') {
+              messageDiv.style.display = 'none'; //if we are just printing the formulas to store in the array then we need to hide it as later we will unhide the formula snippets and inject them using the loop we have below
+            }
+
+
+
+            clearInterval(loadInterval);
+            messageDiv.innerHTML = contenttoprint;
+
+
+            const Container = document.getElementById('thecalculation_area');
+            function scrollll() {
+            Container.scrollTop = Container.scrollHeight;
+            }
+            scrollll();
+
+          }
+
+          //print content on the strips
+          function injectsnippetforformula(cont, indx) {
+
+            
+            //this is the snippet we need to inject in the div with the unique id
+            var snippettoinject;
+            for (let s = 0; s < allformulasnippets.length; s++) {
+              if (allformulasnippets[s] == indx) {
+                snippettoinject = allformulasnippets[s+1].innerHTML;
+              }
+            }
+    
+            // Chatstripe ___________________________________________________
+            const uniqueId = generateUniqueId()
+            chatContainer.innerHTML += chatStripe(true, " ", uniqueId) //adding the div for new chatstrip
+            //for custom, we wil just add the custom html snippet
+
+
+            // Specific message div 
+            const messageDiv = document.getElementById(uniqueId) //selecting it
+            //______________________________________________________________________
+
+            clearInterval(loadInterval);
+            messageDiv.innerHTML = snippettoinject;
+
+
+            const Container = document.getElementById('thecalculation_area');
+            function scrollll() {
+            Container.scrollTop = Container.scrollHeight;
+            }
+            scrollll();
+
+          }
+
+          //print content on the strips
+          function printtheshit(cont) {
+
+            //content to print
+            var contenttoprint;
+            contenttoprint = cont;
+
+
+            //________________content
+            
+    
+            // Chatstripe ___________________________________________________
+            const uniqueId = generateUniqueId()
+            chatContainer.innerHTML += chatStripe(true, " ", uniqueId) //adding the div for new chatstrip
+            //for custom, we wil just add the custom html snippet
+
+
+            // Specific message div 
+            const messageDiv = document.getElementById(uniqueId) //selecting it
+            //______________________________________________________________________
+
+
+            clearInterval(loadInterval);
+            messageDiv.innerHTML = '';
+            const rep = contenttoprint;
+            typeText(messageDiv, rep);
+
+
+            const Container = document.getElementById('thecalculation_area');
+            function scrollll() {
+              Container.scrollTop = Container.scrollHeight;
+            }
+            scrollll();
+
+          }
+          //_________________________________________________________
+
+
+
+
+
+
+          function customdivcontentmaker(formula) { // This makes the custom div
+            
+            const customdiv = `
+              <!-- Experiment -->
+              <div class="customdiv" id="customdiv" style=" height: 40px !important; display: grid; align-content: space-between; align-items: center; ">
+                <div style="font-size: 14px;" id="customdiv">`+formula+`</div>
+              </div>`;
+            
+            return customdiv;
+
+          }
+
+          //to print formulas ______________________________________________________gtes all formilas and their index from the formulas array
+          function processtheformulas() {
+
+            const temp = [];
+            for (let t = 0; t < theforums.length; t++) { // the loop forgoing thousg the array that has all formulas
+              temp.push('');
+              temp.push(theforums[t]);
+            }
+
+            for (let t = 0; t < temp.length; t++) { // the loop forgoing thousg the array that has all formulas
+              
+              allformulas.push(t); //pushing the index of the formula
+              allformulas.push(temp[t]); //pushing the formula at the current position
+
+            }
+
+          }
+          processtheformulas();
+
+          //print the formulas and hide them then store the snippets in the array
+          function PrintandHideAllFormulas() {
+
+            var justignore = 0;
+            for (let i = 0; i < allformulas.length; i++) {
+
+              const temp = allformulas[i];
+              const isformu = containsSpecialChars(temp);
+              
+              if (isformu) {
+
+                customdivprint(allformulas[i]);
+                setTimeout(function() {
+                  const thediv = document.getElementById(uniqueidcatcher_arr[justignore]);
+                  allformulasnippets.push(allformulas[i-1]);
+                  allformulasnippets.push(thediv);
+                  justignore = justignore + 1; //incrementing so we print next formula in the array
+                }, 1000);
+                
+              }  
+
+
+            }
+          }
+          PrintandHideAllFormulas(); //allformulasnippets has all the snippets and indexes
+
+
+
+
+
+
+          
+          //________________________________________________________________Delays Calculations - calculating all the delay for printing the conytent of the array
+          const thedelay = [];
+          for(let o=0; o<thecalcarray.length; o++){
+            thedelay.push(thecalcarray[o].length);
+          }
+            
+          //calculating all the delys for printing themm 
+          const thedelayforforms = [];
+          for(let r=0; r<theforums.length; r++){
+            thedelayforforms.push(theforums[r].length);
+          }
+
+          //putting the delays in the alternative manner so that there is one peragfraph and one calculation block
+          const thefinaldelaylist = [];
+          for (let g = 0; g < thedelay.length; g++) {
+            thefinaldelaylist.push(thedelay[g]);
+            thefinaldelaylist.push(thedelayforforms[g]);
+          }
+
+          //putting the content in the alternative manner so that there is one peragfraph and one calculation block
+          const finalcontentshit = [];
+          for (let s = 0; s < thedelay.length; s++) {
+            finalcontentshit.push(thecalcarray[s]);
+            finalcontentshit.push(theforums[s]);
+          }
+          //__________________________________________________________________
+
+
+          //Indicates when to end the loop
+          var theloopendindicator = thefinaldelaylist.length;
+          //the loop index
+          let i = 0;
+          //to check if we need to print the formula
+          var iscustomdiv = false;
+
+
+
+
+
+
+
+
+          //______________________________________________________________________Calls and Loop
+          //3_________________________
+          function theprintingloop(content, delay, iscustomdiv) {
+
+            if (i == theloopendindicator) {
+              //the loop ends
+              StoreAllDivs();
+            } else {
+              
+              if(iscustomdiv){ //if this is true, the content has formula in it, and we need to print formula
+  
+                injectsnippetforformula(content, i);
+                setTimeout(function() {
+                  firstcall(i);
+                }, 2000);
+
+              } else { //normal content shit to print
+
+                printtheshit(content);
+                setTimeout(function() {
+                  firstcall(i);
+                },delay);
+
+              }
+
+              //progressing the loop
+              i = i+1;
+
+            }
+
+
+          }
+
+          //2_________________________
+          function calculatedelayandgetsent(i) {
+           
+            function delaycalc(indx) {
+
+             //calculates the delay for the content printing
+             var delaycal;
+             delaycal = thefinaldelaylist[indx] * 10;
+             return delaycal;
+
+            }
+           
+            //the delay for this sentance __________________
+            const thedelayforcurrentsentance = delaycalc(i);
+
+            //getting the content that will be printed
+            const thecontent = finalcontentshit[i];
+
+            //checks if the content is formula or na
+            function containsSpecialChars(inputString) {
+              const specialChars = /[+\-/^=]/;
+              return specialChars.test(inputString);
+            }
+            const hasSpecialChars = containsSpecialChars(thecontent);
+
+            if (thecontent) {
+              if(hasSpecialChars){
+                iscustomdiv = true;
+              } else {
+                iscustomdiv = false;
+              }
+
+            }
+            
+           theprintingloop(thecontent, thedelayforcurrentsentance, iscustomdiv);
+
+          }
+
+          //1_________________________
+          function firstcall(i) {
+            calculatedelayandgetsent(i)
+          }
+          
+          //start of the loop _________
+          if (i == 0) {
+            firstcall(i);
+          }
+          //____________________________________________________________________
+
+          const thecontainer = document.getElementById('thecalculation_area');
+
+</script>
+<!-- THE MAIN PRINTING LOOP -->
+
+
+
+
+<!-- Regenrate -->
+<script>
+
+
+  const divs_that_are_being_del = [];
+  const alldivs = [];
+  const alldivsids = [];
+  const alldivsaheadofselected = [];
+  var formula_printed = 0;
+
+
+  //________________________________________________________________________Operations used later in here
+
+  function extractNumberFromString(inputString) {
+    // Use regular expression to extract numbers from the string
+    const numbers = inputString.match(/\d+/);
+
+    if (numbers) {
+      // If numbers are found, convert the first match to a number and return it
+      return parseInt(numbers[0], 10);
+    }
+
+    // If no numbers are found, return null or any default value you prefer
+    return null;
+  }
+
+  function getRandomItemFromArrays(arr1, arr2, arr3, arr4, arr5) {
+    // Create an array to store all five input arrays
+    const allArrays = [arr1, arr2, arr3, arr4, arr5];
+  
+    // Generate a random index to select one of the arrays
+    const randomArrayIndex = Math.floor(Math.random() * allArrays.length);
+  
+    // Get the randomly selected array
+    const selectedArray = allArrays[randomArrayIndex];
+  
+    // Generate a random index within the selected array
+    const randomIndexWithinArray = Math.floor(Math.random() * selectedArray.length);
+  
+    // Get the randomly selected item from the selected array
+   const randomItem = selectedArray[randomIndexWithinArray];
+  
+    return randomItem;
+  }
+
+  function extractDivElements(inputArray) {
+
+    const resultArray = [];
+
+    for (let i = 0; i < inputArray.length; i++) {
+
+      const element = inputArray[i];
+      if (typeof element === 'object') {
+        resultArray.push(element);
+      }
+
+    }
+
+    return resultArray;
+
+  }
+
+  //print content on the strips
+  function injectstuff_regenrate(cont, indx) {
+
+
+    //remove index from the alternate positions
+    const allformulasonly = extractDivElements(allformulasnippets);
+    
+    //this is the snippet we need to inject in the div with the unique id
+    const snippettoinject = allformulasonly[indx].innerHTML;
+
+
+    // Chatstripe ___________________________________________________
+    const uniqueId = generateUniqueId()
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId) //adding the div for new chatstrip
+    //for custom, we wil just add the custom html snippet
+
+
+    // Specific message div 
+    const messageDiv = document.getElementById(uniqueId) //selecting it
+    //______________________________________________________________________
+
+    clearInterval(loadInterval);
+    messageDiv.innerHTML = snippettoinject;
+
+
+    //incrementing the index to get the next formula
+    formula_printed = formula_printed + 1;
+
+
+    const Container = document.getElementById('thecalculation_area');
+    function scrollll() {
+    Container.scrollTop = Container.scrollHeight;
+    }
+    scrollll();
+
+  }
+  
+  //THIS IS WHERE THE DIVS GETS DELETED AND REPRINTED WHEN USER EDITS THE CALCULATIONS
+  function getidofclickeddiv() {
+
+    for (let d = 0; d < alldivsids.length; d++) {
+     
+      //adding the event lister to all the containers
+      const dsDiv = document.getElementById(alldivsids[d]);
+
+      dsDiv.addEventListener('keydown', function (event) {
+
+        if (event.keyCode === 13) {
+
+          const thed1 = document.getElementById(alldivsids[d]);
+          const thed2 = thed1.innerHTML; // this has the div
+      
+          //___________________________________________________________ getting the unique id of the div with content in it
+          // Create a temporary HTML element to parse the input string
+          const tempElement = document.createElement('div');
+          tempElement.innerHTML = thed2;
+          // Find the first element with the class "message"
+          const messageElement = tempElement.querySelector('.message');
+          const idod = messageElement.getAttribute('id');      // this has the id
+          const content = messageElement.innerHTML;            // this has the content
+          tempElement.innerHTML = '';
+
+          const currentfivid = alldivsids[d];
+          const indtonum = extractNumberFromString(currentfivid) +1;
+
+          //console.log(content);               // content
+          //console.log(indtonum);              // ID of the chatstrip
+          //____________________________________________________________
+
+
+          alldivsaheadofselected.length = 0;
+          for (let j = indtonum; j < alldivsids.length; j++) {
+            alldivsaheadofselected.push(alldivsids[j]);                 //has the list of divs we need to del and reprint, except the div at 0th index
+          }
+
+
+          ReprintTheContWhenEdited(alldivsaheadofselected); //this will delete the divs and reprint them
+
+
+        }
+      
+      });
+    
+    }
+
+  }
+
+  function StoreAllDivs() {
+
+    alldivsids.length = 0;
+    const thecontainer = document.getElementById('thecalculation_area');
+
+    //theindexforthedivs is calculated and added 1 everytime a chatstrip is printed
+    for (let y = 0; y < theindexforthedivs; y++) {
+      const thediv = document.getElementById('thediv'+y);
+      alldivsids.push(thediv.id);
+    }
+
+    getidofclickeddiv();
+
+  }
+  //________________________________________________________________
+
+
+
+
+
+  //the loop that will print the content again is inside this funciton, when the user submits the changes this is the func that is called to reprint the divs.
+  function ReprintTheContWhenEdited(divnames_todel) {
+
+    formula_printed = 0;
+
+    //_____________________________________________________________________________putting content
+    //making a array of randomly picked content from the arrays
+    const thecontarray = [];
+    for (let ty = 0; ty < 10; ty++) {
+      const thecont = getRandomItemFromArrays(contforreprint0, contforreprint1, contforreprint2, contforreprint3, contforreprint4)
+      thecontarray.push(thecont);
+    }
+
+    //_____________________________________________________________________________putting formulas
+    const loopsize = theforums.length - 1;
+    for (let cd = 0; cd < loopsize; cd++) {
+      
+      const formulacont = theforums[cd];
+      thecontarray[cd+2] = formulacont;
+
+    }
+
+    //_____________________________________________________________________________passing stuff to another array that we will use below
+    divs_that_are_being_del.length = 0; //pushing the content into the array we will use in this function to reprint
+    for (let a = 0; a < thecontarray.length; a++) {
+      divs_that_are_being_del.push(thecontarray[a]);
+    }
+
+    finalcontentshit.length = 0;
+    for (let x = 0; x < divs_that_are_being_del.length; x++) {
+      finalcontentshit.push(divs_that_are_being_del[x]);
+    }
+    //__________________________________________________________________
+
+    //________________________________________________________________DELETING THE DIVS HERE
+    for (let s = 0; s < divnames_todel.length; s++) {
+      theindexforthedivs = theindexforthedivs - 1;
+      const thediv = document.getElementById(divnames_todel[s]);
+      thediv.remove();
+    }
+    //______________________________________________________________
+
+    //________________________________________________________________Delays Calculations //putting the delays in the alternative manner so that there is one peragfraph and one calculation block
+    thefinaldelaylist.length = 0;
+    for (let x = 0; x < divs_that_are_being_del.length; x++) {
+
+      function extractTextFromHTML1(html) {
+
+        if(html.innerHTML){
+          const one = html.innerHTML;
+
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = one;
+
+          // Find the first div element within the provided HTML
+          const divElement = tempDiv.querySelector('div');
+
+          return divElement.textContent;
+        } else {
+          return html;
+        }
+
+      }
+      const realcontentfordelay = extractTextFromHTML1(divs_that_are_being_del[x]).trim(); //this is the content to print
+
+      thefinaldelaylist.push(realcontentfordelay.length);
+
+    }    
+    //______________________________________________________________
+
+
+
+
+
+
+    //finalcontentshit is the final stuff to print
+    //console.log(finalcontentshit);
+
+
+
+
+
+    var ja = 0;
+    //______________________________________________________________________Calls and Loop
+    function theprintingloop(content, delay, iscustomdiv) {
+      
+      if (!content) {
+        //the loop ends
+        StoreAllDivs();
+      } else {
+
+        if(iscustomdiv){ //if this is true, the content has formula in it, and we need to print formula
+  
+          injectstuff_regenrate(content, formula_printed);
+          setTimeout(function() {
+            firstcall(ja);
+          }, 1500);
+
+        } else { //normal content shit to print
+          printtheshit(content);
+          setTimeout(function() {
+            firstcall(ja);
+          },delay);
+
+        }
+
+        //progressing the loop
+        ja = ja+1;
+
+      }
+
+
+    }
+
+    //2_________________________
+    function calculatedelayandgetsent(i) {
+           
+      function delaycalc(indx) {
+
+        //calculates the delay for the content printing
+        var delaycal;
+        delaycal = thefinaldelaylist[indx] * 10;
+        return delaycal;
+
+      }
+           
+      //the delay for this sentance __________________
+      const thedelayforcurrentsentance = delaycalc(ja);
+
+      //getting the content that will be printed
+      const thecontent = finalcontentshit[ja];
+
+
+      //checks if the content is formula or na
+      function containsSpecialChars(inputString) {
+        const specialChars = /[+\-/^=]/;
+        return specialChars.test(inputString);
+      }
+      const hasSpecialChars = containsSpecialChars(thecontent);
+
+      if (thecontent) { //if there is "$" in the contet at index 0, then it is a formula, in this case we set the iscustomdiv to true, so that the customdivprint function is used
+        if(hasSpecialChars){
+          iscustomdiv = true;
+        } else {
+          iscustomdiv = false;
+        }
+      }
+
+      theprintingloop(thecontent, thedelayforcurrentsentance, iscustomdiv);
+
+    }
+
+    //1_________________________
+    function firstcall(i) {
+      calculatedelayandgetsent(ja)
+    }
+      
+    //start of the loop _________
+    if (ja == 0) {
+      firstcall(ja);
+    }
+    //____________________________________________________________________
+
+
+
+
+
+  }
+
+
+
+
+</script>
+<!-- Regenrate -->
+
+

@@ -1,0 +1,231 @@
+<!-- this is header and this is linked to the main.ejs -->
+<header class="p-2 mb-4 border-bottom sticky-top bg-white shadow" style="margin-bottom: 0px !important;">
+
+  <div class="topba container-xxl">
+
+    <div class="bitch d-flex flex-wrap align-items-center">
+    
+    
+      <a href="/dash" style="margin-left: 20px; font-size: large; font-size: 22px; font-weight: 500; color: #012970; font-style: 'poppins', sans-serif;" class="compname d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+        <svg style="margin-right: 4px;" class="lologogo bi pe-none me-6" width="16" height="16"></svg>
+        NeuroVerse
+      </a>
+  
+    
+    
+      <form style=" margin-left: auto !important;"
+        class="searchbar nav col-5 col-md-auto-fill mb-2 justify-content-center mb-md-0" role="search" method="POST"
+        action="/dash/search">
+        <!-- this action goes to router, go there, and then goes to dashcontroller -->
+        <input type="search" name="searchTerm" class="form-control boarder-primary" placeholder="Search..."
+          aria-label="Search">
+      </form>
+    
+    
+    
+      <!-- OFF CANVAS --------------------------------------------->
+      <button class="webbb" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight">
+      </button>
+    
+      <div style="width: 700px;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+    
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Search Anything</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <hr style="margin-top: -5px;">
+        <div class="offcanvas-body">
+    
+          <!-- GOOGLE ------------------------------ -->
+          <div style="text-align: left; height: 25px; width: 650px; margin-top: 5px;">
+            <script async src="https://cse.google.com/cse.js?cx=36aca3cbc47dc472c"></script>
+            <div class="gcse-search"></div>
+          </div>
+          <!-- GOOGLE ------------------------------ -->
+    
+        </div>
+    
+      </div>
+      <!-- OFF CANVAS --------------------------------------------->
+    
+    
+
+      <!-- Notification --------------------------------------------->
+      <li class="nav-item dropdown" style="margin-left: 0px; list-style: none; width: 50px !important;">
+    
+        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <svg class="newmsg bi pe-none me-6" width="16" height="16"></svg>
+          <span class="badge bg-warning badge-number" style="margin-left: -15px; color: black; font-weight: 800; font-size: smaller;">5</span>
+        </a><!-- End Notification Icon -->
+    
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+          <li class="dropdown-header">
+            You have 4 new notifications
+            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+          </li>
+    
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="notification-item">
+            <i class="bi bi-exclamation-circle text-warning"></i>
+            <div>
+              <h4>Lorem Ipsum</h4>
+              <p>Quae dolorem earum veritatis oditseno</p>
+              <p>30 min. ago</p>
+            </div>
+          </li>
+    
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="notification-item">
+            <i class="bi bi-x-circle text-danger"></i>
+            <div>
+              <h4>Atque rerum nesciunt</h4>
+              <p>Quae dolorem earum veritatis oditseno</p>
+              <p>1 hr. ago</p>
+            </div>
+          </li>
+    
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="notification-item">
+            <i class="bi bi-check-circle text-success"></i>
+            <div>
+              <h4>Sit rerum fuga</h4>
+              <p>Quae dolorem earum veritatis oditseno</p>
+              <p>2 hrs. ago</p>
+            </div>
+          </li>
+    
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="notification-item">
+            <i class="bi bi-info-circle text-primary"></i>
+            <div>
+              <h4>Dicta reprehenderit</h4>
+              <p>Quae dolorem earum veritatis oditseno</p>
+              <p>4 hrs. ago</p>
+            </div>
+          </li>
+    
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="dropdown-footer">
+            <a href="#">Show all notifications</a>
+          </li>
+    
+        </ul><!-- End Notification Dropdown Items -->
+    
+      </li>
+      <!-- Notification --------------------------------------------->
+
+
+
+      <!-- Messages --------------------------------------------->
+      <li class="nav-item dropdown" style="margin-left: 0px !important; list-style: none; width: 50px !important;">
+    
+        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <svg class="newnoti bi pe-none me-6" width="16" height="16"></svg>
+          <span class="badge bg-success badge-number" style="margin-left: -15px;">3</span>
+        </a><!-- End Messages Icon -->
+    
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+          <li class="dropdown-header">
+            You have 3 new messages
+            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="message-item">
+            <a href="#">
+              <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+              <div>
+                <h4>Maria Hudson</h4>
+                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="message-item">
+            <a href="#">
+              <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+              <div>
+                <h4>Anna Nelson</h4>
+                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                <p>6 hrs. ago</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="message-item">
+            <a href="#">
+              <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+              <div>
+                <h4>David Muldon</h4>
+                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                <p>8 hrs. ago</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+    
+          <li class="dropdown-footer">
+            <a href="#">Show all messages</a>
+          </li>
+    
+        </ul><!-- End Messages Dropdown Items -->
+    
+      </li><!-- End Messages Nav -->
+      <!-- Messages --------------------------------------------->
+
+
+    
+      <!-- Profile --------------------------------------------->
+      <div class="dropdown">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="<%= proimgdash%>" width="32" height="32" class="rounded-circle"></img>
+        </a>
+        <ul class="dropfu dropdown-menu shadow">
+          <li><a href="/dash/view-Addnotes" class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a href="/dash/usprofile" class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+      <!-- Profile --------------------------------------------->
+    
+    
+    </div>
+
+  </div>
+</header>
+
+
+

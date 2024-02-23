@@ -1,0 +1,43 @@
+The main .js files are in the root like - Variable_Extraction_AI.js
+
+once the scripts are done, i run this terminal cmd - browserify Variable_Extraction_AI.js -o Public/VariableName_AI.js
+
+this creates a bundle file in the public folder of name 'VariableName.js'
+
+then from .ejs file i can run the bundle scrpit any time using <Script src='/VariableName.js'>
+did this in the view-notes.ejs at the bottom.
+
+in the main js file - 'Variable_Extraction_AI.js', we can use document.getelementbyid and when the
+bundled script will run it can get stuff from div elements and use it in the ai
+
+now to use ai, make a script tag, make a function that makes a script elemnt when executed -
+
+Example:
+<button class="btn-danger" style="margin-left: 250px; margin-bottom: 250px;" onclick="injectScript()">Inject Script</button>
+
+<div id="targetElement">
+    <!-- AI Scripts Call -->
+</div>
+
+<script>
+    function injectScript() {
+      var target = document.getElementById('targetElement');
+
+      // Create a new script tag
+      var scriptTag = document.createElement('script');
+      scriptTag.src = '/Partname_AI.js'; // pass the genrated public bundle AI script here =======
+
+      // Append the new script tag to the target element
+      target.appendChild(scriptTag);
+
+      // Execute the injected script
+      scriptTag.onload = function() {
+        console.log('AI RPL Executed Successfully');
+      };
+    }
+</script>
+
+here when the button is pressed it makes the script element and executes it, the partname_ai.js public bundle 
+script gets executed and inside the script we use document.getelementbyid to get the user input and then predict the name
+
+also, in the keywordhendler, when the user gives the input, the keywordhendler pushes the input in the innerhtml of a div element, so that when the script is executed it can get the inpu from that div elements innerhtml

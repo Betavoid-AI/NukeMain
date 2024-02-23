@@ -1,0 +1,11 @@
+The expected life of a ball bearing subjected to a load of 9800N and working at 1000RPM is 3000 hours. What is the expected life of the same bearing for a similar load of 4900N and a speed of 2000rpm.
+
+For ball bearings, the fatigue life L measured in number of revolutions and the radial load F are related by FL^1/2=K, where K is a constant.  It withstands a radial load of 2KN for a life of 540 million revolutions. The load (in KN) for a life of one million revolutions is.        
+
+A ball bearing operating at a load F has 8000 hours of life. The life of the bearing, in hours, when the load is doubled to 2F is.
+
+A journal bearing has a shaft diameter of 40mm and a length of 40mm The shaft is rotating at 20 rad/s and viscocity of the lubricant is 20mpa. s. The clearance is 0.020mm The loss of the torque due to viscocity of the lubricant is approximately.
+
+The life of a ball bearing at a load of 10KN is 8000 hours. Its life in hours, if the load is increased to 20KN keeping all other conditions same, is.
+
+The dynamic load capacity of 6306 bearing is 22KN The maximum radial load it can sustain to operate at 600 rev/min for 2000 hours is.

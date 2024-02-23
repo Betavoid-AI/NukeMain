@@ -1,0 +1,136 @@
+
+
+<!-- Worry About This Only - NEED YOUR INPUT -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <script>
+
+    const GetUserInputFromHere = 'userinputforai'; 
+    //put the id of the div, that has input for AI. 
+    //(example - <div id="thisdiv">user input</div> if you want AI to take that 'user input' put the id 
+    //  which will be "thisdiv".. AI will get the innerHTML of that div and use that as input.)    
+
+
+    const PutResponseHere = 'Ai_1_responsediv';
+    //put id of the div where you want AI to put response.
+    //it will use innerHTML = to set the response.
+
+
+    //GO TO LIKE 121 AND CHANGE THE NAME OF THE PUBLIC BUNDLE FILE TO INJECT
+
+    const nameoftheai = '/'+'UserResponseHendle'+'.js'; // name of the public bundle of the AI 
+    //go to AI_Routes, there you have name, you can also find name of the bundle in the .js file, its the name you put when makeing js file
+
+
+  </script>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+
+
+<!-- Loading model and Displaying -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!--Load the model -->
+<div class="getdataorna1" id="getdataorna1" style="display: none;">1</div>
+<script src="/VariableName_AI.js"></script>
+<!--Load the model -->
+
+
+<!-- This is where we display the AI Response -->
+<button class="btn btn-primary" style="margin-top: -560px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style="height: 500px;">
+  
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">AI Log</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <hr style="margin-top: 0px;">
+
+  <div class="offcanvas-body small" style="overflow-wrap: anywhere;">
+    <div id="Ai_1_responsediv" style="    display: flex; text-align: center; font-size: large; white-space: pre-line;"></div>
+  </div>
+
+</div>
+<!-- This is where we display the AI Response -->
+
+
+<!-- heighest value from AI here -->
+<script>
+  var heighvalue_fromAI;
+</script>
+<!-- heighest value from AI here -->
+
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+
+
+<!-- Getting AI response, Executing the public bundle script -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!-- THREE -->
+<!-- S3 AI Model for the var check gets loaded from the txt file HERE -->
+<div id="AI_Model_txt" style="display: none;"></div>
+<!-- S3 AI Model for the var check gets loaded from the txt file HERE -->
+
+
+<!-- TWO -->
+<!-- S2 Bundle gets injected here for response -->
+<div id="targetElement2">
+    <!-- AI Scripts Call variable check-->
+</div>
+<!-- S2 Bundle gets injected here for response -->
+
+
+<!-- ONE -->
+<!-- S1 Inject the script and execute to get reply from AI -->
+<script>
+
+  function AI_1_response() {
+
+    var target2 = document.getElementById('targetElement2');
+
+    
+    // ------------------------------- VARIABLE NAME -----------------------------------------
+
+    var scriptTag = document.createElement('script');
+    scriptTag.src = nameoftheai; // pass the genrated public bundle AI script here =======
+
+    // Append the new script tag to the target element
+    target2.appendChild(scriptTag);
+
+    // Execute the injected script
+    scriptTag.onload = function () {
+      console.log('AI-1 Executed Successfully');
+      console.log('__________________________');
+    };
+
+    // ------------------------------- VARIABLE NAME -----------------------------------------
+
+  }
+
+</script>
+<!-- S1 Inject the script and execute to get reply from AI -->
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+
+
+
+<!-- IMPORTANT -->
+<!-- AI_1_response() is called from the hundlesubmit when user gives the /des and statement. -->
+
+
+

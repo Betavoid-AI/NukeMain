@@ -1,0 +1,39 @@
+<!-- this is header and this is linked to the main.ejs -->
+
+<header class="p-3 mb-3 ">  <!-- removed boarder bottom somthing -->
+ <div class="container-fluid">     <!-- added -fluid after container -->
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="Namenotes d-flex align-items-center text-decoration-none"> <!-- added fw-bold-fs-2 -->
+          <!-- removed svg from here -->
+          NUKE
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 link-secondary">Dashboard</a></li> <!-- this is where we pass the url we created in the index.js, passed it in href -->
+          <li><a href="#" class="nav-link px-2 link-dark">Featured</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+          <li><a href="/about" class="nav-link px-2 link-dark">About</a></li> <!-- passed url of about page, url made in index.js -->
+        </ul>
+
+        <div class="col-md-3 text-end"> <!-- that auth/google is not a file, it sends req to google directly -->
+             <!-- when this auth/google send req to google directly, it happens via the rout auth defined in the app.js, go there for more info -->
+            <a href="/auth/google" type="button" class="btn btn-outline-primary">Sign Up</a>
+            <a href="/auth/google" type="button" class="btn btn-primary">Sign In</a> <!-- will link actual authentication stuff to this button link -->
+        </div> 
+
+        
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo2_z1DN2NYL_iGeUnfBN7T7bpUuGBc0TuWTE6d_j2eR6uUso15z0qFCsQTbCZEcipDz0&usqp=CAU" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign In</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
