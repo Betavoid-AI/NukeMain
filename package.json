@@ -1,11 +1,13 @@
 {
   "name": "start",
   "version": "1.0.0",
-  "description": "",
+  "description": "<< **NUKE** ============== >>\r << **BETAVOID** ========== >>",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build": "npx gulp",
+    "install": "node-gyp rebuild"
   },
   "keywords": [],
   "author": "",
@@ -51,6 +53,11 @@
     "winston": "^3.10.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+    "gulp": "^4.0.2",
+    "gulp-ejs": "^5.1.0",
+    "gulp-rename": "^2.0.0",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.3.3"
+  },
+  "gypfile": true
 }
