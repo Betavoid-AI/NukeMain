@@ -29,40 +29,20 @@ const userreplyAI = require('../../../1_user_responding_to_AI/1_user_said_predic
 
 exports.dash = async (req, res) => {
 
-
-
-    //JUST FOR PUSHING DUMMY DATA---------------------
-    // try {
-    //     await Note.insertMany([
-    //         {
-    //             user: "642523e23085c3a317f780aa",
-    //             title: "gear model try",
-    //             body: "this is just a dummy data bro",
-    //             createAt: "1671634422539"
-    //         },
-    //     ])
-    // } catch (error) {
-    //     console.log(error)
-    // }
-    //JUST FOR PUSHING DUMMY DATA---------------------
-
-
-
     //limiting how many notes can fit in the recent screen
     let perPage = 12;
     let page = req.query.page || 1
 
     //we made few mockup notes here using try and catch and puushed it in the databse, if you are wonder where those 4 notes came from
     const locals = {
-        title2: "nodejs dashboard", //we are pushing the title of the page into the main.ejs in line 7 from here,  will get injected into locals.title
-        description: "free nodejs app" //pushing descrion o fthe page into main.ejs in line 8 from here, will get injected into locals.tdescripyion
+        title2: "Bundle Dashboard", //we are pushing the title of the page into the main.ejs in line 7 from here,  will get injected into locals.title
+        description: "View all your bundles in this dashboard" //pushing descrion o fthe page into main.ejs in line 8 from here, will get injected into locals.tdescripyion
     } //this just sets the meta data for the page
-
-
 
     try { //declared a const above named Note, which refers to model folder and Notes.js inside it
         const notes = await Note.find({});                                                //here, we are using Notes, which is exported from the server/models/Notes.js, Notes.js creates the database in the mongodb
         const allbundles = await bundle.find({});                                                //here, we are using Notes, which is exported from the server/models/Notes.js, Notes.js creates the database in the mongodb
+        console.log("here: "+allbundles);
 
 
         //limiting cards to 9 per page ------------------------------
